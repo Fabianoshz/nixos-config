@@ -34,95 +34,75 @@
           "[Documents] Share" = {
             enable  = true;
             path    = "/home/fabiano/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "Jessicas-MBP" "MBPdeadinallugg.in.gambiarra.net" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "Jessicas-MBP" "GipsyDanger" ];
           };
 
-          "[Games] Game Boy Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/gb";
-            devices = [ "Odin" "ChernoAlpha" ];
-          };
-          "[Games] Game Boy Color Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/gbc";
-            devices = [ "Odin" "ChernoAlpha" ];
-          };
           "[Games] Game Boy Advanced Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/gba";
-            devices = [ "Odin" ];
-          };
-          "[Games] Nintendo DS Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/nds";
-            devices = [ "Odin" ];
-          };
-          "[Games] 3DS Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/3ds";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyDanger" ];
           };
           "[Games] Super Nintendo Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/snes";
-            devices = [ "Odin" "Jessicas-MBP" ];
+            devices = [ "Odin" "Jessicas-MBP" "GipsyDanger" ];
           };
           "[Games] Nintendo 64 Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/n64";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyDanger" ];
           };
           "[Games] Game Cube Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/gc";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyDanger" ];
           };
           "[Games] Nintendo Wii Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/wii";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyDanger" ];
           };
           "[Games] Nintendo Switch Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/switch";
-            devices = [ "ChernoAlpha" ];
+            devices = [ "ChernoAlpha" "GipsyDanger" ];
           };
           "[Games] Playstation Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/psx";
-            devices = [ "Odin" "Jessicas-MBP" ];
+            devices = [ "Odin" "Jessicas-MBP" "GipsyDanger" ];
           };
           "[Games] Playstation 2 Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/ps2";
-            devices = [ "Odin" "Jessicas-MBP" ];
+            devices = [ "Odin" "Jessicas-MBP" "GipsyDanger" ];
           };
           "[Games] PSP Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/psp";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyDanger" ];
           };
           "[Games] Saturn Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/saturn";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyDanger" ];
           };
           "[Games] MAME Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/mame";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyDanger" ];
           };
 
           "[Games] PS2 Memory cards" = {
             enable  = true;
             path    = "/home/fabiano/Games/PS2 Memory cards";
-            devices = [ "Odin" "Syncthing Server" "Jessicas-MBP" ];
+            devices = [ "Odin" "Syncthing Server" "Jessicas-MBP" "GipsyDanger" ];
           };
 
           "[Games] Retroarch" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "Jessicas-MBP" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "Jessicas-MBP" "GipsyDanger" ];
             versioning = { 
               type = "simple"; 
               params = { 
@@ -134,34 +114,29 @@
           "[Yuzu] Saves" = {
             enable  = true;
             path    = "/home/fabiano/.local/share/yuzu/nand/user/save";
-            devices = [ "Syncthing Server" ];
-          };
-          "[Citra] SDMC" = {
-            enable  = true;
-            path    = "/home/fabiano/.local/share/citra-emu/sdmc";
-            devices = [ "Odin" "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyDanger" ];
           };
 
           "[PCSX2] Cheats" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/cheats";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyDanger" ];
           };
           "[PCSX2] States" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/sstates";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyDanger" ];
           };
           "[PCSX2] Covers" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/covers";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyDanger" ];
           };
 
           "[Saves] Dynasty Warriors 8" = {
             enable  = true;
             path    = "/home/fabiano/.steam/steam/steamapps/compatdata/278080/pfx/drive_c/users/steamuser/Documents/TecmoKoei/Dynasty Warriors 8/Savedata";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyDanger" ];
             versioning = { 
               type = "simple"; 
               params = { 

@@ -25,6 +25,7 @@
           "Syncthing Server" = { id = "5UA5VGL-USWXJUO-QQAYDXF-CQJ2ESN-AE36JZV-4GOCRIH-5I35HFQ-4O3PMAX"; addresses = [ "tcp://syncthing.gambiarra.net:22000" ]; };
           "Odin" = { id = "ZGAPLG6-FXWLCHE-E2RMF3C-ZIYDVM2-HJDM5TO-NXDOMHW-KVFEGTM-CS2EGAK"; };
           "CrimsonTyphoon" = { id = "VT4BQGE-W2ENWSL-J7H2BDQ-D6ZCOME-G3WBEQR-P3XGIRG-T3D2ZOC-Y6FYPQI"; };
+          "GipsyAvenger" = { id = "MXHBOLC-SRRHHTV-GPZFIOZ-Z4AVXRY-U2KLJE4-HDJTCCO-IVO66VU-XRWDKQR"; };
           "ChernoAlpha" = { id = "RBHIV3L-FYDEZIY-3KMQQR4-65CHAME-SF7SYDV-MH6JFUK-Y2DJPKT-IEYV2AZ"; };
           "Jessicas-MBP" = { id = "K4XUFHC-5J53HLV-N3YNAPZ-ZZRSPJL-PHNR2P3-2CVGI2O-FIP6CPF-VXFFZQG"; };
           "MBPdeadinallugg.in.gambiarra.net" = { id = "3GXU3Y3-SFMOEGU-7J4EL3S-ROWO2HP-MVGQPAG-GVFBWEQ-EDDU4I7-GS3IJQA"; };
@@ -44,7 +45,7 @@
           "[Documents] Share" = {
             enable  = true;
             path    = "/home/fabiano/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "Jessicas-MBP" "MBPdeadinallugg.in.gambiarra.net" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "Jessicas-MBP" "MBPdeadinallugg.in.gambiarra.net" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
             enable  = true;
@@ -65,7 +66,7 @@
           "[Games] Game Boy Advanced Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/gba";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyAvenger" ];
           };
           "[Games] Nintendo DS Roms" = {
             enable  = true;
@@ -80,64 +81,64 @@
           "[Games] Super Nintendo Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/snes";
-            devices = [ "Odin" "Jessicas-MBP" ];
+            devices = [ "Odin" "Jessicas-MBP" "GipsyAvenger" ];
           };
           "[Games] Nintendo 64 Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/n64";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyAvenger" ];
           };
           "[Games] Game Cube Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/gc";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyAvenger" ];
           };
           "[Games] Nintendo Wii Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/wii";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyAvenger" ];
           };
           "[Games] Nintendo Switch Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/switch";
-            devices = [ "ChernoAlpha" ];
+            devices = [ "ChernoAlpha" "GipsyAvenger" ];
           };
           "[Games] Playstation Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/psx";
-            devices = [ "Odin" "Jessicas-MBP" ];
+            devices = [ "Odin" "Jessicas-MBP" "GipsyAvenger" ];
           };
           "[Games] Playstation 2 Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/ps2";
-            devices = [ "Odin" "Jessicas-MBP" ];
+            devices = [ "Odin" "Jessicas-MBP" "GipsyAvenger" ];
           };
           "[Games] PSP Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/psp";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyAvenger" ];
           };
           "[Games] Saturn Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/saturn";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyAvenger" ];
           };
           "[Games] MAME Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/mame";
-            devices = [ "Odin" ];
+            devices = [ "Odin" "GipsyAvenger" ];
           };
 
           "[Games] PS2 Memory cards" = {
             enable  = true;
             path    = "/home/fabiano/Games/PS2 Memory cards";
-            devices = [ "Odin" "Syncthing Server" "Jessicas-MBP" ];
+            devices = [ "Odin" "Syncthing Server" "Jessicas-MBP" "GipsyAvenger" ];
           };
 
           "[Games] Retroarch" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "Jessicas-MBP" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "Jessicas-MBP" "GipsyAvenger" ];
             versioning = { 
               type = "simple"; 
               params = { 
@@ -149,7 +150,7 @@
           "[Yuzu] Saves" = {
             enable  = true;
             path    = "/home/fabiano/.local/share/yuzu/nand/user/save";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyAvenger" ];
           };
           "[Citra] SDMC" = {
             enable  = true;
@@ -160,23 +161,23 @@
           "[PCSX2] Cheats" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/cheats";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyAvenger" ];
           };
           "[PCSX2] States" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/sstates";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyAvenger" ];
           };
           "[PCSX2] Covers" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/covers";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyAvenger" ];
           };
 
           "[Saves] Dynasty Warriors 8" = {
             enable  = true;
             path    = "/home/fabiano/.steam/steam/steamapps/compatdata/278080/pfx/drive_c/users/steamuser/Documents/TecmoKoei/Dynasty Warriors 8/Savedata";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyAvenger" ];
             versioning = { 
               type = "simple"; 
               params = { 
