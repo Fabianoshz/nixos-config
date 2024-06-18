@@ -82,7 +82,7 @@
       "docker"
     ];
     openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDga6t/7DhFnW7VrfbuOkpg98+7lwtWDIkpJe3AI89pDEwvYXKGp9sTOpZLk/dtW67+tb48sDOZsqtJoND3JdM/IY4MMPW7bjnbIXi3urh8aMvcEEz7HxUvQwMo3Zk53xcfZvQ6oXJa41V/RZHiXVo6WoPb4ZpbHH+XTWl0VoAz7L7LGGqhYzSqqmyGh/3s7FCKO9i4Gho+6sqy2VKkf935/8oURJFmx3D6h+JGiLV0Y5Jm4emeRTVO9YdauLaC361DNl6/WrX6SYGgrsXwQuWkIFfjrMh0qI6Hk33GQ/WM7jQbZi9phUMHH/Xvcnuz9t80XoKodWOI3xaRml4Ngnze8j73AgKqqU4aq+vyfbSUPNUIEytqJQVZ7mwpiIm2R/l+OA6Gb7GYfdrwrCgRJDYHEa8fi6Qtm3DMViRPWz/k8Zo41p531bYURJS+CFMod+OKtkSzFXURwKuLnqNKkiZQSaXQiUmclfXxGG96z78yNaAYpnL2l1n6c1hHYgtKZfM="
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICQgkNn6Nfr9LKJApkJzDvqaQMB8Lv/ynt9b1Vr1nwR"
     ];
     shell = pkgs.zsh;
   };

@@ -32,6 +32,11 @@
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
 
+  programs.steam = {
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
   ## Enable flakes
   nix = {
     # This will add each flake input as a registry
@@ -67,10 +72,15 @@
     pulse.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fabiano = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+    ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICQgkNn6Nfr9LKJApkJzDvqaQMB8Lv/ynt9b1Vr1nwR"
+    ];
+    # shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
@@ -78,6 +88,41 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
   ];
+
+  environment.plasma6.excludePackages = with pkgs.libsForQt5; [
+    elisa
+    oxygen
+    khelpcenter
+    plasma-browser-integration
+    print-manager
+  ];
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "-L" # print build logs
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   system.stateVersion = "24.05";
 }
