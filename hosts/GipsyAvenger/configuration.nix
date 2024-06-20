@@ -65,6 +65,20 @@
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
+  fileSystems = {
+    "/mnt/Games" = {
+      device = "/dev/disk/by-uuid/6f0a07d5-46a4-4157-a57e-bd414e518baf";
+      fsType = "ext4";
+      options = [
+        "nofail"
+        "users"
+        "defaults"
+        "exec"
+        "auto"
+      ];
+    };
+  };
+
   services.openssh.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.pipewire = {
