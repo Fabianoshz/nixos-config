@@ -27,14 +27,14 @@
           "CrimsonTyphoon" = { id = "VT4BQGE-W2ENWSL-J7H2BDQ-D6ZCOME-G3WBEQR-P3XGIRG-T3D2ZOC-Y6FYPQI"; };
           "GipsyDanger" = { id = "6CK73B2-SHOP7QY-P7NSFET-SFP7ZYO-KTMBNJQ-QH2XKSY-VCCSPAL-UIM2KQ7"; };
           "ChernoAlpha" = { id = "RBHIV3L-FYDEZIY-3KMQQR4-65CHAME-SF7SYDV-MH6JFUK-Y2DJPKT-IEYV2AZ"; };
-          "Jessicas-MBP" = { id = "K4XUFHC-5J53HLV-N3YNAPZ-ZZRSPJL-PHNR2P3-2CVGI2O-FIP6CPF-VXFFZQG"; };
+          "CrimsonPhoenix" = { id = "K4XUFHC-5J53HLV-N3YNAPZ-ZZRSPJL-PHNR2P3-2CVGI2O-FIP6CPF-VXFFZQG"; };
         };
 
         folders = {
           "[Documents] Share" = {
             enable  = true;
             path    = "/home/fabiano/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "Jessicas-MBP" "GipsyDanger" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
           "[Games] Game Boy Advanced Roms" = {
@@ -45,7 +45,7 @@
           "[Games] Super Nintendo Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/snes";
-            devices = [ "Odin" "Jessicas-MBP" "GipsyDanger" ];
+            devices = [ "Odin" "CrimsonPhoenix" "GipsyDanger" ];
           };
           "[Games] Nintendo 64 Roms" = {
             enable  = true;
@@ -70,12 +70,12 @@
           "[Games] Playstation Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/psx";
-            devices = [ "Odin" "Jessicas-MBP" "GipsyDanger" ];
+            devices = [ "Odin" "CrimsonPhoenix" "GipsyDanger" ];
           };
           "[Games] Playstation 2 Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/ps2";
-            devices = [ "Odin" "Jessicas-MBP" "GipsyDanger" ];
+            devices = [ "Odin" "CrimsonPhoenix" "GipsyDanger" ];
           };
           "[Games] PSP Roms" = {
             enable  = true;
@@ -96,13 +96,13 @@
           "[Games] PS2 Memory cards" = {
             enable  = true;
             path    = "/home/fabiano/Games/PS2 Memory cards";
-            devices = [ "Odin" "Syncthing Server" "Jessicas-MBP" "GipsyDanger" ];
+            devices = [ "Odin" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
           "[Games] Retroarch" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "Jessicas-MBP" "GipsyDanger" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
             versioning = { 
               type = "simple"; 
               params = { 

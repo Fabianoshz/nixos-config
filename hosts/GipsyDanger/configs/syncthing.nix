@@ -28,29 +28,28 @@
           "GipsyAvenger" = { id = "MXHBOLC-SRRHHTV-GPZFIOZ-Z4AVXRY-U2KLJE4-HDJTCCO-IVO66VU-XRWDKQR"; };
           "ChernoAlpha" = { id = "RBHIV3L-FYDEZIY-3KMQQR4-65CHAME-SF7SYDV-MH6JFUK-Y2DJPKT-IEYV2AZ"; };
           "CrimsonPhoenix" = { id = "K4XUFHC-5J53HLV-N3YNAPZ-ZZRSPJL-PHNR2P3-2CVGI2O-FIP6CPF-VXFFZQG"; };
-          "MBPdeadinallugg.in.gambiarra.net" = { id = "3GXU3Y3-SFMOEGU-7J4EL3S-ROWO2HP-MVGQPAG-GVFBWEQ-EDDU4I7-GS3IJQA"; };
         };
 
         folders = {
           "[Documents] Common" = {
             enable  = true;
             path    = "/home/fabiano/Documents/Common";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "MBPdeadinallugg.in.gambiarra.net" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
           };
           "[Documents] Passwords" = {
             enable  = true;
             path    = "/home/fabiano/Documents/Passwords";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "MBPdeadinallugg.in.gambiarra.net" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
           };
           "[Documents] Share" = {
             enable  = true;
             path    = "/home/fabiano/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "CrimsonPhoenix" "MBPdeadinallugg.in.gambiarra.net" "GipsyAvenger" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
             enable  = true;
             path    = "/home/fabiano/Documents/Workspaces";
-            devices = [ "Syncthing Server" "CrimsonPhoenix" "MBPdeadinallugg.in.gambiarra.net" ];
+            devices = [ "Syncthing Server" "CrimsonPhoenix" ];
           };
 
           "[Games] Game Boy Roms" = {
