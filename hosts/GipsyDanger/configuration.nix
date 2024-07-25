@@ -2,28 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, lib, config, pkgs, ... }: 
+{ lib, config, pkgs, ... }: 
 {
   imports = [
      # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./configs/syncthing.nix
   ];
-
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-  # This will additionally add your inputs to the system's legacy channels
-  # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = ["/etc/nix/path"];
-  environment.etc =
-    lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
 
   nix.settings = {
     # Enable flakes and new 'nix' command
@@ -47,13 +32,17 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [
-    rocm-opencl-icd
-    rocm-opencl-runtime
-  ];
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
+    ];
+  };
 
   # Configure networking
   networking.hostName = "GipsyDanger";
@@ -154,6 +143,11 @@
   # };
   virtualisation.podman.enable = true;
   virtualisation.waydroid.enable = false;
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   nixpkgs.config.allowUnfree = true;
   programs.steam = {

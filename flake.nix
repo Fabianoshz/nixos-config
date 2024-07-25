@@ -3,28 +3,26 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, jovian-nixos, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, jovian-nixos, ... }:
   let
     system = "x86_64-linux";
-
-    pkgs = import nixpkgs {
-      inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
-    };
+    upkgs = import nixpkgs-unstable { inherit system;  };
   in
   {
     nixosConfigurations = {
-      GipsyAvenger = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
+      GipsyAvenger = nixpkgs-unstable.lib.nixosSystem {
+        inherit system;
         modules = [
+          { nixpkgs.config.pkgs = upkgs; }
+
           ./hosts/GipsyAvenger/configuration.nix
           jovian-nixos.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -36,7 +34,7 @@
       };
 
       GipsyDanger = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
+        specialArgs = { inherit system; };
         modules = [
           ./hosts/GipsyDanger/configuration.nix
           home-manager.nixosModules.home-manager

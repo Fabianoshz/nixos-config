@@ -1,10 +1,17 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
     ./configs/syncthing.nix
   ];
+
+  nix.settings = {
+    # Enable flakes and new 'nix' command
+    experimental-features = "nix-command flakes";
+    # Deduplicate and optimize nix store
+    auto-optimise-store = true;
+  };
 
   nixpkgs.overlays = [
     (final: prev: {
@@ -35,23 +42,6 @@
   programs.steam = {
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  ## Enable flakes
-  nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    # Inspired by https://github.com/Misterio77/nix-starter-configs/blob/972935c1b35d8b92476e26b0e63a044d191d49c3/standard/nixos/configuration.nix
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-    };
   };
 
   networking.hostName = "GipsyAvenger";
@@ -121,6 +111,7 @@
     enable = true;
     allowedTCPPortRanges = [
       { from = 1714; to = 1764; } # KDE Connect
+      { from = 3389; to = 3389; } # RDP
     ];
     allowedUDPPortRanges = [
       { from = 1714; to = 1764; } # KDE Connect

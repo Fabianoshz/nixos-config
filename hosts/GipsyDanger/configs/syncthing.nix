@@ -210,6 +210,18 @@
             devices = [ "Syncthing Server" "GipsyAvenger" ];
           };
 
+          "[Saves] Diablo II Ressurected" = {
+            enable  = true;
+            path    = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games";
+            devices = [ "Syncthing Server" "GipsyAvenger" ];
+            versioning = { 
+              type = "simple"; 
+              params = { 
+                keep = "10";
+              }; 
+            };
+          };
+
           "[Saves] Dynasty Warriors 8" = {
             enable  = true;
             path    = "/home/fabiano/.steam/steam/steamapps/compatdata/278080/pfx/drive_c/users/steamuser/Documents/TecmoKoei/Dynasty Warriors 8/Savedata";
