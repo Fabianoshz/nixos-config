@@ -38,6 +38,7 @@
   jovian.steam.autoStart = true;
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
+  jovian.decky-loader.enable = true;
 
   programs.steam = {
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -92,6 +93,7 @@
     appimage-run
     vim
     wget
+    python3
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [
