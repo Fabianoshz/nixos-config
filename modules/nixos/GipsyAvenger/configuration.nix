@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./configs/syncthing.nix
+    ./syncthing.nix
   ];
 
   nix.settings = {
