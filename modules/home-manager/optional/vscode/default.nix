@@ -1,13 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "vscode-extension-github-copilot"
-      ];
-    };
-  };
-
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;

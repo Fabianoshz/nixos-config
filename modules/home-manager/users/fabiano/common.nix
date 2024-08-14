@@ -2,14 +2,6 @@
 {
   home.stateVersion = "24.05";
 
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "spotify"
-      ];
-    };
-  };
-
   home.packages = [
     pkgs.bash
     pkgs.dig
@@ -17,5 +9,7 @@
     pkgs.git
     pkgs.htop
     pkgs.spotify
+
+    pkgs.whois
   ];
 }

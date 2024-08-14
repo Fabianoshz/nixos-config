@@ -27,14 +27,16 @@
         "libretro-snes9x"
         "obsidian"
         "postman"
+        "spotify"
         "steam-original"
         "steam"
+        "vscode-extension-github-copilot"
       ];
     };
   };
 
   home.packages = [
-    (pkgs.callPackage ../../pkgs/optional/pkgs/vscode-runner/default.nix {inherit inputs;})
+    (pkgs.callPackage ../../../optional/pkgs/vscode-runner/default.nix {inherit inputs;})
 
     pkgs.awscli2
     pkgs.dbeaver-bin

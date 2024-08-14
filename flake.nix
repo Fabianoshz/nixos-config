@@ -9,6 +9,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-mac-dbeaver.url = "github:nixos/nixpkgs/224aa24a1c6ce18991dec003b29d1fbe04f8eb3e";
 
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -16,12 +19,14 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
+    mac-app-util.url = "github:hraban/mac-app-util";
+
     vscode-runner = {
       url = "github:Merrit/vscode-runner";
       flake = false;
     };
   };
-  outputs = inputs@{ nixpkgs, nixpkgs-23-11, home-manager, plasma-manager, jovian-nixos, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-23-11, nix-darwin, home-manager, plasma-manager, jovian-nixos, ... }:
   let
     system = "x86_64-linux";
     pkgs-23-11 = import nixpkgs-23-11 {inherit system;};
@@ -36,7 +41,7 @@
 
         extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system inputs; };
         modules = [
-          ./modules/home-manager/users/fabiano/home.nix
+          ./modules/home-manager/users/fabiano/GipsyDanger/home.nix
 
           ./modules/home-manager/core/kde/default.nix
           ./modules/home-manager/core/zsh/default.nix
@@ -53,7 +58,7 @@
 
         extraSpecialArgs = { inherit nixpkgs pkgs-unstable pkgs-23-11 plasma-manager system; };
         modules = [
-          ./modules/home-manager/users/fabiano/home.nix
+          ./modules/home-manager/users/fabiano/GipsyAvenger/home.nix
 
           ./modules/home-manager/core/kde/default.nix
           ./modules/home-manager/core/zsh/default.nix
@@ -66,7 +71,7 @@
           system = "aarch64-darwin";
         };
 
-        # extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system inputs; };
+        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system inputs; };
         modules = [
           ./modules/home-manager/users/fabiano/CrimsonPhoenix/home.nix
         ];
@@ -78,7 +83,7 @@
         system = "x86-64_linux";
 
         modules = [
-          ./modules/nixos/GipsyDanger/configuration.nix
+          ./modules/nixos/hosts/GipsyDanger/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -92,7 +97,7 @@
         modules = [
           { nixpkgs.config.pkgs = pkgs-unstable; }
 
-          ./modules/nixos/GipsyAvenger/configuration.nix
+          ./modules/nixos/hosts/GipsyAvenger/configuration.nix
           jovian-nixos.nixosModules.default
           home-manager.nixosModules.home-manager
           {
