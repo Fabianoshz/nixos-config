@@ -26,17 +26,20 @@
       flake = false;
     };
   };
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-23-11, nix-darwin, home-manager, plasma-manager, jovian-nixos, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-23-11, nix-darwin, home-manager, plasma-manager, jovian-nixos, nixpkgs-mac-dbeaver, ... }:
   let
     system = "x86_64-linux";
+    system-mac = "aarch64-darwin";
+
     pkgs-23-11 = import nixpkgs-23-11 {inherit system;};
     pkgs-unstable = import nixpkgs-unstable { inherit system;  };
+    pkgs-mac-dbeaver = import nixpkgs-mac-dbeaver { inherit system-mac;  };
   in
   {
     homeConfigurations = {
       "fabiano@GipsyDanger" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
-          inherit system;
+          system = "x86_64-linux";
         };
 
         extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system inputs; };
@@ -53,7 +56,7 @@
 
       "fabiano@GipsyAvenger" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
-          inherit system;
+          system = "x86_64-linux";
         };
 
         extraSpecialArgs = { inherit nixpkgs pkgs-unstable pkgs-23-11 plasma-manager system; };
@@ -71,7 +74,7 @@
           system = "aarch64-darwin";
         };
 
-        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system inputs; };
+        extraSpecialArgs = { inherit nixpkgs pkgs-mac-dbeaver system-mac; };
         modules = [
           ./modules/home-manager/users/fabiano/CrimsonPhoenix/home.nix
         ];
@@ -84,6 +87,7 @@
 
         modules = [
           ./modules/nixos/hosts/GipsyDanger/configuration.nix
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -93,11 +97,13 @@
       };
 
       GipsyAvenger = nixpkgs-unstable.lib.nixosSystem {
-        inherit system;
+        system = "x86-64_linux";
+
         modules = [
           { nixpkgs.config.pkgs = pkgs-unstable; }
 
           ./modules/nixos/hosts/GipsyAvenger/configuration.nix
+
           jovian-nixos.nixosModules.default
           home-manager.nixosModules.home-manager
           {
@@ -110,9 +116,11 @@
 
     darwinConfigurations = {
       CrimsonPhoenix = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
+        system = system-mac;
 
         modules = [
+          ./modules/nixos/hosts/CrimsonPhoenix/configuration.nix
+
           home-manager.darwinModules.home-manager
         ];
       };

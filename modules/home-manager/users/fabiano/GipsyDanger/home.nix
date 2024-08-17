@@ -35,8 +35,23 @@
     };
   };
 
+  xdg.desktopEntries = {
+    pokemmo = {
+      name = "PokeMMO";
+      exec = "steam-run /home/fabiano/Games/PokeMMO-Client/PokeMMO.sh";
+      icon = "/home/fabiano/Games/PokeMMO-Client/data/icons/128x128.pn";
+      categories = [ "Game" ];
+      terminal = false;
+      settings = {
+        Path = "/home/fabiano/Games/PokeMMO-Client";
+      };
+    };
+  };
+
   home.packages = [
     (pkgs.callPackage ../../../optional/pkgs/vscode-runner/default.nix {inherit inputs;})
+
+    pkgs.temurin-jre-bin-17
 
     pkgs.awscli2
     pkgs.dbeaver-bin

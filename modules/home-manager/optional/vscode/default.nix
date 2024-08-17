@@ -39,14 +39,13 @@
     ];
 
     userSettings = {
-      "workbench.startupEditor" = "none";
-      "editor.lineHeight" = 20;
       "editor.fontFamily" = "'Fira Code'";
-      "workbench.colorTheme" = "GitHub Dark Dimmed";
       "editor.inlineSuggest.enabled" = true;
+      "editor.lineHeight" = 20;
+      "editor.lineNumbers" = "relative";
+      "explorer.compactFolders" = false;
       "explorer.confirmDelete" = false;
       "explorer.confirmDragAndDrop" = false;
-      "explorer.compactFolders" = false;
       "terminal.integrated.defaultProfile.linux" = "zsh";
       "terminal.integrated.profiles.linux" = {
         "zsh" = {
@@ -58,7 +57,8 @@
         "pwsh" = null;
       };
       "update.showReleaseNotes" = false;
-      "editor.lineNumbers" = "relative";
+      "workbench.colorTheme" = "GitHub Dark Dimmed";
+      "workbench.startupEditor" = "none";
     };
   };
 }

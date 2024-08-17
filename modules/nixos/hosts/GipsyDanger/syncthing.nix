@@ -235,4 +235,16 @@
       };
     };
   };
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      { from = 22000; to = 22000; } # Syncthing
+      { from = 21027; to = 21027; } # Syncthing
+    ];
+    allowedUDPPortRanges = [
+      { from = 22000; to = 22000; } # Syncthing
+      { from = 21027; to = 21027; } # Syncthing
+    ];
+  };
 }
