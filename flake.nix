@@ -55,7 +55,7 @@
       };
 
       "fabiano@GipsyAvenger" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
+        pkgs = import nixpkgs-unstable {
           system = "x86_64-linux";
         };
 
