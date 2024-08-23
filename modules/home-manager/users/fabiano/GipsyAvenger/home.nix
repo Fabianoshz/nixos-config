@@ -4,13 +4,14 @@
     ../common.nix
   ];
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
 
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
         "libretro-snes9x"
+        "spotify"
         "steam-original"
         "steam"
       ];
@@ -56,12 +57,12 @@
     pkgs.ns-usbloader
     pkgs.pcsx2
     pkgs.prismlauncher
+    pkgs.steam-rom-manager
     pkgs.sunshine
     pkgs.unzip
     pkgs.usbutils
 
-    pkgs-unstable.steam-rom-manager
-    # pkgs-unstable.nexusmods-app
+    # pkgs.nexusmods-app
 
     pkgs-23-11.citra-canary
 
