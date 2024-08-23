@@ -39,7 +39,7 @@
     pokemmo = {
       name = "PokeMMO";
       exec = "steam-run /home/fabiano/Games/PokeMMO-Client/PokeMMO.sh";
-      icon = "/home/fabiano/Games/PokeMMO-Client/data/icons/128x128.pn";
+      icon = "/home/fabiano/Games/PokeMMO-Client/data/icons/128x128.png";
       categories = [ "Game" ];
       terminal = false;
       settings = {
@@ -51,6 +51,7 @@
   home.packages = [
     (pkgs.callPackage ../../../optional/pkgs/vscode-runner/default.nix {inherit inputs;})
 
+    # For pokeMMO
     pkgs.temurin-jre-bin-17
 
     pkgs.awscli2
