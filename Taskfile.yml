@@ -6,4 +6,4 @@ tasks:
       - sudo nixos-rebuild switch --flake '/home/fabiano/Documents/Projects/Fabianoshz/nixos-config'
   home-manager-switch:
     cmds:
-      - sudo nixos-rebuild switch --flake '/home/fabiano/Documents/Projects/Fabianoshz/nixos-config'
+      - home-manager switch --flake '/home/fabiano/Documents/Projects/Fabianoshz/nixos-config'
