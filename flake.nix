@@ -4,6 +4,7 @@
   inputs = {
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
 
+    # nixpkgs-streamcontroller.url = "github:sifmelcara/nixpkgs/streamcontroller";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-23-11.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -14,6 +15,9 @@
 
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager-unstable.url = "github:nix-community/home-manager/master";
+    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +30,7 @@
       flake = false;
     };
   };
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-23-11, nix-darwin, home-manager, plasma-manager, jovian-nixos, nixpkgs-mac-dbeaver, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-23-11, nix-darwin, home-manager, home-manager-unstable, plasma-manager, jovian-nixos, nixpkgs-mac-dbeaver, ... }:
   let
     system = "x86_64-linux";
     system-mac = "aarch64-darwin";
@@ -54,7 +58,7 @@
         ];
       };
 
-      "fabiano@GipsyAvenger" = home-manager.lib.homeManagerConfiguration {
+      "fabiano@GipsyAvenger" = home-manager-unstable.lib.homeManagerConfiguration {
         pkgs = import nixpkgs-unstable {
           system = "x86_64-linux";
         };

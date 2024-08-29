@@ -13,16 +13,6 @@
     auto-optimise-store = true;
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      gamescope = prev.gamescope.overrideAttrs (previousAttrs: {
-        patches = previousAttrs.patches ++ [
-          /etc/nixos/hosts/GipsyAvenger/patches/gamescope/fix-720p.patch
-        ];
-      });
-    })
-  ];
-
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

@@ -1,7 +1,5 @@
 { config, pkgs, pkgs-23-11, lib, inputs, ... }:
 {
-  home.stateVersion = "24.05";
-
   home.packages = [
     pkgs.bash
     pkgs.dig

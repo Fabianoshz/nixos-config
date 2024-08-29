@@ -13,6 +13,9 @@
       commit = {
         gpgSign = true;
       };
+      push = {
+        autoSetupRemote = true;
+      };
     };    
   };
 }

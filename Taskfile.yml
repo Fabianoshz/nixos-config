@@ -1,9 +1,16 @@
 version: '3'
 
 tasks:
+  full-switch:
+    cmds:
+      - sudo nixos-rebuild switch --flake '/home/fabiano/Documents/Projects/Fabianoshz/nixos-config'
+      - home-manager switch --flake '/home/fabiano/Documents/Projects/Fabianoshz/nixos-config'
   nixos-switch:
     cmds:
       - sudo nixos-rebuild switch --flake '/home/fabiano/Documents/Projects/Fabianoshz/nixos-config'
   home-manager-switch:
     cmds:
       - home-manager switch --flake '/home/fabiano/Documents/Projects/Fabianoshz/nixos-config'
+  flake-update:
+    cmds:
+      - nix flake update

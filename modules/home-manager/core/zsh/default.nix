@@ -5,11 +5,30 @@
     dotDir = ".config/zsh";
 
     initExtra = ''
-      bindkey ";5D" backward-word
-      bindkey ";5C" forward-word
+      bindkey -d
+      bindkey -e
 
-      bindkey ";3D" backward-word
-      bindkey ";3C" forward-word
+      # Arrow keys
+      bindkey "^[[C" vi-forward-char
+      bindkey "^[[D" vi-backward-char
+      bindkey "^[[A" up-line-or-history
+      bindkey "^[[B" down-line-or-history
+
+      # Ctrl keys
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
+
+      # Alt keys
+      bindkey "^[[1;3C" forward-word
+      bindkey "^[[1;3D" backward-word
+
+      # Ctrl + Backspace
+      bindkey "^H" backward-delete-word
+
+      # bindkey "^[[F" vi-forward-word
+      # bindkey "^[[H" vi-backward-word
+
+      bindkey "^R" history-incremental-search-backward
     '';
 
     shellAliases = {

@@ -4,6 +4,8 @@
     ../common.nix
   ];
 
+  home.stateVersion = "24.05";
+
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
 
@@ -15,6 +17,7 @@
   };
 
   home.sessionVariables = {
+    EDITOR = "nvim";
     GTK_IM_MODULE = "cedilla";
     QT_IM_MODULE = "cedilla";
   };
