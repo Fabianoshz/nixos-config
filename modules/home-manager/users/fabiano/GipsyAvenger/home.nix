@@ -52,6 +52,7 @@
   home.packages = [
     pkgs.discord
     pkgs.filelight
+    pkgs.firefox-bin
     pkgs.heroic
     pkgs.iotop
     pkgs.ns-usbloader

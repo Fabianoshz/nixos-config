@@ -3,7 +3,6 @@
   home.packages = [
     pkgs.bash
     pkgs.dig
-    pkgs.firefox-bin
     pkgs.git
     pkgs.htop
     pkgs.spotify

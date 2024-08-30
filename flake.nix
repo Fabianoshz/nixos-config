@@ -78,9 +78,15 @@
           system = "aarch64-darwin";
         };
 
-        extraSpecialArgs = { inherit nixpkgs pkgs-mac-dbeaver system-mac; };
+        # extraSpecialArgs = { inherit nixpkgs pkgs-mac-dbeaver system-mac; };
+        extraSpecialArgs = { inherit nixpkgs system-mac; };
         modules = [
           ./modules/home-manager/users/fabiano/CrimsonPhoenix/home.nix
+
+          ./modules/home-manager/core/zsh/default.nix
+          ./modules/home-manager/optional/git/default.nix
+          ./modules/home-manager/optional/neovim/default.nix
+          ./modules/home-manager/optional/vscode/default.nix
         ];
       };
     };

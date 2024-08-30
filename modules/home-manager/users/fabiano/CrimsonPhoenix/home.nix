@@ -1,4 +1,5 @@
-{ pkgs, pkgs-mac-dbeaver, lib, ... }:
+# { pkgs, pkgs-mac-dbeaver, lib, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     ../common.nix
@@ -12,6 +13,7 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
         "obsidian"
+        "spotify"
         "vscode-extension-github-copilot"
       ];
     };
@@ -21,7 +23,7 @@
   home.homeDirectory = "/Users/fabiano";
 
   home.packages = [
-    pkgs-mac-dbeaver.dbeaver-bin
+    # pkgs-mac-dbeaver.dbeaver-bin
 
     pkgs.awscli2
     pkgs.discord

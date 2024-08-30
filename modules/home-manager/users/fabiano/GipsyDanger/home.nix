@@ -61,6 +61,7 @@
     pkgs.dbeaver-bin
     pkgs.discord
     pkgs.filelight
+    pkgs.firefox-bin
     pkgs.iotop
     pkgs.kcalc
     pkgs.kdePackages.merkuro
