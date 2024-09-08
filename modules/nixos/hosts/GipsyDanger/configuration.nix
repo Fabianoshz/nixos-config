@@ -18,12 +18,12 @@
   };
 
   # Mount NFS
-  # fileSystems."/mnt/default/fabiano" = {
-  #   device = "truenas.in.gambiarra.net:/mnt/default/fabiano";
-  #   fsType = "nfs";
-  #   options = [ "x-systemd.automount" "noauto" ];
-  #   # options = [ "nfsvers=4.2" ];
-  # };
+  fileSystems."/mnt/default/fabiano" = {
+    device = "truenas.in.gambiarra.net:/mnt/default/fabiano";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+    # options = [ "nfsvers=4.2" ];
+  };
 
   # Required for StreamController
   # Waiting for: https://github.com/NixOS/nixpkgs/pull/335545
@@ -57,6 +57,17 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_NUMERIC = "pt_BR.UTF-8";
+    LC_TIME = "pt_BR.UTF-8";
+    LC_MONETARY = "pt_BR.UTF-8";
+    LC_PAPER = "pt_BR.UTF-8";
+    LC_NAME = "pt_BR.UTF-8";
+    LC_ADDRESS = "pt_BR.UTF-8";
+    LC_TELEPHONE = "pt_BR.UTF-8";
+    LC_MEASUREMENT = "pt_BR.UTF-8";
+    LC_IDENTIFICATION = "pt_BR.UTF-8";
+  };
 
   security.rtkit.enable = true;
   services.pipewire = {
