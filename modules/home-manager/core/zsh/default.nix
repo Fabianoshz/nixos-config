@@ -5,9 +5,6 @@
     dotDir = ".config/zsh";
 
     initExtra = ''
-      bindkey -d
-      bindkey -e
-
       # Arrow keys
       bindkey "^[[C" vi-forward-char
       bindkey "^[[D" vi-backward-char
@@ -24,9 +21,6 @@
 
       # Ctrl + Backspace
       bindkey "^H" backward-delete-word
-
-      # bindkey "^[[F" vi-forward-word
-      # bindkey "^[[H" vi-backward-word
 
       bindkey "^R" history-incremental-search-backward
     '';
