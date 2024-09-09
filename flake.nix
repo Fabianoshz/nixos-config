@@ -30,7 +30,22 @@
       flake = false;
     };
   };
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-23-11, nix-darwin, home-manager, home-manager-unstable, plasma-manager, jovian-nixos, nixpkgs-mac-dbeaver, ... }:
+
+  outputs = {
+    nixpkgs,
+    nixpkgs-unstable,
+    nixpkgs-23-11,
+    nix-darwin,
+    home-manager,
+    home-manager-unstable,
+    plasma-manager,
+    jovian-nixos,
+    nixpkgs-mac-dbeaver,
+    ...
+  }@inputs:
+  let
+    lib = nixpkgs-unstable.lib;
+  in
   let
     system = "x86_64-linux";
     system-mac = "aarch64-darwin";
@@ -38,6 +53,8 @@
     pkgs-23-11 = import nixpkgs-23-11 {inherit system;};
     pkgs-unstable = import nixpkgs-unstable { inherit system;  };
     pkgs-mac-dbeaver = import nixpkgs-mac-dbeaver { inherit system-mac;  };
+
+    nixosModules = (import ./modules/nixos/modules { inherit lib; });
   in
   {
     homeConfigurations = {
@@ -113,6 +130,8 @@
           { nixpkgs.config.pkgs = pkgs-unstable; }
 
           ./modules/nixos/hosts/GipsyAvenger/configuration.nix
+
+          ./modules/nixos/modules/decky-loader.nix
 
           jovian-nixos.nixosModules.default
           home-manager.nixosModules.home-manager

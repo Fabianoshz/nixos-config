@@ -21,6 +21,14 @@
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
 
+  # Enable CEF for decky-loader
+  home.file = {
+    "/home/fabiano/.steam/steam/.cef-enable-remote-debugging" = {
+      text = "";
+      executable = false;
+    };
+  };
+
   programs.home-manager.enable = true;
 
   xdg.desktopEntries = {

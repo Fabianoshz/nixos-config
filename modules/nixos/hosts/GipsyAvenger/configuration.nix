@@ -29,6 +29,21 @@
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
   jovian.decky-loader.enable = true;
+  jovian.decky-loader.extraPackages = [
+    pkgs.curl
+    pkgs.python3
+  ];
+
+  jovian.decky-loader.plugins = {
+    "SDH-CssLoader" = {
+      src = pkgs.fetchzip {
+        url = "https://github.com/DeckThemes/SDH-CssLoader/releases/download/v2.1.1/SDH-CSSLoader-Decky.zip";
+        sha256 = "1vp8h46di4a1qrfsbp0xhyb92x0k0cvv5w7ak2mi995xwl8x9n4j";
+        extension = "zip";
+        stripRoot = true;
+      };
+    };
+  };
 
   programs.steam = {
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
