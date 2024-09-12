@@ -34,11 +34,44 @@
     pkgs.python3
   ];
 
+  # Got from: https://plugins.deckbrew.xyz/plugins
   jovian.decky-loader.plugins = {
     "SDH-CssLoader" = {
       src = pkgs.fetchzip {
-        url = "https://github.com/DeckThemes/SDH-CssLoader/releases/download/v2.1.1/SDH-CSSLoader-Decky.zip";
-        sha256 = "1vp8h46di4a1qrfsbp0xhyb92x0k0cvv5w7ak2mi995xwl8x9n4j";
+        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/1a1e8f4dded8494febe56df16429ef5bba1e5b8feb3fd989d5808fbef0d71350.zip";
+        sha256 = "sha256-PoJNP6kqwTQphJxrgWq+uLCXjpcpAeJQ2Xu6d8UW6OY=";
+        extension = "zip";
+        stripRoot = true;
+      };
+    };
+    "SDH-GameThemeMusic" = {
+      src = pkgs.fetchzip {
+        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/c08110c6bf741ddbd2b31647123217ce816c93cf9e654b12d18696b979965bf6.zip";
+        sha256 = "sha256-LnnofbFAGpZlZgl+lOHlWkiqDkgnANMoNK+GMh/8XHg=";
+        extension = "zip";
+        stripRoot = true;
+      };
+    };
+    "protondb-decky" = {
+      src = pkgs.fetchzip {
+        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/3894048d0d9b35342c85d9f50e9e5e4edc00b65e9dfe61d47ec5cf97bfd28da7.zip";
+        sha256 = "sha256-iwoor0at8mYc6Ys+lh0GvhC/RaupMqvUe8G/sR0dNVQ=";
+        extension = "zip";
+        stripRoot = true;
+      };
+    };
+    "SteamGridDB" = {
+      src = pkgs.fetchzip {
+        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/b84f0a3f83b6e5d7cbc0ba9360bde33cfb400cf5f2a5d5c38f44a488e2c91a57.zip";
+        sha256 = "sha256-0Hvmuu/Fm2mzk7nloq/azTTXsZOm/PGYoIL4bH6LFJE=";
+        extension = "zip";
+        stripRoot = true;
+      };
+    };
+    "tab-master" = {
+      src = pkgs.fetchzip {
+        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/002b951d41a14128f21169b17d33044710b9ab63b745276bf6ddc3af4c9983fc.zip";
+        sha256 = "sha256-JXCn/JjadUP9nV7NvI+C5fKaL1zIw3BDPj+QwR2xBCc=";
         extension = "zip";
         stripRoot = true;
       };

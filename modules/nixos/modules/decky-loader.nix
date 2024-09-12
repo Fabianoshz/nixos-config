@@ -31,6 +31,7 @@ in
       system.activationScripts.installDeckyPlugins = ''
         # SETUP
         mkdir -p "${pluginPath}"
+        find "${pluginPath}" -maxdepth 1 -type l -delete
 
         # PLUGINS
         ${
