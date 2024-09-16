@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-23-11, lib, inputs, ... }:
+{ config, pkgs, pkgs-23-11, pkgs-unstable, lib, inputs, ... }:
 {
   imports = [
     ../common.nix
@@ -53,6 +53,8 @@
 
   home.packages = [
     (pkgs.callPackage ../../../optional/pkgs/vscode-runner/default.nix {inherit inputs;})
+
+    pkgs-unstable.streamcontroller
 
     # For pokeMMO
     pkgs.temurin-jre-bin-17

@@ -4,7 +4,6 @@
   inputs = {
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
 
-    # nixpkgs-streamcontroller.url = "github:sifmelcara/nixpkgs/streamcontroller";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-23-11.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -63,7 +62,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system inputs; };
+        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 pkgs-unstable plasma-manager system inputs; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyDanger/home.nix
 
@@ -80,7 +79,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs pkgs-unstable pkgs-23-11 plasma-manager system; };
+        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyAvenger/home.nix
 

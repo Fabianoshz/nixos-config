@@ -25,10 +25,6 @@
     # options = [ "nfsvers=4.2" ];
   };
 
-  # Required for StreamController
-  # Waiting for: https://github.com/NixOS/nixpkgs/pull/335545
-  services.flatpak.enable = true;
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
