@@ -12,7 +12,6 @@ let
     "8bitdo-ultimate-software"
     "battle-net"
     "firefox"
-    "league-of-legends"
     "onlyoffice"
     "steam"
   ];
