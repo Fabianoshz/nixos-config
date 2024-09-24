@@ -71,6 +71,8 @@
     pkgs.unzip
     pkgs.usbutils
 
+    pkgs.spotify
+
     # pkgs.nexusmods-app
 
     pkgs-23-11.citra-canary

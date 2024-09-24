@@ -86,6 +86,8 @@
           ./modules/home-manager/core/kde/default.nix
           ./modules/home-manager/core/zsh/default.nix
           ./modules/home-manager/optional/neovim/default.nix
+
+          ./modules/home-manager/modules/pcsx2-qt-exec/default.nix
         ];
       };
 
