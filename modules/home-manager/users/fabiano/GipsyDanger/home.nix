@@ -52,8 +52,6 @@
   };
 
   home.packages = [
-    (pkgs.callPackage ../../../optional/pkgs/vscode-runner/default.nix {inherit inputs;})
-
     pkgs-unstable.streamcontroller
 
     # For pokeMMO

@@ -61,6 +61,7 @@
     pkgs.discord
     pkgs.filelight
     pkgs.firefox-bin
+    pkgs.go-task
     pkgs.heroic
     pkgs.iotop
     pkgs.ns-usbloader
