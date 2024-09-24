@@ -173,7 +173,7 @@
           "[Saves] Diablo II Ressurected" = {
             enable  = true;
             path    = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games";
-            devices = [ "Syncthing Server" "GipsyAvenger" ];
+            devices = [ "Syncthing Server" "GipsyDanger" ];
             versioning = { 
               type = "simple"; 
               params = { 
