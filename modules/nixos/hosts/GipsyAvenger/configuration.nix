@@ -28,10 +28,19 @@
   jovian.steam.autoStart = true;
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
+  jovian.steamos.enableProductSerialAccess = false;
+  jovian.steamos.enableVendorRadv = false;
+  jovian.hardware.has.amd.gpu = true;
   jovian.decky-loader.enable = true;
+  jovian.decky-loader.user = "fabiano";
   jovian.decky-loader.extraPackages = [
     pkgs.curl
+    pkgs.dbus # For MusicControl plugin
     pkgs.python3
+    pkgs.util-linux # Has 'rev' for MusicControl plugin
+  ];
+  jovian.decky-loader.extraPythonPackages = pythonPackages: [
+    pkgs.python312Packages.hid
   ];
 
   # Got from: https://plugins.deckbrew.xyz/plugins
@@ -72,6 +81,22 @@
       src = pkgs.fetchzip {
         url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/002b951d41a14128f21169b17d33044710b9ab63b745276bf6ddc3af4c9983fc.zip";
         sha256 = "sha256-JXCn/JjadUP9nV7NvI+C5fKaL1zIw3BDPj+QwR2xBCc=";
+        extension = "zip";
+        stripRoot = true;
+      };
+    };
+    "MusicControl" = {
+      src = pkgs.fetchzip {
+        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/246b89fd653c60a735b1cc401d1b0937d5cb969eea9024561661ff741f081d62.zip";
+        sha256 = "sha256-Ow0cvecOd/ZO7j5Xur3rRz+CAE5l/4pX3qGNcJ6wmF4=";
+        extension = "zip";
+        stripRoot = true;
+      };
+    };
+    "Emuchievements" = {
+      src = pkgs.fetchzip {
+        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/d9d43e9d0720615d109746a658fbbfd4b0d69e69b7444310e25ad62e415f7980.zip";
+        sha256 = "sha256-28uGij7iqBEFvyzKAnuHXY5MRqfBs3ica0ckqXeYaBI=";
         extension = "zip";
         stripRoot = true;
       };
