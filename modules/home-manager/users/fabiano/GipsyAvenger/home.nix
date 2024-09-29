@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-23-11, lib, inputs, ... }:
+{ config, pkgs, pkgs-unstable, pkgs-23-11, lib, inputs, ... }:
 {
   imports = [
     ../common.nix
@@ -67,14 +67,13 @@
     pkgs.ns-usbloader
     pkgs.pcsx2
     pkgs.prismlauncher
+    pkgs.spotify
     pkgs.steam-rom-manager
     pkgs.sunshine
     pkgs.unzip
     pkgs.usbutils
 
-    pkgs.spotify
-
-    # pkgs.nexusmods-app
+    pkgs-unstable.nexusmods-app
 
     pkgs-23-11.citra-canary
 

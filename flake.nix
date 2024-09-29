@@ -79,7 +79,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system; };
+        extraSpecialArgs = { inherit nixpkgs pkgs-unstable pkgs-23-11 plasma-manager system; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyAvenger/home.nix
 
