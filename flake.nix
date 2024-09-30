@@ -8,6 +8,7 @@
     nixpkgs-23-11.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-mac-dbeaver.url = "github:nixos/nixpkgs/224aa24a1c6ce18991dec003b29d1fbe04f8eb3e";
+    nixpkgs-input-plumber.url = "github:nixos/nixpkgs/a198f344f6982843ba84316183bce215a21e0f23";
 
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +41,7 @@
     plasma-manager,
     jovian-nixos,
     nixpkgs-mac-dbeaver,
+    nixpkgs-input-plumber,
     ...
   }@inputs:
   let
@@ -52,6 +54,7 @@
     pkgs-23-11 = import nixpkgs-23-11 {inherit system;};
     pkgs-unstable = import nixpkgs-unstable { inherit system;  };
     pkgs-mac-dbeaver = import nixpkgs-mac-dbeaver { inherit system-mac;  };
+    pkgs-input-plumber = import nixpkgs-input-plumber { inherit system;  };
 
     nixosModules = (import ./modules/nixos/modules { inherit lib; });
   in
@@ -126,6 +129,10 @@
 
       GipsyAvenger = nixpkgs-unstable.lib.nixosSystem {
         system = "x86-64_linux";
+
+        specialArgs = {
+          inherit pkgs-input-plumber;
+        };
 
         modules = [
           { nixpkgs.config.pkgs = pkgs-unstable; }

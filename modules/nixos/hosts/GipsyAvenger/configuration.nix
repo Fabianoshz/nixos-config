@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, pkgs-input-plumber, ... }:
 
 {
   imports = [
@@ -151,12 +151,12 @@
     # shell = pkgs.zsh;
   };
 
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [
-    appimage-run
-    vim
-    wget
-    python3
+  environment.systemPackages = [
+    pkgs.appimage-run
+    pkgs.vim
+    pkgs.wget
+    pkgs.python3
+    pkgs-input-plumber.inputplumber
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [

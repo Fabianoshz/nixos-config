@@ -205,6 +205,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-input-plumber": {
+      "locked": {
+        "lastModified": 1727647978,
+        "narHash": "sha256-AJU2ZTjEM0wVioJNCOwSOwshaLemCG44ti+DJeVqtsg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a198f344f6982843ba84316183bce215a21e0f23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a198f344f6982843ba84316183bce215a21e0f23",
+        "type": "github"
+      }
+    },
     "nixpkgs-mac-dbeaver": {
       "locked": {
         "lastModified": 1718544886,
@@ -301,6 +317,7 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-23-11": "nixpkgs-23-11",
+        "nixpkgs-input-plumber": "nixpkgs-input-plumber",
         "nixpkgs-mac-dbeaver": "nixpkgs-mac-dbeaver",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "plasma-manager": "plasma-manager",
