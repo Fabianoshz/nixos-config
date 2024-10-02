@@ -2,12 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }: 
+{ lib, config, pkgs, ... }:
 {
   imports = [
      # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./syncthing.nix
   ];
 
   nix.settings = {
@@ -171,9 +170,13 @@
     enable = true;
     allowedTCPPortRanges = [
       { from = 1714; to = 1764; } # KDE Connect
+      { from = 21027; to = 21027; } # Syncthing
+      { from = 22000; to = 22000; } # Syncthing
     ];
     allowedUDPPortRanges = [
       { from = 1714; to = 1764; } # KDE Connect
+      { from = 21027; to = 21027; } # Syncthing
+      { from = 22000; to = 22000; } # Syncthing
     ];
   };
 

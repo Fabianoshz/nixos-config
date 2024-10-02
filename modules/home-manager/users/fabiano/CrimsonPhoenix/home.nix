@@ -1,12 +1,12 @@
-# { pkgs, pkgs-mac-dbeaver, lib, ... }:
 { pkgs, lib, ... }:
 {
   imports = [
     ../common.nix
     ./homebrew.nix
+    ./syncthing.nix
   ];
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
 
   nixpkgs = {
     config = {
@@ -23,8 +23,7 @@
   home.homeDirectory = "/Users/fabiano";
 
   home.packages = [
-    # pkgs-mac-dbeaver.dbeaver-bin
-
+    pkgs.dbeaver-bin
     pkgs.awscli2
     pkgs.discord
     pkgs.keepassxc

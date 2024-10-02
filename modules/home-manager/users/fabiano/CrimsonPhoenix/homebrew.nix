@@ -1,16 +1,10 @@
 { lib, ... }:
 let
-  taps = [
-    "homebrew/services"
-  ];
+  taps = [];
 
-  brews = [
-    "syncthing"
-  ];
+  brews = [];
 
   casks = [
-    "8bitdo-ultimate-software"
-    "battle-net"
     "firefox"
     "onlyoffice"
     "steam"

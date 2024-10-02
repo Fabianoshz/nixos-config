@@ -7,7 +7,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-23-11.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-mac-dbeaver.url = "github:nixos/nixpkgs/224aa24a1c6ce18991dec003b29d1fbe04f8eb3e";
     nixpkgs-input-plumber.url = "github:nixos/nixpkgs/a198f344f6982843ba84316183bce215a21e0f23";
 
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -16,7 +15,8 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager-unstable.url = "github:nix-community/home-manager/master";
+    # home-manager-unstable.url = "github:nix-community/home-manager/master";
+    home-manager-unstable.url = "github:karaolidis/home-manager/c95de330277971e3954361199e049b0e38e8d441";
     home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     plasma-manager.url = "github:pjones/plasma-manager";
@@ -24,24 +24,18 @@
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
     mac-app-util.url = "github:hraban/mac-app-util";
-
-    vscode-runner = {
-      url = "github:Merrit/vscode-runner";
-      flake = false;
-    };
   };
 
   outputs = {
-    nixpkgs,
-    nixpkgs-unstable,
     nixpkgs-23-11,
-    nix-darwin,
-    home-manager,
-    home-manager-unstable,
-    plasma-manager,
-    jovian-nixos,
-    nixpkgs-mac-dbeaver,
     nixpkgs-input-plumber,
+    nixpkgs-unstable,
+    nixpkgs,
+    home-manager-unstable,
+    home-manager,
+    jovian-nixos,
+    nix-darwin,
+    plasma-manager,
     ...
   }@inputs:
   let
@@ -53,8 +47,16 @@
 
     pkgs-23-11 = import nixpkgs-23-11 {inherit system;};
     pkgs-unstable = import nixpkgs-unstable { inherit system;  };
-    pkgs-mac-dbeaver = import nixpkgs-mac-dbeaver { inherit system-mac;  };
     pkgs-input-plumber = import nixpkgs-input-plumber { inherit system;  };
+
+    # home-manager-unstable = {
+    #   overlays = [
+    #     (final: prev: {
+    #       inherit (import home-manager-unstable {system = "x86_64-linux"; })
+    #         syncthing;
+    #     })
+    #   ]
+    # }
 
     nixosModules = (import ./modules/nixos/modules { inherit lib; });
   in
@@ -65,7 +67,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 pkgs-unstable plasma-manager system inputs; };
+        extraSpecialArgs = { inherit nixpkgs pkgs-unstable pkgs-23-11 plasma-manager system inputs; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyDanger/home.nix
 
@@ -94,13 +96,12 @@
         ];
       };
 
-      "fabiano@CrimsonPhoenix" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
+      "fabiano@CrimsonPhoenix" = home-manager-unstable.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs-unstable {
           system = "aarch64-darwin";
         };
 
-        # extraSpecialArgs = { inherit nixpkgs pkgs-mac-dbeaver system-mac; };
-        extraSpecialArgs = { inherit nixpkgs system-mac; };
+        extraSpecialArgs = { inherit nixpkgs-unstable pkgs-unstable system-mac; };
         modules = [
           ./modules/home-manager/users/fabiano/CrimsonPhoenix/home.nix
 
