@@ -91,9 +91,7 @@
     git
     libusb
     nordic
-    ntfs3g
     vim
-    xwaylandvideobridge
   ];
 
   environment.sessionVariables = rec {

@@ -19,8 +19,6 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    GTK_IM_MODULE = "cedilla";
-    QT_IM_MODULE = "cedilla";
   };
 
   nixpkgs = {
@@ -84,12 +82,13 @@
     pkgs-23-11.citra-canary
 
     # KDE
+    pkgs.kdePackages.kaccounts-integration
+    pkgs.kdePackages.kaccounts-providers
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
     pkgs.kdePackages.krdc
+    pkgs.kdePackages.xwaylandvideobridge
     pkgs.kdePackages.yakuake
-    pkgs.kdePackages.kaccounts-integration
-    pkgs.kdePackages.kaccounts-providers
 
     (pkgs.retroarch.override {
       cores = with pkgs.libretro; [
