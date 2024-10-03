@@ -32,10 +32,9 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       vulkan-loader
       vulkan-validation-layers
@@ -87,13 +86,14 @@
   };
 
   environment.systemPackages = with pkgs; [
-    docker-machine-kvm2
     # home-manager
+    docker-machine-kvm2
     git
-    vim
-    ntfs3g
-    nordic
     libusb
+    nordic
+    ntfs3g
+    vim
+    xwaylandvideobridge
   ];
 
   environment.sessionVariables = rec {
@@ -206,5 +206,5 @@
     options = "--delete-older-than 30d";
   };
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

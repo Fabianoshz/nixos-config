@@ -62,12 +62,12 @@
   in
   {
     homeConfigurations = {
-      "fabiano@GipsyDanger" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
+      "fabiano@GipsyDanger" = home-manager-unstable.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs-unstable {
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs pkgs-unstable pkgs-23-11 plasma-manager system inputs; };
+        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system inputs; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyDanger/home.nix
 
@@ -84,7 +84,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs pkgs-unstable pkgs-23-11 plasma-manager system; };
+        extraSpecialArgs = { inherit nixpkgs pkgs-23-11 plasma-manager system; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyAvenger/home.nix
 
@@ -114,10 +114,12 @@
     };
 
     nixosConfigurations = {
-      GipsyDanger = nixpkgs.lib.nixosSystem {
+      GipsyDanger = nixpkgs-unstable.lib.nixosSystem {
         system = "x86-64_linux";
 
         modules = [
+          { nixpkgs.config.pkgs = pkgs-unstable; }
+
           ./modules/nixos/hosts/GipsyDanger/configuration.nix
 
           home-manager.nixosModules.home-manager

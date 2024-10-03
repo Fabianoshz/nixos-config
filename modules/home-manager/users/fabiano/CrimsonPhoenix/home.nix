@@ -23,8 +23,8 @@
   home.homeDirectory = "/Users/fabiano";
 
   home.packages = [
-    pkgs.dbeaver-bin
     pkgs.awscli2
+    pkgs.dbeaver-bin
     pkgs.discord
     pkgs.keepassxc
     pkgs.obsidian

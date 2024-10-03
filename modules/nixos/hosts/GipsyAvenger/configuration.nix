@@ -1,4 +1,4 @@
-{ pkgs, config, lib, pkgs-input-plumber, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   imports = [
@@ -155,7 +155,7 @@
     pkgs.vim
     pkgs.wget
     pkgs.python3
-    pkgs-input-plumber.inputplumber
+    pkgs.inputplumber
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [
@@ -203,5 +203,5 @@
     options = "--delete-older-than 30d";
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

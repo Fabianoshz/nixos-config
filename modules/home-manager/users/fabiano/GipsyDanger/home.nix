@@ -1,11 +1,11 @@
-{ config, pkgs, pkgs-23-11, pkgs-unstable, lib, inputs, ... }:
+{ config, pkgs, pkgs-23-11, lib, inputs, ... }:
 {
   imports = [
     ../common.nix
     ./syncthing.nix
   ];
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
 
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
@@ -53,11 +53,6 @@
   };
 
   home.packages = [
-    pkgs-unstable.streamcontroller
-
-    # For pokeMMO
-    pkgs.temurin-jre-bin-17
-
     pkgs.awscli2
     pkgs.dbeaver-bin
     pkgs.discord
@@ -74,6 +69,8 @@
     pkgs.postman
     pkgs.prismlauncher
     pkgs.ssm-session-manager-plugin
+    pkgs.streamcontroller
+    pkgs.temurin-jre-bin-17 # For pokeMMO
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
