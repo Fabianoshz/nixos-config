@@ -76,6 +76,8 @@
     pkgs.vim
     pkgs.wget
     pkgs.python3
+
+    (pkgs.callPackage ../../modules/inputplumber/default.nix {})
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [
