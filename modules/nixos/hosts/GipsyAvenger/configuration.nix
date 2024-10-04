@@ -22,9 +22,17 @@
 
   networking.hostName = "GipsyAvenger";
 
-  # Use the systemd-boot EFI boot loader.
+  boot.plymouth.enable = true;
+  boot.loader.grub.timeoutStyle = false;
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 0;
+  boot.kernelParams = ["quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3"];
+  boot.consoleLogLevel = 0;
+  boot.initrd.verbose = false;
+  boot.initrd.systemd.enable = true;
+  systemd.watchdog.rebootTime = "0";
 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
