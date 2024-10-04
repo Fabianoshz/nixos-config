@@ -1,11 +1,16 @@
-{ config, pkgs, pkgs-23-11, lib, inputs, ... }:
+{ pkgs, lib, ... }:
 {
+  home.stateVersion = "24.11";
+
   imports = [
     ../common.nix
     ./syncthing.nix
-  ];
 
-  home.stateVersion = "24.11";
+    ../../../core/kde/default.nix
+    ../../../core/zsh/default.nix
+    ../../../optional/neovim/default.nix
+    ../../../optional/pcsx2-qt-exec/default.nix
+  ];
 
   nixpkgs = {
     config = {
@@ -74,8 +79,6 @@
     pkgs.sunshine
     pkgs.unzip
     pkgs.usbutils
-
-    pkgs-23-11.citra-canary
 
     # KDE
     pkgs.kdePackages.kdeconnect-kde

@@ -1,12 +1,17 @@
 { pkgs, lib, ... }:
 {
+  home.stateVersion = "24.11";
+
   imports = [
     ../common.nix
     ./homebrew.nix
     ./syncthing.nix
-  ];
 
-  home.stateVersion = "24.11";
+    ../../../core/zsh/default.nix
+    ../../../optional/git/default.nix
+    ../../../optional/neovim/default.nix
+    ../../../optional/vscode/default.nix
+  ];
 
   nixpkgs = {
     config = {

@@ -6,6 +6,5 @@
     pkgs.git
     pkgs.htop
     pkgs.spotify
-    pkgs.whois
   ];
 }

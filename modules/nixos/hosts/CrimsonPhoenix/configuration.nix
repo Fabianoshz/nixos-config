@@ -2,12 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }: 
+{ pkgs, ... }:
 {
-  # imports = [
-  #   ./hardware-configuration.nix
-  # ];
-
   nix.settings = {
     # Enable flakes and new 'nix' command
     experimental-features = "nix-command flakes";
@@ -44,10 +40,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  networking.hosts = {
-    "127.0.0.1" = [ "localhost" "GipsyDanger" ];
-  };
-
   system.autoUpgrade = {
     enable = true;
     flags = [
@@ -65,5 +57,5 @@
     options = "--delete-older-than 30d";
   };
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.11";
 }

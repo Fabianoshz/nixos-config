@@ -1,8 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ lib, config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
      # Include the results of the hardware scan.
@@ -95,15 +91,15 @@
   ];
 
   environment.sessionVariables = rec {
+    CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+    GTK_IM_MODULE   = "cedilla";
+    QT_IM_MODULE    = "cedilla";
+    SSH_AUTH_SOCK   = "$XDG_RUNTIME_DIR/ssh-agent";
+    XCOMPOSECACHE   = "$XDG_CACHE_HOME/X11/xcompose";
     XDG_CACHE_HOME  = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME   = "$HOME/.local/share";
     XDG_STATE_HOME  = "$HOME/.local/state";
-    CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
-    XCOMPOSECACHE   = "$XDG_CACHE_HOME/X11/xcompose";
-    GTK_IM_MODULE   = "cedilla";
-    QT_IM_MODULE    = "cedilla";
-    SSH_AUTH_SOCK   = "$XDG_RUNTIME_DIR/ssh-agent";
   };
 
   programs.zsh.enable = true;
@@ -145,10 +141,7 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
-  # virtualisation.docker.rootless = {
-  #   enable = true;
-  #   setSocketVariable = true;
-  # };
+  virtualisation.docker.enableOnBoot = false;
   virtualisation.podman.enable = true;
   virtualisation.waydroid.enable = false;
 
@@ -204,5 +197,5 @@
     options = "--delete-older-than 30d";
   };
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.11";
 }

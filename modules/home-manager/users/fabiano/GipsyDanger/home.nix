@@ -1,11 +1,17 @@
-{ config, pkgs, pkgs-23-11, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 {
+  home.stateVersion = "24.11";
+
   imports = [
     ../common.nix
     ./syncthing.nix
-  ];
 
-  home.stateVersion = "24.11";
+    ../../../core/kde/default.nix
+    ../../../core/zsh/default.nix
+    ../../../optional/git/default.nix
+    ../../../optional/neovim/default.nix
+    ../../../optional/vscode/default.nix
+  ];
 
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
@@ -78,8 +84,6 @@
 
     # Refer: https://github.com/NixOS/nixpkgs/issues/263299
     # pkgs.kdePackages.signon-plugin-oauth2
-
-    pkgs-23-11.citra-canary
 
     # KDE
     pkgs.kdePackages.kaccounts-integration

@@ -3,14 +3,20 @@ version: '3'
 tasks:
   full-switch:
     cmds:
-      - sudo nixos-rebuild switch --flake '.'
-      - home-manager switch --flake '.'
+      - task: nixos-switch
+      - task: home-manager-switch
+
   nixos-switch:
     cmds:
-      - sudo nixos-rebuild switch --flake '.'
+      - cmd: sudo nixos-rebuild switch --flake '.'
+        platforms: [linux]
+      - cmd: echo 'Disabled'
+        platforms: [darwin]
+
   home-manager-switch:
     cmds:
       - home-manager switch --flake '.'
+
   flake-update:
     cmds:
       - nix flake update
