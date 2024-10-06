@@ -58,7 +58,7 @@
         ];
       };
 
-      "fabiano@CrimsonPhoenix.in.gambiarra.net" = home-manager.lib.homeManagerConfiguration {
+      "fabiano" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
         };
@@ -105,12 +105,10 @@
 
     darwinConfigurations = {
       CrimsonPhoenix = nix-darwin.lib.darwinSystem {
-        system = system-mac;
-
         modules = [
           ./modules/nixos/hosts/CrimsonPhoenix/configuration.nix
 
-          home-manager.darwinModules.home-manager
+          # home-manager.darwinModules.home-manager
 
           # mac-app-util.darwinModules.default
           # (
