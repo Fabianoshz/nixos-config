@@ -19,6 +19,8 @@
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
     mac-app-util.url = "github:hraban/mac-app-util";
+
+    xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
   };
 
   outputs = {
@@ -28,6 +30,7 @@
     jovian-nixos,
     plasma-manager,
     mac-app-util,
+    xdg-autostart,
     ...
   }@inputs:
   let
@@ -44,6 +47,8 @@
         extraSpecialArgs = { inherit nixpkgs plasma-manager system; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyDanger/home.nix
+
+          inputs.xdg-autostart.homeManagerModules.xdg-autostart
         ];
       };
 
@@ -55,6 +60,8 @@
         extraSpecialArgs = { inherit nixpkgs plasma-manager system; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyAvenger/home.nix
+
+          inputs.xdg-autostart.homeManagerModules.xdg-autostart
         ];
       };
 

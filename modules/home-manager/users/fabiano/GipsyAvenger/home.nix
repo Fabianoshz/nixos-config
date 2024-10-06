@@ -52,6 +52,14 @@
     };
   };
 
+  xdg.autoStart.desktopItems = {
+    steam = pkgs.makeDesktopItem {
+      name = "Steam";
+      exec = "steam";
+      desktopName = "Steam";
+    };
+  };
+
   programs.plasma = {
     configFile = {
       "kwinrc"."Xwayland"."Scale" = 1.75;

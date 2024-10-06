@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, makeDesktopItem, ... }:
 {
   home.stateVersion = "24.11";
 
@@ -53,6 +53,14 @@
       settings = {
         Path = "/home/fabiano/Games/PokeMMO-Client";
       };
+    };
+  };
+
+  xdg.autoStart.desktopItems = {
+    steam = pkgs.makeDesktopItem {
+      name = "Stream Controller";
+      exec = "streamcontroller -b";
+      desktopName = "Stream Controller";
     };
   };
 
