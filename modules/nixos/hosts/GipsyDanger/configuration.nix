@@ -13,12 +13,11 @@
   };
 
   # Mount NFS
-  fileSystems."/mnt/default/fabiano" = {
-    device = "truenas.in.gambiarra.net:/mnt/default/fabiano";
-    fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
-    # options = [ "nfsvers=4.2" ];
-  };
+  # fileSystems."/mnt/default/fabiano" = {
+  #   device = "truenas.in.gambiarra.net:/mnt/default/fabiano";
+  #   fsType = "nfs";
+  #   options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" ];
+  # };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

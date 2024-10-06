@@ -57,14 +57,21 @@
   };
 
   xdg.autoStart.desktopItems = {
-    steam = pkgs.makeDesktopItem {
-      name = "Stream Controller";
+    StreamController = pkgs.makeDesktopItem {
+      name = "StreamController";
       exec = "streamcontroller -b";
       desktopName = "Stream Controller";
+      icon = "streamcontroller";
+      type = "Application";
+      categories = ["Utility"];
+      startupNotify = true;
+      terminal = false;
+      comment = "Control your Elgato Stream Decks";
     };
   };
 
   home.packages = [
+    pkgs.anki-bin
     pkgs.awscli2
     pkgs.dbeaver-bin
     pkgs.discord
@@ -74,6 +81,7 @@
     pkgs.kcalc
     pkgs.kdePackages.merkuro
     pkgs.keepassxc
+    pkgs.nexusmods-app
     pkgs.ns-usbloader
     pkgs.obsidian
     pkgs.onlyoffice-bin
