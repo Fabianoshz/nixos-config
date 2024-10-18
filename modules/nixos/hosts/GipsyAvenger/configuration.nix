@@ -15,6 +15,14 @@
     auto-optimise-store = true;
   };
 
+  nixpkgs.overlays = [
+    (self: prev: {
+      xpad = prev.xpad.overrideAttrs (oldAttrs: {
+        patches = [./flydigi-vader.patch];
+      });
+    })
+  ];
+
   programs.steam = {
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
