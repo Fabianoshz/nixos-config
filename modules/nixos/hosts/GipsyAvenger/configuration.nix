@@ -18,7 +18,7 @@
   nixpkgs.overlays = [
     (self: prev: {
       xpad = prev.xpad.overrideAttrs (oldAttrs: {
-        patches = [./flydigi-vader.patch];
+        patches = [./overlays/xpad/flydigi-vader.patch];
       });
     })
   ];
@@ -84,6 +84,7 @@
     pkgs.vim
     pkgs.wget
     pkgs.python3
+    (pkgs.callPackage ../../optional/inputplumber/default.nix {})
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [

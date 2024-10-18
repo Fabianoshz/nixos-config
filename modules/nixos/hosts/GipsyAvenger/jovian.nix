@@ -4,10 +4,12 @@
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "steam"
-        "steam-run"
-        "steamdeck-hw-theme"
         "steam-jupiter-original"
+        "steam-jupiter-unwrapped"
+        "steam-original"
+        "steam-run"
+        "steam"
+        "steamdeck-hw-theme"
       ];
     };
   };

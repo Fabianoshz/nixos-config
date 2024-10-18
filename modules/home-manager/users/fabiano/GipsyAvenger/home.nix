@@ -78,6 +78,7 @@
     pkgs.go-task
     pkgs.heroic
     pkgs.iotop
+    pkgs.itch
     pkgs.nexusmods-app
     pkgs.ns-usbloader
     pkgs.pcsx2
