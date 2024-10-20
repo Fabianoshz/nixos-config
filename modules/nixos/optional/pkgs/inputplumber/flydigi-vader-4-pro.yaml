@@ -6,10 +6,10 @@ version: 1
 kind: CapabilityMap
 
 # Name for the device event map
-name: flydigi-vader-pro-4
+name: flydigi-vader-4-pro
 
 # Unique identifier of the capability mapping
-id: flydigi-vader-pro-4
+id: flydigi-vader-4-pro
 
 # List of mapped events that are activated by a specific set of activation keys.
 mapping:
@@ -41,6 +41,14 @@ mapping:
     target_event:
       gamepad:
           button: RightPaddle1
+
+  # - name: Play/Pause
+  #   source_events:
+  #     - gamepad: 
+  #         button: RightPaddle3
+  #   target_event:
+  #     keyboard:
+  #         button: KeyPlayPause
 
 # List of events to filter from the source devices
 filtered_events: []

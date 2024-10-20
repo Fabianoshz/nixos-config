@@ -6,7 +6,7 @@ version: 1
 kind: CompositeDevice
 
 # Name of the composite device mapping
-name: flydigi-vader-pro-4
+name: flydigi-vader-4-pro
 
 # Only use this profile if *any* of the given matches matches. If this list is
 # empty,then the source devices will *always* be checked.
@@ -22,15 +22,15 @@ source_devices:
   - group: gamepad
     unique: true
     evdev:
-      # This should match the vader pro 4 device
-      vendor_id: "2dc8"
-      product_id: "{3106,3109}"
+      vendor_id: "045e"
+      product_id: "028e"
       handler: event*
 
 # The target input device(s) that the virtual device profile can use
 target_devices:
   - xbox-elite
-  - mouse
-  - keyboard
+  # - deck
+  # - mouse
+  # - keyboard
 
-capability_map_id: flydigi-vader-pro-4
+capability_map_id: flydigi-vader-4-pro

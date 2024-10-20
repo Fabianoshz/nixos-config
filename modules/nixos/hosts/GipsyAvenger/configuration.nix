@@ -6,6 +6,7 @@
     ./jovian.nix
 
     ../../optional/decky-loader.nix
+    ../../optional/inputplumber.nix
   ];
 
   nix.settings = {
@@ -61,6 +62,9 @@
     };
   };
 
+  services.inputplumber.enable = true;
+  services.inputplumber.package = (pkgs.callPackage ../../optional/pkgs/inputplumber/default.nix {});
+
   services.openssh.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.pipewire = {
@@ -84,7 +88,6 @@
     pkgs.vim
     pkgs.wget
     pkgs.python3
-    (pkgs.callPackage ../../optional/inputplumber/default.nix {})
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [

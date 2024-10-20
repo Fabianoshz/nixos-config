@@ -18,6 +18,9 @@
   jovian.steam.autoStart = true;
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
+  jovian.steam.environment = {
+    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0x045e/0x028e";
+  };
   jovian.steamos.enableProductSerialAccess = false;
   jovian.steamos.enableVendorRadv = false;
   jovian.hardware.has.amd.gpu = true;

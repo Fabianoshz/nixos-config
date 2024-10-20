@@ -41,8 +41,8 @@ rustPlatform.buildRustPackage rec {
   postInstall = ''
     cp -r rootfs/usr/* $out/
 
-    cp -r ${./40-flydigi-vader-pro-4.yaml} $out/share/inputplumber/devices/40-flydigi-vader-pro-4.yaml
-    cp -r ${./flydigi-vader-pro-4.yaml} $out/share/inputplumber/capability_maps/flydigi-vader-pro-4.yaml
+    cp -r ${./40-flydigi-vader-4-pro.yaml} $out/share/inputplumber/devices/40-flydigi-vader-4-pro.yaml
+    cp -r ${./flydigi-vader-4-pro.yaml} $out/share/inputplumber/capability_maps/flydigi-vader-4-pro.yaml
   '';
 
   meta = {
