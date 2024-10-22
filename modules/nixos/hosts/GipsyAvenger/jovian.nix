@@ -8,6 +8,7 @@
         "steam-jupiter-unwrapped"
         "steam-original"
         "steam-run"
+        "steam-unwrapped"
         "steam"
         "steamdeck-hw-theme"
       ];
@@ -22,8 +23,8 @@
     # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0x045e/0x028e";
   };
   jovian.steamos.enableProductSerialAccess = false;
-  jovian.steamos.enableVendorRadv = false;
   jovian.hardware.has.amd.gpu = true;
+  jovian.devices.steamdeck.enable = false;
   jovian.decky-loader.enable = true;
   jovian.decky-loader.user = "fabiano";
   jovian.decky-loader.extraPackages = [

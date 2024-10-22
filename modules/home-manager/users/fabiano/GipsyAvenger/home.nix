@@ -19,6 +19,7 @@
         "libretro-snes9x"
         "spotify"
         "steam-original"
+        "steam-unwrapped"
         "steam"
       ];
     };
