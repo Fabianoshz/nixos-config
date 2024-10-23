@@ -6,6 +6,7 @@
     ./jovian.nix
 
     ../../optional/decky-loader.nix
+    ../../optional/inputplumber.nix
   ];
 
   nix.settings = {
@@ -14,6 +15,20 @@
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
   };
+
+  nixpkgs.overlays = [
+    (self: prev: {
+      xpad = prev.xpad.overrideAttrs (oldAttrs: {
+        # patches = [./overlays/xpad/flydigi-vader.patch];
+        patches = [./overlays/xpad/8bitdo-hack.patch];
+      });
+    })
+    (self: prev: {
+      xdg-desktop-portal-kde = prev.xdg-desktop-portal-kde.overrideAttrs (oldAttrs: {
+        patches = [./overlays/xdg-desktop-portal-kde/allow-unattended.patch];
+      });
+    })
+  ];
 
   programs.steam = {
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -53,6 +68,9 @@
     };
   };
 
+  services.inputplumber.enable = true;
+  services.inputplumber.package = (pkgs.callPackage ../../optional/pkgs/inputplumber/default.nix {});
+
   services.openssh.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.pipewire = {
@@ -76,8 +94,7 @@
     pkgs.vim
     pkgs.wget
     pkgs.python3
-
-    (pkgs.callPackage ../../modules/inputplumber/default.nix {})
+    pkgs.kdePackages.xdg-desktop-portal-kde
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [

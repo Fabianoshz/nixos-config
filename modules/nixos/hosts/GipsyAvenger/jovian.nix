@@ -4,10 +4,13 @@
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "steam"
-        "steam-run"
-        "steamdeck-hw-theme"
         "steam-jupiter-original"
+        "steam-jupiter-unwrapped"
+        "steam-original"
+        "steam-run"
+        "steam-unwrapped"
+        "steam"
+        "steamdeck-hw-theme"
       ];
     };
   };
@@ -16,9 +19,12 @@
   jovian.steam.autoStart = true;
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
+  jovian.steam.environment = {
+    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0x045e/0x028e";
+  };
   jovian.steamos.enableProductSerialAccess = false;
-  jovian.steamos.enableVendorRadv = false;
   jovian.hardware.has.amd.gpu = true;
+  jovian.devices.steamdeck.enable = false;
   jovian.decky-loader.enable = true;
   jovian.decky-loader.user = "fabiano";
   jovian.decky-loader.extraPackages = [

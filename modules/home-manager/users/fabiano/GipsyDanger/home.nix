@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, makeDesktopItem, ... }:
 {
   home.stateVersion = "24.11";
 
@@ -56,7 +56,22 @@
     };
   };
 
+  xdg.autoStart.desktopItems = {
+    StreamController = pkgs.makeDesktopItem {
+      name = "StreamController";
+      exec = "streamcontroller -b";
+      desktopName = "Stream Controller";
+      icon = "streamcontroller";
+      type = "Application";
+      categories = ["Utility"];
+      startupNotify = true;
+      terminal = false;
+      comment = "Control your Elgato Stream Decks";
+    };
+  };
+
   home.packages = [
+    pkgs.anki-bin
     pkgs.awscli2
     pkgs.dbeaver-bin
     pkgs.discord
@@ -66,6 +81,7 @@
     pkgs.kcalc
     pkgs.kdePackages.merkuro
     pkgs.keepassxc
+    pkgs.nexusmods-app
     pkgs.ns-usbloader
     pkgs.obsidian
     pkgs.onlyoffice-bin
@@ -81,6 +97,8 @@
     pkgs.vlc
     pkgs.yubikey-manager-qt
     pkgs.yubikey-personalization-gui
+
+    pkgs.wireshark
 
     # Refer: https://github.com/NixOS/nixpkgs/issues/263299
     # pkgs.kdePackages.signon-plugin-oauth2

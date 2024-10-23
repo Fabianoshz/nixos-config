@@ -17,17 +17,8 @@
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fabiano = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "libvirtd"
-      "docker"
-    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICQgkNn6Nfr9LKJApkJzDvqaQMB8Lv/ynt9b1Vr1nwR"
     ];
@@ -40,22 +31,13 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  system.autoUpgrade = {
-    enable = true;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "-L" # print build logs
-    ];
-    dates = "02:00";
-    randomizedDelaySec = "45min";
-  };
-
   nix.gc = {
     automatic = true;
-    dates = "weekly";
     options = "--delete-older-than 30d";
   };
 
-  system.stateVersion = "24.11";
+  services.nix-daemon.enable = true;
+
+  system.stateVersion = 5;
+  nixpkgs.hostPlatform = "aarch64-darwin";
 }

@@ -19,6 +19,7 @@
         "libretro-snes9x"
         "spotify"
         "steam-original"
+        "steam-unwrapped"
         "steam"
       ];
     };
@@ -52,6 +53,14 @@
     };
   };
 
+  xdg.autoStart.desktopItems = {
+    steam = pkgs.makeDesktopItem {
+      name = "Steam";
+      exec = "steam";
+      desktopName = "Steam";
+    };
+  };
+
   programs.plasma = {
     configFile = {
       "kwinrc"."Xwayland"."Scale" = 1.75;
@@ -70,6 +79,7 @@
     pkgs.go-task
     pkgs.heroic
     pkgs.iotop
+    pkgs.itch
     pkgs.nexusmods-app
     pkgs.ns-usbloader
     pkgs.pcsx2
@@ -84,6 +94,7 @@
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
     pkgs.kdePackages.krdc
+    pkgs.kdePackages.krfb
     pkgs.kdePackages.yakuake
 
     (pkgs.retroarch.override {

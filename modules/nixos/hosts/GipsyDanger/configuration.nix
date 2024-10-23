@@ -13,12 +13,11 @@
   };
 
   # Mount NFS
-  fileSystems."/mnt/default/fabiano" = {
-    device = "truenas.in.gambiarra.net:/mnt/default/fabiano";
-    fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
-    # options = [ "nfsvers=4.2" ];
-  };
+  # fileSystems."/mnt/default/fabiano" = {
+  #   device = "truenas.in.gambiarra.net:/mnt/default/fabiano";
+  #   fsType = "nfs";
+  #   options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" ];
+  # };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -74,6 +73,7 @@
       "wheel"
       "libvirtd"
       "docker"
+      "wireshark"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICQgkNn6Nfr9LKJApkJzDvqaQMB8Lv/ynt9b1Vr1nwR"
@@ -136,7 +136,7 @@
 
   environment.shells = with pkgs; [ zsh ];
 
-  boot.kernelModules = [ "kvm-amd" "xpad" ];
+  boot.kernelModules = [ "kvm-amd" ];
 
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
@@ -176,8 +176,8 @@
   };
 
   services.udev.extraRules = ''
-    ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="3106", RUN+="${pkgs.stdenv.shell} -c 'echo 2dc8 3106 > /sys/bus/usb/drivers/xpad/new_id'"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0955", ATTRS{idProduct}=="7321", GROUP="plugdev"
+    SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
   '';
 
   system.autoUpgrade = {

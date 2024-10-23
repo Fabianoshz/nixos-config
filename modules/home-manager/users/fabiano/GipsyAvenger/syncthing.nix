@@ -43,7 +43,7 @@
           "[Games] Super Nintendo Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/snes";
-            devices = [ "Odin" "CrimsonPhoenix" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "GipsyDanger" "MiyooMiniPlus" ];
           };
           "[Games] Nintendo 64 Roms" = {
             enable  = true;
@@ -68,12 +68,12 @@
           "[Games] Playstation Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/psx";
-            devices = [ "Odin" "CrimsonPhoenix" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "GipsyDanger" "MiyooMiniPlus" ];
           };
           "[Games] Playstation 2 Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/ps2";
-            devices = [ "Odin" "CrimsonPhoenix" "GipsyDanger" ];
+            devices = [ "Odin" "GipsyDanger" ];
           };
           "[Games] PSP Roms" = {
             enable  = true;
@@ -94,13 +94,13 @@
           "[Games] PS2 Memory cards" = {
             enable  = true;
             path    = "/home/fabiano/Games/PS2 Memory cards";
-            devices = [ "Odin" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
+            devices = [ "Odin" "Syncthing Server" "GipsyDanger" ];
           };
 
           "[Games] Retroarch Saves" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/Saves";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -112,7 +112,7 @@
           "[Games] Retroarch States" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/States";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -124,7 +124,7 @@
           "[Games] Retroarch Runtime Logs" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/Runtime logs";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -136,7 +136,7 @@
           "[Games] Retroarch System" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/System";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
