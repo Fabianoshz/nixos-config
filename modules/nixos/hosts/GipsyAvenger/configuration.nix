@@ -19,7 +19,13 @@
   nixpkgs.overlays = [
     (self: prev: {
       xpad = prev.xpad.overrideAttrs (oldAttrs: {
-        patches = [./overlays/xpad/flydigi-vader.patch];
+        # patches = [./overlays/xpad/flydigi-vader.patch];
+        patches = [./overlays/xpad/8bitdo-hack.patch];
+      });
+    })
+    (self: prev: {
+      xdg-desktop-portal-kde = prev.xdg-desktop-portal-kde.overrideAttrs (oldAttrs: {
+        patches = [./overlays/xdg-desktop-portal-kde/allow-unattended.patch];
       });
     })
   ];
@@ -88,6 +94,7 @@
     pkgs.vim
     pkgs.wget
     pkgs.python3
+    pkgs.kdePackages.xdg-desktop-portal-kde
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [

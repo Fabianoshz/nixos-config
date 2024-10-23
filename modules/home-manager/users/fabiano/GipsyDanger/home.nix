@@ -98,6 +98,8 @@
     pkgs.yubikey-manager-qt
     pkgs.yubikey-personalization-gui
 
+    pkgs.wireshark
+
     # Refer: https://github.com/NixOS/nixpkgs/issues/263299
     # pkgs.kdePackages.signon-plugin-oauth2
 

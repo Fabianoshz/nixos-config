@@ -94,6 +94,7 @@
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
     pkgs.kdePackages.krdc
+    pkgs.kdePackages.krfb
     pkgs.kdePackages.yakuake
 
     (pkgs.retroarch.override {
