@@ -19,8 +19,7 @@
   nixpkgs.overlays = [
     (self: prev: {
       xpad = prev.xpad.overrideAttrs (oldAttrs: {
-        # patches = [./overlays/xpad/flydigi-vader.patch];
-        patches = [./overlays/xpad/8bitdo-hack.patch];
+        patches = [./overlays/xpad/flydigi-vader.patch];
       });
     })
     (self: prev: {
