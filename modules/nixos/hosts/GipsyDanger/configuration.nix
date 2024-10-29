@@ -85,7 +85,7 @@
     # home-manager
     docker-machine-kvm2
     git
-    libusb
+    libusb1
     nordic
     vim
   ];

@@ -68,10 +68,23 @@
       terminal = false;
       comment = "Control your Elgato Stream Decks";
     };
+
+    Yakuake = pkgs.makeDesktopItem {
+      name = "org.kde.yakuake.desktop";
+      genericName = "Drop-down Terminal";
+      dbusActivatable = true;
+      exec = "yakuake";
+      desktopName = "Yakuake";
+      icon = "yakuake";
+      type = "Application";
+      categories = ["Qt" "KDE" "System" "TerminalEmulator"];
+      startupNotify = false;
+      terminal = false;
+      comment = "A drop-down terminal emulator based on KDE Konsole technology.";
+    };
   };
 
   home.packages = [
-    pkgs.anki-bin
     pkgs.awscli2
     pkgs.dbeaver-bin
     pkgs.discord
@@ -81,24 +94,25 @@
     pkgs.kcalc
     pkgs.kdePackages.merkuro
     pkgs.keepassxc
-    pkgs.nexusmods-app
-    pkgs.ns-usbloader
     pkgs.obsidian
     pkgs.onlyoffice-bin
     pkgs.pcsx2
-    pkgs.postman
-    pkgs.prismlauncher
     pkgs.ssm-session-manager-plugin
     pkgs.streamcontroller
-    pkgs.temurin-jre-bin-17 # For pokeMMO
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
-    pkgs.vlc
-    pkgs.yubikey-manager-qt
-    pkgs.yubikey-personalization-gui
 
-    pkgs.wireshark
+    # pkgs.anki-bin
+    # pkgs.nexusmods-app
+    # pkgs.ns-usbloader
+    # pkgs.postman
+    # pkgs.prismlauncher
+    # pkgs.temurin-jre-bin-17 # For pokeMMO
+    # pkgs.vlc
+    # pkgs.wireshark
+    # pkgs.yubikey-manager-qt
+    # pkgs.yubikey-personalization-gui
 
     # Refer: https://github.com/NixOS/nixpkgs/issues/263299
     # pkgs.kdePackages.signon-plugin-oauth2
