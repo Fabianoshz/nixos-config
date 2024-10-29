@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -7,6 +7,7 @@
 
     ../../optional/decky-loader.nix
     ../../optional/inputplumber.nix
+    ../../optional/waydroid/default.nix
   ];
 
   nix.settings = {
@@ -18,13 +19,18 @@
 
   nixpkgs.overlays = [
     (self: prev: {
-      xpad = prev.xpad.overrideAttrs (oldAttrs: {
-        patches = [./overlays/xpad/flydigi-vader.patch];
+      gamescope = prev.gamescope.overrideAttrs (oldAttrs: {
+        patches = [./overlays/gamescope/fix-720p.patch] ++ oldAttrs.patches;
       });
     })
     (self: prev: {
       xdg-desktop-portal-kde = prev.xdg-desktop-portal-kde.overrideAttrs (oldAttrs: {
         patches = [./overlays/xdg-desktop-portal-kde/allow-unattended.patch];
+      });
+    })
+    (self: prev: {
+      gamescope-session = prev.gamescope-session.overrideAttrs (oldAttrs: {
+        patches = [./overlays/gamescope-session/fix-resolution.patch] ++ oldAttrs.patches;
       });
     })
   ];
@@ -46,7 +52,14 @@
   boot.consoleLogLevel = 0;
   boot.initrd.verbose = false;
   boot.initrd.systemd.enable = true;
+  boot.kernelModules = [ "xpad" ];
+  boot.extraModulePackages = [
+    (config.boot.kernelPackages.callPackage ../../optional/pkgs/xpad/xpad.nix {})
+  ];
+
   systemd.watchdog.rebootTime = "0";
+
+  virtualisation.waydroid.enable = true;
 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
@@ -90,10 +103,10 @@
 
   environment.systemPackages = [
     pkgs.appimage-run
+    pkgs.kdePackages.xdg-desktop-portal-kde
+    pkgs.python3
     pkgs.vim
     pkgs.wget
-    pkgs.python3
-    pkgs.kdePackages.xdg-desktop-portal-kde
   ];
 
   environment.plasma6.excludePackages = with pkgs.libsForQt5; [

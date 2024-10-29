@@ -10,6 +10,15 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "inputplumber";
+  # version = "0.36.5";
+
+  # src = fetchFromGitHub {
+  #   owner = "ShadowBlip";
+  #   repo = "InputPlumber";
+  #   rev = "refs/tags/v${version}";
+  #   hash = "sha256-4iTVZTRZ+mw5jjyegsqP78HDWmPCcR232dLc0V58aog=";
+  # };
+
   version = "0.35.2";
 
   src = fetchFromGitHub {
@@ -38,11 +47,16 @@ rustPlatform.buildRustPackage rec {
     libiio
   ];
 
+  patches = [./flydigi-extra-buttons.patch];
+
   postInstall = ''
     cp -r rootfs/usr/* $out/
 
     cp -r ${./devices/40-flydigi-vader-4-pro.yaml} $out/share/inputplumber/devices/40-flydigi-vader-4-pro.yaml
     cp -r ${./capability_maps/flydigi-vader-4-pro.yaml} $out/share/inputplumber/capability_maps/flydigi-vader-4-pro.yaml
+
+    # cp -r ${./devices/40-8bitdo.yaml} $out/share/inputplumber/devices/40-8bitdo.yaml
+    # cp -r ${./capability_maps/8bitdo.yaml} $out/share/inputplumber/capability_maps/8bitdo.yaml
   '';
 
   meta = {

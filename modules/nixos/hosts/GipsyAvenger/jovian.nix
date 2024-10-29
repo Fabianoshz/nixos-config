@@ -20,7 +20,9 @@
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
   jovian.steam.environment = {
-    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0x045e/0x028e";
+    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0xAAAA/0xBBBB,0xCCCC/0xDDDD" # Example
+    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0x2dc8/0x3106"; # 8Bitdo
+    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0x045e/0x028e"; # Flydigi Vader
   };
   jovian.steamos.enableProductSerialAccess = false;
   jovian.hardware.has.amd.gpu = true;
@@ -73,8 +75,8 @@
     };
     "tab-master" = {
       src = pkgs.fetchzip {
-        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/002b951d41a14128f21169b17d33044710b9ab63b745276bf6ddc3af4c9983fc.zip";
-        sha256 = "sha256-JXCn/JjadUP9nV7NvI+C5fKaL1zIw3BDPj+QwR2xBCc=";
+        url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/aeed9d7becdba360841b4b2bfb5000c1229228a27bde166fd0defab283b5fa60.zip";
+        sha256 = "sha256-1fM1bGOVcGngwUIquTtI5nvh00n4dSfG8X0EfY/g2yE=";
         extension = "zip";
         stripRoot = true;
       };

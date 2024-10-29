@@ -29,7 +29,5 @@ source_devices:
 # The target input device(s) that the virtual device profile can use
 target_devices:
   - xbox-elite
-  - mouse
-  - keyboard
 
 capability_map_id: 8bitdo

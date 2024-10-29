@@ -1,17 +1,16 @@
-diff '--color=auto' -ura package.orig/xpad.c package.new/xpad.c
---- package.orig/xpad.c	2024-09-01 11:37:56.038131642 +0200
-+++ package.new/xpad.c	2024-09-01 11:43:02.030156284 +0200
-@@ -87,6 +87,9 @@
- #define MAP_STICKS_TO_NULL		(1 << 2)
+diff --git a/xpad.c b/xpad.c
+index d5a016e..442809e 100644
+--- a/xpad.c
++++ b/xpad.c
+@@ -95,6 +95,7 @@
  #define MAP_SELECT_BUTTON		(1 << 3)
- #define MAP_PADDLES				(1 << 4)
-+#define MAP_PROFILE_BUTTON		(1 << 5)
+ #define MAP_PADDLES			(1 << 4)
+ #define MAP_PROFILE_BUTTON		(1 << 5)
 +#define MAP_FLYDIGI_BUTTONS		(1 << 6)
-+
+ 
  #define DANCEPAD_MAP_CONFIG	(MAP_DPAD_TO_BUTTONS |			\
  				MAP_TRIGGERS_TO_BUTTONS | MAP_STICKS_TO_NULL)
- 
-@@ -393,6 +396,19 @@
+@@ -421,6 +422,19 @@ static const struct xpad_device {
  	{ 0x0000, 0x0000, "Generic X-Box pad", 0, XTYPE_UNKNOWN }
  };
  
@@ -31,8 +30,8 @@ diff '--color=auto' -ura package.orig/xpad.c package.new/xpad.c
  /* buttons shared with xbox and xbox360 */
  static const signed short xpad_common_btn[] = {
  	BTN_A, BTN_B, BTN_X, BTN_Y,			/* "analog" buttons */
-@@ -456,6 +472,13 @@
- 	{0, 0}
+@@ -428,6 +442,13 @@ static const signed short xpad_common_btn[] = {
+ 	-1						/* terminating entry */
  };
  
 +/* used for extra buttons in addition to paddles on Flydigi Vader Pro 3*/
@@ -42,18 +41,10 @@ diff '--color=auto' -ura package.orig/xpad.c package.new/xpad.c
 +	-1						/* terminating entry */
 +};
 +
- /*
-  * Xbox 360 has a vendor-specific class, so we cannot match it with only
-  * USB_INTERFACE_INFO (also specifically refused by USB subsystem), so we
-@@ -893,6 +916,7 @@
-  *
-  *	The used report descriptor was taken from:
-  *		http://www.free60.org/wiki/Gamepad
-+ *	Packet length for valid data is 20 bytes.
-  */
- 
- static void xpad360_process_packet(struct usb_xpad *xpad, struct input_dev *dev,
-@@ -965,6 +991,17 @@
+ /* original xbox controllers only */
+ static const signed short xpad_btn[] = {
+ 	BTN_C, BTN_Z,		/* "analog" buttons */
+@@ -1012,6 +1033,17 @@ static void xpad360_process_packet(struct usb_xpad *xpad, struct input_dev *dev,
  		input_report_abs(dev, ABS_RZ, data[5]);
  	}
  
@@ -71,7 +62,7 @@ diff '--color=auto' -ura package.orig/xpad.c package.new/xpad.c
  	input_sync(dev);
  
  	/* XBOX360W controllers can't be turned off without driver assistance */
-@@ -2155,6 +2192,13 @@
+@@ -2246,6 +2278,13 @@ static int xpad_init_input(struct usb_xpad *xpad)
  			input_set_capability(input_dev, EV_KEY, xpad_btn_paddles[i]);
  	}
  
@@ -85,7 +76,7 @@ diff '--color=auto' -ura package.orig/xpad.c package.new/xpad.c
  	/*
  	 * This should be a simple else block. However historically
  	 * xbox360w has mapped DPAD to buttons while xbox360 did not. This
-@@ -2205,7 +2249,7 @@
+@@ -2300,7 +2339,7 @@ static int xpad_probe(struct usb_interface *intf, const struct usb_device_id *id
  	struct usb_device *udev = interface_to_usbdev(intf);
  	struct usb_xpad *xpad;
  	struct usb_endpoint_descriptor *ep_irq_in, *ep_irq_out;
@@ -94,7 +85,7 @@ diff '--color=auto' -ura package.orig/xpad.c package.new/xpad.c
  
  	if (intf->cur_altsetting->desc.bNumEndpoints != 2)
  		return -ENODEV;
-@@ -2239,6 +2283,16 @@
+@@ -2334,6 +2373,16 @@ static int xpad_probe(struct usb_interface *intf, const struct usb_device_id *id
  	xpad->udev = udev;
  	xpad->intf = intf;
  	xpad->mapping = xpad_device[i].mapping;
