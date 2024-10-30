@@ -13,13 +13,6 @@ stdenv.mkDerivation rec {
 
   patches = [./flydigi-vader.patch];
 
-	# src = fetchFromGitHub {
-	# 	owner = "ahungry";
-	# 	repo = "xpad";
-	# 	rev = "6b93b7e6b4473aadab0de870bdec91e8ee74de81";
-	# 	sha256 = "sha256-j7jSOhzA1HYb29GERVeyq0ne66FOxCQmWiflH00Nogw=";
-	# };
-
 	setSourceRoot = ''
 		export sourceRoot=$(pwd)/source
 	'';

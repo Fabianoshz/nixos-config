@@ -18,16 +18,16 @@
   };
 
   nixpkgs.overlays = [
-    (self: prev: {
-      gamescope = prev.gamescope.overrideAttrs (oldAttrs: {
-        patches = [./overlays/gamescope/fix-720p.patch] ++ oldAttrs.patches;
-      });
-    })
-    (self: prev: {
-      gamescope-session = prev.gamescope-session.overrideAttrs (oldAttrs: {
-        patches = [./overlays/gamescope-session/fix-resolution.patch] ++ oldAttrs.patches;
-      });
-    })
+    # (self: prev: {
+    #   gamescope = prev.gamescope.overrideAttrs (oldAttrs: {
+    #     patches = [./overlays/gamescope/fix-720p.patch] ++ oldAttrs.patches;
+    #   });
+    # })
+    # (self: prev: {
+    #   gamescope-session = prev.gamescope-session.overrideAttrs (oldAttrs: {
+    #     patches = [./overlays/gamescope-session/fix-resolution.patch] ++ oldAttrs.patches;
+    #   });
+    # })
     (self: prev: {
       xdg-desktop-portal-kde = prev.xdg-desktop-portal-kde.overrideAttrs (oldAttrs: {
         patches = [./overlays/xdg-desktop-portal-kde/allow-unattended.patch];
