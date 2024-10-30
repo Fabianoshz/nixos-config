@@ -1,34 +1,28 @@
 #!/usr/bin/env bash
 
-# cage -- bash -c "waydroid app launch ${1}"
-# cage -- bash -c "waydroid show-full-ui"
-# cage -- bash -c "wlr-randr --output X11-1 --custom-mode 1280x800@60Hz ; waydroid app launch ${1}"
-# cage -- bash -c "wlr-randr --output X11-1 --custom-mode 1280x800@60Hz ; waydroid show-full-ui"
+# Open a thread to fix the controller after the session starts
+{
+    while : ; do
+        if [[ "$(waydroid status | grep Session: | awk '{print $2}')" == "RUNNING" ]]
+            then break
+        fi 
+        sleep 1
+    done
 
-if [ -z "\$1" ]
-	then
-		cage -- bash -c 'wlr-randr --output X11-1 --transform $TRANSFORM --custom-mode 1280x800@60Hz ;	\
-			waydroid session start $@ & \
-			sleep 5 ;\
-			waydroid prop set persist.waydroid.height $HEIGHT ;\
-			waydroid prop set persist.waydroid.width $WIDTH ;\
-			waydroid session stop ;\
-			
-			waydroid session start $@ & \
-			sleep 15 ; \
+    sudo fix-controller
+}&
 
-			sudo fix-controllers ;\
-			waydroid show-full-ui $@ & '
-	else
-		cage -- env PACKAGE="\$1" bash -c 'wlr-randr --output X11-1 --custom-mode 1280x800@60Hz ; \\
-			waydroid session start \$@ & \\
+# Open a thread to launch the app
+{
+    if [[ -n "$1" ]]; then
+        sleep 10
+        waydroid app launch ${1}
+        sleep 5
+        waydroid show-full-ui
+    fi
+}&
 
-			sleep 15 ; \\
-			sudo fix-controller ; \\
+# Now we open the full UI, threads are going to work on it
+cage -- bash -c "waydroid show-full-ui"
 
-			sleep 1 ; \\
-			waydroid app launch \$PACKAGE & \\
-
-   			sleep 1 ; \\
-      			waydroid show-full-ui $@ &'
-fi
+waydroid session stop

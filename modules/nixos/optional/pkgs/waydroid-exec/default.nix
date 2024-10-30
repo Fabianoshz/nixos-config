@@ -10,11 +10,6 @@ stdenv.mkDerivation rec {
   version = "1.0.0";
   phases = "installPhase";
 
-  buildInputs = [
-    pkgs.cage
-    pkgs.wlr-randr
-  ];
-
   installPhase = ''
     mkdir -p $out/bin
 

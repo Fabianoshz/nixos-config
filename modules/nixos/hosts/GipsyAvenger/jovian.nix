@@ -19,11 +19,6 @@
   jovian.steam.autoStart = true;
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
-  jovian.steam.environment = {
-    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0xAAAA/0xBBBB,0xCCCC/0xDDDD" # Example
-    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0x2dc8/0x3106"; # 8Bitdo
-    # SDL_GAMECONTROLLER_IGNORE_DEVICES = "0x045e/0x028e"; # Flydigi Vader
-  };
   jovian.steamos.enableProductSerialAccess = false;
   jovian.hardware.has.amd.gpu = true;
   jovian.devices.steamdeck.enable = false;

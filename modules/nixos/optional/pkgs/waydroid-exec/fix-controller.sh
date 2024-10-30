@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-for i in $(ls /sys/devices/virtual/input/input*/event*/uevent); do
+for i in /sys/devices/virtual/input/input*/event*/uevent; do
     bash -c "echo add > $i"
 done
