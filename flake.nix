@@ -21,6 +21,8 @@
     mac-app-util.url = "github:hraban/mac-app-util";
 
     xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
   };
 
   outputs = {
@@ -31,6 +33,7 @@
     plasma-manager,
     mac-app-util,
     xdg-autostart,
+    nix-flatpak,
     ...
   }@inputs:
   let
@@ -62,6 +65,7 @@
           ./modules/home-manager/users/fabiano/GipsyAvenger/home.nix
 
           inputs.xdg-autostart.homeManagerModules.xdg-autostart
+          nix-flatpak.homeManagerModules.nix-flatpak
         ];
       };
 
@@ -100,6 +104,7 @@
         modules = [
           ./modules/nixos/hosts/GipsyAvenger/configuration.nix
 
+          nix-flatpak.nixosModules.nix-flatpak
           jovian-nixos.nixosModules.default
           home-manager.nixosModules.home-manager
           {
