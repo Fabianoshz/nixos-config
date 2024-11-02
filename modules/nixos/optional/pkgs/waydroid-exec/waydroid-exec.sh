@@ -9,6 +9,9 @@
         sleep 1
     done
 
+    waydroid prop set persist.waydroid.udev true
+    waydroid prop set persist.waydroid.uevent true
+
     sudo fix-controller
 }&
 

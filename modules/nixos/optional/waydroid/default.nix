@@ -12,9 +12,9 @@
   ]; 
 
   environment.systemPackages = [
-    pkgs.wl-clipboard
-    pkgs.waydroid-exec
     pkgs.cage
+    pkgs.waydroid-exec
+    pkgs.wl-clipboard
   ];
 
   system.activationScripts.addWaydroidKeylayout = lib.stringAfter [ "var" ] ''
