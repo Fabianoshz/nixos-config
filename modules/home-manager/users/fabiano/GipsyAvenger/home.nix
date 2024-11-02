@@ -73,7 +73,6 @@
   };
 
   home.packages = [
-    pkgs.discord
     pkgs.filelight
     pkgs.firefox-bin
     pkgs.go-task

@@ -80,6 +80,9 @@
     };
   };
 
+  # For discord
+  services.flatpak.enable = true;
+
   services.inputplumber.enable = true;
   services.inputplumber.package = (pkgs.callPackage ../../optional/pkgs/inputplumber/default.nix {});
 
