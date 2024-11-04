@@ -68,6 +68,7 @@
   };
 
   home.sessionVariables = {
+    EDITOR = "nvim";
     GTK_IM_MODULE = "cedilla";
     QT_IM_MODULE = "cedilla";
   };

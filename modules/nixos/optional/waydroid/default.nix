@@ -6,14 +6,9 @@
     })
   ];
 
-  security.sudo.extraRules = [
-    { groups = [ "wheel" ]; commands = [ { command = "${pkgs.waydroid-exec}/bin/fix-controller"; options = [ "NOPASSWD" ]; } ]; }
-    { groups = [ "wheel" ]; commands = [ { command = "/run/current-system/sw/bin/fix-controller"; options = [ "NOPASSWD" ]; } ]; }
-  ]; 
-
   environment.systemPackages = [
-    pkgs.cage
     pkgs.waydroid-exec
+    pkgs.weston
     pkgs.wl-clipboard
   ];
 
@@ -21,5 +16,9 @@
     mkdir -p /var/lib/waydroid/overlay/system/usr/keylayout
 
     cp -fa ${./Vendor_28de_Product_11ff.kl} /var/lib/waydroid/overlay/system/usr/keylayout/Vendor_28de_Product_11ff.kl
+  '';
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", ATTRS{idProduct}=="11ff", MODE="0666", TAG+="uaccess"
   '';
 }
