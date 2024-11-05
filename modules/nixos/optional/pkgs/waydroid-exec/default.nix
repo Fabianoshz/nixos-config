@@ -2,7 +2,6 @@
   stdenv,
   lib,
   pkgs,
-  writeScript
 }:
 
 stdenv.mkDerivation rec {
