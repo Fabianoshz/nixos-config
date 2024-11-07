@@ -102,6 +102,7 @@
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
+    pkgs.hoppscotch
 
     # pkgs.anki-bin
     # pkgs.nexusmods-app

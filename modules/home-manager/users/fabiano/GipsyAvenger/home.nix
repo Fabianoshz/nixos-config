@@ -42,7 +42,7 @@
     youtube = {
       name = "Youtube";
       exec = "firefox -kiosk -new-window https://www.youtube.com/tv";
-      categories = [ "Application" "Network" "WebBrowser" ];
+      categories = [ "Network" "WebBrowser" ];
       terminal = false;
     };
     zelda64recomp = {
