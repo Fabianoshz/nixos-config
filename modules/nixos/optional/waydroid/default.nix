@@ -18,7 +18,22 @@
     cp -fa ${./Vendor_28de_Product_11ff.kl} /var/lib/waydroid/overlay/system/usr/keylayout/Vendor_28de_Product_11ff.kl
   '';
 
+  systemd.services.fix-waydroid-controller = {
+    enable = true;
+    description = "A service to fix the controller when waydroid is started";
+    serviceConfig = {
+      ExecStart = "${pkgs.bash}/bin/bash ${pkgs.waydroid-exec}/bin/fix-waydroid-controller";
+    };
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.gawk pkgs.waydroid pkgs.gnugrep pkgs.coreutils pkgs.ps pkgs.sudo ];
+  };
+
   security.sudo.extraRules = [
-    { commands = [ { command = "/bin/sh -c echo\\ add\\ >\\ /sys/devices/virtual/input/input*/event*/uevent"; options = [ "NOPASSWD" ]; } ]; }
+    {
+      groups = [ "users" ];
+      commands = [
+        { command = "/run/current-system/sw/bin/tee -a /sys/devices/virtual/input/input*/event*/uevent"; options = [ "NOPASSWD" ]; }
+      ];
+    }
   ];
 }
