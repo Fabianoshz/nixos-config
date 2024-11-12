@@ -20,6 +20,7 @@
   jovian.steam.user = "fabiano";
   jovian.steam.desktopSession = "plasma";
   jovian.steam.updater.splash = "vendor";
+  jovian.steamos.useSteamOSConfig = false;
   jovian.steamos.enableProductSerialAccess = false;
   jovian.hardware.has.amd.gpu = true;
   jovian.devices.steamdeck.enable = false;
