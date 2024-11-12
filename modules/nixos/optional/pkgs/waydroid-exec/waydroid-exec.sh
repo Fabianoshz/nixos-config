@@ -17,8 +17,10 @@ VALVE_INPUT_VENDOR_ID="28de"
 
     # We only want to add the controller if it's a steam input
     for d in /sys/devices/virtual/input/input*; do
-        if [[ $(cat "$d"/id/vendor) == "$VALVE_INPUT_VENDOR_ID" ]];
-            then echo add > "$d"/event*/uevent
+        if [[ $(cat "$d"/id/vendor) == "$VALVE_INPUT_VENDOR_ID" ]]
+            then for e in $d/event*; do
+                sudo /bin/sh -c "echo add > $e/uevent"
+            done
         fi
     done
 }&
