@@ -73,6 +73,18 @@
     QT_IM_MODULE = "cedilla";
   };
 
+  services.flatpak.enable = true;
+  services.flatpak.update.auto = {
+    enable = true;
+    onCalendar = "weekly"; # Default value
+  };
+  services.flatpak.packages = [
+    "com.discordapp.Discord"
+    "com.steamgriddb.steam-rom-manager"
+    "io.itch.itch"
+  ];
+  services.flatpak.uninstallUnmanaged = true;
+
   home.packages = [
     pkgs.filelight
     pkgs.firefox-bin
