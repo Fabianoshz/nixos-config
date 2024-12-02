@@ -10,6 +10,7 @@
     ../../../core/zsh/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/pcsx2-qt-exec/default.nix
+    ../../../optional/youtube-exec/default.nix
   ];
 
   nixpkgs = {
@@ -39,12 +40,6 @@
   programs.home-manager.enable = true;
 
   xdg.desktopEntries = {
-    youtube = {
-      name = "Youtube";
-      exec = "firefox -kiosk -new-window https://www.youtube.com/tv";
-      categories = [ "Network" "WebBrowser" ];
-      terminal = false;
-    };
     zelda64recomp = {
       name = "Zelda 64 recomp";
       exec = "/home/fabiano/Games/Zelda64Recompiled-x86_64.AppImage";
@@ -90,10 +85,7 @@
     pkgs.firefox-bin
     pkgs.go-task
     pkgs.heroic
-    pkgs.iotop
-    pkgs.itch
     pkgs.nexusmods-app
-    pkgs.ns-usbloader
     pkgs.pcsx2
     pkgs.prismlauncher
     pkgs.spotify

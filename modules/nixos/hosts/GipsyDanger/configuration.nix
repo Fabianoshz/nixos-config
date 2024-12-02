@@ -19,6 +19,11 @@
   #   options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" ];
   # };
 
+  services.clamav = {
+    scanner.enable = true;
+    updater.enable = true;
+  };  
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -138,12 +143,11 @@
 
   boot.kernelModules = [ "kvm-amd" ];
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
+  virtualisation.libvirtd.enable = true;
   virtualisation.podman.enable = true;
-  virtualisation.waydroid.enable = false;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   programs.appimage = {
     enable = true;

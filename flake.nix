@@ -2,12 +2,10 @@
   description = "NixOS configuration";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     # home-manager.url = "github:nix-community/home-manager/release-24.11";
-    # home-manager.url = "github:karaolidis/home-manager/c95de330277971e3954361199e049b0e38e8d441"; # For declarative syncthing
-    home-manager.url = "github:pitkling/home-manager/7f98535dca2cc29f92ec1ce705eaf030f09975d3"; # For declarative syncthing for Mac too
+    home-manager.url = "github:pitkling/home-manager/2d676db43f4199ff72b9d4a8f361b6419caf6bd0"; # For declarative syncthing for Mac too
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-darwin.url = "github:LnL7/nix-darwin";

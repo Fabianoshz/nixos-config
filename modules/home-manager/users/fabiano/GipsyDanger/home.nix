@@ -37,6 +37,7 @@
         "postman"
         "spotify"
         "steam-original"
+        "steam-unwrapped"
         "steam"
         "vscode-extension-github-copilot"
       ];
@@ -90,21 +91,23 @@
     pkgs.discord
     pkgs.filelight
     pkgs.firefox-bin
+    pkgs.hoppscotch
     pkgs.iotop
     pkgs.kcalc
-    pkgs.kdePackages.merkuro
     pkgs.keepassxc
     pkgs.obsidian
     pkgs.onlyoffice-bin
+    pkgs.parabolic
     pkgs.pcsx2
     pkgs.ssm-session-manager-plugin
+    pkgs.steamtinkerlaunch
     pkgs.streamcontroller
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
-    pkgs.hoppscotch
 
     # pkgs.anki-bin
+    # pkgs.delfin
     # pkgs.nexusmods-app
     # pkgs.ns-usbloader
     # pkgs.postman
@@ -124,6 +127,8 @@
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
     pkgs.kdePackages.krdc
+    pkgs.kdePackages.merkuro
+    pkgs.kdePackages.qtlocation
     pkgs.kdePackages.xwaylandvideobridge
     pkgs.kdePackages.yakuake
 
