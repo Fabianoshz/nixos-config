@@ -113,6 +113,7 @@
     allowedTCPPortRanges = [
       { from = 1714; to = 1764; } # KDE Connect
       { from = 3389; to = 3389; } # RDP
+      { from = 8384; to = 8384; } # Syncthing web
       { from = 21027; to = 21027; } # Syncthing
       { from = 22000; to = 22000; } # Syncthing
     ];

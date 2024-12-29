@@ -142,6 +142,7 @@
   environment.shells = with pkgs; [ zsh ];
 
   boot.kernelModules = [ "kvm-amd" ];
+  boot.supportedFilesystems = [ "nfs" ];
 
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;

@@ -99,6 +99,7 @@
     pkgs.onlyoffice-bin
     pkgs.parabolic
     pkgs.pcsx2
+    pkgs.postman
     pkgs.ssm-session-manager-plugin
     pkgs.steamtinkerlaunch
     pkgs.streamcontroller
@@ -110,7 +111,6 @@
     # pkgs.delfin
     # pkgs.nexusmods-app
     # pkgs.ns-usbloader
-    # pkgs.postman
     # pkgs.prismlauncher
     # pkgs.temurin-jre-bin-17 # For pokeMMO
     # pkgs.vlc
