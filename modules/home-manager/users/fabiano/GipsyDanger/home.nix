@@ -132,6 +132,20 @@
     pkgs.kdePackages.xwaylandvideobridge
     pkgs.kdePackages.yakuake
 
+    # TODO: retroarch will change in the future
+    # (pkgs.retroarch.withCores (cores: with cores; [
+    #   beetle-psx-hw
+    #   beetle-saturn
+    #   dolphin
+    #   gambatte
+    #   mame
+    #   melonds
+    #   mgba
+    #   mupen64plus
+    #   ppsspp
+    #   snes9x
+    # ]))
+
     (pkgs.retroarch.override {
       cores = with pkgs.libretro; [
         beetle-psx-hw
