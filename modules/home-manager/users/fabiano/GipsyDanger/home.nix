@@ -18,6 +18,8 @@
 
   programs.home-manager.enable = true;
   programs.gpg.homedir = "${config.xdg.dataHome}/gnupg";
+  programs.tmux.enable = true;
+  programs.tmux.keyMode = "emacs";
 
   services.ssh-agent = {
     enable = true;
