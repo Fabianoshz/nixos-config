@@ -45,6 +45,7 @@
       "explorer.confirmDelete" = false;
       "explorer.confirmDragAndDrop" = false;
       "terminal.integrated.defaultProfile.linux" = "zsh";
+      "terminal.integrated.fontFamily" = "MesloLGS NF";
       "terminal.integrated.profiles.linux" = {
         "zsh" = {
           "path" = "/run/current-system/sw/bin/zsh";

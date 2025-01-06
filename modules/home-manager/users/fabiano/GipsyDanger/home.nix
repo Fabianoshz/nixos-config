@@ -87,6 +87,23 @@
     };
   };
 
+  home.sessionVariables = {
+    DOCKER_CONFIG = "${config.xdg.configHome}/docker";
+    ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
+    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+    KUBECACHEDIR = "${config.xdg.cacheHome}/kube";
+    KUBECONFIG = "${config.xdg.configHome}/kube/kubeconfig";
+    LESSHISTFILE = "${config.xdg.cacheHome}/less/history";
+    MINIKUBE_HOME = "${config.xdg.dataHome}/minikube";
+    NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
+    NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
+    NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/config";
+    RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
+    WINEPREFIX = "${config.xdg.dataHome}/wine";
+    XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
+    ZPLUG_HOME = "${config.xdg.dataHome}/zplug";
+  };
+
   home.packages = [
     pkgs.awscli2
     pkgs.dbeaver-bin

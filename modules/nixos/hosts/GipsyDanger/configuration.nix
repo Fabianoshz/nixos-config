@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 {
   imports = [
-     # Include the results of the hardware scan.
     ./environment.nix
     ./hardware-configuration.nix
     ./programs.nix
@@ -35,6 +34,11 @@
       shell = pkgs.zsh;
     };
   };
+
+  fonts.packages = [
+    pkgs.meslo-lgs-nf
+    pkgs.nerdfonts
+  ];
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
