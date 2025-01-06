@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -41,9 +41,14 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICQgkNn6Nfr9LKJApkJzDvqaQMB8Lv/ynt9b1Vr1nwR"
       ];
-      # shell = pkgs.zsh;
+      shell = pkgs.zsh;
     };
   };
+
+  fonts.packages = [
+    pkgs.meslo-lgs-nf
+    pkgs.nerdfonts
+  ];
 
   networking = {
     hostName = "GipsyAvenger";

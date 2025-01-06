@@ -25,10 +25,6 @@
     enable = true;
   };
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -89,6 +85,7 @@
 
   home.sessionVariables = {
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
+    EDITOR = "nvim";
     ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
     KUBECACHEDIR = "${config.xdg.cacheHome}/kube";
