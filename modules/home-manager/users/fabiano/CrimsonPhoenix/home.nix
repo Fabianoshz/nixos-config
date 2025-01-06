@@ -19,7 +19,6 @@
         "discord"
         "obsidian"
         "spotify"
-        "vscode-extension-github-copilot"
       ];
     };
   };

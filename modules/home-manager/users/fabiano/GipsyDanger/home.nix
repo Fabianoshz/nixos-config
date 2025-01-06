@@ -37,7 +37,6 @@
         "steam-original"
         "steam-unwrapped"
         "steam"
-        "vscode-extension-github-copilot"
       ];
     };
   };

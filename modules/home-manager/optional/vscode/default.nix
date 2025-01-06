@@ -8,7 +8,6 @@
     extensions = with pkgs.vscode-extensions; [
       pkgs.vscode-extensions.arrterian.nix-env-selector
       pkgs.vscode-extensions.bbenoist.nix
-      pkgs.vscode-extensions.github.copilot
       pkgs.vscode-extensions.github.github-vscode-theme
       pkgs.vscode-extensions.golang.go
       pkgs.vscode-extensions.hashicorp.terraform

@@ -11,9 +11,10 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      gitsigns-nvim
+      harpoon2
       nvim-tree-lua
       nvim-web-devicons
-      gitsigns-nvim
       telescope-nvim
     ];
 
