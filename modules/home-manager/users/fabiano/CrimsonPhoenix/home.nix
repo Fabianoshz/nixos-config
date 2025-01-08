@@ -33,6 +33,7 @@
     pkgs.keepassxc
     pkgs.obsidian
     pkgs.ssm-session-manager-plugin
+    pkgs.spotify
   ];
 
   # Let Home Manager install and manage itself.

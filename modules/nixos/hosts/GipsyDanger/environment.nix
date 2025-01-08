@@ -6,7 +6,6 @@
       docker-machine-kvm2
       git
       libusb1
-      nordic
       vim
     ];
 

@@ -22,6 +22,9 @@
     xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -33,6 +36,7 @@
     mac-app-util,
     xdg-autostart,
     nix-flatpak,
+    spicetify-nix,
     ...
   }@inputs:
   let
@@ -46,11 +50,12 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs plasma-manager system; };
+        extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs; };
         modules = [
           ./modules/home-manager/users/fabiano/GipsyDanger/home.nix
 
           inputs.xdg-autostart.homeManagerModules.xdg-autostart
+	  inputs.spicetify-nix.homeManagerModules.default
         ];
       };
 

@@ -5,6 +5,6 @@
     pkgs.dig
     pkgs.git
     pkgs.htop
-    pkgs.spotify
+    # pkgs.spotify
   ];
 }

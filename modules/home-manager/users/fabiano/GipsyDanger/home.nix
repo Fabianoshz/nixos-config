@@ -5,6 +5,7 @@
   imports = [
     ../common.nix
     ./syncthing.nix
+    ./spicetify.nix
 
     ../../../core/kde/default.nix
     ../../../core/zsh/default.nix
@@ -106,13 +107,11 @@
     pkgs.discord
     pkgs.filelight
     pkgs.firefox-bin
-    pkgs.hoppscotch
     pkgs.iotop
     pkgs.kcalc
     pkgs.keepassxc
     pkgs.obsidian
     pkgs.onlyoffice-bin
-    pkgs.parabolic
     pkgs.pcsx2
     pkgs.postman
     pkgs.ssm-session-manager-plugin
@@ -121,11 +120,17 @@
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
+ 
+    # Rice stuff
+    pkgs.nordic
+    pkgs.papirus-icon-theme
 
     # pkgs.anki-bin
     # pkgs.delfin
+    # pkgs.hoppscotch
     # pkgs.nexusmods-app
     # pkgs.ns-usbloader
+    # pkgs.parabolic
     # pkgs.prismlauncher
     # pkgs.temurin-jre-bin-17 # For pokeMMO
     # pkgs.vlc

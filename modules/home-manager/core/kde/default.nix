@@ -8,13 +8,18 @@
     enable = true;
 
     workspace = {
-      theme = "breeze-dark";
-      colorScheme = "BreezeDark";
+      # plasma-apply-desktoptheme --list-themes
+      theme = "Nordic-darker";
+      # plasma-apply-colorscheme --list-schemes
+      colorScheme = "NordicDarker";
+      # lookandfeeltool --list
       lookAndFeel = "org.kde.breezedark.desktop";
-      iconTheme = "Breeze Dark";
+
+      iconTheme = "Papirus-Dark";
 
       cursor = {
-        theme = "Breeze";
+        # plasma-apply-cursortheme --list-themes
+        theme = "Nordic-cursors";
       };
     };
  
@@ -28,11 +33,43 @@
       launchWithoutCapturing = "";
     };
 
+      panels = [
+        {
+          location = "bottom";
+          height = 48;
+          widgets = [   
+            "org.kde.plasma.kickoff"
+            {
+              iconTasks = {
+                iconsOnly = true;
+                appearance.rows.multirowView = "never";
+                behavior = {
+                  grouping.method = "none";
+                  sortingMethod = "manually";
+                };
+              };
+            }
+            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.systemtray"
+            {  
+              digitalClock = {
+                date.enable = false;  
+                time.format = "24h";
+                calendar.firstDayOfWeek = "monday";
+              };
+            }
+          ];
+        }
+      ];    
+
     configFile = {
       "krunnerrc"."General"."FreeFloating" = true;
       "krunnerrc"."Plugins"."vscode_runnerEnabled" = true;
       "krunnerrc"."Plugins"."krunner_bookmarksrunnerEnabled" = true;
       "krunnerrc"."Plugins"."krunner_servicesEnabled" = true;
+
+      "kwinrc"."org.kde.kdecoration2"."BorderSizeAuto" = false;
+      "kwinrc"."org.kde.kdecoration2"."theme" = "__aurorae__svg__Nordic";
     };
 
     shortcuts = {
