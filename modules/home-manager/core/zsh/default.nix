@@ -23,6 +23,10 @@
       bindkey "^H" backward-delete-word
 
       bindkey "^R" history-incremental-search-backward
+
+      # if [ -z "$TMUX" ]; then
+      #   tmux attach -t TMUX || tmux new -s TMUX
+      # fi
     '';
 
     shellAliases = {
@@ -32,6 +36,7 @@
     history = {
       size = 10000000;
       path = "${config.xdg.dataHome}/zsh/history";
+      extended = true;
     };
 
     completionInit = "autoload -U compinit && compinit -d \"$XDG_CACHE_HOME\"/zsh/zcompdump-\"$ZSH_VERSION\"";
