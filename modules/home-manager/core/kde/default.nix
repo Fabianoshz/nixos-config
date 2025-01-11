@@ -33,34 +33,33 @@
       launchWithoutCapturing = "";
     };
 
-      panels = [
-        {
-          location = "bottom";
-          height = 48;
-          widgets = [   
-            "org.kde.plasma.kickoff"
-            {
-              iconTasks = {
-                iconsOnly = true;
-                appearance.rows.multirowView = "never";
-                behavior = {
-                  grouping.method = "none";
-                  sortingMethod = "manually";
-                };
+    panels = [
+      {
+        location = "bottom";
+        height = 48;
+        widgets = [   
+          {
+            iconTasks = {
+              iconsOnly = true;
+              appearance.rows.multirowView = "never";
+              behavior = {
+                grouping.method = "none";
+                sortingMethod = "manually";
               };
-            }
-            "org.kde.plasma.marginsseparator"
-            "org.kde.plasma.systemtray"
-            {  
-              digitalClock = {
-                date.enable = false;  
-                time.format = "24h";
-                calendar.firstDayOfWeek = "monday";
-              };
-            }
-          ];
-        }
-      ];    
+            };
+          }
+          "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.systemtray"
+          {  
+            digitalClock = {
+              date.enable = false;  
+              time.format = "24h";
+              calendar.firstDayOfWeek = "monday";
+            };
+          }
+        ];
+      }
+    ];    
 
     configFile = {
       "krunnerrc"."General"."FreeFloating" = true;

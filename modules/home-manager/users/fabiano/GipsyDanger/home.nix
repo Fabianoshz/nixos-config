@@ -1,4 +1,4 @@
-{ config, pkgs, lib, makeDesktopItem, ... }:
+{ config, pkgs, lib, makeDesktopItem, inputs, ... }:
 {
   home.stateVersion = "24.11";
 
@@ -25,6 +25,10 @@
   services.ssh-agent = {
     enable = true;
   };
+
+  nixpkgs.overlays = [ (final: prev: {
+    grayjay = prev.callPackage ../../../pkgs/grayjay/package.nix {};
+  }) ];
 
   nixpkgs = {
     config = {
@@ -107,6 +111,7 @@
     pkgs.discord
     pkgs.filelight
     pkgs.firefox-bin
+    pkgs.grayjay
     pkgs.iotop
     pkgs.kcalc
     pkgs.keepassxc
@@ -124,6 +129,7 @@
     # Rice stuff
     pkgs.nordic
     pkgs.papirus-icon-theme
+    inputs.swww.packages.${pkgs.system}.swww
 
     # pkgs.anki-bin
     # pkgs.delfin
@@ -162,6 +168,7 @@
     #   melonds
     #   mgba
     #   mupen64plus
+    #   pcsx2
     #   ppsspp
     #   snes9x
     # ]))
@@ -177,6 +184,7 @@
         mgba
         mupen64plus
         ppsspp
+        pcsx2
         snes9x
       ];
     })
