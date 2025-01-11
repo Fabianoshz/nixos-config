@@ -101,17 +101,16 @@
     pkgs.kdePackages.krfb
     pkgs.kdePackages.yakuake
 
-    (pkgs.retroarch.override {
-      cores = with pkgs.libretro; [
-        beetle-psx-hw
-        beetle-saturn
-        dolphin
-        mame
-        mgba
-        mupen64plus
-        ppsspp
-        snes9x
-      ];
-    })
+    (pkgs.retroarch.withCores (cores: with cores; [
+      beetle-psx-hw
+      beetle-saturn
+      dolphin
+      mame
+      mgba
+      mupen64plus
+      pcsx2
+      ppsspp
+      snes9x
+    ]))
   ];
 }

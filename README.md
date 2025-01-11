@@ -1,5 +1,11 @@
 TODO
-- Use inputplumber with overlay (maybe on nixpkgs 25.05)
-  - https://github.com/NixOS/nixpkgs/pull/344346
-- Add overlay for sycnthing on mac instead of using commit on flake.nix (maybe on nixpkgs 25.05)
-- Configure oh-my-zsh
+- [ ] Configure SWWW
+- [ ] Find a nice wallpaper
+- [ ] Configure KDE panels
+
+- [ ] Update syncthing on mac instead of using commit on flake.
+  - https://github.com/nix-community/home-manager/pull/6104
+- [ ] Resolve google accounts login
+  - https://github.com/NixOS/nixpkgs/issues/263299
+- [ ] Fix annoying asks for control on KDE krdc and steam desktop control
+
