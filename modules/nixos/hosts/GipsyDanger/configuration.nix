@@ -37,8 +37,7 @@
 
   fonts.packages = [
     pkgs.meslo-lgs-nf
-    pkgs.nerdfonts
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   i18n = {
     defaultLocale = "en_US.UTF-8";

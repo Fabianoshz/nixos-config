@@ -26,10 +26,6 @@
     enable = true;
   };
 
-  nixpkgs.overlays = [ (final: prev: {
-    grayjay = prev.callPackage ../../../pkgs/grayjay/package.nix {};
-  }) ];
-
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -111,7 +107,6 @@
     pkgs.discord
     pkgs.filelight
     pkgs.firefox-bin
-    pkgs.grayjay
     pkgs.iotop
     pkgs.kcalc
     pkgs.keepassxc
@@ -131,22 +126,6 @@
     pkgs.papirus-icon-theme
     inputs.swww.packages.${pkgs.system}.swww
 
-    # pkgs.anki-bin
-    # pkgs.delfin
-    # pkgs.hoppscotch
-    # pkgs.nexusmods-app
-    # pkgs.ns-usbloader
-    # pkgs.parabolic
-    # pkgs.prismlauncher
-    # pkgs.temurin-jre-bin-17 # For pokeMMO
-    # pkgs.vlc
-    # pkgs.wireshark
-    # pkgs.yubikey-manager-qt
-    # pkgs.yubikey-personalization-gui
-
-    # Refer: https://github.com/NixOS/nixpkgs/issues/263299
-    # pkgs.kdePackages.signon-plugin-oauth2
-
     # KDE
     pkgs.kdePackages.kaccounts-integration
     pkgs.kdePackages.kaccounts-providers
@@ -158,35 +137,18 @@
     pkgs.kdePackages.xwaylandvideobridge
     pkgs.kdePackages.yakuake
 
-    # TODO: retroarch will change in the future
-    # (pkgs.retroarch.withCores (cores: with cores; [
-    #   beetle-psx-hw
-    #   beetle-saturn
-    #   dolphin
-    #   gambatte
-    #   mame
-    #   melonds
-    #   mgba
-    #   mupen64plus
-    #   pcsx2
-    #   ppsspp
-    #   snes9x
-    # ]))
-
-    (pkgs.retroarch.override {
-      cores = with pkgs.libretro; [
-        beetle-psx-hw
-        beetle-saturn
-        dolphin
-        gambatte
-        mame
-        melonds
-        mgba
-        mupen64plus
-        ppsspp
-        pcsx2
-        snes9x
-      ];
-    })
+    (pkgs.retroarch.withCores (cores: with cores; [
+      beetle-psx-hw
+      beetle-saturn
+      dolphin
+      gambatte
+      mame
+      melonds
+      mgba
+      mupen64plus
+      pcsx2
+      ppsspp
+      snes9x
+    ]))
   ];
 }
