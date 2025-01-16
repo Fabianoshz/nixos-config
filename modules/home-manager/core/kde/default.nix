@@ -47,7 +47,7 @@
 	      date = {
                 enable = false;
 	        position = "besideTime";
-              }
+              };
 	      time = {
                 format = "24h";
 	        showSeconds = "always";
