@@ -26,11 +26,14 @@
     enable = true;
   };
 
-  nixpkgs.overlays = [ (final: prev: {
-    grayjay = prev.callPackage ../../../pkgs/grayjay/package.nix {};
-  }) ];
 
   nixpkgs = {
+    overlays = [
+      (final: prev: {
+        grayjay = prev.callPackage ../../../pkgs/grayjay/default.nix pkgs;
+      })
+    ];
+
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
@@ -111,7 +114,6 @@
     pkgs.discord
     pkgs.filelight
     pkgs.firefox-bin
-    pkgs.grayjay
     pkgs.iotop
     pkgs.kcalc
     pkgs.keepassxc
@@ -125,6 +127,8 @@
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
+
+    pkgs.grayjay
  
     # Rice stuff
     pkgs.nordic
