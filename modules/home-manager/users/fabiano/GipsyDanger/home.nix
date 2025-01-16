@@ -21,6 +21,8 @@
   programs.gpg.homedir = "${config.xdg.dataHome}/gnupg";
   programs.tmux.enable = true;
   programs.tmux.keyMode = "emacs";
+  programs.tmux.terminal = "screen-256color";
+  programs.tmux.shortcut = "a";
 
   services.ssh-agent = {
     enable = true;

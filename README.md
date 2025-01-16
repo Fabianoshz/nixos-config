@@ -2,13 +2,17 @@ TODO
 - [ ] Configure SWWW
 - [ ] Find a nice wallpaper
     - https://github.com/mylinuxforwork/wallpaper
-- [ ] Configure KDE panels
+- Configure KDE panels
+    - [x] Configure digital clock
+    - [ ] Configure system tray
 - [ ] Test Wofi
     - https://github.com/SimplyCEO/wofi
 - [ ] Configure nvim shortcust
-- [ ] Configure terminal colors
+- [ ] Configure nvim LSP
 - [ ] Configure applications accents
     - Nord polar night
+- [x] Configure terminal colors
+- [ ] Configure tmux shortcuts
 
 - [ ] Update syncthing on mac instead of using commit on flake.
   - https://github.com/nix-community/home-manager/pull/6104
