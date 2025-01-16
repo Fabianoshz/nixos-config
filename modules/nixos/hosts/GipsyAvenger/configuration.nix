@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -45,10 +45,9 @@
     };
   };
 
-  fonts.packages = [
+  fonts.packages = [ 
     pkgs.meslo-lgs-nf
-    pkgs.nerdfonts
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   networking = {
     hostName = "GipsyAvenger";
