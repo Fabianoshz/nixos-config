@@ -35,26 +35,46 @@
 
     panels = [
       {
+        location = "top";
+        height = 24;
+        widgets = [   
+          "org.kde.plasma.panelspacer"
+          "org.kde.plasma.systemtray"
+          "org.kde.plasma.marginsseparator"
+          {  
+            digitalClock = {
+              calendar.firstDayOfWeek = "sunday";
+	      date = {
+                enable = false;
+	        position = "besideTime";
+              }
+	      time = {
+                format = "24h";
+	        showSeconds = "always";
+	      };
+            };
+          }
+        ];
+      }
+      {
         location = "bottom";
+	alignment = "center";
         height = 48;
+	floating = true;
+	lengthMode = "fit";
         widgets = [   
           {
             iconTasks = {
-              iconsOnly = true;
-              appearance.rows.multirowView = "never";
+              appearance = {
+	        fill = false;
+                rows.multirowView = "never";
+		iconSpacing = "medium";
+              };
               behavior = {
                 grouping.method = "none";
                 sortingMethod = "manually";
               };
-            };
-          }
-          "org.kde.plasma.marginsseparator"
-          "org.kde.plasma.systemtray"
-          {  
-            digitalClock = {
-              date.enable = false;  
-              time.format = "24h";
-              calendar.firstDayOfWeek = "monday";
+              iconsOnly = true;
             };
           }
         ];
