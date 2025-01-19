@@ -11,7 +11,6 @@
     ../../../core/zsh/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
-    ../../../optional/vscode/default.nix
   ];
 
   home.username = "fabiano";
@@ -21,11 +20,16 @@
   programs.gpg.homedir = "${config.xdg.dataHome}/gnupg";
   programs.tmux.enable = true;
   programs.tmux.keyMode = "emacs";
+  programs.tmux.terminal = "screen-256color";
+  programs.tmux.shortcut = "a";
+  programs.tmux.extraConfig = ''
+    set -g base-index 1
+    setw -g pane-base-index 1
+  '';
 
   services.ssh-agent = {
     enable = true;
   };
-
 
   nixpkgs = {
     overlays = [
@@ -129,27 +133,14 @@
     pkgs.virt-manager
 
     pkgs.grayjay
+    pkgs.godot_4
+    pkgs.protobuf
  
     # Rice stuff
     pkgs.nordic
     pkgs.papirus-icon-theme
     inputs.swww.packages.${pkgs.system}.swww
-
-    # pkgs.anki-bin
-    # pkgs.delfin
-    # pkgs.hoppscotch
-    # pkgs.nexusmods-app
-    # pkgs.ns-usbloader
-    # pkgs.parabolic
-    # pkgs.prismlauncher
-    # pkgs.temurin-jre-bin-17 # For pokeMMO
-    # pkgs.vlc
-    # pkgs.wireshark
-    # pkgs.yubikey-manager-qt
-    # pkgs.yubikey-personalization-gui
-
-    # Refer: https://github.com/NixOS/nixpkgs/issues/263299
-    # pkgs.kdePackages.signon-plugin-oauth2
+    pkgs.plasmusic-toolbar
 
     # KDE
     pkgs.kdePackages.kaccounts-integration
@@ -162,35 +153,18 @@
     pkgs.kdePackages.xwaylandvideobridge
     pkgs.kdePackages.yakuake
 
-    # TODO: retroarch will change in the future
-    # (pkgs.retroarch.withCores (cores: with cores; [
-    #   beetle-psx-hw
-    #   beetle-saturn
-    #   dolphin
-    #   gambatte
-    #   mame
-    #   melonds
-    #   mgba
-    #   mupen64plus
-    #   pcsx2
-    #   ppsspp
-    #   snes9x
-    # ]))
-
-    (pkgs.retroarch.override {
-      cores = with pkgs.libretro; [
-        beetle-psx-hw
-        beetle-saturn
-        dolphin
-        gambatte
-        mame
-        melonds
-        mgba
-        mupen64plus
-        ppsspp
-        pcsx2
-        snes9x
-      ];
-    })
+    (pkgs.retroarch.withCores (cores: with cores; [
+      beetle-psx-hw
+      beetle-saturn
+      dolphin
+      gambatte
+      mame
+      melonds
+      mgba
+      mupen64plus
+      pcsx2
+      ppsspp
+      snes9x
+    ]))
   ];
 }

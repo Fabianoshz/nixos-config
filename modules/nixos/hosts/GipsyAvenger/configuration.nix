@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -10,8 +10,8 @@
     ./virtualisation.nix
 
     ../../optional/decky-loader.nix
-    ../../optional/inputplumber.nix
     ../../optional/waydroid/default.nix
+    ../../optional/inputplumber/inputplumber.nix
   ];
 
   systemd.watchdog.rebootTime = "0";
@@ -45,10 +45,9 @@
     };
   };
 
-  fonts.packages = [
+  fonts.packages = [ 
     pkgs.meslo-lgs-nf
-    pkgs.nerdfonts
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   networking = {
     hostName = "GipsyAvenger";

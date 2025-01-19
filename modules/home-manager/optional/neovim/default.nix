@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -6,9 +6,7 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraPackages = [
-      pkgs.nerdfonts
-    ];
+    extraPackages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     plugins = with pkgs.vimPlugins; [
       gitsigns-nvim
@@ -18,7 +16,6 @@
       telescope-nvim
     ];
 
-    # TODO: add macro to quote strings
     extraConfig = ''
       set number relativenumber
     '';
