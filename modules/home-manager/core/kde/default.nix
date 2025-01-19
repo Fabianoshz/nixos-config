@@ -36,17 +36,19 @@
     panels = [
       {
         location = "top";
-        height = 24;
+        height = 32;
         widgets = [   
+	  "plasmusic-toolbar"
           "org.kde.plasma.panelspacer"
-          "org.kde.plasma.systemtray"
-          "org.kde.plasma.marginsseparator"
-          {  
+          {
             digitalClock = {
               calendar.firstDayOfWeek = "sunday";
 	      date = {
-                enable = false;
+                enable = true;
 	        position = "besideTime";
+		format = {
+		  custom = "ddd d MMM |";
+		};
               };
 	      time = {
                 format = "24h";
@@ -54,6 +56,35 @@
 	      };
             };
           }
+          "org.kde.plasma.panelspacer"
+          {
+	    systemTray = {
+	      icons.spacing = "small";
+	      items = {
+	        showAll = false;
+		hidden = [
+                  "org.kde.plasma.addons.katesessions"
+		  "org.kde.plasma.battery"
+		  "org.kde.plasma.keyboardlayout"
+		  "org.kde.konsole.desktop"
+		];
+		shown = [
+		  "org.kde.plasma.brightness"
+		  "org.kde.plasma.networkmanagement"
+		  "org.kde.plasma.volume"
+		  "org.kde.kdeconnect"
+		  "org.kde.plasma.notifications"
+		];
+		extra = [
+		  "org.kde.plasma.brightness"
+		  "org.kde.plasma.networkmanagement"
+		  "org.kde.plasma.volume"
+		  "org.kde.kdeconnect"
+		  "org.kde.plasma.notifications"
+		];
+	      };
+	    };
+	  }
         ];
       }
       {
@@ -77,6 +108,11 @@
               iconsOnly = true;
             };
           }
+	  {
+            kickerdash = {
+	      icon = "applications-all";
+	    };
+	  }
         ];
       }
     ];    
@@ -101,7 +137,6 @@
       "krunnerrc"."Plugins"."krunner_spellcheckEnabled" = false;
       "krunnerrc"."Plugins"."krunner_systemsettingsEnabled" = false;
       "krunnerrc"."Plugins"."krunner_webshortcutsEnabled" = false;
-
 
       "kwinrc"."org.kde.kdecoration2"."BorderSizeAuto" = false;
       "kwinrc"."org.kde.kdecoration2"."theme" = "__aurorae__svg__Nordic";

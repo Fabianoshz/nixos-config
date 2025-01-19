@@ -6,8 +6,8 @@ in
   programs.spicetify =
     {
       enable = true;
-      theme = spicePkgs.themes.dribbblish;
-      colorScheme = "Nord-Dark";
+      theme = spicePkgs.themes.ziro;
+      colorScheme = "Gray-Dark";
 
       enabledExtensions = with spicePkgs.extensions; [
         fullAppDisplay

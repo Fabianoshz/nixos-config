@@ -1,5 +1,6 @@
 TODO
 - [ ] Configure SWWW
+    - https://github.com/V3ntus/nixos/blob/main/features/home-manager/desktop/addons/wallpapers.nix
 - [ ] Find a nice wallpaper
     - https://github.com/mylinuxforwork/wallpaper
 - Configure KDE panels
@@ -13,6 +14,8 @@ TODO
     - Nord polar night
 - [x] Configure terminal colors
 - [ ] Configure tmux shortcuts
+- [ ] Share PS2 memory cards between PCSX2 and retroarch
+- [ ] Make direnv work the same way between machines
 
 - [ ] Update syncthing on mac instead of using commit on flake.
   - https://github.com/nix-community/home-manager/pull/6104

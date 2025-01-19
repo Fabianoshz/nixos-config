@@ -24,7 +24,7 @@
 
       bindkey "^R" history-incremental-search-backward
 
-      if [ -z "$TMUX" ]; then
+      if [ -z "$TMUX" ] && command -v tmux > /dev/null ; then
         tmux attach -t TMUX || tmux new -s TMUX
       fi
     '';

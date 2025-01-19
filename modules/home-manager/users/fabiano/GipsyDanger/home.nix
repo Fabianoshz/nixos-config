@@ -11,7 +11,6 @@
     ../../../core/zsh/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
-    ../../../optional/vscode/default.nix
   ];
 
   home.username = "fabiano";
@@ -20,7 +19,7 @@
   programs.home-manager.enable = true;
   programs.gpg.homedir = "${config.xdg.dataHome}/gnupg";
   programs.tmux.enable = true;
-  programs.tmux.keyMode = "vi";
+  programs.tmux.keyMode = "emacs";
   programs.tmux.terminal = "screen-256color";
   programs.tmux.shortcut = "a";
   programs.tmux.extraConfig = ''
@@ -126,11 +125,15 @@
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
+
+    pkgs.godot_4
+    pkgs.protobuf
  
     # Rice stuff
     pkgs.nordic
     pkgs.papirus-icon-theme
     inputs.swww.packages.${pkgs.system}.swww
+    pkgs.plasmusic-toolbar
 
     # KDE
     pkgs.kdePackages.kaccounts-integration

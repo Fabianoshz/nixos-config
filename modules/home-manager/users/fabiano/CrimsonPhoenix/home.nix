@@ -10,7 +10,6 @@
     ../../../core/zsh/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
-    ../../../optional/vscode/default.nix
   ];
 
   nixpkgs = {
