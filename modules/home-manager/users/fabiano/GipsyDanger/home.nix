@@ -34,7 +34,7 @@
   nixpkgs = {
     overlays = [
       (final: prev: {
-        grayjay = prev.callPackage ../../../pkgs/grayjay/default.nix pkgs;
+        grayjay = prev.callPackage ../../../pkgs/grayjay/default.nix {};
       })
     ];
 

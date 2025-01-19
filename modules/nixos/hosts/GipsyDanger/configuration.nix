@@ -63,6 +63,7 @@
       enable = true;
       allowedTCPPortRanges = [
         { from = 1714; to = 1764; } # KDE Connect
+        { from = 12315; to = 12315; } # Grayjay
         { from = 21027; to = 21027; } # Syncthing
         { from = 22000; to = 22000; } # Syncthing
       ];
