@@ -12,7 +12,7 @@
   fileSystems."/mnt/default/fabiano" = {
     device = "truenas.in.gambiarra.net:/mnt/default-2/fabiano";
     fsType = "nfs";
-    options = [ "nfsvers=4.2" "x-systemd.idle-timeout=1min" "noauto" ];
+    options = [ "nfsvers=4.2" "noauto" ];
   };
 
   time.timeZone = "America/Sao_Paulo";

@@ -5,30 +5,38 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    home-manager = {
     # home-manager.url = "github:nix-community/home-manager/release-24.11";
-    home-manager.url = "github:pitkling/home-manager/575754a37c7f0a182b481957fdba940faedf96b5"; # For declarative syncthing for Mac too
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:pitkling/home-manager/575754a37c7f0a182b481957fdba940faedf96b5"; # For declarative syncthing for Mac too
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     jovian-nixos = {
       url = "github:Jovian-Experiments/Jovian-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plasma-manager.url = "github:pjones/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "home-manager";
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     mac-app-util.url = "github:hraban/mac-app-util";
 
     xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
-
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     swww.url = "github:LGFae/swww";
   };
