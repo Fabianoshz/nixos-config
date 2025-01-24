@@ -23,6 +23,7 @@
   programs.tmux.terminal = "screen-256color";
   programs.tmux.shortcut = "a";
   programs.tmux.extraConfig = ''
+    set -g mouse on
     set -g base-index 1
     setw -g pane-base-index 1
   '';
@@ -131,6 +132,7 @@
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
+    pkgs.vlc
 
     pkgs.grayjay
     pkgs.godot_4

@@ -59,14 +59,12 @@
           "org.kde.plasma.panelspacer"
           {
 	    systemTray = {
-	      icons.spacing = "small";
+	      icons.spacing = "medium";
 	      items = {
 	        showAll = false;
 		hidden = [
                   "org.kde.plasma.addons.katesessions"
-		  "org.kde.plasma.battery"
 		  "org.kde.plasma.keyboardlayout"
-		  "org.kde.konsole.desktop"
 		];
 		shown = [
 		  "org.kde.plasma.brightness"
@@ -74,6 +72,7 @@
 		  "org.kde.plasma.volume"
 		  "org.kde.kdeconnect"
 		  "org.kde.plasma.notifications"
+		  "org.kde.plasma.battery"
 		];
 		extra = [
 		  "org.kde.plasma.brightness"
@@ -81,6 +80,7 @@
 		  "org.kde.plasma.volume"
 		  "org.kde.kdeconnect"
 		  "org.kde.plasma.notifications"
+		  "org.kde.plasma.battery"
 		];
 	      };
 	    };
@@ -160,7 +160,7 @@
         command = "${pkgs.zsh}/bin/zsh";
         font = {
           name = "MesloLGS NF";
-          size = 14;
+          size = 12;
         };
         extraConfig = {
           Scrolling = {

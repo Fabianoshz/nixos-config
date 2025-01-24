@@ -47,6 +47,7 @@
       pkgs.python312Packages.hid
     ];
 
+    # Got from: https://plugins.deckbrew.xyz/plugins
     plugins = {
       "SDH-CssLoader" = {
         src = pkgs.fetchzip {
@@ -58,7 +59,7 @@
       };
       "SDH-GameThemeMusic" = {
         src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/c08110c6bf741ddbd2b31647123217ce816c93cf9e654b12d18696b979965bf6.zip";
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/2a9fced36b3d34bd4bd4bd7963787b486bf39137f9d444632140ab1fe1872de8.zip";
           sha256 = "sha256-LnnofbFAGpZlZgl+lOHlWkiqDkgnANMoNK+GMh/8XHg=";
           extension = "zip";
           stripRoot = true;
@@ -82,7 +83,7 @@
       };
       "tab-master" = {
         src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/aeed9d7becdba360841b4b2bfb5000c1229228a27bde166fd0defab283b5fa60.zip";
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/2734173d2e7d7f28b9ca40ca3e08b87c72ca4e61f79f6692f0b92c98e52c45e4.zip";
           sha256 = "sha256-1fM1bGOVcGngwUIquTtI5nvh00n4dSfG8X0EfY/g2yE=";
           extension = "zip";
           stripRoot = true;
