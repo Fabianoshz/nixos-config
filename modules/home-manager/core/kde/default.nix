@@ -9,11 +9,16 @@
 
     workspace = {
       # plasma-apply-desktoptheme --list-themes
-      theme = "Nordic-darker";
+      theme = "breeze-dark";
       # plasma-apply-colorscheme --list-schemes
-      colorScheme = "NordicDarker";
+      colorScheme = "Darkly";
       # lookandfeeltool --list
-      lookAndFeel = "org.kde.breezedark.desktop";
+      # lookAndFeel = "org.kde.breezedark.desktop";
+
+      windowDecorations = {
+        theme = "Darkly";
+        library = "org.kde.darkly";
+      }; 
 
       iconTheme = "Papirus-Dark";
 
@@ -38,7 +43,26 @@
         location = "top";
         height = 32;
         widgets = [   
-	  "plasmusic-toolbar"
+	  {
+          
+	  kickerdash = {
+	      icon = "applications-all";
+	    };
+	  }
+          {
+            iconTasks = {
+              appearance = {
+	        fill = false;
+                rows.multirowView = "never";
+		iconSpacing = "medium";
+              };
+              behavior = {
+                grouping.method = "none";
+                sortingMethod = "manually";
+              };
+              iconsOnly = true;
+            };
+          }
           "org.kde.plasma.panelspacer"
           {
             digitalClock = {
@@ -57,6 +81,8 @@
             };
           }
           "org.kde.plasma.panelspacer"
+	  "plasmusic-toolbar"
+	  "org.kde.plasma.marginsseparator"
           {
 	    systemTray = {
 	      icons.spacing = "medium";
@@ -87,37 +113,10 @@
 	  }
         ];
       }
-      {
-        location = "bottom";
-	alignment = "center";
-        height = 48;
-	floating = true;
-	lengthMode = "fit";
-        widgets = [   
-          {
-            iconTasks = {
-              appearance = {
-	        fill = false;
-                rows.multirowView = "never";
-		iconSpacing = "medium";
-              };
-              behavior = {
-                grouping.method = "none";
-                sortingMethod = "manually";
-              };
-              iconsOnly = true;
-            };
-          }
-	  {
-            kickerdash = {
-	      icon = "applications-all";
-	    };
-	  }
-        ];
-      }
     ];    
 
     configFile = {
+      # Krunner
       "krunnerrc"."General"."FreeFloating" = true;
       "krunnerrc"."Plugins"."krunner_appstreamEnabled" = false;
       "krunnerrc"."Plugins"."krunner_bookmarksrunnerEnabled" = true;
@@ -137,9 +136,6 @@
       "krunnerrc"."Plugins"."krunner_spellcheckEnabled" = false;
       "krunnerrc"."Plugins"."krunner_systemsettingsEnabled" = false;
       "krunnerrc"."Plugins"."krunner_webshortcutsEnabled" = false;
-
-      "kwinrc"."org.kde.kdecoration2"."BorderSizeAuto" = false;
-      "kwinrc"."org.kde.kdecoration2"."theme" = "__aurorae__svg__Nordic";
     };
 
     shortcuts = {
@@ -175,6 +171,29 @@
 
     customColorSchemes = {
       "Transparent" = ./Transparent.colorscheme;
+    };
+  };
+
+  home.file = {
+    ".config/yakuakerc" = {
+      text = ''
+        [Animation]
+        Frames=20
+
+        [Desktop Entry]
+        DefaultProfile=Personal.profile
+
+        [Dialogs]
+        FirstRun=false
+
+        [Notification Messages]
+        ShowPasteHugeTextWarning=false
+
+        [Window]
+        Height=100
+        ShowTabBar=false
+        Width=100
+      '';
     };
   };
 }

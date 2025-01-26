@@ -5,7 +5,7 @@ TODO
     - https://github.com/mylinuxforwork/wallpaper
 - Configure KDE panels
     - [x] Configure digital clock
-    - [ ] Configure system tray
+    - [x] Configure system tray
 - [ ] Test Wofi
     - https://github.com/SimplyCEO/wofi
 - [ ] Configure nvim shortcust

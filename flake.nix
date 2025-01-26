@@ -39,6 +39,8 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
     swww.url = "github:LGFae/swww";
+
+    lightly.url = "github:Bali10050/Darkly";
   };
 
   outputs = {
