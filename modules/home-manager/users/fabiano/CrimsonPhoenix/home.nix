@@ -33,6 +33,7 @@
     pkgs.obsidian
     pkgs.ssm-session-manager-plugin
     pkgs.spotify
+    pkgs.tmux
   ];
 
   # Let Home Manager install and manage itself.

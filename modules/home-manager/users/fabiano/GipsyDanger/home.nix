@@ -147,6 +147,7 @@
     pkgs.plasmusic-toolbar
 
     # KDE
+    pkgs.kdePackages.akregator
     pkgs.kdePackages.kaccounts-integration
     pkgs.kdePackages.kaccounts-providers
     pkgs.kdePackages.kdeconnect-kde

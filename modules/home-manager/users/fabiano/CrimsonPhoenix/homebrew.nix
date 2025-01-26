@@ -7,7 +7,7 @@ let
   casks = [
     "firefox"
     "onlyoffice"
-    "steam"
+    "utm"
   ];
 in
 with lib;
