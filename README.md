@@ -1,6 +1,4 @@
 # TODO
-- [ ] Test Wofi
-  - https://github.com/SimplyCEO/wofi
 - [ ] Configure applications accents
   - Nord polar night
 - [x] Configure terminal colors
@@ -14,13 +12,6 @@
 - [ ] Firefox extensions
   - https://discourse.nixos.org/t/firefox-extensions-with-home-manager/34108
 
-### RSS
-- [ ] Akregator?
-
-#### Feeds
-- https://lwn.net/headlines/rss
-- https://www.gamingonlinux.com/article_rss.php?newsonly
-
 ## Ricing
 
 ### Linux
@@ -29,13 +20,6 @@
 - [ ] Find a nice wallpaper
   - https://github.com/mylinuxforwork/wallpaper
   - https://github.com/p-yukusai/PyWall
-- Configure KDE panels
-  - [x] Configure digital clock
-  - [ ] Remove bottom panel
-  - Top panel
-    - [ ] Make panel select color same as background image
-    - [ ] Add application menu
-    - [ ] Add aplications
 
 ### Console
 - [ ] Find a nice wallpaper
