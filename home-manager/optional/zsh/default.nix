@@ -69,4 +69,22 @@
       }
     ];
   };
+
+  programs.tmux = {
+    enable = true;
+    keyMode = "emacs";
+    terminal = "screen-256color";
+    shortcut = "a";
+    extraConfig = ''
+      set -g mouse on
+      set -g base-index 1
+      setw -g pane-base-index 1
+    '';
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 }

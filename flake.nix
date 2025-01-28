@@ -140,17 +140,17 @@
         modules = [
           ./nixos/hosts/CrimsonPhoenix/configuration.nix
 
-          # home-manager.darwinModules.home-manager
+          home-manager.darwinModules.home-manager
 
-          # mac-app-util.darwinModules.default
-          # (
-          #   { ... }:
-          #   {
-          #     home-manager.sharedModules = [
-          #       mac-app-util.homeManagerModules.default
-          #     ];
-          #   }
-          # )
+          mac-app-util.darwinModules.default
+          (
+            { ... }:
+            {
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
+            }
+          )
         ];
       };
     };

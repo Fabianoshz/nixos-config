@@ -17,15 +17,6 @@
 
   programs.home-manager.enable = true;
   programs.gpg.homedir = "${config.xdg.dataHome}/gnupg";
-  programs.tmux.enable = true;
-  programs.tmux.keyMode = "emacs";
-  programs.tmux.terminal = "screen-256color";
-  programs.tmux.shortcut = "a";
-  programs.tmux.extraConfig = ''
-    set -g mouse on
-    set -g base-index 1
-    setw -g pane-base-index 1
-  '';
 
   services.ssh-agent = {
     enable = true;
