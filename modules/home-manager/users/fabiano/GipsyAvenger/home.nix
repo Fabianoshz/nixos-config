@@ -6,11 +6,9 @@
     ../common.nix
     ./syncthing.nix
 
-    ../../../core/kde/default.nix
-    ../../../core/zsh/default.nix
+    ../../../optional/kde/default.nix
+    ../../../optional/zsh/default.nix
     ../../../optional/neovim/default.nix
-    ../../../optional/pcsx2-qt-exec/default.nix
-    ../../../optional/youtube-exec/default.nix
   ];
 
   nixpkgs = {

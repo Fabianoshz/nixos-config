@@ -7,8 +7,8 @@
     ./syncthing.nix
     ./spicetify.nix
 
-    ../../../core/kde/default.nix
-    ../../../core/zsh/default.nix
+    ../../../optional/kde/default.nix
+    ../../../optional/zsh/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
   ];

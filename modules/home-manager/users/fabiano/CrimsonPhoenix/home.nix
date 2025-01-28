@@ -7,7 +7,7 @@
     ./homebrew.nix
     ./syncthing.nix
 
-    ../../../core/zsh/default.nix
+    ../../../optional/zsh/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
   ];
