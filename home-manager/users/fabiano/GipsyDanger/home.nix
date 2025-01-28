@@ -3,7 +3,6 @@
   home.stateVersion = "24.11";
 
   imports = [
-    ../common.nix
     ./syncthing.nix
     ./spicetify.nix
 
@@ -35,7 +34,7 @@
   nixpkgs = {
     overlays = [
       (final: prev: {
-        grayjay = prev.callPackage ../../../pkgs/grayjay/default.nix {};
+        grayjay = prev.callPackage ../../../../pkgs/grayjay/default.nix {};
       })
     ];
 
@@ -133,6 +132,10 @@
     pkgs.usbutils
     pkgs.virt-manager
     pkgs.vlc
+    pkgs.bash
+    pkgs.dig
+    pkgs.git
+    pkgs.htop
 
     pkgs.grayjay
     pkgs.godot_4

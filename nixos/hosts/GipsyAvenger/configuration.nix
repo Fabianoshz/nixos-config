@@ -83,7 +83,7 @@
     initrd.systemd.enable = true;
     kernelModules = [ "xpad" ];
     extraModulePackages = [
-      (config.boot.kernelPackages.callPackage ../../pkgs/xpad/xpad.nix {})
+      (config.boot.kernelPackages.callPackage ../../../pkgs/xpad/xpad.nix {})
     ];
   };
 

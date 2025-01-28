@@ -3,7 +3,6 @@
   home.stateVersion = "24.11";
 
   imports = [
-    ../common.nix
     ./homebrew.nix
     ./syncthing.nix
 
@@ -34,6 +33,10 @@
     pkgs.ssm-session-manager-plugin
     pkgs.spotify
     pkgs.tmux
+    pkgs.bash
+    pkgs.dig
+    pkgs.git
+    pkgs.htop
   ];
 
   # Let Home Manager install and manage itself.

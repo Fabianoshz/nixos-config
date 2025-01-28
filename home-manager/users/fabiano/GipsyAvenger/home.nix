@@ -3,7 +3,6 @@
   home.stateVersion = "24.11";
 
   imports = [
-    ../common.nix
     ./syncthing.nix
 
     ../../../optional/kde/default.nix
@@ -91,6 +90,10 @@
     pkgs.sunshine
     pkgs.unzip
     pkgs.usbutils
+    pkgs.bash
+    pkgs.dig
+    pkgs.git
+    pkgs.htop
 
     # KDE
     pkgs.kdePackages.kdeconnect-kde

@@ -68,7 +68,7 @@
 
         extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs; };
         modules = [
-          ./modules/home-manager/users/fabiano/GipsyDanger/home.nix
+          ./home-manager/users/fabiano/GipsyDanger/home.nix
 
           inputs.xdg-autostart.homeManagerModules.xdg-autostart
 	  inputs.spicetify-nix.homeManagerModules.default
@@ -82,7 +82,7 @@
 
         extraSpecialArgs = { inherit nixpkgs plasma-manager system; };
         modules = [
-          ./modules/home-manager/users/fabiano/GipsyAvenger/home.nix
+          ./home-manager/users/fabiano/GipsyAvenger/home.nix
 
           inputs.xdg-autostart.homeManagerModules.xdg-autostart
           nix-flatpak.homeManagerModules.nix-flatpak
@@ -96,7 +96,7 @@
 
         extraSpecialArgs = { inherit nixpkgs system-mac; };
         modules = [
-          ./modules/home-manager/users/fabiano/CrimsonPhoenix/home.nix
+          ./home-manager/users/fabiano/CrimsonPhoenix/home.nix
         ];
       };
     };
@@ -108,7 +108,7 @@
         modules = [
           { nixpkgs.config.pkgs = nixpkgs; }
 
-          ./modules/nixos/hosts/GipsyDanger/configuration.nix
+          ./nixos/hosts/GipsyDanger/configuration.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -122,7 +122,7 @@
         system = system;
 
         modules = [
-          ./modules/nixos/hosts/GipsyAvenger/configuration.nix
+          ./nixos/hosts/GipsyAvenger/configuration.nix
 
           nix-flatpak.nixosModules.nix-flatpak
           jovian-nixos.nixosModules.default
@@ -138,7 +138,7 @@
     darwinConfigurations = {
       CrimsonPhoenix = nix-darwin.lib.darwinSystem {
         modules = [
-          ./modules/nixos/hosts/CrimsonPhoenix/configuration.nix
+          ./nixos/hosts/CrimsonPhoenix/configuration.nix
 
           # home-manager.darwinModules.home-manager
 
