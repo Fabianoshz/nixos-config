@@ -9,8 +9,8 @@
     ./virtualisation.nix
 
     ../../optional/decky-loader/default.nix
-    ../../optional/waydroid/default.nix
     ../../optional/inputplumber/inputplumber.nix
+    ../../optional/waydroid/default.nix
   ];
 
   systemd.watchdog.rebootTime = "0";

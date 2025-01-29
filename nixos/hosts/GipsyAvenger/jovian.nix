@@ -60,7 +60,7 @@
       "SDH-GameThemeMusic" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/2a9fced36b3d34bd4bd4bd7963787b486bf39137f9d444632140ab1fe1872de8.zip";
-          sha256 = "sha256-LnnofbFAGpZlZgl+lOHlWkiqDkgnANMoNK+GMh/8XHg=";
+          sha256 = "sha256-2TXWSDuKJKdnjHA3hRSTtacuTijdXtwuMAnCZCZ4akw=";
           extension = "zip";
           stripRoot = true;
         };
@@ -84,7 +84,7 @@
       "tab-master" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/2734173d2e7d7f28b9ca40ca3e08b87c72ca4e61f79f6692f0b92c98e52c45e4.zip";
-          sha256 = "sha256-1fM1bGOVcGngwUIquTtI5nvh00n4dSfG8X0EfY/g2yE=";
+          sha256 = "sha256-JRwE0RuoYTvafLPW3w4OBjqUDqGHds/Huta9M1m6zuE=";
           extension = "zip";
           stripRoot = true;
         };
