@@ -1,5 +1,4 @@
 { config, pkgs, lib, ... }:
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -9,7 +8,7 @@
     ./services.nix
     ./virtualisation.nix
 
-    ../../optional/decky-loader.nix
+    ../../optional/decky-loader/default.nix
     ../../optional/waydroid/default.nix
     ../../optional/inputplumber/inputplumber.nix
   ];

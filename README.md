@@ -5,9 +5,10 @@
 - [ ] Configure tmux shortcuts
 
 ## Usability
-- [ ] Make direnv work the same way between machines
+- [x] Make direnv work the same way between machines
 - [ ] Configure nvim shortcust
 - [ ] Configure nvim LSP
+- [x] Configure nvim dap
 - [ ] Share PS2 memory cards between PCSX2 and retroarch
 - [ ] Firefox extensions
   - https://discourse.nixos.org/t/firefox-extensions-with-home-manager/34108

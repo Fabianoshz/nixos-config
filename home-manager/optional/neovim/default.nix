@@ -11,9 +11,31 @@
     plugins = with pkgs.vimPlugins; [
       gitsigns-nvim
       harpoon2
-      nvim-tree-lua
+      nvim-dap
       nvim-web-devicons
       telescope-nvim
+
+      {
+        plugin = nvim-tree-lua;
+	type = "lua";
+	config = ''
+          require("nvim-tree").setup()
+	'';
+      }
+      {
+        plugin = nvim-dap-go;
+	type = "lua";
+	config = ''
+	  require("dap-go").setup()
+	'';
+      }
+      {
+        plugin = nvim-dap-ui;
+	type = "lua";
+	config = ''
+	  require("dapui").setup()
+	'';
+      }
     ];
 
     extraConfig = ''
@@ -25,7 +47,21 @@
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
 
-      require("nvim-tree").setup()
+      local ui = require "dapui"
+      local dap = require "dap"
+
+      dap.listeners.before.attach.dapui_config = function()
+        ui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        ui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        ui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        ui.close()
+      end
     '';
   };
 }
