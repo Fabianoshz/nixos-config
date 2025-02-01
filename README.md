@@ -6,7 +6,10 @@
 
 ## Usability
 - [x] Make direnv work the same way between machines
-- [ ] Configure nvim shortcust
+- [ ] Configure nvim shortcuts
+  - DAP
+  - NvimTree
+  - Telescope
 - [ ] Configure nvim LSP
 - [x] Configure nvim dap
 - [ ] Share PS2 memory cards between PCSX2 and retroarch
@@ -21,6 +24,10 @@
 - [ ] Find a nice wallpaper
   - https://github.com/mylinuxforwork/wallpaper
   - https://github.com/p-yukusai/PyWall
+- [ ] Improve window decorations
+  - https://www.reddit.com/r/unixporn/comments/1if4i94/kde_karousel/
+  - https://www.reddit.com/r/kde/comments/1g2kcl1/floating_panel_not_floating_with_maximized_windows/
+  - https://github.com/luisbocanegra/plasma-panel-colorizer
 
 ### Console
 - [ ] Find a nice wallpaper
