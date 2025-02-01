@@ -80,7 +80,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs plasma-manager system; };
+        extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs; };
         modules = [
           ./home-manager/users/fabiano/GipsyAvenger/home.nix
 

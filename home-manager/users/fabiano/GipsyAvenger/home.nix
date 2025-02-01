@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 {
   home.stateVersion = "24.11";
 
@@ -94,6 +94,13 @@
     pkgs.dig
     pkgs.git
     pkgs.htop
+
+    # Rice stuff
+    pkgs.papirus-icon-theme
+    inputs.swww.packages.${pkgs.system}.swww
+    inputs.lightly.packages.${pkgs.system}.darkly-qt5
+    inputs.lightly.packages.${pkgs.system}.darkly-qt6
+    pkgs.plasmusic-toolbar
 
     # KDE
     pkgs.kdePackages.kdeconnect-kde

@@ -133,7 +133,6 @@
     pkgs.protobuf
  
     # Rice stuff
-    pkgs.nordic
     pkgs.papirus-icon-theme
     inputs.swww.packages.${pkgs.system}.swww
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
