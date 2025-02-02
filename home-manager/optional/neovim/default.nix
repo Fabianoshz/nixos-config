@@ -20,6 +20,10 @@
 	type = "lua";
 	config = ''
           require("nvim-tree").setup()
+
+          local builtin = require('telescope.builtin')
+
+          vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 	'';
       }
       {
@@ -44,6 +48,7 @@
 
     extraLuaConfig = ''
       -- disable netrw
+      vim.g.mapleader = ","
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
 

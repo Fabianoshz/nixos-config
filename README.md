@@ -6,10 +6,10 @@
 
 ## Usability
 - [x] Make direnv work the same way between machines
-- [ ] Configure nvim shortcuts
-  - DAP
-  - NvimTree
-  - Telescope
+- Configure nvim shortcuts
+  - [ ] DAP
+  - [ ] NvimTree
+  - [x] Telescope
 - [ ] Configure nvim LSP
 - [x] Configure nvim dap
 - [ ] Share PS2 memory cards between PCSX2 and retroarch
