@@ -28,6 +28,8 @@
   - https://www.reddit.com/r/unixporn/comments/1if4i94/kde_karousel/
   - https://www.reddit.com/r/kde/comments/1g2kcl1/floating_panel_not_floating_with_maximized_windows/
   - https://github.com/luisbocanegra/plasma-panel-colorizer
+- [ ] Configure NFS correctly
+  - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-nfs-client-config-options#s2-nfs-client-config-options
 
 ### Console
 - [ ] Find a nice wallpaper
