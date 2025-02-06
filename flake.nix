@@ -32,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     mac-app-util.url = "github:hraban/mac-app-util";
 
     xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
@@ -53,6 +58,7 @@
     xdg-autostart,
     nix-flatpak,
     spicetify-nix,
+    firefox-addons,
     ...
   }@inputs:
   let
@@ -66,7 +72,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs; };
+        extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs firefox-addons; };
         modules = [
           ./home-manager/users/fabiano/GipsyDanger/home.nix
 

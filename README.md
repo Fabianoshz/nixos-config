@@ -1,6 +1,4 @@
 # TODO
-- [ ] Configure applications accents
-  - Nord polar night
 - [x] Configure terminal colors
 - [ ] Configure tmux shortcuts
 
@@ -12,9 +10,9 @@
   - [x] Telescope
 - [ ] Configure nvim LSP
 - [x] Configure nvim dap
-- [ ] Share PS2 memory cards between PCSX2 and retroarch
-- [ ] Firefox extensions
-  - https://discourse.nixos.org/t/firefox-extensions-with-home-manager/34108
+- [x] Firefox extensions
+- [ ] Firefox configs
+  - https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.settings
 
 ## Ricing
 

@@ -5,6 +5,7 @@
   imports = [
     ./syncthing.nix
     ./spicetify.nix
+    ./firefox.nix
 
     ../../../optional/kde/default.nix
     ../../../optional/zsh/default.nix
@@ -108,7 +109,6 @@
     pkgs.dbeaver-bin
     pkgs.discord
     pkgs.filelight
-    pkgs.firefox-bin
     pkgs.iotop
     pkgs.kcalc
     pkgs.keepassxc

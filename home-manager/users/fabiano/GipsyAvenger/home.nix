@@ -4,6 +4,7 @@
 
   imports = [
     ./syncthing.nix
+    ./firefox.nix
 
     ../../../optional/kde/default.nix
     ../../../optional/zsh/default.nix
@@ -79,7 +80,6 @@
 
   home.packages = [
     pkgs.filelight
-    pkgs.firefox-bin
     pkgs.go-task
     pkgs.heroic
     pkgs.nexusmods-app
