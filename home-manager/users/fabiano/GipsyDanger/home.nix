@@ -114,7 +114,6 @@
     pkgs.keepassxc
     pkgs.obsidian
     pkgs.onlyoffice-bin
-    pkgs.pcsx2
     pkgs.postman
     pkgs.ssm-session-manager-plugin
     pkgs.steamtinkerlaunch

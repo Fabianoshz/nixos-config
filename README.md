@@ -29,10 +29,6 @@
 - [ ] Configure NFS correctly
   - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-nfs-client-config-options#s2-nfs-client-config-options
 
-### Console
-- [ ] Find a nice wallpaper
-  - https://github.com/mylinuxforwork/wallpaper
-
 ### Mac
 - [ ] Find a nice wallpaper
   - https://github.com/mylinuxforwork/wallpaper

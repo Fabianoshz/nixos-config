@@ -83,8 +83,8 @@
       };
       "tab-master" = {
         src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/2734173d2e7d7f28b9ca40ca3e08b87c72ca4e61f79f6692f0b92c98e52c45e4.zip";
-          sha256 = "sha256-JRwE0RuoYTvafLPW3w4OBjqUDqGHds/Huta9M1m6zuE=";
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/eb74a08f8aa6f89808740424ce0f12670409ce9c15776cd623d3b4e4c9a8f52b.zip";
+          sha256 = "sha256-eqOCRyuUqZ+9y2KRWWfIn5uJ+KjaB3J6LUS5mTaWQHQ=";
           extension = "zip";
           stripRoot = true;
         };

@@ -6,7 +6,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
-    # home-manager.url = "github:nix-community/home-manager/release-25.05";
+      # url = "github:nix-community/home-manager/release-25.05";
       url = "github:pitkling/home-manager/575754a37c7f0a182b481957fdba940faedf96b5"; # For declarative syncthing for Mac too
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -17,7 +17,8 @@
     };
 
     jovian-nixos = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
+      # url = "github:Jovian-Experiments/Jovian-NixOS";
+      url = "github:Jovian-Experiments/Jovian-NixOS/625fb24a8dc447dd38c7e782bf2edaca71653a55";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -86,7 +87,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs; };
+        extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs firefox-addons; };
         modules = [
           ./home-manager/users/fabiano/GipsyAvenger/home.nix
 

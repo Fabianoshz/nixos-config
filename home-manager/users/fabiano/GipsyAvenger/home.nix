@@ -73,8 +73,6 @@
   };
   services.flatpak.packages = [
     "com.discordapp.Discord"
-    "com.steamgriddb.steam-rom-manager"
-    "io.itch.itch"
   ];
   services.flatpak.uninstallUnmanaged = true;
 
@@ -94,6 +92,7 @@
     pkgs.dig
     pkgs.git
     pkgs.htop
+    pkgs.itch
 
     # Rice stuff
     pkgs.papirus-icon-theme
