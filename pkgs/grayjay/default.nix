@@ -31,13 +31,13 @@
   krb5,
 }:
 let
-  version = "3";
+  version = "4";
   src = fetchFromGitLab {
     domain = "gitlab.futo.org";
     owner = "videostreaming";
     repo = "Grayjay.Desktop";
     tag = version;
-    hash = "sha256-gI1M/rDTSH16eeknHJfLA2iawoA5iGTKHfwUW4/lvv8=";
+    hash = "sha256-c/4yXoJpwkJC5QNDxzmckXozKpXvnQOc3MmUYUDE8H0=";
     fetchSubmodules = true;
     fetchLFS = true;
   };

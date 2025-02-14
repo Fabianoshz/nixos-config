@@ -17,8 +17,7 @@
     };
 
     jovian-nixos = {
-      # url = "github:Jovian-Experiments/Jovian-NixOS";
-      url = "github:Jovian-Experiments/Jovian-NixOS/625fb24a8dc447dd38c7e782bf2edaca71653a55";
+      url = "github:Jovian-Experiments/Jovian-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -42,11 +41,11 @@
 
     xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     swww.url = "github:LGFae/swww";
 
-    lightly.url = "github:Bali10050/Darkly";
+    lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
   };
 
   outputs = {
