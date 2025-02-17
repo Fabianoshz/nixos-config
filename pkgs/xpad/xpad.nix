@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
 		sha256 = "sha256-NVml2NNWPFQeHDAFvR1niiDEsW28s64OEg+FTnI4bw4=";
 	};
 
-  patches = [./flydigi-vader.patch];
+        patches = [./flydigi-vader.patch];
 
 	setSourceRoot = ''
 		export sourceRoot=$(pwd)/source
