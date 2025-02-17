@@ -137,6 +137,7 @@
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.system}.darkly-qt6
     pkgs.plasmusic-toolbar
+    pkgs.plasma-panel-colorizer
 
     # KDE
     pkgs.kdePackages.akregator

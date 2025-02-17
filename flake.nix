@@ -7,7 +7,7 @@
 
     home-manager = {
       # url = "github:nix-community/home-manager/release-25.05";
-      url = "github:pitkling/home-manager/575754a37c7f0a182b481957fdba940faedf96b5"; # For declarative syncthing for Mac too
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -1,16 +1,12 @@
 # TODO
-- [x] Configure terminal colors
 - [ ] Configure tmux shortcuts
 
 ## Usability
-- [x] Make direnv work the same way between machines
 - Configure nvim shortcuts
   - [ ] DAP
   - [ ] NvimTree
   - [x] Telescope
 - [ ] Configure nvim LSP
-- [x] Configure nvim dap
-- [x] Firefox extensions
 - [ ] Firefox configs
   - https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.settings
 
@@ -28,19 +24,16 @@
   - https://github.com/luisbocanegra/plasma-panel-colorizer
 - [ ] Configure NFS correctly
   - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-nfs-client-config-options#s2-nfs-client-config-options
+- [ ] Configure panel colorizer 
+  - https://github.com/luisbocanegra/plasma-panel-colorizer
 
 ### Mac
 - [ ] Find a nice wallpaper
   - https://github.com/mylinuxforwork/wallpaper
-- [ ] Remove bottom panel
-- Top panel
-  - [ ] Make panel select color same as background image
 
 ## Improvements
 - [ ] Use grayjay from nixpkgs
   - https://github.com/NixOS/nixpkgs/pull/368427
-- [ ] Update syncthing on mac instead of using commit on flake.
-  - https://github.com/nix-community/home-manager/pull/6104
 - [ ] Resolve google accounts login
   - https://github.com/NixOS/nixpkgs/issues/263299
 - [ ] Fix annoying asks for control on KDE krdc and steam desktop control (KDE 6.3?)
