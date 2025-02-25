@@ -38,69 +38,69 @@
           "[Games] Game Boy Advanced Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/gba";
-            devices = [ "Odin" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "MiyooMiniPlus" ];
           };
           "[Games] Super Nintendo Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/snes";
-            devices = [ "Odin" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "MiyooMiniPlus" ];
           };
           "[Games] Nintendo 64 Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/n64";
-            devices = [ "Odin" "GipsyDanger" ];
+            devices = [ "Odin" ];
           };
           "[Games] Game Cube Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/gc";
-            devices = [ "Odin" "GipsyDanger" ];
+            devices = [ "Odin" ];
           };
           "[Games] Nintendo Wii Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/wii";
-            devices = [ "Odin" "GipsyDanger" ];
+            devices = [ "Odin" ];
           };
           "[Games] Nintendo Switch Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/switch";
-            devices = [ "ChernoAlpha" "GipsyDanger" ];
+            devices = [ "ChernoAlpha" ];
           };
           "[Games] Playstation Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/psx";
-            devices = [ "Odin" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "MiyooMiniPlus" ];
           };
           "[Games] Playstation 2 Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/ps2";
-            devices = [ "Odin" "GipsyDanger" ];
+            devices = [ "Odin" ];
           };
           "[Games] PSP Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/psp";
-            devices = [ "Odin" "GipsyDanger" ];
+            devices = [ "Odin" ];
           };
           "[Games] Saturn Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/saturn";
-            devices = [ "Odin" "GipsyDanger" ];
+            devices = [ "Odin" ];
           };
           "[Games] MAME Roms" = {
             enable  = true;
             path    = "/home/fabiano/Games/Roms/mame";
-            devices = [ "Odin" "GipsyDanger" ];
+            devices = [ "Odin" ];
           };
 
           "[Games] PS2 Memory cards" = {
             enable  = true;
             path    = "/home/fabiano/Games/PS2 Memory cards";
-            devices = [ "Odin" "Syncthing Server" "GipsyDanger" ];
+            devices = [ "Odin" "Syncthing Server" ];
           };
 
           "[Games] Retroarch Saves" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/Saves";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -112,7 +112,7 @@
           "[Games] Retroarch States" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/States";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -124,7 +124,7 @@
           "[Games] Retroarch Runtime Logs" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/Runtime logs";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -136,7 +136,7 @@
           "[Games] Retroarch System" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/System";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "MiyooMiniPlus" ];
+            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -154,17 +154,17 @@
           "[PCSX2] Cheats" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/cheats";
-            devices = [ "Syncthing Server" "GipsyDanger" ];
+            devices = [ "Syncthing Server" ];
           };
           "[PCSX2] States" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/sstates";
-            devices = [ "Syncthing Server" "GipsyDanger" ];
+            devices = [ "Syncthing Server" ];
           };
           "[PCSX2] Covers" = {
             enable  = true;
             path    = "/home/fabiano/.config/PCSX2/covers";
-            devices = [ "Syncthing Server" "GipsyDanger" ];
+            devices = [ "Syncthing Server" ];
           };
 
           "[Saves] Diablo II Ressurected" = {

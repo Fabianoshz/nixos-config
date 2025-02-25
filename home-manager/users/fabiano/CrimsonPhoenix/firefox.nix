@@ -9,6 +9,9 @@
         packages = with firefox-addons.packages.${system}; [
           sponsorblock
           ublock-origin
+          steam-database
+          add-custom-search-engine
+          keepassxc-browser
         ];
       };
 

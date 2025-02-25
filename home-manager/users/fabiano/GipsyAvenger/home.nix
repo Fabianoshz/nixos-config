@@ -77,7 +77,6 @@
   services.flatpak.uninstallUnmanaged = true;
 
   home.packages = [
-    pkgs.filelight
     pkgs.go-task
     pkgs.heroic
     pkgs.nexusmods-app
@@ -102,6 +101,7 @@
     pkgs.plasmusic-toolbar
 
     # KDE
+    pkgs.kdePackages.filelight
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
     pkgs.kdePackages.krdc

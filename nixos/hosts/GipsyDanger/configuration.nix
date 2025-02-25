@@ -51,6 +51,7 @@
       LC_TELEPHONE = "pt_BR.UTF-8";
       LC_MEASUREMENT = "pt_BR.UTF-8";
       LC_IDENTIFICATION = "pt_BR.UTF-8";
+      LC_TYPE = "pt_BR.UTF-8";
     };
   };
 

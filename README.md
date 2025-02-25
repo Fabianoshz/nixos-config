@@ -9,6 +9,8 @@
 - [ ] Configure nvim LSP
 - [ ] Firefox configs
   - https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.settings
+- [ ] Test KDE remote control permission fix
+  - https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/merge_requests/326
 
 ## Ricing
 
@@ -26,6 +28,7 @@
   - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-nfs-client-config-options#s2-nfs-client-config-options
 - [ ] Configure panel colorizer 
   - https://github.com/luisbocanegra/plasma-panel-colorizer
+- [ ] Configure tmux interface (make it nice)
 
 ### Mac
 - [ ] Find a nice wallpaper
@@ -37,4 +40,6 @@
 - [ ] Resolve google accounts login
   - https://github.com/NixOS/nixpkgs/issues/263299
 - [ ] Fix annoying asks for control on KDE krdc and steam desktop control (KDE 6.3?)
-
+  - Allow all: flatpak permission-set kde-authorized remote-desktop "" yes
+  - Database file: XDG_DATA_HOME/flatpak/db/kde-authorized
+  - Docs: https://develop.kde.org/docs/administration/portal-permissions/

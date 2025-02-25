@@ -27,6 +27,8 @@
   libsecret,
   gitUpdater,
   autoPatchelfHook,
+  makeDesktopItem,
+  copyDesktopItems,
   libgcc,
   krb5,
 }:
@@ -78,6 +80,18 @@ buildDotnetModule {
 
   nativeBuildInputs = [
     autoPatchelfHook
+    copyDesktopItems
+  ];
+
+  desktopItems = [
+    (makeDesktopItem {
+      name = "Grayjay";
+      exec = "Grayjay";
+      icon = "grayjay";
+      comment = "Cross platform media application for streaming and downloading media";
+      desktopName = "Grayjay Desktop";
+      categories = [ "Network" ];
+    })
   ];
 
   projectFile = [
@@ -106,9 +120,12 @@ buildDotnetModule {
 
   postInstall = ''
     chmod +x $out/lib/grayjay/cef/dotcefnative
+    chmod +x $out/lib/grayjay/ffmpeg
     rm $out/lib/grayjay/Portable
     ln -s /tmp/grayjay-launch $out/lib/grayjay/launch
     ln -s /tmp/grayjay-cef-launch $out/lib/grayjay/cef/launch
+    mkdir -p $out/share/icons/hicolor/scalable/apps
+    ln -s $out/lib/grayjay/grayjay.png $out/share/icons/hicolor/scalable/apps/grayjay.png
   '';
 
   makeWrapperArgs = [

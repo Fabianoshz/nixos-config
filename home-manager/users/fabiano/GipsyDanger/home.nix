@@ -108,9 +108,7 @@
     pkgs.awscli2
     pkgs.dbeaver-bin
     pkgs.discord
-    pkgs.filelight
     pkgs.iotop
-    pkgs.kcalc
     pkgs.keepassxc
     pkgs.obsidian
     pkgs.onlyoffice-bin
@@ -141,8 +139,10 @@
 
     # KDE
     pkgs.kdePackages.akregator
+    pkgs.kdePackages.filelight
     pkgs.kdePackages.kaccounts-integration
     pkgs.kdePackages.kaccounts-providers
+    pkgs.kdePackages.kcalc
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
     pkgs.kdePackages.krdc
