@@ -9,6 +9,7 @@
     ../../../optional/kde/default.nix
     ../../../optional/zsh/default.nix
     ../../../optional/neovim/default.nix
+    ../../../optional/flatpak/default.nix
   ];
 
   nixpkgs = {

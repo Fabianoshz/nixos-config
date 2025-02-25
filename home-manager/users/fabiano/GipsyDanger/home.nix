@@ -11,6 +11,7 @@
     ../../../optional/zsh/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
+    ../../../optional/flatpak/default.nix
   ];
 
   home.username = "fabiano";

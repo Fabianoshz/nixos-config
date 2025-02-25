@@ -9,8 +9,8 @@
 - [ ] Configure nvim LSP
 - [ ] Firefox configs
   - https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.settings
-- [ ] Test KDE remote control permission fix
-  - https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/merge_requests/326
+- [ ] Configure NFS correctly
+  - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-nfs-client-config-options#s2-nfs-client-config-options
 
 ## Ricing
 
@@ -24,8 +24,6 @@
   - https://www.reddit.com/r/unixporn/comments/1if4i94/kde_karousel/
   - https://www.reddit.com/r/kde/comments/1g2kcl1/floating_panel_not_floating_with_maximized_windows/
   - https://github.com/luisbocanegra/plasma-panel-colorizer
-- [ ] Configure NFS correctly
-  - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-nfs-client-config-options#s2-nfs-client-config-options
 - [ ] Configure panel colorizer 
   - https://github.com/luisbocanegra/plasma-panel-colorizer
 - [ ] Configure tmux interface (make it nice)
@@ -39,7 +37,4 @@
   - https://github.com/NixOS/nixpkgs/pull/368427
 - [ ] Resolve google accounts login
   - https://github.com/NixOS/nixpkgs/issues/263299
-- [ ] Fix annoying asks for control on KDE krdc and steam desktop control (KDE 6.3?)
-  - Allow all: flatpak permission-set kde-authorized remote-desktop "" yes
-  - Database file: XDG_DATA_HOME/flatpak/db/kde-authorized
-  - Docs: https://develop.kde.org/docs/administration/portal-permissions/
+
