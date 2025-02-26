@@ -5,7 +5,7 @@ let
   brews = [];
 
   casks = [
-    # "firefox"
+    "firefox"
     "onlyoffice"
     "utm"
   ];

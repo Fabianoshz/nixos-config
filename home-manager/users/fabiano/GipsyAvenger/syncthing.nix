@@ -35,62 +35,6 @@
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
-          "[Games] Game Boy Advanced Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/gba";
-            devices = [ "Odin" "MiyooMiniPlus" ];
-          };
-          "[Games] Super Nintendo Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/snes";
-            devices = [ "Odin" "MiyooMiniPlus" ];
-          };
-          "[Games] Nintendo 64 Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/n64";
-            devices = [ "Odin" ];
-          };
-          "[Games] Game Cube Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/gc";
-            devices = [ "Odin" ];
-          };
-          "[Games] Nintendo Wii Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/wii";
-            devices = [ "Odin" ];
-          };
-          "[Games] Nintendo Switch Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/switch";
-            devices = [ "ChernoAlpha" ];
-          };
-          "[Games] Playstation Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/psx";
-            devices = [ "Odin" "MiyooMiniPlus" ];
-          };
-          "[Games] Playstation 2 Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/ps2";
-            devices = [ "Odin" ];
-          };
-          "[Games] PSP Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/psp";
-            devices = [ "Odin" ];
-          };
-          "[Games] Saturn Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/saturn";
-            devices = [ "Odin" ];
-          };
-          "[Games] MAME Roms" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Roms/mame";
-            devices = [ "Odin" ];
-          };
-
           "[Games] PS2 Memory cards" = {
             enable  = true;
             path    = "/home/fabiano/Games/PS2 Memory cards";

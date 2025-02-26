@@ -6,7 +6,7 @@
       id = 0;
 
       extensions = {
-        packages = with firefox-addons.packages.${system}; [
+	packages = with firefox-addons.packages.${system}; [
           sponsorblock
           ublock-origin
         ];
