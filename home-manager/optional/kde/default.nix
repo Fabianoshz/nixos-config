@@ -71,7 +71,7 @@
                 enable = true;
 	        position = "besideTime";
 		format = {
-		  custom = "ddd d MMM |";
+		  custom = "ddd d MMM";
 		};
               };
 	      time = {

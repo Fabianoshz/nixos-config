@@ -38,13 +38,13 @@
           "[Games] PS2 Memory cards" = {
             enable  = true;
             path    = "/home/fabiano/Games/PS2 Memory cards";
-            devices = [ "Odin" "Syncthing Server" ];
+            devices = [ "Syncthing Server" ];
           };
 
           "[Games] Retroarch Saves" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/Saves";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "MiyooMiniPlus" ];
+            devices = [ "Odin" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -56,7 +56,7 @@
           "[Games] Retroarch States" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/States";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "MiyooMiniPlus" ];
+            devices = [ "Odin" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -68,7 +68,7 @@
           "[Games] Retroarch Runtime Logs" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/Runtime logs";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "MiyooMiniPlus" ];
+            devices = [ "Odin" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {
@@ -80,7 +80,7 @@
           "[Games] Retroarch System" = {
             enable  = true;
             path    = "/home/fabiano/Games/Retroarch/System";
-            devices = [ "Odin" "ChernoAlpha" "Syncthing Server" "MiyooMiniPlus" ];
+            devices = [ "Odin" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
               params = {

@@ -79,6 +79,11 @@
       set -g mouse on
       set -g base-index 1
       setw -g pane-base-index 1
+
+      tmux_conf_theme_left_separator_main='\uE0B0'
+      tmux_conf_theme_left_separator_sub='\uE0B1'
+      tmux_conf_theme_right_separator_main='\uE0B2'
+      tmux_conf_theme_right_separator_sub='\uE0B3'
     '';
   };
 

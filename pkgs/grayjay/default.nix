@@ -31,6 +31,7 @@
   copyDesktopItems,
   libgcc,
   krb5,
+  wrapGAppsHook3,
 }:
 let
   version = "4";
@@ -81,7 +82,10 @@ buildDotnetModule {
   nativeBuildInputs = [
     autoPatchelfHook
     copyDesktopItems
+    wrapGAppsHook3
   ];
+
+  dontWrapGApps = true;
 
   desktopItems = [
     (makeDesktopItem {
@@ -132,6 +136,10 @@ buildDotnetModule {
     "--chdir"
     "${placeholder "out"}/lib/grayjay"
   ];
+
+  preFixup = ''
+    makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
+  '';
 
   runtimeDeps = [
     libz
