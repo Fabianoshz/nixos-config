@@ -84,6 +84,35 @@
       tmux_conf_theme_left_separator_sub='\uE0B1'
       tmux_conf_theme_right_separator_main='\uE0B2'
       tmux_conf_theme_right_separator_sub='\uE0B3'
+
+      # switch panes using Alt-arrow without prefix
+      bind -n M-Left select-pane -L
+      bind -n M-Right select-pane -R
+      bind -n M-Up select-pane -U
+      bind -n M-Down select-pane -D
+
+      # statusbar
+      set -g status-left ""
+      set -g status-position bottom
+      set -g status-justify left
+      set -g status-style 'fg=green'
+
+      set -g status-left-length 10
+
+      set -g status-right-style 'fg=black bg=yellow'
+      set -g status-right '%Y-%m-%d %H:%M '
+      set -g status-right-length 50
+
+      setw -g window-status-current-style 'fg=black bg=green'
+      setw -g window-status-current-format ' #I #W #F '
+
+      setw -g window-status-style 'fg=green bg=black'
+      setw -g window-status-format ' #I #[fg=white]#W #[fg=yellow]#F '
+
+      setw -g window-status-bell-style 'fg=yellow bg=red bold'
+
+      # messages
+      set -g message-style 'fg=yellow bg=red bold'      
     '';
   };
 

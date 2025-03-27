@@ -10,42 +10,39 @@
 
     plugins = with pkgs.vimPlugins; [
       gitsigns-nvim
-      harpoon2
-      nvim-dap
       nvim-web-devicons
-      telescope-nvim
+
+      nvim-treesitter
+
+      # Debugger
+      nvim-dap
+
+      # LSP
       nvim-lspconfig
-      
 
       {
-        plugin = nvim-config-local;
+        plugin = telescope-nvim;
 	type = "lua";
 	config = ''
-	  require('config-local').setup {
-            -- Default options (optional)
+          require("telescope").setup()
 
-            -- Config file patterns to load (lua supported)
-            config_files = { ".nvim.lua", ".nvimrc", ".exrc" },
+          local builtin = require('telescope.builtin')
 
-            -- Where the plugin keeps files data
-            hashfile = vim.fn.stdpath("data") .. "/config-local",
-
-            autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-            commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalDeny)
-            silent = false,             -- Disable plugin messages (Config loaded/denied)
-            lookup_parents = false,     -- Lookup config files in parent directories
-          }
+          vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 	'';
       }
       {
         plugin = nvim-tree-lua;
 	type = "lua";
 	config = ''
-          require("nvim-tree").setup()
+          local function on_attach(bufnr)
+            local api = require "nvim-tree.api"
+            api.config.mappings.default_on_attach(bufnr)
+          end
 
-          local builtin = require('telescope.builtin')
-
-          vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+          require("nvim-tree").setup {
+            on_attach = on_attach,
+          }
 	'';
       }
       {
@@ -69,10 +66,34 @@
     '';
 
     extraLuaConfig = ''
-      -- disable netrw
+      -- Disable netrw
       vim.g.mapleader = ","
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
+
+      -- LSP stuff
+      vim.api.nvim_create_autocmd('LspAttach', {
+        desc = 'LSP actions',
+        callback = function(event)
+          local opts = {buffer = event.buf}
+
+          -- these will be buffer-local keybindings
+          -- because they only work if you have an active language server
+
+          vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+          vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+          vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+          vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+          vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+          vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+          vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+          vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+          vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+          vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+        end
+      })
+
+      -- Debugger stuff
 
       local ui = require "dapui"
       local dap = require "dap"

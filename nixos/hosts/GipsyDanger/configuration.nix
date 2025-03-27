@@ -9,11 +9,12 @@
   ];
 
   # Mount NFS
-  fileSystems."/mnt/default/fabiano" = {
-    device = "truenas.in.gambiarra.net:/mnt/default-2/fabiano";
-    fsType = "nfs";
-    options = [ "nfsvers=4.2" "noauto" ];
-  };
+  # fileSystems."/mnt/default/fabiano" = {
+  #   device = "truenas.in.gambiarra.net:/mnt/default-2/fabiano";
+  #   fsType = "nfs";
+  #   # options = [ "nfsvers=4.2" "noauto" "_netdev" "nofail" "hard" "intr" ];
+  #   # options = [ "intr" ];
+  # };
 
   time.timeZone = "America/Sao_Paulo";
 

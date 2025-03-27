@@ -1,5 +1,6 @@
 # TODO
 - [ ] Configure tmux shortcuts
+- [ ] Use nvim surround: https://github.com/kylechui/nvim-surround
 
 ## Usability
 - Configure nvim shortcuts
