@@ -34,7 +34,6 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
         "irpf"
-        "libretro-snes9x"
         "obsidian"
         "postman"
         "spotify"
@@ -127,7 +126,6 @@
 
     pkgs.grayjay
     pkgs.godot_4
-    pkgs.protobuf
  
     # Rice stuff
     pkgs.papirus-icon-theme
@@ -150,19 +148,5 @@
     pkgs.kdePackages.qtlocation
     pkgs.kdePackages.xwaylandvideobridge
     pkgs.kdePackages.yakuake
-
-    (pkgs.retroarch.withCores (cores: with cores; [
-      beetle-psx-hw
-      beetle-saturn
-      dolphin
-      gambatte
-      mame
-      melonds
-      mgba
-      mupen64plus
-      pcsx2
-      ppsspp
-      snes9x
-    ]))
   ];
 }
