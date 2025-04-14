@@ -46,6 +46,8 @@
     swww.url = "github:LGFae/swww";
 
     lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
   outputs = {
@@ -59,6 +61,7 @@
     nix-flatpak,
     spicetify-nix,
     firefox-addons,
+    nix-homebrew,
     ...
   }@inputs:
   let
@@ -95,7 +98,7 @@
         ];
       };
 
-      "fabiano" = home-manager.lib.homeManagerConfiguration {
+      "fabiano@CrimsonPhoenix" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
         };
@@ -103,6 +106,17 @@
         extraSpecialArgs = { inherit nixpkgs system-mac; };
         modules = [
           ./home-manager/users/fabiano/CrimsonPhoenix/home.nix
+        ];
+      };
+
+      "fabiano@D5FXW3H24T" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+        };
+
+        extraSpecialArgs = { inherit nixpkgs system-mac; };
+        modules = [
+          ./home-manager/users/fabiano/D5FXW3H24T/home.nix
         ];
       };
     };
@@ -157,6 +171,33 @@
               ];
             }
           )
+        ];
+      };
+
+      D5FXW3H24T = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./nixos/hosts/D5FXW3H24T/configuration.nix
+    
+          home-manager.darwinModules.home-manager
+      
+          mac-app-util.darwinModules.default
+          (
+            { ... }: 
+            {
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
+            }
+          )
+
+	  nix-homebrew.darwinModules.nix-homebrew
+	  {
+	    nix-homebrew = {
+	      enable = true;
+	      enableRosetta = true;
+	      user = "fabiano";
+	    };
+	  }
         ];
       };
     };
