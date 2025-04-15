@@ -15,7 +15,6 @@
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "discord"
         "libretro-snes9x"
         "spotify"
         "steam-original"
@@ -72,9 +71,6 @@
     enable = true;
     onCalendar = "weekly"; # Default value
   };
-  services.flatpak.packages = [
-    "com.discordapp.Discord"
-  ];
   services.flatpak.uninstallUnmanaged = true;
 
   home.packages = [
@@ -114,7 +110,6 @@
       beetle-saturn
       dolphin
       mame
-      mgba
       mupen64plus
       pcsx2
       ppsspp

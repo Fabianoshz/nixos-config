@@ -24,12 +24,6 @@
   };
 
   nixpkgs = {
-    overlays = [
-      (final: prev: {
-        grayjay = prev.callPackage ../../../../pkgs/grayjay/default.nix {};
-      })
-    ];
-
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
