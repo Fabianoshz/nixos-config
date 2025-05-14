@@ -16,7 +16,6 @@ let
     "1password"
     "1password-cli"
     "cursor"
-    "spotify"
     "utm"
   ];
 in

@@ -4,7 +4,6 @@
 
   imports = [
     ./syncthing.nix
-    ./spicetify.nix
     ./firefox.nix
 
     ../../../optional/kde/default.nix
@@ -19,7 +18,6 @@
         "discord"
 	"grayjay"
         "obsidian"
-        "spotify"
         "steam-original"
         "steam-unwrapped"
         "steam"
@@ -113,6 +111,7 @@
 
     # KDE
     pkgs.kdePackages.akregator
+    pkgs.kdePackages.elisa
     pkgs.kdePackages.filelight
     pkgs.kdePackages.kaccounts-integration
     pkgs.kdePackages.kaccounts-providers

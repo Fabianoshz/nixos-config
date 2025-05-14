@@ -16,7 +16,6 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "obsidian"
         "google-chrome"
-        "spotify"
       ];
     };
   };
@@ -49,7 +48,6 @@
     pkgs.grpcurl
     pkgs.kubectx
     pkgs.obsidian
-    # pkgs.spotify
     pkgs.tmux
     pkgs.bash
     pkgs.dig

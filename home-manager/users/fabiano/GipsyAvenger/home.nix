@@ -17,7 +17,6 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
         "libretro-snes9x"
-        "spotify"
         "steam-original"
         "steam-unwrapped"
         "steam"
@@ -75,7 +74,6 @@
     pkgs.nexusmods-app
     pkgs.pcsx2
     pkgs.prismlauncher
-    pkgs.spotify
     pkgs.steam-rom-manager
     pkgs.sunshine
     pkgs.unzip
@@ -94,6 +92,7 @@
     pkgs.plasmusic-toolbar
 
     # KDE
+    pkgs.kdePackages.elisa
     pkgs.kdePackages.filelight
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole

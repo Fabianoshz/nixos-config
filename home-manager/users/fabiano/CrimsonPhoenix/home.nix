@@ -4,7 +4,6 @@
 
   imports = [
     ./homebrew.nix
-    ./spicetify.nix
     ./syncthing.nix
     ./firefox.nix
 
@@ -18,7 +17,6 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
         "obsidian"
-        "spotify"
       ];
     };
   };
@@ -36,7 +34,6 @@
     pkgs.keepassxc
     pkgs.obsidian
     pkgs.ssm-session-manager-plugin
-    pkgs.spotify
     pkgs.tmux
     pkgs.bash
     pkgs.dig
