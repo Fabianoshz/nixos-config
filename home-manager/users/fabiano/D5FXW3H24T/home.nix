@@ -23,6 +23,7 @@
   home.username = "fabiano";
   home.homeDirectory = "/Users/fabiano";
   home.sessionVariables = {
+    SYSTEMD_EDITOR = "nvim";
     EDITOR = "nvim";
   };
 

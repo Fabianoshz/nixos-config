@@ -18,6 +18,7 @@
       settings = {
 	"identity.fxaccounts.account.device.name" = "CrimsonPhoenix";
         "extensions.autoDisableScopes" = 0;
+	"media.videocontrols.picture-in-picture.enabled" = false;
       };
     };
   };

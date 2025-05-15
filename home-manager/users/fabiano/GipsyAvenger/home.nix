@@ -55,6 +55,7 @@
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
   home.sessionVariables = {
+    SYSTEMD_EDITOR = "nvim";
     EDITOR = "nvim";
     GTK_IM_MODULE = "cedilla";
     QT_IM_MODULE = "cedilla";

@@ -64,6 +64,7 @@
   home.homeDirectory = "/home/fabiano";
   home.sessionVariables = {
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
+    SYSTEMD_EDITOR = "nvim";
     EDITOR = "nvim";
     ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
