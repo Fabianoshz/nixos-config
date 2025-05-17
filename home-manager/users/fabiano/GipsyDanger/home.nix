@@ -114,8 +114,6 @@
     pkgs.kdePackages.akregator
     pkgs.kdePackages.elisa
     pkgs.kdePackages.filelight
-    pkgs.kdePackages.kaccounts-integration
-    pkgs.kdePackages.kaccounts-providers
     pkgs.kdePackages.kcalc
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
@@ -124,5 +122,10 @@
     pkgs.kdePackages.qtlocation
     pkgs.kdePackages.xwaylandvideobridge
     pkgs.kdePackages.yakuake
+
+    pkgs.kdePackages.kcontacts
+    pkgs.kdePackages.kaddressbook
+    pkgs.kdePackages.kpeople
+    pkgs.kdePackages.kontact
   ];
 }
