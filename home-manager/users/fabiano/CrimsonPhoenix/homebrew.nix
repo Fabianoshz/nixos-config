@@ -5,6 +5,7 @@ let
   brews = [];
 
   casks = [
+    "keepassxc"
     "firefox"
     "steam"
     "onlyoffice"

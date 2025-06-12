@@ -53,7 +53,7 @@ in
 
           "[Media] Music" = {
             enable  = true;
-            path    = "/home/fabiano/Music";
+            path    = "/Users/fabiano/Music";
             devices = [ "GipsyDanger" "ChernoAlpha" "Odin" ];
           };
         };

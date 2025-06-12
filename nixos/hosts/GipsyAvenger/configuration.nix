@@ -10,14 +10,9 @@
 
     ../../optional/decky-loader/default.nix
     ../../optional/waydroid/default.nix
-    ../../optional/inputplumber/default.nix
   ];
 
   systemd.watchdog.rebootTime = "0";
-
-  systemd.services.inputplumber.serviceConfig = {
-    Environment="PATH=/run/current-system/sw/bin";
-  };
 
   time.timeZone = "America/Sao_Paulo";
 
