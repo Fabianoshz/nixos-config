@@ -50,6 +50,12 @@ in
             path    = "/Users/fabiano/Documents/Workspaces";
             devices = [ "Syncthing Server" "GipsyDanger" ];
           };
+
+          "[Media] Music" = {
+            enable  = true;
+            path    = "/home/fabiano/Music";
+            devices = [ "GipsyDanger" "ChernoAlpha" "Odin" ];
+          };
         };
       };
     };

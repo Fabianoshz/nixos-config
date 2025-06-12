@@ -1,6 +1,6 @@
 { pkgs, lib, inputs, ... }:
 {
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   imports = [
     ./syncthing.nix
@@ -87,7 +87,6 @@
 
     # Rice stuff
     pkgs.papirus-icon-theme
-    inputs.swww.packages.${pkgs.system}.swww
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.system}.darkly-qt6
     pkgs.plasmusic-toolbar

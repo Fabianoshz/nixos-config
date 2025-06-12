@@ -21,15 +21,6 @@
       XDG_STATE_HOME  = "$HOME/.local/state";
     };
 
-    # Remove KDE packages
-    plasma6.excludePackages = with pkgs.libsForQt5; [
-      elisa
-      oxygen
-      khelpcenter
-      plasma-browser-integration
-      print-manager
-    ];
-
     shells = with pkgs; [ zsh ];
   };
 }

@@ -2,22 +2,21 @@
   description = "NixOS configuration";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05";
-    nixpkgs.url = "github:NixOS/nixpkgs/release-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      # url = "github:nix-community/home-manager/release-25.05";
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     jovian-nixos = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
+      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=f31df4cb6b2eeef6cf0113edb687297be72a69df";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -43,15 +42,18 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
-    swww.url = "github:LGFae/swww";
-
     lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    systems.url = "github:nix-systems/x86_64-linux";
+    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.inputs.systems.follows = "systems";
   };
 
   outputs = {
     nixpkgs,
+    nixpkgs-unstable,
     nix-darwin,
     home-manager,
     jovian-nixos,
@@ -67,6 +69,16 @@
   let
     system = "x86_64-linux";
     system-mac = "aarch64-darwin";
+
+    pkgs-unstable = import nixpkgs-unstable {
+      system = system;
+      config.allowUnfree = true;
+    };
+
+    pkgs-unstable-mac = import nixpkgs-unstable {
+      system = system-mac;
+      config.allowUnfree = true;
+    };
   in
   {
     homeConfigurations = {
@@ -75,7 +87,7 @@
           system = "x86_64-linux";
         };
 
-        extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs firefox-addons; };
+        extraSpecialArgs = { inherit nixpkgs plasma-manager system inputs firefox-addons pkgs-unstable; };
         modules = [
           ./home-manager/users/fabiano/GipsyDanger/home.nix
 
@@ -103,7 +115,7 @@
           system = "aarch64-darwin";
         };
 
-        extraSpecialArgs = { inherit nixpkgs system-mac inputs firefox-addons; };
+        extraSpecialArgs = { inherit nixpkgs system-mac inputs firefox-addons; pkgs-unstable = pkgs-unstable-mac; };
         modules = [
           ./home-manager/users/fabiano/CrimsonPhoenix/home.nix
 
@@ -179,12 +191,12 @@
       D5FXW3H24T = nix-darwin.lib.darwinSystem {
         modules = [
           ./nixos/hosts/D5FXW3H24T/configuration.nix
-    
+
           home-manager.darwinModules.home-manager
-      
+
           mac-app-util.darwinModules.default
           (
-            { ... }: 
+            { ... }:
             {
               home-manager.sharedModules = [
                 mac-app-util.homeManagerModules.default

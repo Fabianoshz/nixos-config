@@ -8,13 +8,5 @@
       pkgs.vim
       pkgs.wget
     ];
-
-    plasma6.excludePackages = with pkgs.libsForQt5; [
-      elisa
-      oxygen
-      khelpcenter
-      plasma-browser-integration
-      print-manager
-    ];
   };
 }

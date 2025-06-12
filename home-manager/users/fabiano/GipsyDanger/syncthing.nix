@@ -51,6 +51,12 @@ in
             devices = [ "Syncthing Server" "CrimsonPhoenix" ];
           };
 
+          "[Media] Music" = {
+            enable  = true;
+            path    = "/home/fabiano/Music";
+            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Odin" ];
+          };
+
           "[Yuzu] Saves" = {
             enable  = true;
             path    = "/home/fabiano/.local/share/yuzu/nand/user/save";

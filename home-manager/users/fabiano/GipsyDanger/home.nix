@@ -1,6 +1,6 @@
-{ config, pkgs, lib, makeDesktopItem, inputs, ... }:
+{ config, pkgs, pkgs-unstable, lib, makeDesktopItem, inputs, ... }:
 {
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   imports = [
     ./syncthing.nix
@@ -15,6 +15,7 @@
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "claude-code"
         "discord"
 	"grayjay"
         "obsidian"
@@ -85,6 +86,7 @@
     pkgs.awscli2
     pkgs.dbeaver-bin
     pkgs.discord
+    pkgs.godot
     pkgs.iotop
     pkgs.keepassxc
     pkgs.obsidian
@@ -100,32 +102,55 @@
     pkgs.dig
     pkgs.git
     pkgs.htop
-    pkgs.grayjay
  
+    pkgs-unstable.claude-code
+    pkgs-unstable.grayjay
+
     # Rice stuff
     pkgs.papirus-icon-theme
-    inputs.swww.packages.${pkgs.system}.swww
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.system}.darkly-qt6
     pkgs.plasmusic-toolbar
     pkgs.plasma-panel-colorizer
 
     # KDE
-    pkgs.kdePackages.akregator
+    pkgs.kdePackages.calendarsupport
+    pkgs.kdePackages.dolphin
+    pkgs.kdePackages.dolphin-plugins
     pkgs.kdePackages.elisa
     pkgs.kdePackages.filelight
+    pkgs.kdePackages.gwenview
+    pkgs.kdePackages.kate
     pkgs.kdePackages.kcalc
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
-    pkgs.kdePackages.krdc
-    pkgs.kdePackages.merkuro
-    pkgs.kdePackages.qtlocation
-    pkgs.kdePackages.xwaylandvideobridge
+    pkgs.kdePackages.kontact
+    pkgs.kdePackages.korganizer
+    pkgs.kdePackages.kpimtextedit
+    pkgs.kdePackages.kwalletmanager
+    pkgs.kdePackages.okular
+    pkgs.kdePackages.signon-kwallet-extension
     pkgs.kdePackages.yakuake
 
-    pkgs.kdePackages.kcontacts
-    pkgs.kdePackages.kaddressbook
-    pkgs.kdePackages.kpeople
-    pkgs.kdePackages.kontact
+    # PIM suite
+    pkgs.kdePackages.akonadi
+    pkgs.kdePackages.akonadi-calendar
+    pkgs.kdePackages.akonadi-calendar-tools
+    pkgs.kdePackages.akonadi-contacts
+    pkgs.kdePackages.akonadi-import-wizard
+    pkgs.kdePackages.akonadi-mime
+    pkgs.kdePackages.akonadi-search
+    pkgs.kdePackages.akonadiconsole
+    pkgs.kdePackages.kaccounts-integration
+    pkgs.kdePackages.kaccounts-providers
+    pkgs.kdePackages.kdepim-addons
+    pkgs.kdePackages.kdepim-runtime
+    pkgs.kdePackages.kmail-account-wizard
+    pkgs.kdePackages.kmailtransport
+    pkgs.kdePackages.mailcommon
+    pkgs.kdePackages.mailimporter
+    pkgs.kdePackages.pim-data-exporter
+    pkgs.kdePackages.pim-sieve-editor
+    pkgs.kdePackages.pimcommon
   ];
 }

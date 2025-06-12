@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   imports = [
     ./homebrew.nix
@@ -57,7 +57,6 @@
     pkgs.google-chrome
     pkgs.insomnia
     pkgs.go
-    # pkgs.yq
   ];
 
   # Let Home Manager install and manage itself.

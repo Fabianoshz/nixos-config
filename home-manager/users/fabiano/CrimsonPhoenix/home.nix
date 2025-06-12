@@ -1,6 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 {
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   imports = [
     ./homebrew.nix
@@ -15,6 +15,7 @@
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "claude-code"
         "discord"
         "obsidian"
       ];
@@ -32,7 +33,7 @@
     pkgs.awscli2
     pkgs.dbeaver-bin
     pkgs.discord
-    pkgs.keepassxc
+    # pkgs.keepassxc # Waiting for: https://github.com/NixOS/nixpkgs/pull/411811
     pkgs.obsidian
     pkgs.ssm-session-manager-plugin
     pkgs.tmux
@@ -40,6 +41,8 @@
     pkgs.dig
     pkgs.git
     pkgs.htop
+
+    pkgs-unstable.claude-code
   ];
 
   # Let Home Manager install and manage itself.
