@@ -9,12 +9,16 @@ let
     "bazelisk"
     "oniguruma" # Something in bazel needs this
     "gsed"
+    "kubelogin"
+    "python@3.13"
+    "xz"
     "yq"
   ];
 
   casks = [
     "1password"
     "1password-cli"
+    "claude"
     "cursor"
     "utm"
   ];

@@ -23,10 +23,6 @@
       bindkey "^H" backward-delete-word
 
       bindkey "^R" history-incremental-search-backward
-
-      if [ -z "$TMUX" ] && command -v tmux > /dev/null ; then
-        tmux attach -t TMUX || tmux new -s TMUX
-      fi
     '';
 
     shellAliases = {
@@ -34,7 +30,8 @@
     };
 
     history = {
-      size = 10000000;
+      size = 1000000000;
+      save = 1000000000;
       path = "${config.xdg.dataHome}/zsh/history";
       extended = true;
     };
@@ -75,21 +72,38 @@
     keyMode = "emacs";
     terminal = "screen-256color";
     shortcut = "a";
+    plugins = with pkgs.tmuxPlugins; [
+      resurrect
+      continuum
+    ];
     extraConfig = ''
       set -g mouse on
       set -g base-index 1
       setw -g pane-base-index 1
 
-      tmux_conf_theme_left_separator_main='\uE0B0'
-      tmux_conf_theme_left_separator_sub='\uE0B1'
-      tmux_conf_theme_right_separator_main='\uE0B2'
-      tmux_conf_theme_right_separator_sub='\uE0B3'
+      set -g @left_sep "\uE0B0"
+      set -g @left_sep_thin "\uE0B1"
+      set -g @right_sep "\uE0B2"
+      set -g @right_sep_thin "\uE0B3"
 
-      # switch panes using Alt-arrow without prefix
-      bind -n M-Left select-pane -L
-      bind -n M-Right select-pane -R
-      bind -n M-Up select-pane -U
-      bind -n M-Down select-pane -D
+      # switch panes using Alt-arrow without prefix (Linux only) - no wrapping
+      if-shell 'test "$(uname)" = "Linux"' {
+        bind -n M-Left if -F '#{@pane-is-vim}' 'send-keys M-Left' 'if -F "#{pane_at_left}" "" "select-pane -L"'
+        bind -n M-Right if -F '#{@pane-is-vim}' 'send-keys M-Right' 'if -F "#{pane_at_right}" "" "select-pane -R"'
+        bind -n M-Up if -F '#{@pane-is-vim}' 'send-keys M-Up' 'if -F "#{pane_at_top}" "" "select-pane -U"'
+        bind -n M-Down if -F '#{@pane-is-vim}' 'send-keys M-Down' 'if -F "#{pane_at_bottom}" "" "select-pane -D"'
+      }
+
+      # switch panes using Cmd-arrow without prefix (macOS only) - no wrapping
+      if-shell 'test "$(uname)" = "Darwin"' {
+        bind -n D-Left if -F "#{pane_at_left}" "" "select-pane -L"
+        bind -n D-Right if -F "#{pane_at_right}" "" "select-pane -R"
+        bind -n D-Up if -F "#{pane_at_top}" "" "select-pane -U"
+        bind -n D-Down if -F "#{pane_at_bottom}" "" "select-pane -D"
+      }
+
+      # reload config
+      bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded!"
 
       # statusbar
       set -g status-left ""
@@ -103,16 +117,27 @@
       set -g status-right '%Y-%m-%d %H:%M '
       set -g status-right-length 50
 
+      setw -g window-status-separator ""
+
       setw -g window-status-current-style 'fg=black bg=green'
-      setw -g window-status-current-format ' #I #W #F '
+      setw -g window-status-current-format '#[fg=black,bg=green] #I #W #F#[fg=green,bg=black]#{@left_sep}'
 
       setw -g window-status-style 'fg=green bg=black'
-      setw -g window-status-format ' #I #[fg=white]#W #[fg=yellow]#F '
+      setw -g window-status-format '#[fg=green,bg=black] #I #[fg=white]#W #[fg=yellow]#F#[fg=black,bg=black]#{@left_sep}'
 
       setw -g window-status-bell-style 'fg=yellow bg=red bold'
 
       # messages
-      set -g message-style 'fg=yellow bg=red bold'      
+      set -g message-style 'fg=yellow bg=red bold'
+
+      # tmux-resurrect settings
+      set -g @resurrect-capture-pane-contents 'on'
+      set -g @resurrect-strategy-vim 'session'
+      set -g @resurrect-strategy-nvim 'session'
+
+      # tmux-continuum settings
+      set -g @continuum-restore 'on'
+      set -g @continuum-save-interval '1'
     '';
   };
 

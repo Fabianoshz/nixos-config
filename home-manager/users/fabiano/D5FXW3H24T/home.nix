@@ -7,6 +7,7 @@
     ./git.nix
     ./ssh.nix
 
+    ../../../optional/claude-md/default.nix
     ../../../optional/zsh/default.nix
     ../../../optional/neovim/default.nix
   ];
@@ -16,6 +17,7 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "obsidian"
         "google-chrome"
+        "claude-code"
       ];
     };
   };
@@ -57,6 +59,9 @@
     pkgs.google-chrome
     pkgs.insomnia
     pkgs.go
+    pkgs.delve
+    pkgs.openjdk
+    pkgs.claude-code
   ];
 
   # Let Home Manager install and manage itself.

@@ -40,18 +40,6 @@
     };
   };
 
-  services.flatpak = {
-    enable = true;
-    update.auto = {
-      enable = true;
-      onCalendar = "weekly"; # Default value
-    };
-    packages = [
-      "com.discordapp.Discord"
-    ];
-    uninstallUnmanaged = true;
-  };
-
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
   home.sessionVariables = {

@@ -8,13 +8,24 @@
     ./virtualisation.nix
   ];
 
-  # Mount NFS
-  # fileSystems."/mnt/default/fabiano" = {
-  #   device = "truenas.in.gambiarra.net:/mnt/default-2/fabiano";
-  #   fsType = "nfs";
-  #   # options = [ "nfsvers=4.2" "noauto" "_netdev" "nofail" "hard" "intr" ];
-  #   # options = [ "intr" ];
-  # };
+  # Mount NFS with non-blocking options to prevent Dolphin freezes
+  fileSystems."/mnt/default/fabiano" = {
+    device = "truenas.in.gambiarra.net:/mnt/default-2/fabiano";
+    fsType = "nfs";
+    options = [ 
+      "nfsvers=4.2"
+      "_netdev"
+      "nofail"
+      "soft"           # Use soft mounts to prevent indefinite hangs
+      "timeo=30"       # 3 second timeout (30 deciseconds)
+      "retrans=2"      # Retry 2 times before giving up
+      "bg"             # Background mount if server unavailable
+      "intr"           # Allow interruption of NFS calls
+      "rsize=32768"    # Read buffer size
+      "wsize=32768"    # Write buffer size
+      "nordirplus"     # Disable READDIRPLUS for better compatibility
+    ];
+  };
 
   time.timeZone = "America/Sao_Paulo";
 

@@ -6,10 +6,11 @@ let
 
   casks = [
     "keepassxc"
-    "firefox"
+    # "firefox"
     "steam"
     "onlyoffice"
-    "utm"
+    # "utm"
+    "grayjay"
   ];
 in
 with lib;

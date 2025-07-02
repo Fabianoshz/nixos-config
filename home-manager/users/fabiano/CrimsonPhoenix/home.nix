@@ -7,6 +7,7 @@
     ./syncthing.nix
     ./firefox.nix
 
+    ../../../optional/claude-md/default.nix
     ../../../optional/zsh/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
@@ -41,6 +42,8 @@
     pkgs.dig
     pkgs.git
     pkgs.htop
+    pkgs.utm
+    pkgs.firefox
 
     pkgs-unstable.claude-code
   ];

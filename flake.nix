@@ -16,7 +16,7 @@
     };
 
     jovian-nixos = {
-      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=f31df4cb6b2eeef6cf0113edb687297be72a69df";
+      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=52b86b86d925ec00c836ecc6d36f9c947bb15736";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,11 +24,6 @@
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    };
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     firefox-addons = {
@@ -39,8 +34,6 @@
     mac-app-util.url = "github:hraban/mac-app-util";
 
     xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
-
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
 
@@ -60,8 +53,6 @@
     plasma-manager,
     mac-app-util,
     xdg-autostart,
-    nix-flatpak,
-    spicetify-nix,
     firefox-addons,
     nix-homebrew,
     ...
@@ -92,7 +83,6 @@
           ./home-manager/users/fabiano/GipsyDanger/home.nix
 
           inputs.xdg-autostart.homeManagerModules.xdg-autostart
-	  inputs.spicetify-nix.homeManagerModules.default
         ];
       };
 
@@ -106,7 +96,6 @@
           ./home-manager/users/fabiano/GipsyAvenger/home.nix
 
           inputs.xdg-autostart.homeManagerModules.xdg-autostart
-          nix-flatpak.homeManagerModules.nix-flatpak
         ];
       };
 
@@ -118,8 +107,6 @@
         extraSpecialArgs = { inherit nixpkgs system-mac inputs firefox-addons; pkgs-unstable = pkgs-unstable-mac; };
         modules = [
           ./home-manager/users/fabiano/CrimsonPhoenix/home.nix
-
-	  inputs.spicetify-nix.homeManagerModules.default
         ];
       };
 
@@ -158,7 +145,6 @@
         modules = [
           ./nixos/hosts/GipsyAvenger/configuration.nix
 
-          nix-flatpak.nixosModules.nix-flatpak
           jovian-nixos.nixosModules.default
           home-manager.nixosModules.home-manager
           {
@@ -177,14 +163,16 @@
           home-manager.darwinModules.home-manager
 
           mac-app-util.darwinModules.default
-          (
-            { ... }:
-            {
-              home-manager.sharedModules = [
-                mac-app-util.homeManagerModules.default
-              ];
-            }
-          )
+
+	  nix-homebrew.darwinModules.nix-homebrew
+	  {
+	    nix-homebrew = {
+	      enable = true;
+	      enableRosetta = true;
+	      user = "fabiano";
+	      autoMigrate = true;
+	    };
+	  }
         ];
       };
 
@@ -195,14 +183,6 @@
           home-manager.darwinModules.home-manager
 
           mac-app-util.darwinModules.default
-          (
-            { ... }:
-            {
-              home-manager.sharedModules = [
-                mac-app-util.homeManagerModules.default
-              ];
-            }
-          )
 
 	  nix-homebrew.darwinModules.nix-homebrew
 	  {

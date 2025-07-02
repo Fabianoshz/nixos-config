@@ -6,6 +6,7 @@
     ./syncthing.nix
     ./firefox.nix
 
+    ../../../optional/claude-md/default.nix
     ../../../optional/kde/default.nix
     ../../../optional/zsh/default.nix
     ../../../optional/git/default.nix
