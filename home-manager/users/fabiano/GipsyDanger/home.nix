@@ -3,14 +3,14 @@
   home.stateVersion = "25.05";
 
   imports = [
-    ./syncthing.nix
     ./firefox.nix
+    ./syncthing.nix
 
     ../../../optional/claude-md/default.nix
-    ../../../optional/kde/default.nix
-    ../../../optional/zsh/default.nix
     ../../../optional/git/default.nix
+    ../../../optional/kde/default.nix
     ../../../optional/neovim/default.nix
+    ../../../optional/zsh/default.nix
   ];
 
   nixpkgs = {
@@ -18,11 +18,11 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "claude-code"
         "discord"
-	"grayjay"
+        "grayjay"
         "obsidian"
+        "steam"
         "steam-original"
         "steam-unwrapped"
-        "steam"
       ];
     };
   };
@@ -85,9 +85,13 @@
 
   home.packages = [
     pkgs.awscli2
+    pkgs.bash
     pkgs.dbeaver-bin
+    pkgs.dig
     pkgs.discord
+    pkgs.git
     pkgs.godot
+    pkgs.htop
     pkgs.iotop
     pkgs.keepassxc
     pkgs.obsidian
@@ -99,20 +103,16 @@
     pkgs.usbutils
     pkgs.virt-manager
     pkgs.vlc
-    pkgs.bash
-    pkgs.dig
-    pkgs.git
-    pkgs.htop
- 
+
     pkgs-unstable.claude-code
     pkgs-unstable.grayjay
 
     # Rice stuff
-    pkgs.papirus-icon-theme
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.system}.darkly-qt6
-    pkgs.plasmusic-toolbar
+    pkgs.papirus-icon-theme
     pkgs.plasma-panel-colorizer
+    pkgs.plasmusic-toolbar
 
     # KDE
     pkgs.kdePackages.calendarsupport
@@ -130,7 +130,6 @@
     pkgs.kdePackages.kpimtextedit
     pkgs.kdePackages.kwalletmanager
     pkgs.kdePackages.okular
-    pkgs.kdePackages.signon-kwallet-extension
     pkgs.kdePackages.yakuake
 
     # PIM suite
@@ -142,8 +141,6 @@
     pkgs.kdePackages.akonadi-mime
     pkgs.kdePackages.akonadi-search
     pkgs.kdePackages.akonadiconsole
-    pkgs.kdePackages.kaccounts-integration
-    pkgs.kdePackages.kaccounts-providers
     pkgs.kdePackages.kdepim-addons
     pkgs.kdePackages.kdepim-runtime
     pkgs.kdePackages.kmail-account-wizard

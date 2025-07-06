@@ -3,14 +3,14 @@
   home.stateVersion = "25.05";
 
   imports = [
+    ./firefox.nix
     ./homebrew.nix
     ./syncthing.nix
-    ./firefox.nix
 
     ../../../optional/claude-md/default.nix
-    ../../../optional/zsh/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
+    ../../../optional/zsh/default.nix
   ];
 
   nixpkgs = {
@@ -32,18 +32,18 @@
 
   home.packages = [
     pkgs.awscli2
+    pkgs.bash
     pkgs.dbeaver-bin
+    pkgs.dig
     pkgs.discord
-    # pkgs.keepassxc # Waiting for: https://github.com/NixOS/nixpkgs/pull/411811
+    pkgs.firefox
+    pkgs.git
+    pkgs.htop
+    pkgs.keepassxc
     pkgs.obsidian
     pkgs.ssm-session-manager-plugin
     pkgs.tmux
-    pkgs.bash
-    pkgs.dig
-    pkgs.git
-    pkgs.htop
     pkgs.utm
-    pkgs.firefox
 
     pkgs-unstable.claude-code
   ];

@@ -5,11 +5,11 @@ let
   ];
 
   brews = [
-    "int128/kubelogin/kubelogin"
     "bazelisk"
-    "oniguruma" # Something in bazel needs this
     "gsed"
+    "int128/kubelogin/kubelogin"
     "kubelogin"
+    "oniguruma" # Something in bazel needs this
     "python@3.13"
     "xz"
     "yq"

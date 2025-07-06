@@ -3,21 +3,21 @@
   home.stateVersion = "25.05";
 
   imports = [
-    ./homebrew.nix
     ./git.nix
+    ./homebrew.nix
     ./ssh.nix
 
     ../../../optional/claude-md/default.nix
-    ../../../optional/zsh/default.nix
     ../../../optional/neovim/default.nix
+    ../../../optional/zsh/default.nix
   ];
 
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "obsidian"
-        "google-chrome"
         "claude-code"
+        "google-chrome"
+        "obsidian"
       ];
     };
   };
@@ -30,38 +30,35 @@
   };
 
   home.packages = [
-    pkgs.awscli2
     pkgs.aws-iam-authenticator
-    pkgs.ssm-session-manager-plugin
-
-    pkgs.kubectl
-    pkgs.kustomize
-    pkgs.kubernetes-helm
-    pkgs.kubelogin-oidc
-    pkgs.stern
+    pkgs.awscli2
+    pkgs.bash
+    pkgs.claude-code
+    pkgs.colima
+    pkgs.colordiff
     pkgs.coreutils
     pkgs.coreutils-prefixed
-
-    pkgs.docker
-
     pkgs.dbeaver-bin
-    pkgs.colordiff
-    pkgs.colima
-    pkgs.gh
-    pkgs.grpcurl
-    pkgs.kubectx
-    pkgs.obsidian
-    pkgs.tmux
-    pkgs.bash
-    pkgs.dig
-    pkgs.git
-    pkgs.htop
-    pkgs.google-chrome
-    pkgs.insomnia
-    pkgs.go
     pkgs.delve
+    pkgs.dig
+    pkgs.docker
+    pkgs.gh
+    pkgs.git
+    pkgs.go
+    pkgs.google-chrome
+    pkgs.grpcurl
+    pkgs.htop
+    pkgs.insomnia
+    pkgs.kubectl
+    pkgs.kubectx
+    pkgs.kubelogin-oidc
+    pkgs.kubernetes-helm
+    pkgs.kustomize
+    pkgs.obsidian
     pkgs.openjdk
-    pkgs.claude-code
+    pkgs.ssm-session-manager-plugin
+    pkgs.stern
+    pkgs.tmux
   ];
 
   # Let Home Manager install and manage itself.

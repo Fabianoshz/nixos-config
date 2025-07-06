@@ -17,9 +17,9 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
         "libretro-snes9x"
+        "steam"
         "steam-original"
         "steam-unwrapped"
-        "steam"
       ];
     };
   };
@@ -58,8 +58,13 @@
   };
 
   home.packages = [
+    pkgs.bash
+    pkgs.dig
+    pkgs.git
     pkgs.go-task
     pkgs.heroic
+    pkgs.htop
+    pkgs.itch
     pkgs.nexusmods-app
     pkgs.pcsx2
     pkgs.prismlauncher
@@ -67,16 +72,11 @@
     pkgs.sunshine
     pkgs.unzip
     pkgs.usbutils
-    pkgs.bash
-    pkgs.dig
-    pkgs.git
-    pkgs.htop
-    pkgs.itch
 
     # Rice stuff
-    pkgs.papirus-icon-theme
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.system}.darkly-qt6
+    pkgs.papirus-icon-theme
     pkgs.plasmusic-toolbar
 
     # KDE

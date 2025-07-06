@@ -5,12 +5,9 @@ let
   brews = [];
 
   casks = [
-    "keepassxc"
-    # "firefox"
-    "steam"
-    "onlyoffice"
-    # "utm"
     "grayjay"
+    "onlyoffice"
+    "steam"
   ];
 in
 with lib;

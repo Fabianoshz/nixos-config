@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ./hardware-configuration.nix
     ./environment.nix
+    ./hardware-configuration.nix
     ./jovian.nix
     ./programs.nix
     ./services.nix

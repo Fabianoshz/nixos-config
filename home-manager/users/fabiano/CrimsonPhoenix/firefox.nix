@@ -7,11 +7,10 @@
 
       extensions = {
         packages = with firefox-addons.packages.${system-mac}; [
-          sponsorblock
-          ublock-origin
-          steam-database
-          add-custom-search-engine
           keepassxc-browser
+          sponsorblock
+          steam-database
+          ublock-origin
         ];
       };
 
@@ -19,6 +18,19 @@
 	"identity.fxaccounts.account.device.name" = "CrimsonPhoenix";
         "extensions.autoDisableScopes" = 0;
 	"media.videocontrols.picture-in-picture.enabled" = false;
+      };
+
+      search = {
+        force = true;
+        default = "Searx";
+        order = [ "Searx" "Google" ];
+        engines = {
+          "Searx" = {
+            urls = [{ template = "https://searx.gambiarra.net/?q={searchTerms}"; }];
+            iconUpdateURL = "https://searx.gambiarra.net/static/themes/simple/img/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+          };
+        };
       };
     };
   };

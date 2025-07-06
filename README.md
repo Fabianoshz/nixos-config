@@ -10,8 +10,6 @@
   - [ ] NvimTree
   - [x] Telescope
 - [ ] Configure nvim LSP
-- [ ] Configure NFS correctly
-  - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-nfs-client-config-options#s2-nfs-client-config-options
 
 ## Ricing
 
@@ -27,13 +25,8 @@
   - https://github.com/luisbocanegra/plasma-panel-colorizer
 - [ ] Configure panel colorizer 
   - https://github.com/luisbocanegra/plasma-panel-colorizer
-- [ ] Configure tmux interface (make it nice)
 
 ### Mac
 - [ ] Find a nice wallpaper
   - https://github.com/mylinuxforwork/wallpaper
-
-## Improvements
-- [ ] Resolve google accounts login
-  - https://github.com/NixOS/nixpkgs/issues/263299
 

@@ -4,12 +4,12 @@
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "steam"
         "steam-jupiter-original"
         "steam-jupiter-unwrapped"
         "steam-original"
         "steam-run"
         "steam-unwrapped"
-        "steam"
         "steamdeck-hw-theme"
       ];
     };
@@ -57,14 +57,6 @@
           stripRoot = true;
         };
       };
-      # "Decky-Framegen" = {
-      #   src = pkgs.fetchzip {
-      #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/163a42f85f95abd7a51350075017ef53e17c02181304375659bf5e7e98bb920e.zip";
-      #     sha256 = "";
-      #     extension = "zip";
-      #     stripRoot = true;
-      #   };
-      # };
       "decky-pip" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/e0115148305cd216e50bcfec8851fe3d1c6f3d36ae2f92113c199fc1bb2388e3.zip";

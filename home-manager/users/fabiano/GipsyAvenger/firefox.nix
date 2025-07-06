@@ -8,6 +8,7 @@
       extensions = {
 	packages = with firefox-addons.packages.${system}; [
           sponsorblock
+          steam-database
           ublock-origin
         ];
       };
@@ -38,6 +39,19 @@
 	"media.videocontrols.picture-in-picture.enabled" = false;
         "extensions.autoDisableScopes" = 0;
         "extensions.enabledScopes" = 15;
+      };
+
+      search = {
+        force = true;
+        default = "Searx";
+        order = [ "Searx" "Google" ];
+        engines = {
+          "Searx" = {
+            urls = [{ template = "https://searx.gambiarra.net/?q={searchTerms}"; }];
+            iconUpdateURL = "https://searx.gambiarra.net/static/themes/simple/img/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+          };
+        };
       };
     };
   };

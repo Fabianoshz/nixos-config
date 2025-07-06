@@ -104,9 +104,10 @@
           system = "aarch64-darwin";
         };
 
-        extraSpecialArgs = { inherit nixpkgs system-mac inputs firefox-addons; pkgs-unstable = pkgs-unstable-mac; };
+        extraSpecialArgs = { inherit nixpkgs system-mac inputs firefox-addons mac-app-util; pkgs-unstable = pkgs-unstable-mac; };
         modules = [
           ./home-manager/users/fabiano/CrimsonPhoenix/home.nix
+          mac-app-util.homeManagerModules.default
         ];
       };
 
@@ -115,9 +116,10 @@
           system = "aarch64-darwin";
         };
 
-        extraSpecialArgs = { inherit nixpkgs system-mac; };
+        extraSpecialArgs = { inherit nixpkgs system-mac mac-app-util; };
         modules = [
           ./home-manager/users/fabiano/D5FXW3H24T/home.nix
+          mac-app-util.homeManagerModules.default
         ];
       };
     };

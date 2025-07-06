@@ -20,13 +20,13 @@ in
         };
 
         devices = {
-          "Syncthing Server" = syncthing.devices.SyncthingServer;
-          "Odin" = syncthing.devices.Odin;
-          "CrimsonTyphoon" = syncthing.devices.CrimsonTyphoon;
-          "GipsyDanger" = syncthing.devices.GipsyDanger;
           "ChernoAlpha" = syncthing.devices.ChernoAlpha;
+          "CrimsonTyphoon" = syncthing.devices.CrimsonTyphoon;
           "GipsyAvenger" = syncthing.devices.GipsyAvenger;
+          "GipsyDanger" = syncthing.devices.GipsyDanger;
           "MiyooMiniPlus" = syncthing.devices.MiyooMiniPlus;
+          "Odin" = syncthing.devices.Odin;
+          "Syncthing Server" = syncthing.devices.SyncthingServer;
 	};
 
         folders = {
