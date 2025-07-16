@@ -22,12 +22,12 @@
 
       search = {
         force = true;
-        default = "Searx";
-        order = [ "Searx" "Google" ];
+        default = "searx";
+        order = [ "searx" "google" ];
         engines = {
-          "Searx" = {
+          "searx" = {
             urls = [{ template = "https://searx.gambiarra.net/?q={searchTerms}"; }];
-            iconUpdateURL = "https://searx.gambiarra.net/static/themes/simple/img/favicon.png";
+            icon = "https://searx.gambiarra.net/static/themes/simple/img/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
           };
         };

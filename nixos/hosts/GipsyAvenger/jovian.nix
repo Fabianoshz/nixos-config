@@ -57,14 +57,6 @@
           stripRoot = true;
         };
       };
-      "decky-pip" = {
-        src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/e0115148305cd216e50bcfec8851fe3d1c6f3d36ae2f92113c199fc1bb2388e3.zip";
-          sha256 = "sha256-GAYPJH9dK73191zQhf+0WmvV9c+KMyHJC1JItpQoDUY=";
-          extension = "zip";
-          stripRoot = true;
-        };
-      };
       "SDH-CssLoader" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/1a1e8f4dded8494febe56df16429ef5bba1e5b8feb3fd989d5808fbef0d71350.zip";
@@ -91,7 +83,7 @@
       };
       "SteamGridDB" = {
         src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/b84f0a3f83b6e5d7cbc0ba9360bde33cfb400cf5f2a5d5c38f44a488e2c91a57.zip";
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/6bc09af6ce16bf3437dc100129940310481338bbf2b198ed702854ed193d2e46.zip";
           sha256 = "sha256-0Hvmuu/Fm2mzk7nloq/azTTXsZOm/PGYoIL4bH6LFJE=";
           extension = "zip";
           stripRoot = true;
@@ -99,7 +91,7 @@
       };
       "tab-master" = {
         src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/e08aa8019feba012fd4cf540748a095d24e1a411eecd870a2c3310b18a4466dc.zip";
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/565e2f68c4addf7717c5cf22b2d915d45d06280f9a7a7e6d8ef2f4a7128dadb4.zip";
           sha256 = "sha256-UPhCqod+QbswqXrdmsowQcZ6UFOgskSogbAnhDhNbBQ=";
           extension = "zip";
           stripRoot = true;

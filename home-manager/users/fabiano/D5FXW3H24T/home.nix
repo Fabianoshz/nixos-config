@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 {
   home.stateVersion = "25.05";
 
@@ -33,7 +33,6 @@
     pkgs.aws-iam-authenticator
     pkgs.awscli2
     pkgs.bash
-    pkgs.claude-code
     pkgs.colima
     pkgs.colordiff
     pkgs.coreutils
@@ -59,6 +58,8 @@
     pkgs.ssm-session-manager-plugin
     pkgs.stern
     pkgs.tmux
+
+    pkgs-unstable.claude-code
   ];
 
   # Let Home Manager install and manage itself.

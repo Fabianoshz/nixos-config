@@ -140,7 +140,6 @@
     pkgs.kdePackages.akonadi-import-wizard
     pkgs.kdePackages.akonadi-mime
     pkgs.kdePackages.akonadi-search
-    pkgs.kdePackages.akonadiconsole
     pkgs.kdePackages.kdepim-addons
     pkgs.kdePackages.kdepim-runtime
     pkgs.kdePackages.kmail-account-wizard
