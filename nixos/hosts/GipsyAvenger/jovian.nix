@@ -52,7 +52,7 @@
       "MagicPodsDecky" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/598f1e27f39972317a1f8f9b5b351bf0415a4ca8cf7cbfeec28fdab02207abab.zip";
-          sha256 = "sha256-dkoEPwyEcLcQL9FMPWkVfWHZfxKC6UgaUlrsZE2JRn0";
+          sha256 = "sha256-t6LK31agLoeT7SICERfItdEfN4FScZvsaNsAEmHhSeA=";
           extension = "zip";
           stripRoot = true;
         };
@@ -84,7 +84,7 @@
       "SteamGridDB" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/6bc09af6ce16bf3437dc100129940310481338bbf2b198ed702854ed193d2e46.zip";
-          sha256 = "sha256-0Hvmuu/Fm2mzk7nloq/azTTXsZOm/PGYoIL4bH6LFJE=";
+          sha256 = "sha256-t6LK31agLoeT7SICERfItdEfN4FScZvsaNsAEmHhSeA=";
           extension = "zip";
           stripRoot = true;
         };
@@ -92,7 +92,7 @@
       "tab-master" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/26bc5b36dd4e0ffdde3e4fc89eb3862ebce9fb1d5f95b3aa3b1ad209f13976c0.zip";
-          sha256 = "sha256-UPhCqod+QbswqXrdmsowQcZ6UFOgskSogbAnhDhNbBQ=";
+          sha256 = "sha256-3stKM8mG9Wio66Hywtk9xqM185MKz1+KpwEapb2PMqY=";
           extension = "zip";
           stripRoot = true;
         };
@@ -108,7 +108,7 @@
       "Emuchievements" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/98dcb443e81b9f9011cfe77c69eb659869c8e2df2df8b0a443df66cbfc2f5a89.zip";
-          sha256 = "sha256-28uGij7iqBEFvyzKAnuHXY5MRqfBs3ica0ckqXeYaBI=";
+          sha256 = "sha256-HSeDCEC+qu4HPULjf5SbnsnS7H9OHDXTknLf/3IeXDA=";
           extension = "zip";
           stripRoot = true;
         };
