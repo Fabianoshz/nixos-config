@@ -1,0 +1,22 @@
+version: '3'
+
+tasks:
+  full-switch:
+    cmds:
+      - task: nixos-switch
+      - task: home-manager-switch
+
+  nixos-switch:
+    cmds:
+      - cmd: sudo nixos-rebuild switch --flake 'path:.'
+        platforms: [linux]
+      - cmd: sudo nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake '.'
+        platforms: [darwin]
+
+  home-manager-switch:
+    cmds:
+      - home-manager switch --flake 'path:.'
+
+  flake-update:
+    cmds:
+      - nix flake update
