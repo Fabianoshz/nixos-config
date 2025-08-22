@@ -53,10 +53,12 @@
     pkgs.gh
     pkgs.git
     pkgs.go
+    pkgs.golint
     pkgs.google-chrome
     pkgs.grpcurl
     pkgs.htop
     pkgs.insomnia
+    pkgs.iterm2
     pkgs.kubectl
     pkgs.kubectx
     pkgs.kubelogin-oidc
@@ -64,16 +66,15 @@
     pkgs.kustomize
     pkgs.obsidian
     pkgs.openjdk
-    pkgs.spotify
+    pkgs.protobuf
+    pkgs.protoc-gen-go
+    pkgs.protoc-gen-go-grpc
     pkgs.ssm-session-manager-plugin
     pkgs.stern
     pkgs.tmux
-    pkgs.golint
-    pkgs.protoc-gen-go
-    pkgs.protoc-gen-go-grpc
-    pkgs.protobuf
 
     pkgs.unstable.claude-code
+    pkgs.unstable.container
   ];
 
   # Let Home Manager install and manage itself.

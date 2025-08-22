@@ -118,6 +118,8 @@
     configFile = {
       # Krunner
       "krunnerrc"."General"."FreeFloating" = true;
+      "krunnerrc"."Plugins"."browsertabsEnabled" = false;
+      "krunnerrc"."Plugins"."desktopsessionsEnabled" = false;
       "krunnerrc"."Plugins"."krunner_appstreamEnabled" = false;
       "krunnerrc"."Plugins"."krunner_bookmarksrunnerEnabled" = true;
       "krunnerrc"."Plugins"."krunner_charrunnerEnabled" = false;
@@ -126,6 +128,7 @@
       "krunnerrc"."Plugins"."krunner_killEnabled" = false;
       "krunnerrc"."Plugins"."krunner_konsoleprofilesEnabled" = false;
       "krunnerrc"."Plugins"."krunner_kwinEnabled" = false;
+      "krunnerrc"."Plugins"."krunner_pimcontactsEnabled" = false;
       "krunnerrc"."Plugins"."krunner_placesrunnerEnabled" = false;
       "krunnerrc"."Plugins"."krunner_plasma-desktopEnabled" = false;
       "krunnerrc"."Plugins"."krunner_powerdevilEnabled" = true;

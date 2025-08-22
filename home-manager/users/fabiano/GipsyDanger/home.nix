@@ -114,6 +114,8 @@
     pkgs.virt-manager
     pkgs.vlc
 
+    pkgs.nexusmods-app
+
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay
 

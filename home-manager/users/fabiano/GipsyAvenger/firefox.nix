@@ -18,9 +18,10 @@ in
       };
 
       settings = {
-	"identity.fxaccounts.account.device.name" = "GipsyAvenger";
-        "extensions.autoDisableScopes" = 0;
+	"extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
 	"media.videocontrols.picture-in-picture.enabled" = false;
+        "extensions.autoDisableScopes" = 0;
+        "identity.fxaccounts.account.device.name" = "GipsyDanger";
       };
     };
 

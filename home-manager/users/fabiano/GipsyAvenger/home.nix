@@ -60,6 +60,7 @@
   home.packages = [
     pkgs.bash
     pkgs.dig
+    pkgs.emulationstation-de
     pkgs.git
     pkgs.go-task
     pkgs.heroic

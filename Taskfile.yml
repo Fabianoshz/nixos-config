@@ -10,7 +10,7 @@ tasks:
     cmds:
       - cmd: sudo nixos-rebuild switch --flake 'path:.'
         platforms: [linux]
-      - cmd: sudo nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake '.'
+      - cmd: sudo nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake 'path:.'
         platforms: [darwin]
 
   home-manager-switch:

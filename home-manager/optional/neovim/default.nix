@@ -34,6 +34,7 @@
 
           vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
           vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Lists previously open files' })
+          vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Lists previously open buffers' })
 	'';
       }
       {

@@ -48,6 +48,7 @@
     pkgs.firefox
     pkgs.git
     pkgs.htop
+    pkgs.iterm2
     pkgs.keepassxc
     pkgs.obsidian
     pkgs.ssm-session-manager-plugin
@@ -55,6 +56,7 @@
     pkgs.utm
 
     pkgs.unstable.claude-code
+    pkgs.unstable.container
   ];
 
   # Let Home Manager install and manage itself.

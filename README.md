@@ -1,15 +1,13 @@
 # TODO
-- [ ] Configure tmux shortcuts
 - [ ] Use nvim surround: https://github.com/kylechui/nvim-surround
-- [ ] Add templates
-  - https://www.reddit.com/r/kde/comments/s74vd1/kde_create_new_templates/
 
 ## Usability
-- Configure nvim shortcuts
-  - [ ] DAP
-  - [ ] NvimTree
-  - [x] Telescope
-- [ ] Configure nvim LSP
+- Neovim stuff
+    - Configure tabs
+    - Configure quick move
+    - Configure nvim shortcuts
+      - [ ] DAP
+    - [ ] Configure nvim LSP
 
 ## Ricing
 

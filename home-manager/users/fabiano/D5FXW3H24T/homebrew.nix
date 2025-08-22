@@ -11,6 +11,8 @@ let
     "kubelogin"
     "oniguruma" # Something in bazel needs this
     "python@3.13"
+    "ripgrep"
+    "snowflake-cli"
     "xz"
     "yq"
   ];
@@ -18,9 +20,7 @@ let
   casks = [
     "1password"
     "1password-cli"
-    "container"
     "cursor"
-    "utm"
   ];
 in
 with lib;
