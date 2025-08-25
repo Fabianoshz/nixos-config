@@ -49,6 +49,7 @@
 
     # Got from: https://plugins.deckbrew.xyz/plugins
     plugins = {
+      # This is not working :(
       "MagicPodsDecky" = {
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/598f1e27f39972317a1f8f9b5b351bf0415a4ca8cf7cbfeec28fdab02207abab.zip";
@@ -109,6 +110,14 @@
         src = pkgs.fetchzip {
           url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/98dcb443e81b9f9011cfe77c69eb659869c8e2df2df8b0a443df66cbfc2f5a89.zip";
           sha256 = "sha256-HSeDCEC+qu4HPULjf5SbnsnS7H9OHDXTknLf/3IeXDA=";
+          extension = "zip";
+          stripRoot = true;
+        };
+      };
+      "decky-pip" = {
+        src = pkgs.fetchzip {
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/e0115148305cd216e50bcfec8851fe3d1c6f3d36ae2f92113c199fc1bb2388e3.zip";
+          sha256 = "sha256-GAYPJH9dK73191zQhf+0WmvV9c+KMyHJC1JItpQoDUY=";
           extension = "zip";
           stripRoot = true;
         };

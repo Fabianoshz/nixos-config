@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+
     # Bleeding edge stuff
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -52,6 +54,7 @@
     nixpkgs,
     home-manager,
     nix-darwin,
+    nix-flatpak,
     nixpkgs-unstable,
     home-manager-master,
     jovian-nixos,
@@ -87,6 +90,7 @@
         modules = [
           ./home-manager/users/fabiano/GipsyAvenger/home.nix
 
+          nix-flatpak.homeManagerModules.nix-flatpak
           inputs.xdg-autostart.homeManagerModules.xdg-autostart
         ];
       };

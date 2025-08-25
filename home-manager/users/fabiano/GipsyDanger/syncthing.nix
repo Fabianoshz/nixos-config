@@ -65,7 +65,7 @@ in
 
           "[Saves] Diablo II Ressurected" = {
             enable  = true;
-            path    = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games";
+            path    = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games/Diablo II Ressurected";
             devices = [ "Syncthing Server" "GipsyAvenger" ];
             versioning = {
               type = "simple";

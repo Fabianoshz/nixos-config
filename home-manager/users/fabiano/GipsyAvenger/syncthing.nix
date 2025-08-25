@@ -126,7 +126,7 @@ in
 
           "[Saves] Dynasty Warriors 8" = {
             enable  = true;
-            path    = "/home/fabiano/.steam/steam/steamapps/compatdata/278080/pfx/drive_c/users/steamuser/Documents/TecmoKoei/Dynasty Warriors 8/Savedata";
+            path    = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games/Diablo II Resurrected";
             devices = [ "Syncthing Server" "GipsyDanger" ];
             versioning = {
               type = "simple";

@@ -5,6 +5,7 @@
   imports = [
     ./syncthing.nix
     ./firefox.nix
+    ./flatpak.nix
 
     ../../../optional/kde/default.nix
     ../../../optional/zsh/default.nix
@@ -15,7 +16,6 @@
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "discord"
         "libretro-snes9x"
         "steam"
         "steam-original"
@@ -60,7 +60,7 @@
   home.packages = [
     pkgs.bash
     pkgs.dig
-    pkgs.emulationstation-de
+    pkgs.flatpak
     pkgs.git
     pkgs.go-task
     pkgs.heroic
@@ -70,7 +70,6 @@
     pkgs.pcsx2
     pkgs.prismlauncher
     pkgs.steam-rom-manager
-    pkgs.sunshine
     pkgs.unzip
     pkgs.usbutils
 

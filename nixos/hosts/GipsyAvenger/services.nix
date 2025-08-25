@@ -5,9 +5,20 @@
 
     openssh.enable = true;
     desktopManager.plasma6.enable = true;
+
     pipewire = {
       enable = true;
       pulse.enable = true;
+    };
+
+    sunshine = {
+      enable = true;
+      autoStart = true;
+      capSysAdmin = true;
+      openFirewall = true;
+      settings = {
+        back_button_timeout = 2000;
+      };
     };
   };
 }
