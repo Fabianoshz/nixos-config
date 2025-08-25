@@ -10,7 +10,7 @@ in
     userEmail = general.emails.personal;
     extraConfig = {
       user = {
-	signingKey = general.ssh.github;
+        signingKey = general.ssh.github;
       };
       gpg = {
         format = "ssh";
@@ -21,6 +21,6 @@ in
       push = {
         autoSetupRemote = true;
       };
-    };    
+    };
   };
 }

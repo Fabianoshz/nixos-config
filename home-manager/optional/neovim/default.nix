@@ -6,7 +6,7 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraPackages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    extraPackages = [ ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     plugins = with pkgs.vimPlugins; [
       gitsigns-nvim
@@ -26,49 +26,49 @@
 
       {
         plugin = telescope-nvim;
-	type = "lua";
-	config = ''
-          require("telescope").setup()
+        type = "lua";
+        config = ''
+                    require("telescope").setup()
 
-          local builtin = require('telescope.builtin')
+                    local builtin = require('telescope.builtin')
 
-          vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-          vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Lists previously open files' })
-          vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Lists previously open buffers' })
-	'';
+                    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+                    vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Lists previously open files' })
+                    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Lists previously open buffers' })
+          	'';
       }
       {
         plugin = nvim-tree-lua;
-	type = "lua";
-	config = ''
-          local function on_attach(bufnr)
-            local api = require "nvim-tree.api"
-            api.config.mappings.default_on_attach(bufnr)
-          end
+        type = "lua";
+        config = ''
+                    local function on_attach(bufnr)
+                      local api = require "nvim-tree.api"
+                      api.config.mappings.default_on_attach(bufnr)
+                    end
 
-          require("nvim-tree").setup {
-            on_attach = on_attach,
-          }
+                    require("nvim-tree").setup {
+                      on_attach = on_attach,
+                    }
 
-          -- Toggle NvimTree with Ctrl+B
-          vim.keymap.set('n', '<C-b>', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle NvimTree' })
-          -- Find current file in NvimTree
-          vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFile<cr>', { desc = 'Find file in NvimTree' })
-	'';
+                    -- Toggle NvimTree with Ctrl+B
+                    vim.keymap.set('n', '<C-b>', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle NvimTree' })
+                    -- Find current file in NvimTree
+                    vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFile<cr>', { desc = 'Find file in NvimTree' })
+          	'';
       }
       {
         plugin = nvim-dap-go;
-	type = "lua";
-	config = ''
-	  require("dap-go").setup()
-	'';
+        type = "lua";
+        config = ''
+          	  require("dap-go").setup()
+          	'';
       }
       {
         plugin = nvim-dap-ui;
-	type = "lua";
-	config = ''
-	  require("dapui").setup()
-	'';
+        type = "lua";
+        config = ''
+          	  require("dapui").setup()
+          	'';
       }
     ];
 

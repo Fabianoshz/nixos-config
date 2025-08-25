@@ -2,7 +2,7 @@
 {
   nixpkgs.overlays = [
     (self: prev: {
-      waydroid-exec = (pkgs.callPackage ../../../pkgs/waydroid-exec/default.nix {});
+      waydroid-exec = (pkgs.callPackage ../../../pkgs/waydroid-exec/default.nix { });
     })
   ];
 

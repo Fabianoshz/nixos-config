@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 with lib;
 let
   syncthing = builtins.fromJSON (builtins.readFile ../../../../sensitive/syncthing.json);
@@ -8,7 +8,7 @@ in
     syncthing = {
       enable = true;
       guiAddress = "127.0.0.1:8384";
-      extraOptions = ["-no-default-folder"];
+      extraOptions = [ "-no-default-folder" ];
 
       settings = {
         gui.theme = "default";
@@ -27,45 +27,45 @@ in
           "MiyooMiniPlus" = syncthing.devices.MiyooMiniPlus;
           "Odin" = syncthing.devices.Odin;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
-	};
+        };
 
         folders = {
           "[Documents] Common" = {
-            enable  = true;
-            path    = "/home/fabiano/Documents/Common";
+            enable = true;
+            path = "${config.home.homeDirectory}/Documents/Common";
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
           };
           "[Documents] Passwords" = {
-            enable  = true;
-            path    = "/home/fabiano/Documents/Passwords";
+            enable = true;
+            path = "${config.home.homeDirectory}/Documents/Passwords";
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
           };
           "[Documents] Share" = {
-            enable  = true;
-            path    = "/home/fabiano/Documents/Share";
+            enable = true;
+            path = "${config.home.homeDirectory}/Documents/Share";
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
-            enable  = true;
-            path    = "/home/fabiano/Documents/Workspaces";
+            enable = true;
+            path = "${config.home.homeDirectory}/Documents/Workspaces";
             devices = [ "Syncthing Server" "CrimsonPhoenix" ];
           };
 
           "[Media] Music" = {
-            enable  = true;
-            path    = "/home/fabiano/Music";
-            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Odin" ];
+            enable = true;
+            path = "${config.home.homeDirectory}/Music";
+            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Odin" "GipsyAvenger" ];
           };
 
           "[Yuzu] Saves" = {
-            enable  = true;
-            path    = "/home/fabiano/.local/share/yuzu/nand/user/save";
+            enable = true;
+            path = "${config.home.homeDirectory}/.local/share/yuzu/nand/user/save";
             devices = [ "Syncthing Server" "GipsyAvenger" ];
           };
 
           "[Saves] Diablo II Ressurected" = {
-            enable  = true;
-            path    = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games/Diablo II Ressurected";
+            enable = true;
+            path = "${config.home.homeDirectory}/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games/Diablo II Ressurected";
             devices = [ "Syncthing Server" "GipsyAvenger" ];
             versioning = {
               type = "simple";
@@ -76,8 +76,8 @@ in
           };
 
           "[Saves] Dynasty Warriors 8" = {
-            enable  = true;
-            path    = "/home/fabiano/.steam/steam/steamapps/compatdata/278080/pfx/drive_c/users/steamuser/Documents/TecmoKoei/Dynasty Warriors 8/Savedata";
+            enable = true;
+            path = "${config.home.homeDirectory}/.steam/steam/steamapps/compatdata/278080/pfx/drive_c/users/steamuser/Documents/TecmoKoei/Dynasty Warriors 8/Savedata";
             devices = [ "Syncthing Server" "GipsyAvenger" ];
             versioning = {
               type = "simple";

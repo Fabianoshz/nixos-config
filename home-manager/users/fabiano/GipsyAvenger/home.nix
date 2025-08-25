@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, config, ... }:
 {
   home.stateVersion = "25.05";
 
@@ -51,7 +51,7 @@
 
   home.file = {
     # Enable CEF for decky-loader
-    "/home/fabiano/.steam/steam/.cef-enable-remote-debugging" = {
+    "${config.home.homeDirectory}/.steam/steam/.cef-enable-remote-debugging" = {
       text = "";
       executable = false;
     };

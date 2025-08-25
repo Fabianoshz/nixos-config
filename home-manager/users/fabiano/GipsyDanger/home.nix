@@ -47,7 +47,7 @@
       desktopName = "Stream Controller";
       icon = "streamcontroller";
       type = "Application";
-      categories = ["Utility"];
+      categories = [ "Utility" ];
       startupNotify = true;
       terminal = false;
       comment = "Control your Elgato Stream Decks";
@@ -61,7 +61,7 @@
       desktopName = "Yakuake";
       icon = "yakuake";
       type = "Application";
-      categories = ["Qt" "KDE" "System" "TerminalEmulator"];
+      categories = [ "Qt" "KDE" "System" "TerminalEmulator" ];
       startupNotify = false;
       terminal = false;
       comment = "A drop-down terminal emulator based on KDE Konsole technology.";

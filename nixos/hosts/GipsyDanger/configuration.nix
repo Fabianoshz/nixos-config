@@ -16,18 +16,18 @@ in
   fileSystems."/mnt/default/fabiano" = {
     device = "truenas.${general.internal_domain}:/mnt/default-2/fabiano";
     fsType = "nfs";
-    options = [ 
+    options = [
       "nfsvers=4.2"
       "_netdev"
       "nofail"
-      "soft"           # Use soft mounts to prevent indefinite hangs
-      "timeo=30"       # 3 second timeout (30 deciseconds)
-      "retrans=2"      # Retry 2 times before giving up
-      "bg"             # Background mount if server unavailable
-      "intr"           # Allow interruption of NFS calls
-      "rsize=32768"    # Read buffer size
-      "wsize=32768"    # Write buffer size
-      "nordirplus"     # Disable READDIRPLUS for better compatibility
+      "soft" # Use soft mounts to prevent indefinite hangs
+      "timeo=30" # 3 second timeout (30 deciseconds)
+      "retrans=2" # Retry 2 times before giving up
+      "bg" # Background mount if server unavailable
+      "intr" # Allow interruption of NFS calls
+      "rsize=32768" # Read buffer size
+      "wsize=32768" # Write buffer size
+      "nordirplus" # Disable READDIRPLUS for better compatibility
     ];
   };
 
@@ -103,7 +103,7 @@ in
     loader.systemd-boot.editor = false;
     loader.efi.canTouchEfiVariables = true;
     loader.timeout = 0;
-    kernelParams = ["quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3"];
+    kernelParams = [ "quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
     consoleLogLevel = 0;
     initrd.verbose = false;
     initrd.systemd.enable = true;
@@ -118,7 +118,7 @@ in
       flags = [
         "--update-input"
         "nixpkgs"
-	"--commit-lock-file"
+        "--commit-lock-file"
       ];
       dates = "02:00";
       randomizedDelaySec = "45min";

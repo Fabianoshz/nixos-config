@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 with lib;
 let
   syncthing = builtins.fromJSON (builtins.readFile ../../../../sensitive/syncthing.json);
@@ -8,7 +8,7 @@ in
     syncthing = {
       enable = true;
       guiAddress = "0.0.0.0:8384";
-      extraOptions = ["-no-default-folder"];
+      extraOptions = [ "-no-default-folder" ];
 
       settings = {
         gui.theme = "default";
@@ -27,34 +27,34 @@ in
           "MiyooMiniPlus" = syncthing.devices.MiyooMiniPlus;
           "Odin" = syncthing.devices.Odin;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
-	};
+        };
 
         folders = {
           "[Documents] Common" = {
-            enable  = true;
-            path    = "/Users/fabiano/Documents/Common";
+            enable = true;
+            path = "${config.home.homeDirectory}/Documents/Common";
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "GipsyDanger" ];
           };
           "[Documents] Passwords" = {
-            enable  = true;
-            path    = "/Users/fabiano/Documents/Passwords";
+            enable = true;
+            path = "${config.home.homeDirectory}/Documents/Passwords";
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "GipsyDanger" ];
           };
           "[Documents] Share" = {
-            enable  = true;
-            path    = "/Users/fabiano/Documents/Share";
+            enable = true;
+            path = "${config.home.homeDirectory}/Documents/Share";
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "GipsyDanger" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
-            enable  = true;
-            path    = "/Users/fabiano/Documents/Workspaces";
+            enable = true;
+            path = "${config.home.homeDirectory}/Documents/Workspaces";
             devices = [ "Syncthing Server" "GipsyDanger" ];
           };
 
           "[Media] Music" = {
-            enable  = true;
-            path    = "/Users/fabiano/Music";
-            devices = [ "GipsyDanger" "ChernoAlpha" "Odin" ];
+            enable = true;
+            path = "${config.home.homeDirectory}/Music";
+            devices = [ "GipsyDanger" "GipsyAvenger" "ChernoAlpha" "Odin" ];
           };
         };
       };

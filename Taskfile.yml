@@ -6,6 +6,11 @@ tasks:
       - task: nixos-switch
       - task: home-manager-switch
 
+  format:
+    desc: "Format all Nix files"
+    cmds:
+      - nix-shell -p nixpkgs-fmt --run "find . -name '*.nix' -not -path './.git/*' | xargs nixpkgs-fmt"
+
   nixos-switch:
     cmds:
       - cmd: sudo nixos-rebuild switch --flake 'path:.'
@@ -20,3 +25,13 @@ tasks:
   flake-update:
     cmds:
       - nix flake update
+
+  pre-commit-install:
+    desc: "Install pre-commit hooks"
+    cmds:
+      - nix-shell -p pre-commit --run "pre-commit install"
+
+  pre-commit-run:
+    desc: "Run pre-commit hooks on all files"
+    cmds:
+      - nix-shell -p pre-commit --run "pre-commit run --all-files"

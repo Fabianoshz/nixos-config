@@ -18,7 +18,7 @@
       windowDecorations = {
         theme = "Darkly";
         library = "org.kde.darkly";
-      }; 
+      };
 
       iconTheme = "Papirus-Dark";
 
@@ -27,7 +27,7 @@
         theme = "Nordic-cursors";
       };
     };
- 
+
     spectacle.shortcuts = {
       captureActiveWindow = "";
       captureCurrentMonitor = "";
@@ -42,19 +42,19 @@
       {
         location = "top";
         height = 32;
-        widgets = [   
-	  {
-          
-	  kickerdash = {
-	      icon = "applications-all";
-	    };
-	  }
+        widgets = [
+          {
+
+            kickerdash = {
+              icon = "applications-all";
+            };
+          }
           {
             iconTasks = {
               appearance = {
-	        fill = false;
+                fill = false;
                 rows.multirowView = "never";
-		iconSpacing = "medium";
+                iconSpacing = "medium";
               };
               behavior = {
                 grouping.method = "none";
@@ -67,53 +67,53 @@
           {
             digitalClock = {
               calendar.firstDayOfWeek = "sunday";
-	      date = {
+              date = {
                 enable = true;
-	        position = "besideTime";
-		format = {
-		  custom = "ddd d MMM";
-		};
+                position = "besideTime";
+                format = {
+                  custom = "ddd d MMM";
+                };
               };
-	      time = {
+              time = {
                 format = "24h";
-	        showSeconds = "always";
-	      };
+                showSeconds = "always";
+              };
             };
           }
           "org.kde.plasma.panelspacer"
-	  "plasmusic-toolbar"
-	  "org.kde.plasma.marginsseparator"
+          "plasmusic-toolbar"
+          "org.kde.plasma.marginsseparator"
           {
-	    systemTray = {
-	      icons.spacing = "medium";
-	      items = {
-	        showAll = false;
-		hidden = [
+            systemTray = {
+              icons.spacing = "medium";
+              items = {
+                showAll = false;
+                hidden = [
                   "org.kde.plasma.addons.katesessions"
-		  "org.kde.plasma.keyboardlayout"
-		];
-		shown = [
-		  "org.kde.plasma.brightness"
-		  "org.kde.plasma.networkmanagement"
-		  "org.kde.plasma.volume"
-		  "org.kde.kdeconnect"
-		  "org.kde.plasma.notifications"
-		  "org.kde.plasma.battery"
-		];
-		extra = [
-		  "org.kde.plasma.brightness"
-		  "org.kde.plasma.networkmanagement"
-		  "org.kde.plasma.volume"
-		  "org.kde.kdeconnect"
-		  "org.kde.plasma.notifications"
-		  "org.kde.plasma.battery"
-		];
-	      };
-	    };
-	  }
+                  "org.kde.plasma.keyboardlayout"
+                ];
+                shown = [
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.volume"
+                  "org.kde.kdeconnect"
+                  "org.kde.plasma.notifications"
+                  "org.kde.plasma.battery"
+                ];
+                extra = [
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.volume"
+                  "org.kde.kdeconnect"
+                  "org.kde.plasma.notifications"
+                  "org.kde.plasma.battery"
+                ];
+              };
+            };
+          }
         ];
       }
-    ];    
+    ];
 
     configFile = {
       # Krunner
@@ -150,7 +150,7 @@
 
   programs.konsole = {
     enable = true;
-  
+
     defaultProfile = "Personal";
 
     profiles = {

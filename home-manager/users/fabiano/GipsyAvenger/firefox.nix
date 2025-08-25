@@ -10,7 +10,7 @@ in
       id = 0;
 
       extensions = {
-	packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+        packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           sponsorblock
           steam-database
           ublock-origin
@@ -18,8 +18,8 @@ in
       };
 
       settings = {
-	"extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-	"media.videocontrols.picture-in-picture.enabled" = false;
+        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        "media.videocontrols.picture-in-picture.enabled" = false;
         "extensions.autoDisableScopes" = 0;
         "identity.fxaccounts.account.device.name" = "GipsyDanger";
       };
@@ -29,7 +29,7 @@ in
       id = 1;
 
       extensions = {
-	packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+        packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           sponsorblock
           ublock-origin
         ];
@@ -41,7 +41,7 @@ in
         "media.eme.enabled" = true;
         "media.gmp-widevinecdm.enabled" = true;
         "media.gmp-widevinecdm.autoupdate" = true;
-	"media.videocontrols.picture-in-picture.enabled" = false;
+        "media.videocontrols.picture-in-picture.enabled" = false;
         "extensions.autoDisableScopes" = 0;
         "extensions.enabledScopes" = 15;
       };
@@ -61,4 +61,3 @@ in
     };
   };
 }
-

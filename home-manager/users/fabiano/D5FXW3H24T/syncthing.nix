@@ -8,7 +8,7 @@ in
     syncthing = {
       enable = true;
       guiAddress = "0.0.0.0:8384";
-      extraOptions = ["-no-default-folder"];
+      extraOptions = [ "-no-default-folder" ];
 
       settings = {
         gui.theme = "default";
@@ -23,12 +23,12 @@ in
           "ChernoAlpha" = syncthing.devices.ChernoAlpha;
           "CrimsonTyphoon" = syncthing.devices.CrimsonTyphoon;
           "GipsyDanger" = syncthing.devices.GipsyDanger;
-	};
+        };
 
         folders = {
           "[Media] Music" = {
-            enable  = true;
-            path    = "/Users/fabiano/Music";
+            enable = true;
+            path = "/Users/fabiano/Music";
             devices = [ "GipsyDanger" "ChernoAlpha" "CrimsonTyphoon" ];
           };
         };

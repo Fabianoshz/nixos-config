@@ -29,33 +29,39 @@ with lib;
 
   home.file.".Brewfile" = {
     text =
-      (concatMapStrings (
-        tap:
-        ''tap "''
-        + tap
-        + ''
-          "
-        ''
+      (concatMapStrings
+        (
+          tap:
+          ''tap "''
+          + tap
+          + ''
+            "
+          ''
 
-      ) taps)
-      + (concatMapStrings (
-        brew:
-        ''brew "''
-        + brew
-        + ''
-          "
-        ''
+        )
+        taps)
+      + (concatMapStrings
+        (
+          brew:
+          ''brew "''
+          + brew
+          + ''
+            "
+          ''
 
-      ) brews)
-      + (concatMapStrings (
-        cask:
-        ''cask "''
-        + cask
-        + ''
-          "
-        ''
+        )
+        brews)
+      + (concatMapStrings
+        (
+          cask:
+          ''cask "''
+          + cask
+          + ''
+            "
+          ''
 
-      ) casks);
+        )
+        casks);
     onChange = ''
       /opt/homebrew/bin/brew bundle install --cleanup --no-upgrade --force --global
     '';

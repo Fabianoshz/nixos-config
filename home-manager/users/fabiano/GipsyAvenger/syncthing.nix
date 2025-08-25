@@ -8,7 +8,7 @@ in
     syncthing = {
       enable = true;
       guiAddress = "0.0.0.0:8384";
-      extraOptions = ["-no-default-folder"];
+      extraOptions = [ "-no-default-folder" ];
 
       settings = {
         gui.theme = "default";
@@ -27,24 +27,30 @@ in
           "MiyooMiniPlus" = syncthing.devices.MiyooMiniPlus;
           "Odin" = syncthing.devices.Odin;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
-	};
+        };
 
         folders = {
           "[Documents] Share" = {
-            enable  = true;
-            path    = "/home/fabiano/Documents/Share";
+            enable = true;
+            path = "/home/fabiano/Documents/Share";
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
+          "[Media] Music" = {
+            enable = true;
+            path = "/home/fabiano/Music";
+            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Odin" "GipsyDanger" ];
+          };
+
           "[Games] PS2 Memory cards" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/PS2 Memory cards";
+            enable = true;
+            path = "/home/fabiano/Games/PS2 Memory cards";
             devices = [ "Syncthing Server" ];
           };
 
           "[Games] Retroarch Saves" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Retroarch/Saves";
+            enable = true;
+            path = "/home/fabiano/Games/Retroarch/Saves";
             devices = [ "Odin" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
@@ -55,8 +61,8 @@ in
           };
 
           "[Games] Retroarch States" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Retroarch/States";
+            enable = true;
+            path = "/home/fabiano/Games/Retroarch/States";
             devices = [ "Odin" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
@@ -67,8 +73,8 @@ in
           };
 
           "[Games] Retroarch Runtime Logs" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Retroarch/Runtime logs";
+            enable = true;
+            path = "/home/fabiano/Games/Retroarch/Runtime logs";
             devices = [ "Odin" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
@@ -79,8 +85,8 @@ in
           };
 
           "[Games] Retroarch System" = {
-            enable  = true;
-            path    = "/home/fabiano/Games/Retroarch/System";
+            enable = true;
+            path = "/home/fabiano/Games/Retroarch/System";
             devices = [ "Odin" "Syncthing Server" "MiyooMiniPlus" ];
             versioning = {
               type = "simple";
@@ -91,30 +97,30 @@ in
           };
 
           "[Yuzu] Saves" = {
-            enable  = true;
-            path    = "/home/fabiano/.local/share/yuzu/nand/user/save";
+            enable = true;
+            path = "/home/fabiano/.local/share/yuzu/nand/user/save";
             devices = [ "Syncthing Server" "GipsyDanger" ];
           };
 
           "[PCSX2] Cheats" = {
-            enable  = true;
-            path    = "/home/fabiano/.config/PCSX2/cheats";
+            enable = true;
+            path = "/home/fabiano/.config/PCSX2/cheats";
             devices = [ "Syncthing Server" ];
           };
           "[PCSX2] States" = {
-            enable  = true;
-            path    = "/home/fabiano/.config/PCSX2/sstates";
+            enable = true;
+            path = "/home/fabiano/.config/PCSX2/sstates";
             devices = [ "Syncthing Server" ];
           };
           "[PCSX2] Covers" = {
-            enable  = true;
-            path    = "/home/fabiano/.config/PCSX2/covers";
+            enable = true;
+            path = "/home/fabiano/.config/PCSX2/covers";
             devices = [ "Syncthing Server" ];
           };
 
           "[Saves] Diablo II Ressurected" = {
-            enable  = true;
-            path    = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games";
+            enable = true;
+            path = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games";
             devices = [ "Syncthing Server" "GipsyDanger" ];
             versioning = {
               type = "simple";
@@ -125,8 +131,8 @@ in
           };
 
           "[Saves] Dynasty Warriors 8" = {
-            enable  = true;
-            path    = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games/Diablo II Resurrected";
+            enable = true;
+            path = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games/Diablo II Resurrected";
             devices = [ "Syncthing Server" "GipsyDanger" ];
             versioning = {
               type = "simple";

@@ -19,7 +19,7 @@
     clamav = {
       scanner.enable = true;
       updater.enable = true;
-    };  
+    };
 
     pipewire = {
       enable = true;

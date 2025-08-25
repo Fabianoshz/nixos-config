@@ -63,13 +63,13 @@ in
     };
   };
 
-  fonts.packages = [ 
+  fonts.packages = [
     pkgs.meslo-lgs-nf
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   networking = {
     hostName = "GipsyAvenger";
-    networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
     firewall = {
       enable = true;
@@ -100,7 +100,7 @@ in
     initrd.verbose = false;
     initrd.systemd.enable = true;
 
-    kernelParams = ["quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" "hid_nintendo" "hid_playstation"];
+    kernelParams = [ "quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" "hid_nintendo" "hid_playstation" ];
   };
 
   hardware = {
@@ -116,7 +116,7 @@ in
       flags = [
         "--update-input"
         "nixpkgs"
-	"--commit-lock-file"
+        "--commit-lock-file"
       ];
       dates = "02:00";
       randomizedDelaySec = "45min";

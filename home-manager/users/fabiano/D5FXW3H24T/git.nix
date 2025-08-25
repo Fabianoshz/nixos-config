@@ -18,17 +18,17 @@ in
       gpg = {
         format = "ssh";
         "ssh" = {
-	  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-	};
+          program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        };
       };
       core = {
         fsmonitor = true;
-	untrackedCache = true;
+        untrackedCache = true;
       };
       url = {
         "git@github.com:" = {
-	  insteadOf = "https://github.com/";
-	};
+          insteadOf = "https://github.com/";
+        };
       };
       commit = {
         gpgSign = true;
@@ -39,7 +39,7 @@ in
           required = true;
           clean = "git-lfs clean -- %f";
           smudge = "git-lfs smudge -- %f";
-	};
+        };
       };
     };
   };

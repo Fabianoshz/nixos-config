@@ -19,8 +19,8 @@ in
       };
 
       settings = {
-	"extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-	"media.videocontrols.picture-in-picture.enabled" = false;
+        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        "media.videocontrols.picture-in-picture.enabled" = false;
         "extensions.autoDisableScopes" = 0;
         "identity.fxaccounts.account.device.name" = "GipsyDanger";
       };
@@ -40,4 +40,3 @@ in
     };
   };
 }
-
