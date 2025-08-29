@@ -20,6 +20,7 @@ let
   casks = [
     "1password"
     "1password-cli"
+    "claude"
     "cursor"
   ];
 in

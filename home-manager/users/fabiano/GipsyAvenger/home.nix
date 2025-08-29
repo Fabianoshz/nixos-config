@@ -1,6 +1,6 @@
 { pkgs, lib, inputs, config, ... }:
 {
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   imports = [
     ./syncthing.nix
@@ -32,13 +32,7 @@
     };
   };
 
-  xdg.autoStart.desktopItems = {
-    steam = pkgs.makeDesktopItem {
-      name = "Steam";
-      exec = "steam";
-      desktopName = "Steam";
-    };
-  };
+  xdg.configFile."autostart/steam.desktop".source = "${pkgs.steam}/share/applications/steam.desktop";
 
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";

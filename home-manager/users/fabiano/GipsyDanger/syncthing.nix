@@ -4,6 +4,14 @@ let
   syncthing = builtins.fromJSON (builtins.readFile ../../../../sensitive/syncthing.json);
 in
 {
+  home.file = {
+    # Ignore Obsidian files
+    "${config.home.homeDirectory}/Documents/General/.stignore" = {
+      text = "Obsidian/*/.obsidian/**";
+      executable = false;
+    };
+  };
+
   services = {
     syncthing = {
       enable = true;
@@ -30,10 +38,14 @@ in
         };
 
         folders = {
-          "[Documents] Common" = {
+          "[Documents] General" = {
             enable = true;
-            path = "${config.home.homeDirectory}/Documents/Common";
+            path = "${config.home.homeDirectory}/Documents/General";
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
+            versioning = {
+              type = "simple";
+              params.keep = "10";
+            };
           };
           "[Documents] Passwords" = {
             enable = true;

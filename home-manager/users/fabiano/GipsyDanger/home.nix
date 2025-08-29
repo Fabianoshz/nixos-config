@@ -17,7 +17,6 @@
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "discord"
-        "grayjay"
         "obsidian"
         "steam"
         "steam-original"
@@ -104,6 +103,7 @@
     pkgs.htop
     pkgs.iotop
     pkgs.keepassxc
+    pkgs.nexusmods-app
     pkgs.obsidian
     pkgs.onlyoffice-bin
     pkgs.ssm-session-manager-plugin
@@ -113,8 +113,6 @@
     pkgs.usbutils
     pkgs.virt-manager
     pkgs.vlc
-
-    pkgs.nexusmods-app
 
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay

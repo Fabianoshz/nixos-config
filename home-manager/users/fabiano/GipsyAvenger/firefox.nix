@@ -6,6 +6,7 @@ in
 {
   programs.firefox = {
     enable = true;
+    nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
     profiles.main = {
       id = 0;
 
@@ -18,10 +19,14 @@ in
       };
 
       settings = {
-        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        "browser.newtabpage.pinned" = "";
+        "browser.startup.page" = 3;
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "extensions.activethemeid" = "firefox-compact-dark@mozilla.org";
+        "extensions.autodisablescopes" = 0;
+        "identity.fxaccounts.account.device.name" = "gipsydanger";
         "media.videocontrols.picture-in-picture.enabled" = false;
-        "extensions.autoDisableScopes" = 0;
-        "identity.fxaccounts.account.device.name" = "GipsyDanger";
       };
     };
 

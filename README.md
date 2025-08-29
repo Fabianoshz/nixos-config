@@ -9,6 +9,12 @@
       - [ ] DAP
     - [ ] Configure nvim LSP
 
+## Fixes
+
+### GipsyAvenger
+- [ ] Fix duplicated controller bug on big picture
+- [ ] Fix steam session not starting on KDE due to sunshine
+
 ## Ricing
 
 ### Linux
@@ -21,10 +27,9 @@
   - https://www.reddit.com/r/unixporn/comments/1if4i94/kde_karousel/
   - https://www.reddit.com/r/kde/comments/1g2kcl1/floating_panel_not_floating_with_maximized_windows/
   - https://github.com/luisbocanegra/plasma-panel-colorizer
-- [ ] Configure panel colorizer 
+- [ ] Configure panel colorizer
   - https://github.com/luisbocanegra/plasma-panel-colorizer
 
 ### Mac
 - [ ] Find a nice wallpaper
   - https://github.com/mylinuxforwork/wallpaper
-
