@@ -67,6 +67,13 @@
     };
   };
 
+  xdg.desktopEntries.actual = {
+    name = "Actual Budget";
+    exec = "appimage-run /home/fabiano/Applications/Actual-linux-x86_64.AppImage";
+    terminal = false;
+    type = "Application";
+  };
+
   services.ssh-agent = {
     enable = true;
   };

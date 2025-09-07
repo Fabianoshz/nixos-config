@@ -15,6 +15,16 @@
 - [ ] Fix duplicated controller bug on big picture
 - [ ] Fix steam session not starting on KDE due to sunshine
 
+## Features
+
+### GipsyAvenger
+- [ ] Add NFC reader for game launching
+- [ ] Add nostatoo to map games to Steam
+
+### GipsyDanger
+- [ ] Add krunner kpass integration
+  - https://store.kde.org/p/1414906
+
 ## Ricing
 
 ### Linux

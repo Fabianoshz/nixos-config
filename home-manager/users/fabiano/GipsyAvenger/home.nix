@@ -1,4 +1,15 @@
 { pkgs, lib, inputs, config, ... }:
+let
+  retroarchWithCores = pkgs.retroarch.withCores (cores: with cores; [
+    beetle-psx-hw
+    beetle-saturn
+    dolphin
+    mame
+    mupen64plus
+    pcsx2
+    snes9x
+  ]);
+in
 {
   home.stateVersion = "25.11";
 
@@ -49,7 +60,26 @@
       text = "";
       executable = false;
     };
+
+    # Add cores to ES-DE appimage
+    "${config.home.homeDirectory}/ES-DE/custom_systems/es_find_rules.xml" = {
+      text = ''
+        <?xml version="1.0"?>
+        <!-- This is the ES-DE find rules configuration file for Linux -->
+        <ruleList>
+            <core name="RETROARCH">
+                <rule type="corepath">
+                    <!-- Nixos retroarch cores path -->
+                    <entry>${retroarchWithCores}/lib/retroarch/cores</entry>
+                </rule>
+            </core>
+        </ruleList>
+      '';
+      executable = false;
+    };
   };
+
+
 
   home.packages = [
     pkgs.bash
@@ -82,14 +112,6 @@
     pkgs.kdePackages.krfb
     pkgs.kdePackages.yakuake
 
-    (pkgs.retroarch.withCores (cores: with cores; [
-      beetle-psx-hw
-      beetle-saturn
-      dolphin
-      mame
-      mupen64plus
-      pcsx2
-      snes9x
-    ]))
+    retroarchWithCores
   ];
 }
