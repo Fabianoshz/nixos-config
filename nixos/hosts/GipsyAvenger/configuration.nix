@@ -89,6 +89,7 @@ in
   };
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     plymouth.enable = true;
 
     loader.grub.timeoutStyle = false;
@@ -109,7 +110,7 @@ in
   };
 
   system = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
 
     autoUpgrade = {
       enable = true;

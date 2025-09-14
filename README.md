@@ -14,6 +14,8 @@
 ### GipsyAvenger
 - [ ] Fix duplicated controller bug on big picture
 - [ ] Fix steam session not starting on KDE due to sunshine
+- [ ] Validate apollo nix
+  - https://github.com/nil-andreas/apollo-flake/blob/main/apollo-module.nix
 
 ## Features
 

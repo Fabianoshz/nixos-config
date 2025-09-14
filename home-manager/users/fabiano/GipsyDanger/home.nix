@@ -113,6 +113,7 @@
     pkgs.nexusmods-app
     pkgs.obsidian
     pkgs.onlyoffice-bin
+    pkgs.ripgrep
     pkgs.ssm-session-manager-plugin
     pkgs.steamtinkerlaunch
     pkgs.streamcontroller
