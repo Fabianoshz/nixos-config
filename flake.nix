@@ -16,6 +16,8 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
+    lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
+
     # Bleeding edge stuff
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -26,7 +28,7 @@
     };
 
     jovian-nixos = {
-      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=e7b8679cba79f4167199f018b05c82169249f654";
+      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=fc3960e6c32c9d4f95fff2ef84444284d24d3bea";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -44,8 +46,6 @@
     mac-app-util.url = "github:hraban/mac-app-util";
 
     xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
-
-    lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
