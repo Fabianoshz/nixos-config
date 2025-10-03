@@ -15,6 +15,8 @@
       # lookandfeeltool --list
       # lookAndFeel = "org.kde.breezedark.desktop";
 
+      wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/ScarletTree/contents/images_dark/5120x2880.png";
+
       windowDecorations = {
         theme = "Darkly";
         library = "org.kde.darkly";
@@ -42,6 +44,8 @@
       {
         location = "top";
         height = 32;
+        lengthMode = "fit";
+        maxLength = 95;
         widgets = [
           {
 
@@ -116,6 +120,25 @@
     ];
 
     configFile = {
+      # Blur effects
+      "kwinrc"."Plugins"."forceblurEnabled" = true;
+      "kwinrc"."Effect-blurplus"."BlurDecorations=true" = true;
+      "kwinrc"."Effect-blurplus"."BlurDocks" = true;
+      "kwinrc"."Effect-blurplus"."BlurMatching" = false;
+      "kwinrc"."Effect-blurplus"."BlurNonMatching" = true;
+      "kwinrc"."Effect-blurplus"."BlurStrength" = 15;
+      "kwinrc"."Effect-blurplus"."NoiseStrength" = 0;
+      "kwinrc"."Effect-blurplus"."WindowClasses" = "class1";
+
+      # Window rules
+      "kwinrulesrc"."1"."Description" = "Window transparency rule";
+      "kwinrulesrc"."1"."opacityactive" = 90;
+      "kwinrulesrc"."1"."opacityactiverule" = 2;
+      "kwinrulesrc"."1"."opacityinactive" = 85;
+      "kwinrulesrc"."1"."opacityinactiverule" = 2;
+      "kwinrulesrc"."General"."count" = 1;
+      "kwinrulesrc"."General"."rules" = "1";
+
       # Krunner
       "krunnerrc"."General"."FreeFloating" = true;
       "krunnerrc"."Plugins"."browsertabsEnabled" = false;
@@ -144,7 +167,13 @@
     shortcuts = {
       "plasmashell"."toggle do not disturb" = "Ctrl+Alt+Q";
       "yakuake"."toggle-window-state" = "Ctrl+Alt+T";
-      "services/org.kde.krunner.desktop"."_launch" = "Ctrl+Space";
+      "services/org.kde.krunner.desktop"."_launch" = "";
+    };
+
+    hotkeys.commands."launch-rofi" = {
+      name = "Launch Rofi";
+      key = "Ctrl+Space";
+      command = "rofi -normal-window -show drun";
     };
   };
 
@@ -164,6 +193,7 @@
         extraConfig = {
           Scrolling = {
             HistoryMode = 2;
+            ScrollBarPosition = 2;
           };
           Appearance = {
             BoldIntense = true;
@@ -178,25 +208,7 @@
   };
 
   home.file = {
-    ".config/yakuakerc" = {
-      text = ''
-        [Animation]
-        Frames=20
-
-        [Desktop Entry]
-        DefaultProfile=Personal.profile
-
-        [Dialogs]
-        FirstRun=false
-
-        [Notification Messages]
-        ShowPasteHugeTextWarning=false
-
-        [Window]
-        Height=100
-        ShowTabBar=false
-        Width=100
-      '';
-    };
+    ".config/yakuakerc".source = ./config/yakuakerc;
+    ".config/rofi/config.rasi".source = ./config/rofi/config.rasi;
   };
 }

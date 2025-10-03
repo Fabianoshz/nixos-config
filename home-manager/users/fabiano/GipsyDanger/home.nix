@@ -122,6 +122,8 @@
     pkgs.virt-manager
     pkgs.vlc
 
+    pkgs.rofi
+
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay
 
@@ -131,6 +133,7 @@
     pkgs.papirus-icon-theme
     pkgs.plasma-panel-colorizer
     pkgs.plasmusic-toolbar
+    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
 
     # KDE
     pkgs.kdePackages.calendarsupport

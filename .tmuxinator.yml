@@ -1,0 +1,10 @@
+name: nixos-config
+root: ~/Documents/Projects/Fabianoshz/nixos-config
+
+windows:
+  - main:
+      layout: 5e1c,254x48,0,0{120x48,0,0,22,133x48,121,0[133x23,121,0,23,133x24,121,24,24]}
+      panes:
+        - nvim .
+        - claude
+        - # Bottom right panel

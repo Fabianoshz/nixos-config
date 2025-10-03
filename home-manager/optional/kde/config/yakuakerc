@@ -1,0 +1,17 @@
+[Animation]
+Frames=20
+
+[Desktop Entry]
+DefaultProfile=Personal.profile
+
+[Dialogs]
+FirstRun=false
+
+[Notification Messages]
+ShowPasteHugeTextWarning=false
+
+[Window]
+Height=100
+ShowTabBar=false
+ShowTitleBar=false
+Width=100

@@ -18,6 +18,11 @@
 
     lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
 
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur?ref=v1.3.6";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Bleeding edge stuff
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -123,6 +128,7 @@
       nixosConfigurations = {
         GipsyDanger = nixpkgs.lib.nixosSystem {
           system = system;
+          specialArgs = { inherit inputs; };
 
           modules = [
             ./nixos/hosts/GipsyDanger/configuration.nix
