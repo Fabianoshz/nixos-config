@@ -3,10 +3,10 @@ let
   retroarchWithCores = pkgs.retroarch.withCores (cores: with cores; [
     beetle-psx-hw
     beetle-saturn
-    dolphin
+    # dolphin
     mame
     mupen64plus
-    pcsx2
+    # pcsx2
     snes9x
   ]);
 in
@@ -112,6 +112,7 @@ in
     pkgs.kdePackages.krfb
     pkgs.kdePackages.yakuake
 
+    pkgs.xenia-canary
     retroarchWithCores
   ];
 }

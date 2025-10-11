@@ -19,6 +19,16 @@
       settings = {
         back_button_timeout = 2000;
       };
+      applications = {
+        env = {
+          PATH = "$(PATH):$(HOME)/.local/bin";
+        };
+        apps = [
+          {
+            name = "Desktop";
+          }
+        ];
+      };
     };
   };
 }
