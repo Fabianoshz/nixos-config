@@ -16,7 +16,7 @@ in
     ../../optional/waydroid/default.nix
   ];
 
-  systemd.watchdog.rebootTime = "0";
+  systemd.settings.Manager.RebootWatchdogSec = "0";
 
   time.timeZone = "America/Sao_Paulo";
 
