@@ -73,13 +73,23 @@ in
                     <entry>${retroarchWithCores}/lib/retroarch/cores</entry>
                 </rule>
             </core>
+            <emulator name="PROTON">
+                <!-- umu-launcher for running Proton games -->
+                <rule type="staticpath">
+                    <entry>${pkgs.umu-launcher}/bin/umu-run</entry>
+                </rule>
+            </emulator>
+            <emulator name="XENIA-WINDOWS">
+                <!-- Xenia Canary Windows version -->
+                <rule type="staticpath">
+                    <entry>/home/fabiano/Applications/Xenia_canary/xenia_canary.exe</entry>
+                </rule>
+            </emulator>
         </ruleList>
       '';
       executable = false;
     };
   };
-
-
 
   home.packages = [
     pkgs.bash
@@ -87,6 +97,7 @@ in
     pkgs.flatpak
     pkgs.git
     pkgs.go-task
+    pkgs.umu-launcher
     pkgs.heroic
     pkgs.htop
     pkgs.itch
@@ -96,6 +107,7 @@ in
     pkgs.steam-rom-manager
     pkgs.unzip
     pkgs.usbutils
+    pkgs.xenia-canary
 
     # Rice stuff
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
