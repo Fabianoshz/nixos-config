@@ -22,6 +22,7 @@ in
     ../../../optional/zsh/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/flatpak/default.nix
+    ../../../optional/retroarch/default.nix
   ];
 
   nixpkgs = {
