@@ -10,10 +10,8 @@ in
     ./jovian.nix
     ./programs.nix
     ./services.nix
-    ./virtualisation.nix
 
     ../../optional/decky-loader/default.nix
-    ../../optional/waydroid/default.nix
   ];
 
   systemd.settings.Manager.RebootWatchdogSec = "0";
