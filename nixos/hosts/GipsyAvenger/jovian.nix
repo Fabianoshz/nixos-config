@@ -40,6 +40,7 @@
     extraPackages = [
       pkgs.curl
       pkgs.dbus # For MusicControl plugin
+      pkgs.p7zip # For framegen plugin
       pkgs.python3
       pkgs.util-linux # Has 'rev' for MusicControl plugin
     ];
@@ -122,6 +123,40 @@
           stripRoot = true;
         };
       };
+      "decky-framegen" = {
+        src = pkgs.fetchzip {
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/14015d5a652c78b2041fd9668685573840530c306e414aabc0d3cebf95be0642.zip";
+          sha256 = "sha256-zLdX7hQRtGELrRh+hj0JA19FZyMak5Ad8HE5f3Dti/s=";
+          extension = "zip";
+          stripRoot = true;
+        };
+      };
+      "controller-tools" = {
+        src = pkgs.fetchzip {
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/9450e54cbf28082d4513838d0dcd42bf04ffc08ae5a6472d0c1f88677782e3ef.zip";
+          sha256 = "sha256-+cmM3dJMj/wGAD7VwdZW03vpXQyL2aI2tB0zLYU0Jyk";
+          extension = "zip";
+          stripRoot = true;
+        };
+      };
+
+      # Not working yet (has dynamic linked programs)
+      # "wine-cellar" = {
+      #   src = pkgs.fetchzip {
+      #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/a400c89e853117e32e2fba77ef1b09d8f3e9e9d073b9af38af7c73ed525cac6d.zip";
+      #     sha256 = "sha256-cYfys83oEPoGuDsbfli9zFA4A9ySVWoYeMg/WWlKN34=";
+      #     extension = "zip";
+      #     stripRoot = true;
+      #   };
+      # };
+      # "decky-syncthing" = {
+      #   src = pkgs.fetchzip {
+      #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/1424128571b59536909095146959acba3a36899a69e3d2d790f630f2c7bc607e.zip";
+      #     sha256 = "sha256-pzv8nXm4pMjhQzzFeB348zLVCfpaWv6CjMQSYS5dLUY";
+      #     extension = "zip";
+      #     stripRoot = true;
+      #   };
+      # };
     };
   };
 }
