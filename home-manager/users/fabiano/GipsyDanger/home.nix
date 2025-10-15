@@ -110,10 +110,12 @@
     pkgs.htop
     pkgs.iotop
     pkgs.keepassxc
+    pkgs.moonlight-qt
     pkgs.nexusmods-app
     pkgs.obsidian
     pkgs.onlyoffice-bin
     pkgs.ripgrep
+    pkgs.rofi
     pkgs.ssm-session-manager-plugin
     pkgs.steamtinkerlaunch
     pkgs.streamcontroller
@@ -121,8 +123,6 @@
     pkgs.usbutils
     pkgs.virt-manager
     pkgs.vlc
-
-    pkgs.rofi
 
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay

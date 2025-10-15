@@ -3,10 +3,12 @@ let
   retroarchWithCores = pkgs.retroarch.withCores (cores: with cores; [
     beetle-psx-hw
     beetle-saturn
-    dolphin
+    # Broken due to cmake update
+    # dolphin
     mame
     mupen64plus
-    pcsx2
+    # Broken due to cmake update
+    # pcsx2
     snes9x
   ]);
 in
@@ -98,7 +100,6 @@ in
     pkgs.flatpak
     pkgs.git
     pkgs.go-task
-    pkgs.umu-launcher
     pkgs.heroic
     pkgs.htop
     pkgs.itch
@@ -106,6 +107,7 @@ in
     pkgs.pcsx2
     pkgs.prismlauncher
     pkgs.steam-rom-manager
+    pkgs.umu-launcher
     pkgs.unzip
     pkgs.usbutils
     pkgs.xenia-canary
