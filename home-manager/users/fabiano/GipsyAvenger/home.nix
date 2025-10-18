@@ -34,6 +34,11 @@ in
         "steam"
         "steam-original"
         "steam-unwrapped"
+        "wowup-cf"
+      ];
+
+      permittedInsecurePackages = [
+        "mbedtls-2.28.10"
       ];
     };
   };
@@ -46,7 +51,8 @@ in
     };
   };
 
-  xdg.configFile."autostart/steam.desktop".source = "${pkgs.steam}/share/applications/steam.desktop";
+  # TODO: This is not working because of sunshine
+  # xdg.configFile."autostart/steam.desktop".source = "${pkgs.steam}/share/applications/steam.desktop";
 
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
@@ -100,7 +106,6 @@ in
     pkgs.flatpak
     pkgs.git
     pkgs.go-task
-    pkgs.heroic
     pkgs.htop
     pkgs.itch
     pkgs.nexusmods-app
@@ -110,6 +115,7 @@ in
     pkgs.umu-launcher
     pkgs.unzip
     pkgs.usbutils
+    pkgs.wowup-cf
     pkgs.xenia-canary
 
     # Rice stuff
