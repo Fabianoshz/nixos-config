@@ -24,15 +24,20 @@
       # Color scheme
       tokyonight-nvim
 
+      telescope-live-grep-args-nvim
+
       {
         plugin = telescope-nvim;
         type = "lua";
         config = ''
                     require("telescope").setup()
+                    require("telescope").load_extension("live_grep_args")
 
                     local builtin = require('telescope.builtin')
+                    local live_grep_args = require("telescope").extensions.live_grep_args
 
                     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+                    vim.keymap.set('n', '<leader>fg', live_grep_args.live_grep_args, { desc = 'Live grep with args' })
                     vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Lists previously open files' })
                     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Lists previously open buffers' })
           	'';
