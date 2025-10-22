@@ -44,7 +44,7 @@ in
           "[Games] PS2 Memory cards" = {
             enable = true;
             path = "/home/fabiano/Games/PS2 Memory cards";
-            devices = [ "GipsyAvenger" "Syncthing Server" ];
+            devices = [ "Odin" "Syncthing Server" ];
           };
 
           "[Games] Retroarch Saves" = {

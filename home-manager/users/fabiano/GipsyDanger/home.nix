@@ -126,6 +126,7 @@
 
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay
+    pkgs.unstable.planify
 
     # Rice stuff
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
