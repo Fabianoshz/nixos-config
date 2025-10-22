@@ -8,7 +8,6 @@ in
     syncthing = {
       enable = true;
       guiAddress = "0.0.0.0:8384";
-      extraOptions = [ "-no-default-folder" ];
 
       settings = {
         gui.theme = "default";
@@ -45,7 +44,7 @@ in
           "[Games] PS2 Memory cards" = {
             enable = true;
             path = "/home/fabiano/Games/PS2 Memory cards";
-            devices = [ "Syncthing Server" ];
+            devices = [ "GipsyAvenger" "Syncthing Server" ];
           };
 
           "[Games] Retroarch Saves" = {
