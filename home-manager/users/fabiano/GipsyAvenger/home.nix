@@ -4,11 +4,11 @@ let
     beetle-psx-hw
     beetle-saturn
     # Broken due to cmake update
-    # dolphin
+    dolphin
     mame
     mupen64plus
     # Broken due to cmake update
-    # pcsx2
+    pcsx2
     snes9x
   ]);
 in
@@ -30,6 +30,7 @@ in
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "grayjay"
         "libretro-snes9x"
         "steam"
         "steam-original"
@@ -106,6 +107,7 @@ in
     pkgs.flatpak
     pkgs.git
     pkgs.go-task
+    pkgs.grayjay
     pkgs.htop
     pkgs.itch
     pkgs.nexusmods-app
