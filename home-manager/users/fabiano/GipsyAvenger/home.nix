@@ -18,31 +18,15 @@ in
   imports = [
     ./syncthing.nix
     ./firefox.nix
-    ./flatpak.nix
 
     ../../../optional/kde/default.nix
     ../../../optional/zsh/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/flatpak/default.nix
     ../../../optional/retroarch/default.nix
+
+    inputs.xdg-autostart.homeManagerModules.xdg-autostart
   ];
-
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "grayjay"
-        "libretro-snes9x"
-        "steam"
-        "steam-original"
-        "steam-unwrapped"
-        "wowup-cf"
-      ];
-
-      permittedInsecurePackages = [
-        "mbedtls-2.28.10"
-      ];
-    };
-  };
 
   programs.home-manager.enable = true;
 
@@ -104,7 +88,6 @@ in
   home.packages = [
     pkgs.bash
     pkgs.dig
-    pkgs.flatpak
     pkgs.git
     pkgs.go-task
     pkgs.grayjay

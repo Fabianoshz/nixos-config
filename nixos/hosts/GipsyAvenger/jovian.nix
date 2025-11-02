@@ -53,8 +53,8 @@
       # This is not working :(
       "MagicPodsDecky" = {
         src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/598f1e27f39972317a1f8f9b5b351bf0415a4ca8cf7cbfeec28fdab02207abab.zip";
-          sha256 = "sha256-t6LK31agLoeT7SICERfItdEfN4FScZvsaNsAEmHhSeA=";
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/fa7407d44069ee54e92ed8bd44a0462b73e96a63060ac7524581684c21c15779.zip";
+          sha256 = "sha256-B5svfH56Xk0+bZRgM1DOxZ+k75aufHVmUCDP2HfIXE0=";
           extension = "zip";
           stripRoot = true;
         };
@@ -69,8 +69,8 @@
       };
       "SDH-GameThemeMusic" = {
         src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/2a9fced36b3d34bd4bd4bd7963787b486bf39137f9d444632140ab1fe1872de8.zip";
-          sha256 = "sha256-2TXWSDuKJKdnjHA3hRSTtacuTijdXtwuMAnCZCZ4akw=";
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/9ce293ab4db212c03c6b96dfbc5e4d92e874d33387463f53223773921f75a80e.zip";
+          sha256 = "sha256-2J5kDcw5Pwih2j12BH5Pvx4vA11wtFlMaB0NzMeFM1k=";
           extension = "zip";
           stripRoot = true;
         };
@@ -85,8 +85,8 @@
       };
       "SteamGridDB" = {
         src = pkgs.fetchzip {
-          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/6bc09af6ce16bf3437dc100129940310481338bbf2b198ed702854ed193d2e46.zip";
-          sha256 = "sha256-t6LK31agLoeT7SICERfItdEfN4FScZvsaNsAEmHhSeA=";
+          url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/f18279dc95b6ee003a7f53a84e8f7eee3a8fdd042ef67e5160c91c31ad12659f.zip";
+          sha256 = "sha256-pJLPuz9OGmMCbZv2BThIApksp6riBRruEUeMvm5iyfs=";
           extension = "zip";
           stripRoot = true;
         };
@@ -160,4 +160,3 @@
     };
   };
 }
-

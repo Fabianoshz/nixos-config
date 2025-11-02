@@ -11,30 +11,9 @@
     ../../../optional/kde/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/zsh/default.nix
-  ];
 
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "discord"
-        "obsidian"
-        "steam"
-        "steam-original"
-        "steam-unwrapped"
-      ];
-    };
-    overlays = [
-      (final: prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          inherit (prev) system;
-          config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-            "claude-code"
-            "grayjay"
-          ];
-        };
-      })
-    ];
-  };
+    inputs.xdg-autostart.homeManagerModules.xdg-autostart
+  ];
 
   programs.home-manager.enable = true;
   programs.gpg.homedir = "${config.xdg.dataHome}/gnupg";

@@ -14,8 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
-
     lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
 
     kwin-effects-forceblur = {
@@ -33,7 +31,7 @@
     };
 
     jovian-nixos = {
-      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=0cc290e05882745060fccfe6d7d073f913e0cce7";
+      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=533db5857c9e00ca352558a928417116ee08a824";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -59,7 +57,6 @@
     { nixpkgs
     , home-manager
     , nix-darwin
-    , nix-flatpak
     , nixpkgs-unstable
     , home-manager-master
     , jovian-nixos
@@ -72,59 +69,6 @@
       system-mac = "aarch64-darwin";
     in
     {
-      homeConfigurations = {
-        "fabiano@GipsyDanger" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = system;
-          };
-
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home-manager/users/fabiano/GipsyDanger/home.nix
-
-            inputs.xdg-autostart.homeManagerModules.xdg-autostart
-          ];
-        };
-
-        "fabiano@GipsyAvenger" = home-manager-master.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs-unstable {
-            system = system;
-          };
-
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home-manager/users/fabiano/GipsyAvenger/home.nix
-
-            nix-flatpak.homeManagerModules.nix-flatpak
-            inputs.xdg-autostart.homeManagerModules.xdg-autostart
-          ];
-        };
-
-        "fabiano@CrimsonPhoenix" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = system-mac;
-          };
-
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home-manager/users/fabiano/CrimsonPhoenix/home.nix
-            mac-app-util.homeManagerModules.default
-          ];
-        };
-
-        "fabiano@D5FXW3H24T" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = system-mac;
-          };
-
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home-manager/users/fabiano/D5FXW3H24T/home.nix
-            mac-app-util.homeManagerModules.default
-          ];
-        };
-      };
-
       nixosConfigurations = {
         GipsyDanger = nixpkgs.lib.nixosSystem {
           system = system;
@@ -137,12 +81,15 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.fabiano = import ./home-manager/users/fabiano/GipsyDanger/home.nix;
             }
           ];
         };
 
         GipsyAvenger = nixpkgs-unstable.lib.nixosSystem {
           system = system;
+          specialArgs = { inherit inputs; };
 
           modules = [
             ./nixos/hosts/GipsyAvenger/configuration.nix
@@ -152,6 +99,8 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.fabiano = import ./home-manager/users/fabiano/GipsyAvenger/home.nix;
             }
           ];
         };
@@ -159,10 +108,17 @@
 
       darwinConfigurations = {
         CrimsonPhoenix = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; };
           modules = [
             ./nixos/hosts/CrimsonPhoenix/configuration.nix
 
             home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.fabiano = import ./home-manager/users/fabiano/CrimsonPhoenix/home.nix;
+            }
 
             mac-app-util.darwinModules.default
 
@@ -179,10 +135,17 @@
         };
 
         D5FXW3H24T = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; };
           modules = [
             ./nixos/hosts/D5FXW3H24T/configuration.nix
 
             home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.fabiano = import ./home-manager/users/fabiano/D5FXW3H24T/home.nix;
+            }
 
             mac-app-util.darwinModules.default
 

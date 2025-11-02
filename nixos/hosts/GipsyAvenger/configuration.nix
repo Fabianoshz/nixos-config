@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 with lib;
 let
   general = builtins.fromJSON (builtins.readFile ../../../sensitive/general.json);
@@ -17,6 +17,8 @@ in
   systemd.settings.Manager.RebootWatchdogSec = "0";
 
   time.timeZone = "America/Sao_Paulo";
+
+  security.sudo.wheelNeedsPassword = false;
 
   fileSystems = {
     "/mnt/Games" = {
@@ -122,10 +124,28 @@ in
     };
   };
 
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "grayjay"
+      "libretro-snes9x"
+      "steam"
+      "steam-jupiter-unwrapped"
+      "steam-original"
+      "steam-unwrapped"
+      "steamdeck-hw-theme"
+      "wowup-cf"
+    ];
+
+    permittedInsecurePackages = [
+      "mbedtls-2.28.10"
+    ];
+  };
+
   nix = {
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
+      trusted-users = [ "fabiano" ];
     };
 
     optimise.automatic = true;

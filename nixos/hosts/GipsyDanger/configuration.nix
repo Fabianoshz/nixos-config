@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 with lib;
 let
   general = builtins.fromJSON (builtins.readFile ../../../sensitive/general.json);
@@ -125,15 +125,32 @@ in
     };
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-unwrapped"
-  ];
+  nixpkgs = {
+    config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "discord"
+      "obsidian"
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+    ];
+    overlays = [
+      (final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          inherit (prev) system;
+          config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+            "claude-code"
+            "grayjay"
+          ];
+        };
+      })
+    ];
+  };
 
   nix = {
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
+      trusted-users = [ "fabiano" ];
     };
 
     optimise.automatic = true;
