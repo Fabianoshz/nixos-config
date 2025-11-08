@@ -3,11 +3,9 @@ let
   retroarchWithCores = pkgs.retroarch.withCores (cores: with cores; [
     beetle-psx-hw
     beetle-saturn
-    # Broken due to cmake update
     dolphin
     mame
     mupen64plus
-    # Broken due to cmake update
     pcsx2
     snes9x
   ]);

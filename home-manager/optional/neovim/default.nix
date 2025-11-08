@@ -12,8 +12,27 @@
       gitsigns-nvim
       nvim-web-devicons
 
-      nvim-treesitter
+      {
+        plugin = nvim-treesitter;
+        type = "lua";
+        config = ''
+          require('nvim-treesitter.configs').setup({
+            highlight = {
+              enable = true,
+            },
+            indent = {
+              enable = true,
+            },
+          })
+        '';
+      }
       nvim-treesitter-parsers.go
+      nvim-treesitter-parsers.nix
+      nvim-treesitter-parsers.terraform
+      nvim-treesitter-parsers.hcl
+      nvim-treesitter-parsers.bash
+      nvim-treesitter-parsers.python
+      nvim-treesitter-parsers.yaml
 
       # Debugger
       nvim-dap

@@ -93,6 +93,7 @@
     pkgs.nexusmods-app
     pkgs.obsidian
     pkgs.onlyoffice-bin
+    pkgs.planify
     pkgs.ripgrep
     pkgs.rofi
     pkgs.ssm-session-manager-plugin
@@ -105,7 +106,6 @@
 
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay
-    pkgs.unstable.planify
 
     # Rice stuff
     inputs.lightly.packages.${pkgs.system}.darkly-qt5

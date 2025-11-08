@@ -1,16 +1,6 @@
 version: '3'
 
 tasks:
-  full-switch:
-    cmds:
-      - task: nixos-switch
-      - task: home-manager-switch
-
-  format:
-    desc: "Format all Nix files"
-    cmds:
-      - nix-shell -p nixpkgs-fmt --run "find . -name '*.nix' -not -path './.git/*' | xargs nixpkgs-fmt"
-
   nixos-switch:
     cmds:
       - cmd: sudo nixos-rebuild switch --flake 'path:.'
@@ -18,13 +8,10 @@ tasks:
       - cmd: sudo nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake 'path:.'
         platforms: [darwin]
 
-  home-manager-switch:
+  format:
+    desc: "Format all Nix files"
     cmds:
-      - home-manager switch --flake 'path:.'
-
-  flake-update:
-    cmds:
-      - nix flake update
+      - find . -name '*.nix' -not -path './.git/*' | xargs nixpkgs-fmt
 
   pre-commit-install:
     desc: "Install pre-commit hooks"
