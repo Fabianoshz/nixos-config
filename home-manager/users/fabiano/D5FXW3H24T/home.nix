@@ -12,27 +12,8 @@
     ../../../optional/zsh/default.nix
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "google-chrome"
-        "obsidian"
-      ];
-    };
-    overlays = [
-      (final: prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          inherit (prev) system;
-          config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-            "claude-code"
-          ];
-        };
-      })
-    ];
-  };
-
-  home.username = "fabiano";
-  home.homeDirectory = "/Users/fabiano";
+  home.username = lib.mkForce "fabiano";
+  home.homeDirectory = lib.mkForce "/Users/fabiano";
   home.sessionVariables = {
     SYSTEMD_EDITOR = "nvim";
     EDITOR = "nvim";

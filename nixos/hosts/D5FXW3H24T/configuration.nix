@@ -30,7 +30,14 @@
 
   environment.shells = with pkgs; [ zsh ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "google-chrome"
+      "obsidian"
+      "claude-code"
+    ];
+  };
 
   nix.gc = {
     automatic = true;
@@ -41,4 +48,3 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
-

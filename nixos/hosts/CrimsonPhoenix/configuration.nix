@@ -33,7 +33,14 @@ in
 
   environment.shells = with pkgs; [ zsh ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "discord"
+      "obsidian"
+      "claude-code"
+    ];
+  };
 
   nix.gc = {
     automatic = true;

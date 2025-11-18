@@ -112,6 +112,17 @@
           modules = [
             ./nixos/hosts/CrimsonPhoenix/configuration.nix
 
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  unstable = import nixpkgs-unstable {
+                    inherit (prev) system;
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
+            }
+
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -138,6 +149,17 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./nixos/hosts/D5FXW3H24T/configuration.nix
+
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  unstable = import nixpkgs-unstable {
+                    inherit (prev) system;
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
+            }
 
             home-manager.darwinModules.home-manager
             {
