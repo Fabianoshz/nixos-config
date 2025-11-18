@@ -2,9 +2,7 @@
 let
   retroarchWithCores = pkgs.retroarch.withCores (cores: with cores; [
     beetle-psx-hw
-    beetle-saturn
     dolphin
-    mame
     mupen64plus
     pcsx2
     snes9x

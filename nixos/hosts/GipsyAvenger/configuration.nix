@@ -124,22 +124,41 @@ in
     };
   };
 
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "grayjay"
-      "libretro-snes9x"
-      "steam"
-      "steam-jupiter-original"
-      "steam-jupiter-unwrapped"
-      "steam-original"
-      "steam-run"
-      "steam-unwrapped"
-      "steamdeck-hw-theme"
-      "wowup-cf"
-    ];
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "grayjay"
+        "libretro-snes9x"
+        "steam"
+        "steam-jupiter-original"
+        "steam-jupiter-unwrapped"
+        "steam-original"
+        "steam-run"
+        "steam-unwrapped"
+        "steamdeck-hw-theme"
+        "wowup-cf"
+      ];
 
-    permittedInsecurePackages = [
-      "mbedtls-2.28.10"
+      permittedInsecurePackages = [
+        "mbedtls-2.28.10"
+      ];
+    };
+
+    overlays = [
+      (final: prev: {
+        retroarch-bare = prev.retroarch-bare.overrideAttrs (oldAttrs: {
+          version = "1.22.2";
+          src = prev.fetchFromGitHub {
+            owner = "libretro";
+            repo = "RetroArch";
+            rev = "v1.22.2";
+            hash = "sha256-caa5/9kskAHnIzom+RCtF6Gh15RWnopaFw7429dmZzY=";
+          };
+          configureFlags = (oldAttrs.configureFlags or [ ]) ++ [
+            "--enable-builtinflac"
+          ];
+        });
+      })
     ];
   };
 

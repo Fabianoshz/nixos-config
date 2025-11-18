@@ -12,18 +12,39 @@ in
     ./virtualisation.nix
   ];
 
-  # Mount NFS with non-blocking options to prevent Dolphin freezes
+  # Wait for DNS to be ready before mounting NFS
+  systemd.services.wait-for-dns = {
+    description = "Wait for DNS resolution to be available";
+    after = [ "NetworkManager.service" "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      if ${pkgs.dnsutils}/bin/dig +time=1 +tries=5 . NS >/dev/null 2>&1; then
+        echo "DNS resolution successful"
+      else
+        echo "DNS resolution failed, continuing anyway"
+      fi
+    '';
+  };
+
+  # Mount NFS with automount to avoid boot-time DNS issues on WiFi
   fileSystems."/mnt/default/fabiano" = {
     device = "truenas.${general.internal_domain}:/mnt/default-2/fabiano";
     fsType = "nfs";
     options = [
+      "x-systemd.automount" # Mount on-demand instead of at boot
+      "x-systemd.after=wait-for-dns.service" # Wait for DNS to be ready
+      "x-systemd.idle-timeout=600" # Unmount after 10 minutes of inactivity
       "nfsvers=4.2"
       "_netdev"
       "nofail"
       "soft" # Use soft mounts to prevent indefinite hangs
       "timeo=30" # 3 second timeout (30 deciseconds)
       "retrans=2" # Retry 2 times before giving up
-      "bg" # Background mount if server unavailable
       "intr" # Allow interruption of NFS calls
       "rsize=32768" # Read buffer size
       "wsize=32768" # Write buffer size
