@@ -12,6 +12,7 @@ in
 
       extensions = {
         packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+          consent-o-matic
           keepassxc-browser
           sponsorblock
           steam-database
@@ -20,14 +21,24 @@ in
       };
 
       settings = {
+        "browser.ml.chat.enabled" = false;
+        "browser.ml.chat.menu" = false;
+        "browser.ml.chat.page" = false;
+        "browser.ml.chat.sidebar" = false;
+        "browser.ml.enable" = false;
+        "browser.ml.linkPreview.enabled" = false;
         "browser.newtabpage.pinned" = "";
         "browser.startup.page" = 3;
+        "browser.tabs.groups.smart.enabled" = false;
+        "browser.tabs.groups.smart.userEnabled" = false;
         "browser.toolbars.bookmarks.visibility" = "never";
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
         "extensions.autoDisableScopes" = 0;
         "identity.fxaccounts.account.device.name" = "GipsyDanger";
         "media.videocontrols.picture-in-picture.enabled" = false;
+        "pdfjs.enableAltTextModelDownload" = false;
+        "pdfjs.enableGuessAltText" = false;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
 
       search = {

@@ -12,6 +12,7 @@ in
 
       extensions = {
         packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+          consent-o-matic
           sponsorblock
           steam-database
           ublock-origin
