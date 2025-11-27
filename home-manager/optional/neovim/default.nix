@@ -11,6 +11,7 @@
     plugins = with pkgs.vimPlugins; [
       gitsigns-nvim
       nvim-web-devicons
+      auto-session
 
       {
         plugin = nvim-treesitter;
@@ -106,6 +107,12 @@
       vim.g.mapleader = ","
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
+
+      -- Auto-session configuration
+      require('auto-session').setup({
+        auto_save_enabled = true,
+        auto_restore_enabled = true,
+      })
 
       -- LSP stuff
       vim.api.nvim_create_autocmd('LspAttach', {

@@ -112,6 +112,7 @@ in
     pkgs.kdePackages.konsole
     pkgs.kdePackages.krdc
     pkgs.kdePackages.krfb
+    pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
 
     retroarchWithCores

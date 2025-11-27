@@ -98,7 +98,7 @@ in
           "[Yuzu] Saves" = {
             enable = true;
             path = "/home/fabiano/.local/share/yuzu/nand/user/save";
-            devices = [ "Syncthing Server" "GipsyDanger" ];
+            devices = [ "Syncthing Server" ];
           };
 
           "[PCSX2] Cheats" = {
@@ -120,7 +120,7 @@ in
           "[Saves] Diablo II Ressurected" = {
             enable = true;
             path = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games";
-            devices = [ "Syncthing Server" "GipsyDanger" ];
+            devices = [ "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {
@@ -132,7 +132,7 @@ in
           "[Saves] Dynasty Warriors 8" = {
             enable = true;
             path = "/home/fabiano/.local/share/Steam/steamapps/compatdata/2202640766/pfx/drive_c/users/steamuser/Saved Games/Diablo II Resurrected";
-            devices = [ "Syncthing Server" "GipsyDanger" ];
+            devices = [ "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {

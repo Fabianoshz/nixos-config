@@ -61,7 +61,6 @@
   home.homeDirectory = "/home/fabiano";
   home.sessionVariables = {
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
-    SYSTEMD_EDITOR = "nvim";
     EDITOR = "nvim";
     ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
@@ -73,6 +72,7 @@
     NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
     NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/config";
     RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
+    SYSTEMD_EDITOR = "nvim";
     WINEPREFIX = "${config.xdg.dataHome}/wine";
     XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
     ZPLUG_HOME = "${config.xdg.dataHome}/zplug";
@@ -93,7 +93,6 @@
     pkgs.nexusmods-app
     pkgs.obsidian
     pkgs.onlyoffice-bin
-    pkgs.planify
     pkgs.ripgrep
     pkgs.rofi
     pkgs.ssm-session-manager-plugin
@@ -106,6 +105,7 @@
 
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay
+    pkgs.unstable.planify
 
     # Rice stuff
     inputs.lightly.packages.${pkgs.system}.darkly-qt5
@@ -131,6 +131,7 @@
     pkgs.kdePackages.kpimtextedit
     pkgs.kdePackages.kwalletmanager
     pkgs.kdePackages.okular
+    pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
 
     # PIM suite
