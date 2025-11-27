@@ -10,6 +10,7 @@ in
     ./jovian.nix
     ./programs.nix
     ./services.nix
+    ./sunshine.nix
 
     ../../optional/decky-loader/default.nix
   ];
@@ -152,7 +153,7 @@ in
             owner = "libretro";
             repo = "RetroArch";
             rev = "v1.22.2";
-            hash = "sha256-caa5/9kskAHnIzom+RCtF6Gh15RWnopaFw7429dmZzY=";
+            hash = "sha256-+3jgoh6OVbPzW5/nCvpB1CRgkMTBxLkYMm6UV16/cfU=";
           };
           configureFlags = (oldAttrs.configureFlags or [ ]) ++ [
             "--enable-builtinflac"

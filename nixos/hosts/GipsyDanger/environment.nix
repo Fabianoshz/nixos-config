@@ -10,6 +10,7 @@
     ];
 
     sessionVariables = rec {
+      ANDROID_USER_HOME = "$HOME/.config/android";
       CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
       GTK_IM_MODULE = "cedilla";
       QT_IM_MODULE = "cedilla";
