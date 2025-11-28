@@ -139,10 +139,6 @@ in
         "steamdeck-hw-theme"
         "wowup-cf"
       ];
-
-      permittedInsecurePackages = [
-        "mbedtls-2.28.10"
-      ];
     };
 
     overlays = [
