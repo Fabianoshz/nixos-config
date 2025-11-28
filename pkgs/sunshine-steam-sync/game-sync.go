@@ -49,7 +49,7 @@ func fetchCoverArt(apiKey, appID, cacheDir string) (string, error) {
 	}
 
 	// Fetch from SteamGridDB API
-	url := fmt.Sprintf("https://www.steamgriddb.com/api/v2/grids/steam/%s", appID)
+	url := fmt.Sprintf("https://www.steamgriddb.com/api/v2/grids/steam/%s?styles=alternate", appID)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return "", err
@@ -133,6 +133,25 @@ func findSteamLibraries(steamPath string) ([]string, error) {
 	return libraries, nil
 }
 
+// isSteamSystemApp returns true if the app name is a Steam system component
+func isSteamSystemApp(name string) bool {
+	systemPatterns := []string{
+		"Proton",
+		"Steam Linux Runtime",
+		"Steamworks Common Redistributables",
+		"Steam Runtime",
+		"SteamVR",
+	}
+
+	for _, pattern := range systemPatterns {
+		matched, _ := regexp.MatchString("(?i)"+pattern, name)
+		if matched {
+			return true
+		}
+	}
+	return false
+}
+
 // getInstalledGames scans Steam libraries and returns installed games
 func getInstalledGames(libraries []string, apiKey, cacheDir string) []SunshineApp {
 	var games []SunshineApp
@@ -157,7 +176,7 @@ func getInstalledGames(libraries []string, apiKey, cacheDir string) []SunshineAp
 			gameName := data["name"]
 			appid := data["appid"]
 
-			if gameName != "" && appid != "" && !seen[gameName] {
+			if gameName != "" && appid != "" && !seen[gameName] && !isSteamSystemApp(gameName) {
 				app := SunshineApp{
 					Name: gameName,
 					Cmd:  fmt.Sprintf("sunshine-game-client %s", appid),
