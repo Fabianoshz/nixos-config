@@ -6,10 +6,10 @@ in
 {
   programs.git = {
     enable = true;
-    userName = "Fabiano Honorato";
-    userEmail = general.emails.personal;
-    extraConfig = {
+    settings = {
       user = {
+        name = "Fabiano Honorato";
+        email = general.emails.personal;
         signingKey = general.ssh.github;
       };
       gpg = {

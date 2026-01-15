@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   imports = [
     ./firefox.nix
@@ -81,18 +81,21 @@
   home.packages = [
     pkgs.awscli2
     pkgs.bash
+    pkgs.claude-code
     pkgs.dbeaver-bin
     pkgs.dig
     pkgs.discord
     pkgs.git
     pkgs.godot
+    pkgs.grayjay
     pkgs.htop
     pkgs.iotop
     pkgs.keepassxc
     pkgs.moonlight-qt
     pkgs.nexusmods-app
     pkgs.obsidian
-    pkgs.onlyoffice-bin
+    pkgs.onlyoffice-desktopeditors
+    pkgs.planify
     pkgs.ripgrep
     pkgs.rofi
     pkgs.ssm-session-manager-plugin
@@ -103,17 +106,13 @@
     pkgs.virt-manager
     pkgs.vlc
 
-    pkgs.unstable.claude-code
-    pkgs.unstable.grayjay
-    pkgs.unstable.planify
-
     # Rice stuff
-    inputs.lightly.packages.${pkgs.system}.darkly-qt5
-    inputs.lightly.packages.${pkgs.system}.darkly-qt6
+    inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt5
+    inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt6
     pkgs.papirus-icon-theme
     pkgs.plasma-panel-colorizer
     pkgs.plasmusic-toolbar
-    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+    inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # KDE
     pkgs.kdePackages.calendarsupport

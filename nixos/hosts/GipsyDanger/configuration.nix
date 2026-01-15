@@ -12,6 +12,8 @@ in
     ./virtualisation.nix
   ];
 
+  systemd.settings.Manager.RebootWatchdogSec = "0";
+
   # Wait for DNS to be ready before mounting NFS
   systemd.services.wait-for-dns = {
     description = "Wait for DNS resolution to be available";
@@ -63,7 +65,6 @@ in
         "wheel"
         "libvirtd"
         "docker"
-        "wireshark"
       ];
       openssh.authorizedKeys.keys = [
         general.ssh.general
@@ -157,7 +158,7 @@ in
     overlays = [
       (final: prev: {
         unstable = import inputs.nixpkgs-unstable {
-          inherit (prev) system;
+          system = prev.stdenv.hostPlatform.system;
           config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
             "claude-code"
             "grayjay"

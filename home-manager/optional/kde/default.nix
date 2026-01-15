@@ -11,17 +11,17 @@
       # plasma-apply-desktoptheme --list-themes
       theme = "breeze-dark";
       # plasma-apply-colorscheme --list-schemes
-      colorScheme = "Darkly";
+      # colorScheme = "Darkly";
       # lookandfeeltool --list
       # lookAndFeel = "org.kde.breezedark.desktop";
 
-      wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/ScarletTree/contents/images_dark/5120x2880.png";
+      # wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/ScarletTree/contents/images_dark/5120x2880.png";
 
-      windowDecorations = {
-        theme = "Darkly";
-        library = "org.kde.darkly";
-      };
-
+      # windowDecorations = {
+      #   theme = "Darkly";
+      #   library = "org.kde.darkly";
+      # };
+      #
       iconTheme = "Papirus-Dark";
 
       cursor = {

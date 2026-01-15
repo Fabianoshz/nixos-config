@@ -2,15 +2,15 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -31,7 +31,7 @@
     };
 
     jovian-nixos = {
-      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=96023dcc9a0febaaa3b91f447b9ae2fbe86f2923";
+      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=544a1396c5a75fe832ae7a2a097bb760701ccd50";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -71,10 +71,10 @@
     {
       nixosConfigurations = {
         GipsyDanger = nixpkgs.lib.nixosSystem {
-          system = system;
           specialArgs = { inherit inputs; };
 
           modules = [
+            { nixpkgs.hostPlatform = system; }
             ./nixos/hosts/GipsyDanger/configuration.nix
 
             home-manager.nixosModules.home-manager
@@ -88,10 +88,10 @@
         };
 
         GipsyAvenger = nixpkgs-unstable.lib.nixosSystem {
-          system = system;
           specialArgs = { inherit inputs; };
 
           modules = [
+            { nixpkgs.hostPlatform = system; }
             ./nixos/hosts/GipsyAvenger/configuration.nix
 
             jovian-nixos.nixosModules.default
@@ -116,7 +116,7 @@
               nixpkgs.overlays = [
                 (final: prev: {
                   unstable = import nixpkgs-unstable {
-                    inherit (prev) system;
+                    system = prev.stdenv.hostPlatform.system;
                     config.allowUnfree = true;
                   };
                 })
@@ -154,7 +154,7 @@
               nixpkgs.overlays = [
                 (final: prev: {
                   unstable = import nixpkgs-unstable {
-                    inherit (prev) system;
+                    system = prev.stdenv.hostPlatform.system;
                     config.allowUnfree = true;
                   };
                 })

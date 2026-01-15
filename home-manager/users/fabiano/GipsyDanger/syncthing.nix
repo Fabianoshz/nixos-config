@@ -34,6 +34,7 @@ in
           "MiyooMiniPlus" = syncthing.devices.MiyooMiniPlus;
           "Odin" = syncthing.devices.Odin;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
+          "Thor" = syncthing.devices.Thor;
         };
 
         folders = {
@@ -54,7 +55,7 @@ in
           "[Documents] Share" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
             enable = true;
@@ -65,7 +66,7 @@ in
           "[Media] Music" = {
             enable = true;
             path = "${config.home.homeDirectory}/Music";
-            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Odin" "GipsyAvenger" ];
+            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Odin" "Thor" "GipsyAvenger" ];
           };
         };
       };

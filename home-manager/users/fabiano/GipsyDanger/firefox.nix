@@ -11,7 +11,7 @@ in
       id = 0;
 
       extensions = {
-        packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+        packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
           consent-o-matic
           keepassxc-browser
           sponsorblock

@@ -8,15 +8,16 @@
     displayManager.defaultSession = "plasma";
 
     # Disable gnome stuff
-    xserver.displayManager.gdm.enable = false;
-    xserver.displayManager.gdm.wayland = false;
-    xserver.desktopManager.gnome.enable = false;
+    displayManager.gdm.enable = false;
+    displayManager.gdm.wayland = false;
+    desktopManager.gnome.enable = false;
 
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     xserver.enable = true;
 
     clamav = {
+      daemon.enable = true;
       scanner.enable = true;
       updater.enable = true;
     };
@@ -31,11 +32,6 @@
     xserver.excludePackages = [
       pkgs.xterm
     ];
-
-    udev.extraRules = ''
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="0955", ATTRS{idProduct}=="7321", GROUP="plugdev"
-      SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
-    '';
   };
 
 }

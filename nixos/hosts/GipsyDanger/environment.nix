@@ -11,11 +11,11 @@
 
     sessionVariables = rec {
       ANDROID_USER_HOME = "$HOME/.config/android";
-      CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+      CUDA_CACHE_PATH = "${XDG_CACHE_HOME}/nv";
       GTK_IM_MODULE = "cedilla";
       QT_IM_MODULE = "cedilla";
-      SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
-      XCOMPOSECACHE = "$XDG_CACHE_HOME/X11/xcompose";
+      SSH_AUTH_SOCK = "/run/user/$UID/ssh-agent";
+      XCOMPOSECACHE = "${XDG_CACHE_HOME}/X11/xcompose";
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
