@@ -103,7 +103,7 @@
       colorscheme tokyonight-night
     '';
 
-    initLua = ''
+    extraLuaConfig = ''
       -- Disable netrw
       vim.g.mapleader = ","
       vim.g.loaded_netrw = 1
