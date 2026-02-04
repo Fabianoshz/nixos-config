@@ -89,8 +89,6 @@ in
     pkgs.grayjay
     pkgs.htop
     pkgs.itch
-    pkgs.nexusmods-app
-    pkgs.pcsx2
     pkgs.prismlauncher
     pkgs.steam-rom-manager
     pkgs.umu-launcher

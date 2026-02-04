@@ -116,10 +116,10 @@ in
     autoUpgrade = {
       enable = true;
       flags = [
-        "--update-input"
-        "nixpkgs"
+        "--print-build-logs"
         "--commit-lock-file"
       ];
+      flake = "self";
       dates = "02:00";
       randomizedDelaySec = "45min";
     };

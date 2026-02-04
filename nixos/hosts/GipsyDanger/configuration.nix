@@ -138,10 +138,10 @@ in
     autoUpgrade = {
       enable = true;
       flags = [
-        "--update-input"
-        "nixpkgs"
+        "--print-build-logs"
         "--commit-lock-file"
       ];
+      flake = "self";
       dates = "02:00";
       randomizedDelaySec = "45min";
     };
@@ -149,22 +149,13 @@ in
 
   nixpkgs = {
     config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "claude-code"
       "discord"
+      "grayjay"
       "obsidian"
       "steam"
       "steam-original"
       "steam-unwrapped"
-    ];
-    overlays = [
-      (final: prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          system = prev.stdenv.hostPlatform.system;
-          config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-            "claude-code"
-            "grayjay"
-          ];
-        };
-      })
     ];
   };
 

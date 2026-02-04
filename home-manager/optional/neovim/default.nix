@@ -27,6 +27,7 @@
           })
         '';
       }
+
       nvim-treesitter-parsers.go
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.terraform
@@ -102,7 +103,7 @@
       colorscheme tokyonight-night
     '';
 
-    extraLuaConfig = ''
+    initLua = ''
       -- Disable netrw
       vim.g.mapleader = ","
       vim.g.loaded_netrw = 1

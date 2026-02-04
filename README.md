@@ -21,7 +21,6 @@
 
 ### GipsyAvenger
 - [ ] Add NFC reader for game launching
-- [ ] Add nostatoo to map games to Steam
 
 ## Ricing
 
@@ -32,4 +31,3 @@
 ### Mac
 - [ ] Find a nice wallpaper
   - https://github.com/mylinuxforwork/wallpaper
-

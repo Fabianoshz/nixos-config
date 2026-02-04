@@ -92,7 +92,6 @@
     pkgs.iotop
     pkgs.keepassxc
     pkgs.moonlight-qt
-    pkgs.nexusmods-app
     pkgs.obsidian
     pkgs.onlyoffice-desktopeditors
     pkgs.planify
