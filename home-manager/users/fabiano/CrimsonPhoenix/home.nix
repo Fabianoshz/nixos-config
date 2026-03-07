@@ -36,7 +36,8 @@
     pkgs.tmux
     pkgs.utm
 
-    pkgs.unstable.claude-code
+    pkgs.unstable.opencode
+    pkgs.unstable.opencode-desktop
     pkgs.unstable.container
   ];
 

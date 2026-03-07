@@ -45,6 +45,7 @@
     pkgs.kubelogin-oidc
     pkgs.kubernetes-helm
     pkgs.kustomize
+    pkgs.nodejs
     pkgs.obsidian
     pkgs.openjdk
     pkgs.protobuf
@@ -56,6 +57,8 @@
 
     pkgs.unstable.claude-code
     pkgs.unstable.container
+    pkgs.unstable.opencode
+    pkgs.unstable.opencode-desktop
   ];
 
   # Let Home Manager install and manage itself.

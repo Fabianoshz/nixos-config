@@ -105,6 +105,9 @@
     pkgs.virt-manager
     pkgs.vlc
 
+    pkgs.unstable.opencode
+    pkgs.unstable.opencode-desktop
+
     # Rice stuff
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt6
