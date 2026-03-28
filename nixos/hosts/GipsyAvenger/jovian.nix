@@ -4,6 +4,7 @@
   jovian = {
     hardware.has.amd.gpu = true;
     devices.steamdeck.enable = false;
+    devices.steamdeck.enablePerfControlUdevRules = true;
 
     steam = {
       autoStart = true;
@@ -15,6 +16,7 @@
 
     steamos = {
       enableProductSerialAccess = false;
+      enableSysctlConfig = true;
       useSteamOSConfig = false;
     };
 
@@ -62,24 +64,24 @@
         };
         "protondb-decky" = {
           src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/3894048d0d9b35342c85d9f50e9e5e4edc00b65e9dfe61d47ec5cf97bfd28da7.zip";
-            sha256 = "sha256-iwoor0at8mYc6Ys+lh0GvhC/RaupMqvUe8G/sR0dNVQ=";
+            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/54fadb8faec26bb8667a6fd7c61167bc4e5584414f142ae455c74a381ee23891.zip";
+            sha256 = "sha256-qy2Pt1MQCZ7CxJBj/POigOUC28iCbb1PPjpN1GKYRX8=";
             extension = "zip";
             stripRoot = true;
           };
         };
         "SteamGridDB" = {
           src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/f18279dc95b6ee003a7f53a84e8f7eee3a8fdd042ef67e5160c91c31ad12659f.zip";
-            sha256 = "sha256-pJLPuz9OGmMCbZv2BThIApksp6riBRruEUeMvm5iyfs=";
+            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/6d6eca184677dc9ff7736439ee7a575ca8ab386c5ffb1627d446bc43dbd1ecf3.zip";
+            sha256 = "sha256-hYPsrC5QA0eX/fYkEnzIDB0p77Feo4IkKrJ6IKfjtFw=";
             extension = "zip";
             stripRoot = true;
           };
         };
         "tab-master" = {
           src = pkgs.fetchzip {
-            url = "https://github.com/Tormak9970/TabMaster/releases/download/v2.11.2/TabMaster_v2.11.2.zip";
-            sha256 = "sha256-OTEEt2Rkrc4aqXP6RdAS9OrOjx2wVyJ+10ywVWsWfus=";
+            url = "https://github.com/Tormak9970/TabMaster/releases/download/v2.15.0/TabMaster_v2.15.0.zip";
+            sha256 = "sha256-c2oMiWBiAH1oDKmB0l3bojkOqGdHMuw8rAhd9GONGQA=";
             extension = "zip";
             stripRoot = true;
           };

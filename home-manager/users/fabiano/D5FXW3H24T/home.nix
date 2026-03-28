@@ -55,7 +55,6 @@
     pkgs.stern
     pkgs.tmux
 
-    pkgs.unstable.claude-code
     pkgs.unstable.container
     pkgs.unstable.opencode
     pkgs.unstable.opencode-desktop

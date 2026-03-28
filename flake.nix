@@ -31,7 +31,7 @@
     };
 
     jovian-nixos = {
-      url = "github:Jovian-Experiments/Jovian-NixOS/?ref=91d6a007c918d3e862ec2418babfe271a4f7bfaa";
+      url = "github:Jovian-Experiments/Jovian-NixOS/development";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -76,6 +76,17 @@
           modules = [
             { nixpkgs.hostPlatform = system; }
             ./nixos/hosts/GipsyDanger/configuration.nix
+
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  unstable = import nixpkgs-unstable {
+                    system = prev.stdenv.hostPlatform.system;
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
+            }
 
             home-manager.nixosModules.home-manager
             {

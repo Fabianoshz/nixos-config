@@ -81,7 +81,6 @@
   home.packages = [
     pkgs.awscli2
     pkgs.bash
-    pkgs.claude-code
     pkgs.dbeaver-bin
     pkgs.dig
     pkgs.discord
@@ -100,13 +99,12 @@
     pkgs.ssm-session-manager-plugin
     pkgs.steamtinkerlaunch
     pkgs.streamcontroller
+    pkgs.unstable.opencode
+    pkgs.unstable.opencode-desktop
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
     pkgs.vlc
-
-    pkgs.unstable.opencode
-    pkgs.unstable.opencode-desktop
 
     # Rice stuff
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt5

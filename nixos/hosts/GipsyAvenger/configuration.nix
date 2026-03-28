@@ -33,6 +33,25 @@ in
         "auto"
       ];
     };
+    "/mnt/default/common" = {
+      device = "truenas.${general.internal_domain}:/mnt/default-2/common";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount" # Mount on-demand instead of at boot
+        "x-systemd.after=wait-for-dns.service" # Wait for DNS to be ready
+        "x-systemd.idle-timeout=600" # Unmount after 10 minutes of inactivity
+        "nfsvers=4.2"
+        "_netdev"
+        "nofail"
+        "soft" # Use soft mounts to prevent indefinite hangs
+        "timeo=30" # 3 second timeout (30 deciseconds)
+        "retrans=2" # Retry 2 times before giving up
+        "intr" # Allow interruption of NFS calls
+        "rsize=32768" # Read buffer size
+        "wsize=32768" # Write buffer size
+        "nordirplus" # Disable READDIRPLUS for better compatibility
+      ];
+    };
   };
 
   i18n = {
@@ -90,7 +109,7 @@ in
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_jovian;
     plymouth.enable = true;
 
     loader.grub.timeoutStyle = false;
@@ -129,6 +148,8 @@ in
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "grayjay"
+        "libretro-fbneo"
+        "libretro-genesis-plus-gx"
         "libretro-snes9x"
         "steam"
         "steam-jupiter-original"
