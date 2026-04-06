@@ -131,13 +131,15 @@
       "kwinrc"."Effect-blurplus"."WindowClasses" = "class1";
 
       # Window rules
-      "kwinrulesrc"."1"."Description" = "Window transparency rule";
-      "kwinrulesrc"."1"."opacityactive" = 90;
-      "kwinrulesrc"."1"."opacityactiverule" = 2;
-      "kwinrulesrc"."1"."opacityinactive" = 85;
-      "kwinrulesrc"."1"."opacityinactiverule" = 2;
-      "kwinrulesrc"."General"."count" = 1;
-      "kwinrulesrc"."General"."rules" = "1";
+      # "kwinrulesrc"."1"."Description" = "Window transparency rule";
+      # "kwinrulesrc"."1"."opacityactive" = 90;
+      # "kwinrulesrc"."1"."opacityactiverule" = 2;
+      # "kwinrulesrc"."1"."opacityinactive" = 85;
+      # "kwinrulesrc"."1"."opacityinactiverule" = 2;
+      # "kwinrulesrc"."General"."count" = 1;
+      # "kwinrulesrc"."General"."rules" = "1";
+      "kwinrulesrc"."General"."count" = 0;
+      "kwinrulesrc"."General"."rules" = "";
 
       # Krunner
       "krunnerrc"."General"."FreeFloating" = true;

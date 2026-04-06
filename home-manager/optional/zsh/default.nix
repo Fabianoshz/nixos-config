@@ -1,5 +1,9 @@
 { config, pkgs, lib, ... }:
 {
+  home.packages = [
+    pkgs.pre-commit
+  ];
+
   programs.zsh = {
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
@@ -131,13 +135,14 @@
       set -g message-style 'fg=yellow bg=red bold'
 
       # tmux-resurrect settings
+      set -g @resurrect-dir '~/.local/share/tmux/resurrect'
       set -g @resurrect-capture-pane-contents 'on'
-      set -g @resurrect-strategy-vim 'session'
-      set -g @resurrect-strategy-nvim 'session'
+      set -g @resurrect-processes ':all: "~nvim->nvim"'
 
       # tmux-continuum settings
       set -g @continuum-restore 'on'
       set -g @continuum-save-interval '1'
+      set -g @continuum-boot 'on'
     '';
   };
 

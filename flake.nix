@@ -14,12 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lightly.url = "github:Bali10050/Darkly/?ref=v0.5.16";
-
-    kwin-effects-forceblur = {
-      url = "github:taj-ny/kwin-effects-forceblur?ref=v1.3.6";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    lightly.url = "github:Bali10050/Darkly/?ref=v0.5.37";
 
     # Bleeding edge stuff
 

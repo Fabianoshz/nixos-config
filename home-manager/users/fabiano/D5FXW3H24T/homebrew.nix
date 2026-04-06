@@ -22,6 +22,7 @@ let
     "1password-cli"
     "claude"
     "cursor"
+    "granola"
   ];
 in
 with lib;
