@@ -2,7 +2,6 @@
 {
   environment = {
     systemPackages = with pkgs; [
-      # home-manager
       docker-machine-kvm2
       git
       libusb1

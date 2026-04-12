@@ -7,20 +7,9 @@
     displayManager.sddm.wayland.enable = true;
     displayManager.defaultSession = "plasma";
 
-    # Disable gnome stuff
-    displayManager.gdm.enable = false;
-    displayManager.gdm.wayland = false;
-    desktopManager.gnome.enable = false;
-
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     xserver.enable = true;
-
-    clamav = {
-      daemon.enable = true;
-      scanner.enable = true;
-      updater.enable = true;
-    };
 
     pipewire = {
       enable = true;
