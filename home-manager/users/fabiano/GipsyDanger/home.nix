@@ -18,32 +18,34 @@
   programs.home-manager.enable = true;
   programs.gpg.homedir = "${config.xdg.dataHome}/gnupg";
 
-  xdg.autoStart.desktopItems = {
-    StreamController = pkgs.makeDesktopItem {
-      name = "StreamController";
-      exec = "streamcontroller -b";
-      desktopName = "Stream Controller";
-      icon = "streamcontroller";
-      type = "Application";
-      categories = [ "Utility" ];
-      startupNotify = true;
-      terminal = false;
-      comment = "Control your Elgato Stream Decks";
-    };
-
-    Yakuake = pkgs.makeDesktopItem {
-      name = "org.kde.yakuake.desktop";
-      genericName = "Drop-down Terminal";
-      dbusActivatable = true;
-      exec = "yakuake";
-      desktopName = "Yakuake";
-      icon = "yakuake";
-      type = "Application";
-      categories = [ "Qt" "KDE" "System" "TerminalEmulator" ];
-      startupNotify = false;
-      terminal = false;
-      comment = "A drop-down terminal emulator based on KDE Konsole technology.";
-    };
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      "${pkgs.makeDesktopItem {
+        name = "streamcontroller-autostart";
+        exec = "streamcontroller -b";
+        desktopName = "Stream Controller";
+        icon = "streamcontroller";
+        type = "Application";
+        categories = [ "Utility" ];
+        startupNotify = true;
+        terminal = false;
+        comment = "Control your Elgato Stream Decks";
+      }}/share/applications/streamcontroller-autostart.desktop"
+      "${pkgs.makeDesktopItem {
+        name = "org.kde.yakuake.desktop";
+        genericName = "Drop-down Terminal";
+        dbusActivatable = true;
+        exec = "yakuake";
+        desktopName = "Yakuake";
+        icon = "yakuake";
+        type = "Application";
+        categories = [ "Qt" "KDE" "System" "TerminalEmulator" ];
+        startupNotify = false;
+        terminal = false;
+        comment = "A drop-down terminal emulator based on KDE Konsole technology.";
+      }}/share/applications/org.kde.yakuake.desktop.desktop"
+    ];
   };
 
   xdg.desktopEntries.actual = {
