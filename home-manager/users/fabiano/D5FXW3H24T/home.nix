@@ -7,7 +7,6 @@
     ./homebrew.nix
     ./ssh.nix
 
-    ../../../optional/claude-md/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/zsh/default.nix
   ];

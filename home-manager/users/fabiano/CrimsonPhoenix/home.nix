@@ -7,7 +7,6 @@
     ./homebrew.nix
     ./syncthing.nix
 
-    ../../../optional/claude-md/default.nix
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/zsh/default.nix
