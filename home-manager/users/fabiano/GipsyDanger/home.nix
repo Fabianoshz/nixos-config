@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   imports = [
     ./firefox.nix
@@ -90,7 +90,6 @@
     pkgs.discord
     pkgs.git
     pkgs.godot
-    pkgs.grayjay
     pkgs.htop
     pkgs.iotop
     pkgs.keepassxc
@@ -109,6 +108,7 @@
     pkgs.vlc
 
     pkgs.unstable.claude-code
+    pkgs.unstable.grayjay
     pkgs.unstable.opencode
     pkgs.unstable.opencode-desktop
 
