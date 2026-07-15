@@ -46,6 +46,11 @@
     xdg-autostart.url = "github:Zocker1999NET/home-manager-xdg-autostart";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    nix-on-thor = {
+      url = "path:/home/fabiano/Documents/Projects/Fabianoshz/nix-on-thor/nix-on-thor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -107,6 +112,24 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.fabiano = import ./home-manager/users/fabiano/GipsyAvenger/home.nix;
+            }
+          ];
+        };
+
+        Thor = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+
+          modules = [
+            { nixpkgs.hostPlatform = "aarch64-linux"; }
+            ./nixos/hosts/Thor/configuration.nix
+
+            inputs.nix-on-thor.nixosModules.thor
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.fabiano = import ./home-manager/users/fabiano/Thor/home.nix;
             }
           ];
         };

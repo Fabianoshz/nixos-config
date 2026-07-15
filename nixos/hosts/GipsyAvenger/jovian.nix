@@ -32,7 +32,7 @@
         pkgs.util-linux # Has 'rev' for MusicControl plugin
       ];
       extraPythonPackages = pythonPackages: [
-        pkgs.python313Packages.hid
+        pythonPackages.hid
       ];
 
       # Got from: https://plugins.deckbrew.xyz/plugins

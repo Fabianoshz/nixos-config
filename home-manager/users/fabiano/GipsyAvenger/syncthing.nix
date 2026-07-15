@@ -23,8 +23,6 @@ in
           "CrimsonPhoenix" = syncthing.devices.CrimsonPhoenix;
           "CrimsonTyphoon" = syncthing.devices.CrimsonTyphoon;
           "GipsyDanger" = syncthing.devices.GipsyDanger;
-          "MiyooMiniPlus" = syncthing.devices.MiyooMiniPlus;
-          "Odin" = syncthing.devices.Odin;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
           "Thor" = syncthing.devices.Thor;
         };
@@ -33,13 +31,13 @@ in
           "[Documents] Share" = {
             enable = true;
             path = "/home/fabiano/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Odin" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
           "[Media] Music" = {
             enable = true;
             path = "/home/fabiano/Music";
-            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Odin" "Thor" "GipsyDanger" ];
+            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Thor" "GipsyDanger" ];
           };
 
           "[Games] PS2 Memory cards" = {
@@ -51,7 +49,7 @@ in
           "[Games] Retroarch Saves" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/Saves";
-            devices = [ "Odin" "Thor" "Syncthing Server" "MiyooMiniPlus" ];
+            devices = [ "Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {
@@ -63,7 +61,7 @@ in
           "[Games] Retroarch States" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/States";
-            devices = [ "Odin" "Thor" "Syncthing Server" "MiyooMiniPlus" ];
+            devices = [ "Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {
@@ -75,7 +73,7 @@ in
           "[Games] Retroarch Runtime Logs" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/Runtime logs";
-            devices = [ "Odin" "Thor" "Syncthing Server" "MiyooMiniPlus" ];
+            devices = [ "Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {
@@ -87,7 +85,7 @@ in
           "[Games] Retroarch System" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/System";
-            devices = [ "Odin" "Thor" "Syncthing Server" "MiyooMiniPlus" ];
+            devices = [ "Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {

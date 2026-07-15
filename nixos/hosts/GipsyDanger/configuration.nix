@@ -151,6 +151,7 @@ in
     initrd.verbose = false;
     initrd.systemd.enable = true;
     supportedFilesystems = [ "nfs" ];
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
   system = {

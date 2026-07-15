@@ -109,7 +109,8 @@ in
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_jovian;
+    # kernelPackages = pkgs.linuxPackages_jovian;
+    kernelPackages = pkgs.linuxPackages_latest;
     plymouth.enable = true;
 
     loader.grub.timeoutStyle = false;
@@ -159,6 +160,11 @@ in
         "steam-unwrapped"
         "steamdeck-hw-theme"
         "wowup-cf"
+      ];
+
+      permittedInsecurePackages = [
+        # TEMP For decky-loader
+        "pnpm-9.15.9"
       ];
     };
 
