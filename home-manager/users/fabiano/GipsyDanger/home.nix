@@ -88,6 +88,7 @@
     pkgs.dbeaver-bin
     pkgs.dig
     pkgs.discord
+    pkgs.feishin
     pkgs.git
     pkgs.godot
     pkgs.htop
@@ -123,7 +124,6 @@
     pkgs.kdePackages.calendarsupport
     pkgs.kdePackages.dolphin
     pkgs.kdePackages.dolphin-plugins
-    pkgs.kdePackages.elisa
     pkgs.kdePackages.filelight
     pkgs.kdePackages.gwenview
     pkgs.kdePackages.kate
