@@ -91,6 +91,8 @@ in
     hostName = "GipsyAvenger";
     networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
+    interfaces.enp8s0.wakeOnLan.enable = true; # Wake-on-LAN (magic packet).
+
     firewall = {
       enable = true;
       allowedTCPPortRanges = [
@@ -149,6 +151,8 @@ in
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "grayjay"
+        "grayjay-frontend"
+        "grayjay-libcurlshim"
         "libretro-fbneo"
         "libretro-genesis-plus-gx"
         "libretro-snes9x"

@@ -13,6 +13,7 @@ in
       extensions = {
         packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
           consent-o-matic
+          new-tab-override
           sponsorblock
           steam-database
           ublock-origin

@@ -32,7 +32,8 @@ in
           "CrimsonTyphoon" = syncthing.devices.CrimsonTyphoon;
           "GipsyAvenger" = syncthing.devices.GipsyAvenger;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
-          "Thor" = syncthing.devices.Thor;
+          "Thor" = syncthing.devices.Thor; # Linux
+          "AYN Thor" = syncthing.devices.AYNThor; # Android
         };
 
         folders = {
@@ -53,18 +54,12 @@ in
           "[Documents] Share" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "AYN Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Workspaces";
             devices = [ "Syncthing Server" "CrimsonPhoenix" ];
-          };
-
-          "[Media] Music" = {
-            enable = true;
-            path = "${config.home.homeDirectory}/Music";
-            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Thor" "GipsyAvenger" ];
           };
         };
       };

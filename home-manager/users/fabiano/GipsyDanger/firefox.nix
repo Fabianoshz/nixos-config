@@ -14,6 +14,7 @@ in
         packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
           consent-o-matic
           keepassxc-browser
+          new-tab-override
           sponsorblock
           steam-database
           ublock-origin

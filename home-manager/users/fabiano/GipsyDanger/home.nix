@@ -21,17 +21,6 @@
     enable = true;
     entries = [
       "${pkgs.makeDesktopItem {
-        name = "streamcontroller-autostart";
-        exec = "streamcontroller -b";
-        desktopName = "Stream Controller";
-        icon = "streamcontroller";
-        type = "Application";
-        categories = [ "Utility" ];
-        startupNotify = true;
-        terminal = false;
-        comment = "Control your Elgato Stream Decks";
-      }}/share/applications/streamcontroller-autostart.desktop"
-      "${pkgs.makeDesktopItem {
         name = "org.kde.yakuake.desktop";
         genericName = "Drop-down Terminal";
         dbusActivatable = true;
@@ -100,13 +89,14 @@
     pkgs.planify
     pkgs.ripgrep
     pkgs.rofi
+    pkgs.rpi-imager
     pkgs.ssm-session-manager-plugin
     pkgs.steamtinkerlaunch
     pkgs.streamcontroller
+    pkgs.sweethome3d.application
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
-    pkgs.vlc
 
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay

@@ -34,12 +34,6 @@ in
             devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
-          "[Media] Music" = {
-            enable = true;
-            path = "/home/fabiano/Music";
-            devices = [ "CrimsonPhoenix" "ChernoAlpha" "GipsyDanger" ];
-          };
-
           "[Games] Retroarch Saves" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/Saves";

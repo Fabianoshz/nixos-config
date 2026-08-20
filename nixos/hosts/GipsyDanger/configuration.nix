@@ -119,6 +119,8 @@ in
     hostName = "GipsyDanger";
     networkmanager.enable = true;
 
+    interfaces.enp7s0.wakeOnLan.enable = true; # Wake-on-LAN (magic packet).
+
     firewall = {
       enable = true;
       allowedTCPPortRanges = [

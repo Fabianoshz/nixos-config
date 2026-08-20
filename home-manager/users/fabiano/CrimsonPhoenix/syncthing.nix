@@ -60,12 +60,6 @@ in
             path = "${config.home.homeDirectory}/Documents/Workspaces";
             devices = [ "Syncthing Server" "GipsyDanger" ];
           };
-
-          "[Media] Music" = {
-            enable = true;
-            path = "${config.home.homeDirectory}/Music";
-            devices = [ "GipsyDanger" "GipsyAvenger" "ChernoAlpha" "Thor" ];
-          };
         };
       };
     };

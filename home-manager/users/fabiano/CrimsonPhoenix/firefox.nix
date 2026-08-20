@@ -12,6 +12,7 @@ in
       extensions = {
         packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
           keepassxc-browser
+          new-tab-override
           sponsorblock
           steam-database
           ublock-origin

@@ -24,20 +24,15 @@ in
           "CrimsonTyphoon" = syncthing.devices.CrimsonTyphoon;
           "GipsyDanger" = syncthing.devices.GipsyDanger;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
-          "Thor" = syncthing.devices.Thor;
+          "Thor" = syncthing.devices.Thor; # Linux
+          "AYN Thor" = syncthing.devices.AYNThor; # Android
         };
 
         folders = {
           "[Documents] Share" = {
             enable = true;
             path = "/home/fabiano/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
-          };
-
-          "[Media] Music" = {
-            enable = true;
-            path = "/home/fabiano/Music";
-            devices = [ "CrimsonPhoenix" "ChernoAlpha" "Thor" "GipsyDanger" ];
+            devices = [ "CrimsonTyphoon" "ChernoAlpha" "AYN Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
           "[Games] PS2 Memory cards" = {
@@ -49,7 +44,7 @@ in
           "[Games] Retroarch Saves" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/Saves";
-            devices = [ "Thor" "Syncthing Server" ];
+            devices = [ "AYN Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {
@@ -61,7 +56,7 @@ in
           "[Games] Retroarch States" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/States";
-            devices = [ "Thor" "Syncthing Server" ];
+            devices = [ "AYN Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {
@@ -73,7 +68,7 @@ in
           "[Games] Retroarch Runtime Logs" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/Runtime logs";
-            devices = [ "Thor" "Syncthing Server" ];
+            devices = [ "AYN Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {
@@ -85,7 +80,7 @@ in
           "[Games] Retroarch System" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/System";
-            devices = [ "Thor" "Syncthing Server" ];
+            devices = [ "AYN Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {

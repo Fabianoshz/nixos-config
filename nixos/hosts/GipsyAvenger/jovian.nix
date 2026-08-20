@@ -1,5 +1,23 @@
 { pkgs, lib, ... }:
 
+let
+  # tender.zip ships a duplicate README.md entry, which fetchzip's unzip (run
+  # without -o) can't unpack in the sandbox (it hits an overwrite prompt and
+  # aborts). Fetch the raw zip and unpack with forced overwrite instead,
+  # stripping the top-level romm-tender/ dir.
+  tenderSrc = pkgs.runCommand "tender-0.31.0"
+    {
+      src = pkgs.fetchurl {
+        url = "https://github.com/danielcopper/romm-tender/releases/download/tender-v0.31.0/tender.zip";
+        hash = "sha256-dLov4HdeOUldsYC7cwM5Dr9xI8zR3gi1XBE4bHXoR/I=";
+      };
+      nativeBuildInputs = [ pkgs.unzip ];
+    } ''
+    mkdir unpacked
+    unzip -o -q $src -d unpacked
+    cp -r unpacked/romm-tender $out
+  '';
+in
 {
   jovian = {
     hardware.has.amd.gpu = true;
@@ -37,27 +55,18 @@
 
       # Got from: https://plugins.deckbrew.xyz/plugins
       plugins = {
-        # This is not working :(
-        # "MagicPodsDecky" = {
-        #   src = pkgs.fetchzip {
-        #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/fa7407d44069ee54e92ed8bd44a0462b73e96a63060ac7524581684c21c15779.zip";
-        #     sha256 = "sha256-B5svfH56Xk0+bZRgM1DOxZ+k75aufHVmUCDP2HfIXE0=";
-        #     extension = "zip";
-        #     stripRoot = true;
-        #   };
-        # };
-        "SDH-CssLoader" = {
+        "controller-tools" = {
           src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/1a1e8f4dded8494febe56df16429ef5bba1e5b8feb3fd989d5808fbef0d71350.zip";
-            sha256 = "sha256-PoJNP6kqwTQphJxrgWq+uLCXjpcpAeJQ2Xu6d8UW6OY=";
+            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/9450e54cbf28082d4513838d0dcd42bf04ffc08ae5a6472d0c1f88677782e3ef.zip";
+            sha256 = "sha256-+cmM3dJMj/wGAD7VwdZW03vpXQyL2aI2tB0zLYU0Jyk";
             extension = "zip";
             stripRoot = true;
           };
         };
-        "SDH-GameThemeMusic" = {
+        "decky-framegen" = {
           src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/9ce293ab4db212c03c6b96dfbc5e4d92e874d33387463f53223773921f75a80e.zip";
-            sha256 = "sha256-2J5kDcw5Pwih2j12BH5Pvx4vA11wtFlMaB0NzMeFM1k=";
+            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/14015d5a652c78b2041fd9668685573840530c306e414aabc0d3cebf95be0642.zip";
+            sha256 = "sha256-zLdX7hQRtGELrRh+hj0JA19FZyMak5Ad8HE5f3Dti/s=";
             extension = "zip";
             stripRoot = true;
           };
@@ -66,6 +75,14 @@
           src = pkgs.fetchzip {
             url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/54fadb8faec26bb8667a6fd7c61167bc4e5584414f142ae455c74a381ee23891.zip";
             sha256 = "sha256-qy2Pt1MQCZ7CxJBj/POigOUC28iCbb1PPjpN1GKYRX8=";
+            extension = "zip";
+            stripRoot = true;
+          };
+        };
+        "SDH-CssLoader" = {
+          src = pkgs.fetchzip {
+            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/1a1e8f4dded8494febe56df16429ef5bba1e5b8feb3fd989d5808fbef0d71350.zip";
+            sha256 = "sha256-PoJNP6kqwTQphJxrgWq+uLCXjpcpAeJQ2Xu6d8UW6OY=";
             extension = "zip";
             stripRoot = true;
           };
@@ -80,20 +97,32 @@
         };
         "tab-master" = {
           src = pkgs.fetchzip {
-            url = "https://github.com/Tormak9970/TabMaster/releases/download/v2.15.0/TabMaster_v2.15.0.zip";
+            url = "https://github.com/Tormak9970/TabMaster/releases/download/v2.16.2/TabMaster_v2.16.2.zip";
             sha256 = "sha256-c2oMiWBiAH1oDKmB0l3bojkOqGdHMuw8rAhd9GONGQA=";
             extension = "zip";
             stripRoot = true;
           };
         };
-        "MusicControl" = {
-          src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/246b89fd653c60a735b1cc401d1b0937d5cb969eea9024561661ff741f081d62.zip";
-            sha256 = "sha256-Ow0cvecOd/ZO7j5Xur3rRz+CAE5l/4pX3qGNcJ6wmF4=";
-            extension = "zip";
-            stripRoot = true;
-          };
+        "Tender" = {
+          src = tenderSrc;
         };
+
+        # "SDH-GameThemeMusic" = {
+        #   src = pkgs.fetchzip {
+        #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/9ce293ab4db212c03c6b96dfbc5e4d92e874d33387463f53223773921f75a80e.zip";
+        #     sha256 = "sha256-2J5kDcw5Pwih2j12BH5Pvx4vA11wtFlMaB0NzMeFM1k=";
+        #     extension = "zip";
+        #     stripRoot = true;
+        #   };
+        # };
+        # "MusicControl" = {
+        #   src = pkgs.fetchzip {
+        #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/246b89fd653c60a735b1cc401d1b0937d5cb969eea9024561661ff741f081d62.zip";
+        #     sha256 = "sha256-Ow0cvecOd/ZO7j5Xur3rRz+CAE5l/4pX3qGNcJ6wmF4=";
+        #     extension = "zip";
+        #     stripRoot = true;
+        #   };
+        # };
         # "Emuchievements" = {
         #   src = pkgs.fetchzip {
         #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/98dcb443e81b9f9011cfe77c69eb659869c8e2df2df8b0a443df66cbfc2f5a89.zip";
@@ -102,30 +131,14 @@
         #     stripRoot = true;
         #   };
         # };
-        "decky-pip" = {
-          src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/e0115148305cd216e50bcfec8851fe3d1c6f3d36ae2f92113c199fc1bb2388e3.zip";
-            sha256 = "sha256-GAYPJH9dK73191zQhf+0WmvV9c+KMyHJC1JItpQoDUY=";
-            extension = "zip";
-            stripRoot = true;
-          };
-        };
-        "decky-framegen" = {
-          src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/14015d5a652c78b2041fd9668685573840530c306e414aabc0d3cebf95be0642.zip";
-            sha256 = "sha256-zLdX7hQRtGELrRh+hj0JA19FZyMak5Ad8HE5f3Dti/s=";
-            extension = "zip";
-            stripRoot = true;
-          };
-        };
-        "controller-tools" = {
-          src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/9450e54cbf28082d4513838d0dcd42bf04ffc08ae5a6472d0c1f88677782e3ef.zip";
-            sha256 = "sha256-+cmM3dJMj/wGAD7VwdZW03vpXQyL2aI2tB0zLYU0Jyk";
-            extension = "zip";
-            stripRoot = true;
-          };
-        };
+        # "decky-pip" = {
+        #   src = pkgs.fetchzip {
+        #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/e0115148305cd216e50bcfec8851fe3d1c6f3d36ae2f92113c199fc1bb2388e3.zip";
+        #     sha256 = "sha256-GAYPJH9dK73191zQhf+0WmvV9c+KMyHJC1JItpQoDUY=";
+        #     extension = "zip";
+        #     stripRoot = true;
+        #   };
+        # };
 
         # Not working yet (has dynamic linked programs)
         # "wine-cellar" = {
@@ -140,6 +153,14 @@
         #   src = pkgs.fetchzip {
         #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/1424128571b59536909095146959acba3a36899a69e3d2d790f630f2c7bc607e.zip";
         #     sha256 = "sha256-pzv8nXm4pMjhQzzFeB348zLVCfpaWv6CjMQSYS5dLUY";
+        #     extension = "zip";
+        #     stripRoot = true;
+        #   };
+        # };
+        # "MagicPodsDecky" = {
+        #   src = pkgs.fetchzip {
+        #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/fa7407d44069ee54e92ed8bd44a0462b73e96a63060ac7524581684c21c15779.zip";
+        #     sha256 = "sha256-B5svfH56Xk0+bZRgM1DOxZ+k75aufHVmUCDP2HfIXE0=";
         #     extension = "zip";
         #     stripRoot = true;
         #   };
