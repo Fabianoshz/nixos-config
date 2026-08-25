@@ -113,6 +113,9 @@
       require('auto-session').setup({
         auto_save_enabled = true,
         auto_restore_enabled = true,
+        -- don't persist the tree buffer; it restores as an empty swapfile-backed
+        -- buffer named NvimTree_1 and trips E325 on the next start
+        pre_save_cmds = { function() pcall(vim.cmd, 'NvimTreeClose') end },
       })
 
       -- LSP stuff
