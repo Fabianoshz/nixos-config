@@ -7,6 +7,8 @@
       pkgs.python3
       pkgs.vim
       pkgs.wget
+
+      (pkgs.callPackage ../../../pkgs/SymphonyRecomp { })
     ];
   };
 }

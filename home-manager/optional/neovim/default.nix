@@ -6,6 +6,9 @@
     vimAlias = true;
     vimdiffAlias = true;
 
+    withRuby = false;
+    withPython3 = false;
+
     extraPackages = [ ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     plugins = with pkgs.vimPlugins; [

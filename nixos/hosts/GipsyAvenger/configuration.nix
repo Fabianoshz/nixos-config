@@ -117,7 +117,7 @@ in
 
     loader.grub.timeoutStyle = false;
     loader.systemd-boot.enable = true;
-    loader.systemd-boot.editor = false;
+    loader.systemd-boot.editor = true;
     loader.efi.canTouchEfiVariables = true;
     loader.timeout = 0;
     consoleLogLevel = 0;
@@ -163,6 +163,7 @@ in
         "steam-run"
         "steam-unwrapped"
         "steamdeck-hw-theme"
+        "symphony-recomp"
         "wowup-cf"
       ];
 
@@ -193,7 +194,7 @@ in
   nix = {
     settings = {
       # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
+      experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "fabiano" ];
     };
 

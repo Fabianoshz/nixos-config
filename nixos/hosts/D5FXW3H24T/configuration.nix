@@ -6,7 +6,7 @@
 {
   nix.settings = {
     # Enable flakes and new 'nix' command
-    experimental-features = "nix-command flakes";
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
   nix.optimise.automatic = true;

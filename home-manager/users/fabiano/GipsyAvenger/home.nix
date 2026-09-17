@@ -96,6 +96,7 @@ in
     pkgs.umu-launcher
     pkgs.unzip
     pkgs.usbutils
+    pkgs.wine
     pkgs.wowup-cf
     pkgs.xenia-canary
 
