@@ -5,6 +5,7 @@
   imports = [
     ./firefox.nix
     ./syncthing.nix
+    ./thunderbird.nix
 
     ../../../optional/git/default.nix
     ../../../optional/kde/default.nix
@@ -111,7 +112,6 @@
     pkgs.plasmusic-toolbar
 
     # KDE
-    pkgs.kdePackages.calendarsupport
     pkgs.kdePackages.dolphin
     pkgs.kdePackages.dolphin-plugins
     pkgs.kdePackages.filelight
@@ -120,30 +120,15 @@
     pkgs.kdePackages.kcalc
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
-    pkgs.kdePackages.kontact
-    pkgs.kdePackages.korganizer
-    pkgs.kdePackages.kpimtextedit
     pkgs.kdePackages.kwalletmanager
     pkgs.kdePackages.okular
     pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
 
-    # PIM suite
+    # PIM (Akonadi backend for the Plasma calendar events widget)
     pkgs.kdePackages.akonadi
     pkgs.kdePackages.akonadi-calendar
-    pkgs.kdePackages.akonadi-calendar-tools
-    pkgs.kdePackages.akonadi-contacts
-    pkgs.kdePackages.akonadi-import-wizard
-    pkgs.kdePackages.akonadi-mime
-    pkgs.kdePackages.akonadi-search
     pkgs.kdePackages.kdepim-addons
     pkgs.kdePackages.kdepim-runtime
-    pkgs.kdePackages.kmail-account-wizard
-    pkgs.kdePackages.kmailtransport
-    pkgs.kdePackages.mailcommon
-    pkgs.kdePackages.mailimporter
-    pkgs.kdePackages.pim-data-exporter
-    pkgs.kdePackages.pim-sieve-editor
-    pkgs.kdePackages.pimcommon
   ];
 }

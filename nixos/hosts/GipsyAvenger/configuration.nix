@@ -17,8 +17,11 @@ in
 
   systemd.settings.Manager.RebootWatchdogSec = "0";
 
+  systemd.services."drkonqi-coredump-processor@".enable = false;
+
   time.timeZone = "America/Sao_Paulo";
 
+  security.rtkit.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
   fileSystems = {
@@ -118,13 +121,26 @@ in
     loader.grub.timeoutStyle = false;
     loader.systemd-boot.enable = true;
     loader.systemd-boot.editor = true;
+    loader.systemd-boot.configurationLimit = 10;
     loader.efi.canTouchEfiVariables = true;
     loader.timeout = 0;
     consoleLogLevel = 0;
     initrd.verbose = false;
     initrd.systemd.enable = true;
 
-    kernelParams = [ "quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" "hid_nintendo" "hid_playstation" ];
+    kernelParams = [
+      "quiet"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+      "hid_nintendo"
+      "hid_playstation"
+
+      # The root NVMe wedges after resume from S3 (kernel flags it "simple
+      # suspend", invalid SUBNQN); anything touching disk then blocks forever.
+      "nvme.noacpi=1" # Ignore the ACPI hint, use a normal NVMe suspend/resume.
+      "nvme_core.default_ps_max_latency_us=0" # Disable APST deep power states.
+    ];
   };
 
   hardware = {
@@ -134,17 +150,6 @@ in
 
   system = {
     stateVersion = "25.11";
-
-    autoUpgrade = {
-      enable = true;
-      flags = [
-        "--print-build-logs"
-        "--commit-lock-file"
-      ];
-      flake = "self";
-      dates = "02:00";
-      randomizedDelaySec = "45min";
-    };
   };
 
   nixpkgs = {

@@ -70,7 +70,11 @@
           "org.kde.plasma.panelspacer"
           {
             digitalClock = {
-              calendar.firstDayOfWeek = "sunday";
+              calendar = {
+                firstDayOfWeek = "sunday";
+                # Sources events from Akonadi (kdepim-addons provides pimevents.so).
+                plugins = [ "pimevents" ];
+              };
               date = {
                 enable = true;
                 position = "besideTime";

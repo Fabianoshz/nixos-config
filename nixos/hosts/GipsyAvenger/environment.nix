@@ -8,6 +8,7 @@
       pkgs.vim
       pkgs.wget
 
+      (pkgs.callPackage ../../../pkgs/RetroLauncher { })
       (pkgs.callPackage ../../../pkgs/SymphonyRecomp { })
     ];
   };
