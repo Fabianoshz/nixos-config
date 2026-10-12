@@ -89,7 +89,6 @@
             };
           }
           "org.kde.plasma.panelspacer"
-          "plasmusic-toolbar"
           "org.kde.plasma.marginsseparator"
           {
             systemTray = {

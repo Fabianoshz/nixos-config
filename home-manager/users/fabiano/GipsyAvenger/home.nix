@@ -104,7 +104,6 @@ in
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt6
     pkgs.papirus-icon-theme
-    pkgs.plasmusic-toolbar
 
     # KDE
     pkgs.kdePackages.elisa

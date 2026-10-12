@@ -177,6 +177,7 @@ in
       # Enable flakes and new 'nix' command
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "fabiano" ];
+      use-xdg-base-directories = true;
     };
 
     optimise.automatic = true;

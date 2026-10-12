@@ -10,6 +10,12 @@ in
     profiles.main = {
       id = 0;
 
+      containersForce = true;
+      containers = {
+        personal = { id = 1; color = "blue"; icon = "fingerprint"; };
+        work = { id = 2; color = "orange"; icon = "briefcase"; };
+      };
+
       extensions = {
         packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
           consent-o-matic
@@ -39,6 +45,8 @@ in
         "media.videocontrols.picture-in-picture.enabled" = false;
         "pdfjs.enableAltTextModelDownload" = false;
         "pdfjs.enableGuessAltText" = false;
+        "privacy.userContext.enabled" = true;
+        "privacy.userContext.ui.enabled" = true;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
 

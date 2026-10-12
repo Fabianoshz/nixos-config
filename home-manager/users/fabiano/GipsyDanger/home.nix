@@ -51,26 +51,46 @@
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
   home.sessionVariables = {
+    _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=${config.xdg.configHome}/java -Djavafx.cachedir=${config.xdg.cacheHome}/openjfx";
+    ANSIBLE_HOME = "${config.xdg.dataHome}/ansible";
     AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
     AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
+    CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    CHECKPOINT_DISABLE = "1";
+    CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     EDITOR = "nvim";
     ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+    GOPATH = "${config.xdg.dataHome}/go";
+    HISTFILE = "${config.xdg.stateHome}/bash_history";
     KUBECACHEDIR = "${config.xdg.cacheHome}/kube";
     KUBECONFIG = "${config.xdg.configHome}/kube/kubeconfig";
     LESSHISTFILE = "${config.xdg.cacheHome}/less/history";
+    MAVEN_OPTS = "-Dmaven.repo.local=${config.xdg.dataHome}/maven/repository";
     MINIKUBE_HOME = "${config.xdg.dataHome}/minikube";
     NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
     NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
     NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/config";
-    OCI_CLI_CONFIG_FILE = "${config.xdg.configHome}/oci/config";
+    PSQL_HISTORY = "${config.xdg.stateHome}/psql_history";
+    PYTHON_HISTORY = "${config.xdg.stateHome}/python_history";
+    RANDFILE = "${config.xdg.cacheHome}/rnd";
     RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
     SYSTEMD_EDITOR = "nvim";
+    TF_PLUGIN_CACHE_DIR = "${config.xdg.cacheHome}/terraform/plugins";
+    WGETRC = "${config.xdg.configHome}/wgetrc";
     WINEPREFIX = "${config.xdg.dataHome}/wine";
     XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
     ZPLUG_HOME = "${config.xdg.dataHome}/zplug";
   };
+
+  xdg.configFile."wgetrc".text = ''
+    hsts-file = ${config.xdg.cacheHome}/wget-hsts
+  '';
+
+  home.activation.terraformPluginCache = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p ${config.xdg.cacheHome}/terraform/plugins
+  '';
 
   home.packages = [
     pkgs.awscli2
@@ -87,6 +107,7 @@
     pkgs.moonlight-qt
     pkgs.obsidian
     pkgs.onlyoffice-desktopeditors
+    pkgs.opencode
     pkgs.planify
     pkgs.ripgrep
     pkgs.rofi
@@ -101,15 +122,12 @@
 
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay
-    pkgs.unstable.opencode
-    pkgs.unstable.opencode-desktop
 
     # Rice stuff
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt6
     pkgs.papirus-icon-theme
     pkgs.plasma-panel-colorizer
-    pkgs.plasmusic-toolbar
 
     # KDE
     pkgs.kdePackages.dolphin
