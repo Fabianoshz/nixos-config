@@ -33,12 +33,11 @@ in
 
   environment.shells = with pkgs; [ zsh ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "discord"
-      "obsidian"
-    ];
+  nixpkgs.config.allowUnfree = true;
+
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    reattach = true;
   };
 
   nix.gc = {
@@ -47,6 +46,11 @@ in
   };
 
   ids.gids.nixbld = 30000;
+
+  # Spotlight indexing is disabled by default on the data volume on macOS; re-enable it declaratively
+  system.activationScripts.extraActivation.text = ''
+    mdutil -i on /System/Volumes/Data > /dev/null
+  '';
 
   system.stateVersion = 5;
   nixpkgs.hostPlatform = "aarch64-darwin";

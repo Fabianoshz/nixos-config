@@ -5,10 +5,12 @@
   imports = [
     ./firefox.nix
     ./homebrew.nix
+    ./iterm2.nix
     ./syncthing.nix
 
     ../../../optional/git/default.nix
     ../../../optional/neovim/default.nix
+    ../../../optional/opencode/default.nix
     ../../../optional/zsh/default.nix
   ];
 
@@ -24,16 +26,11 @@
     pkgs.bash
     pkgs.dbeaver-bin
     pkgs.dig
-    pkgs.discord
     pkgs.firefox
     pkgs.git
     pkgs.htop
-    pkgs.iterm2
     pkgs.keepassxc
-    pkgs.obsidian
     pkgs.ssm-session-manager-plugin
-    pkgs.tmux
-    pkgs.utm
 
     pkgs.unstable.opencode
     pkgs.unstable.opencode-desktop
@@ -42,4 +39,16 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  services.home-manager.autoExpire = {
+    enable = true;
+    timestamp = "-30 days";
+    frequency = "weekly";
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "-d";
+  };
 }

@@ -5,9 +5,14 @@ let
   brews = [ ];
 
   casks = [
+    "discord"
     "grayjay"
+    "iterm2"
+    "logseq"
+    "obsidian"
     "onlyoffice"
     "steam"
+    "utm"
   ];
 in
 with lib;
@@ -50,7 +55,7 @@ with lib;
         )
         casks);
     onChange = ''
-      /opt/homebrew/bin/brew bundle install --cleanup --no-upgrade --force --global
+      /opt/homebrew/bin/brew bundle install  --force --global
     '';
   };
 }

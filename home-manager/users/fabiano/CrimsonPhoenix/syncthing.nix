@@ -51,7 +51,7 @@ in
           "[Documents] Share" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Share";
-            devices = [ "ChernoAlpha" "Thor" "Syncthing Server" "GipsyDanger" "GipsyAvenger" ];
+            devices = [ "ChernoAlpha" "Syncthing Server" "GipsyDanger" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
             enable = true;

@@ -5,9 +5,11 @@
   imports = [
     ./git.nix
     ./homebrew.nix
+    ./iterm2.nix
     ./ssh.nix
 
     ../../../optional/neovim/default.nix
+    ../../../optional/opencode/default.nix
     ../../../optional/zsh/default.nix
   ];
 
@@ -34,7 +36,6 @@
     pkgs.git
     pkgs.go
     pkgs.golint
-    pkgs.google-chrome
     pkgs.grpcurl
     pkgs.htop
     pkgs.insomnia
@@ -52,7 +53,7 @@
     pkgs.protoc-gen-go-grpc
     pkgs.ssm-session-manager-plugin
     pkgs.stern
-    pkgs.tmux
+
 
     pkgs.unstable.container
     pkgs.unstable.opencode
@@ -61,4 +62,16 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  services.home-manager.autoExpire = {
+    enable = true;
+    timestamp = "-30 days";
+    frequency = "weekly";
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "-d";
+  };
 }

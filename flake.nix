@@ -48,7 +48,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nix-on-thor = {
-      url = "path:/home/fabiano/Documents/Projects/Fabianoshz/nix-on-thor/nix-on-thor";
+      url = "github:Fabianoshz/nix-on-thor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -125,7 +125,7 @@
             { nixpkgs.hostPlatform = "aarch64-linux"; }
             ./nixos/hosts/Thor/configuration.nix
 
-            inputs.nix-on-thor.nixosModules.thor
+            # inputs.nix-on-thor.nixosModules.thor
             "${patchHomeManager home-manager "aarch64-linux"}/nixos"
             {
               home-manager.useGlobalPkgs = true;

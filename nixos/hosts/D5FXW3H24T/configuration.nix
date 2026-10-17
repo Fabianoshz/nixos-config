@@ -38,10 +38,17 @@
     ];
   };
 
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   nix.gc = {
     automatic = true;
     options = "--delete-older-than 30d";
   };
+
+  # Spotlight indexing is disabled by default on the data volume on macOS; re-enable it declaratively
+  system.activationScripts.extraActivation.text = ''
+    mdutil -i on /System/Volumes/Data > /dev/null
+  '';
 
   system.stateVersion = 6;
 

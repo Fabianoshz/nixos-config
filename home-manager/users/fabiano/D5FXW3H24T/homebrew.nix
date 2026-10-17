@@ -23,6 +23,8 @@ let
     "claude"
     "cursor"
     "granola"
+    # macOS .app bundles in the nix store get immutable flags that block nix-daemon GC (NixOS/nix#6765)
+    "google-chrome"
   ];
 in
 with lib;
@@ -65,7 +67,7 @@ with lib;
         )
         casks);
     onChange = ''
-      /opt/homebrew/bin/brew bundle install --cleanup --no-upgrade --force --global
+      /opt/homebrew/bin/brew bundle install  --force --global
     '';
   };
 }

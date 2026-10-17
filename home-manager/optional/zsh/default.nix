@@ -25,8 +25,6 @@
 
       # Ctrl + Backspace
       bindkey "^H" backward-delete-word
-
-      bindkey "^R" history-incremental-search-backward
     '';
 
     shellAliases = {
@@ -98,14 +96,6 @@
         bind -n M-Down if -F '#{@pane-is-vim}' 'send-keys M-Down' 'if -F "#{pane_at_bottom}" "" "select-pane -D"'
       }
 
-      # switch panes using Cmd-arrow without prefix (macOS only) - no wrapping
-      if-shell 'test "$(uname)" = "Darwin"' {
-        bind -n D-Left if -F "#{pane_at_left}" "" "select-pane -L"
-        bind -n D-Right if -F "#{pane_at_right}" "" "select-pane -R"
-        bind -n D-Up if -F "#{pane_at_top}" "" "select-pane -U"
-        bind -n D-Down if -F "#{pane_at_bottom}" "" "select-pane -D"
-      }
-
       # reload config
       bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded!"
 
@@ -150,5 +140,10 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }

@@ -10,6 +10,7 @@
     ../../../optional/git/default.nix
     ../../../optional/kde/default.nix
     ../../../optional/neovim/default.nix
+    ../../../optional/opencode/default.nix
     ../../../optional/zsh/default.nix
 
     inputs.xdg-autostart.homeManagerModules.xdg-autostart
