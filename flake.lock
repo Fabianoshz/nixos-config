@@ -136,6 +136,25 @@
         "type": "indirect"
       }
     },
+    "gamescope-thor": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792181832,
+        "narHash": "sha256-pL4HWkJTvRwO8Yo21lHLfMpqAkmpoAUUQNwlmeJRjEg=",
+        "ref": "dual-screen",
+        "rev": "d509c434a16317dfc4b731b4653be1356d613855",
+        "revCount": 2840,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/project-barry/gamescope"
+      },
+      "original": {
+        "ref": "dual-screen",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/project-barry/gamescope"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -529,6 +548,7 @@
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
+        "gamescope-thor": "gamescope-thor",
         "home-manager": "home-manager",
         "home-manager-master": "home-manager-master",
         "jovian-nixos": "jovian-nixos",

@@ -20,6 +20,7 @@ in
   environment.systemPackages = with pkgs; [
     vim
     htop
+    gamescope
   ];
 
   nixpkgs.overlays = [
@@ -32,6 +33,10 @@ in
           };
         });
       };
+
+      gamescope = prev.gamescope.overrideAttrs (old: {
+        src = inputs.gamescope-thor;
+      });
     })
   ];
 

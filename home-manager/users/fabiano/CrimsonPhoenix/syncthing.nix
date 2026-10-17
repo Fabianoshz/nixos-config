@@ -27,6 +27,7 @@ in
         };
 
         devices = {
+          "AYN Thor" = syncthing.devices.AYNThor; # Android
           "ChernoAlpha" = syncthing.devices.ChernoAlpha;
           "GipsyAvenger" = syncthing.devices.GipsyAvenger;
           "GipsyDanger" = syncthing.devices.GipsyDanger;

@@ -27,11 +27,11 @@ in
         };
 
         devices = {
+          "AYN Thor" = syncthing.devices.AYNThor; # Android
           "ChernoAlpha" = syncthing.devices.ChernoAlpha;
           "CrimsonPhoenix" = syncthing.devices.CrimsonPhoenix;
           "GipsyAvenger" = syncthing.devices.GipsyAvenger;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
-          "AYN Thor" = syncthing.devices.AYNThor; # Android
         };
 
         folders = {

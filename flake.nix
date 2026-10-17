@@ -51,6 +51,11 @@
       url = "github:Fabianoshz/nix-on-thor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    gamescope-thor = {
+      url = "git+https://github.com/project-barry/gamescope?ref=dual-screen&submodules=1";
+      flake = false;
+    };
   };
 
   outputs =
