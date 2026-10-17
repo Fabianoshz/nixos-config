@@ -140,6 +140,7 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+    package = pkgs.direnv.overrideAttrs { doCheck = false; };
   };
 
   programs.fzf = {

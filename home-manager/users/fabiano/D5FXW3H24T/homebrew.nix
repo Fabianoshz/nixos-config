@@ -6,11 +6,12 @@ let
 
   brews = [
     "bazelisk"
+    "colima"
     "gsed"
     "int128/kubelogin/kubelogin"
     "kubelogin"
     "oniguruma" # Something in bazel needs this
-    "python@3.13"
+    "python3"
     "ripgrep"
     "snowflake-cli"
     "xz"

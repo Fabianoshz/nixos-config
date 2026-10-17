@@ -1,0 +1,154 @@
+{
+  "mcpServers": {
+    "atlassian": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@onyxsecurity/mcp-gateway@7398546f",
+        "remote",
+        "--url",
+        "https://mcp.atlassian.com/v1/mcp",
+        "--remote-transport",
+        "stream"
+      ],
+      "env": {
+        "CLIENT_APP_NAME": "cursor",
+        "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
+        "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
+        "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1"
+      }
+    },
+    "buildkite": {
+      "url": "https://mcp.buildkite.com/mcp"
+    },
+    "datadog_production": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@onyxsecurity/mcp-gateway@7398546f",
+        "remote",
+        "--url",
+        "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp",
+        "--remote-transport",
+        "stream"
+      ],
+      "env": {
+        "CLIENT_APP_NAME": "cursor",
+        "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
+        "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
+        "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1"
+      }
+    },
+    "datadog_staging": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@onyxsecurity/mcp-gateway@7398546f",
+        "remote",
+        "--url",
+        "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp",
+        "--remote-transport",
+        "stream"
+      ],
+      "env": {
+        "CLIENT_APP_NAME": "cursor",
+        "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
+        "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
+        "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1"
+      }
+    },
+    "granola": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@onyxsecurity/mcp-gateway@7398546f",
+        "remote",
+        "--url",
+        "https://mcp.granola.ai/mcp",
+        "--remote-transport",
+        "stream"
+      ],
+      "env": {
+        "CLIENT_APP_NAME": "cursor",
+        "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
+        "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
+        "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1"
+      }
+    },
+    "linear": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@onyxsecurity/mcp-gateway@7398546f",
+        "remote",
+        "--url",
+        "https://mcp.linear.app/mcp",
+        "--remote-transport",
+        "stream"
+      ],
+      "env": {
+        "CLIENT_APP_NAME": "cursor",
+        "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
+        "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
+        "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1"
+      }
+    },
+    "pganalyze": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@onyxsecurity/mcp-gateway@7398546f",
+        "remote",
+        "--url",
+        "https://app.pganalyze.com/mcp",
+        "--remote-transport",
+        "stream"
+      ],
+      "env": {
+        "CLIENT_APP_NAME": "cursor",
+        "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
+        "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
+        "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1"
+      }
+    },
+    "terraform": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@onyxsecurity/mcp-gateway@7398546f",
+        "--",
+        "docker",
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "TFE_TOKEN",
+        "-e",
+        "TFE_ADDRESS",
+        "hashicorp/terraform-mcp-server:1.0.0"
+      ],
+      "env": {
+        "CLIENT_APP_NAME": "cursor",
+        "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
+        "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
+        "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1",
+        "TFE_ADDRESS": "${env:TFE_ADDRESS}",
+        "TFE_TOKEN": "${env:TFE_TOKEN}"
+      }
+    }
+  }
+}

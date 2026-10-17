@@ -8,6 +8,7 @@
     ./iterm2.nix
     ./ssh.nix
 
+    ../../../optional/cursor/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/opencode/default.nix
     ../../../optional/zsh/default.nix
@@ -24,7 +25,6 @@
     pkgs.aws-iam-authenticator
     pkgs.awscli2
     pkgs.bash
-    pkgs.colima
     pkgs.colordiff
     pkgs.coreutils
     pkgs.coreutils-prefixed
@@ -32,6 +32,7 @@
     pkgs.delve
     pkgs.dig
     pkgs.docker
+    pkgs.fluxcd
     pkgs.gh
     pkgs.git
     pkgs.go
@@ -40,6 +41,7 @@
     pkgs.htop
     pkgs.insomnia
     pkgs.iterm2
+    pkgs.kubeconform
     pkgs.kubectl
     pkgs.kubectx
     pkgs.kubelogin-oidc
@@ -53,11 +55,11 @@
     pkgs.protoc-gen-go-grpc
     pkgs.ssm-session-manager-plugin
     pkgs.stern
-
+    pkgs.temporal-cli
+    pkgs.tmux
 
     pkgs.unstable.container
     pkgs.unstable.opencode
-    pkgs.unstable.opencode-desktop
   ];
 
   # Let Home Manager install and manage itself.

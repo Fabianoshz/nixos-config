@@ -59,9 +59,11 @@
 
                     local builtin = require('telescope.builtin')
                     local live_grep_args = require("telescope").extensions.live_grep_args
+                    local lga_shortcuts = require("telescope-live-grep-args.shortcuts")
 
                     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
                     vim.keymap.set('n', '<leader>fg', live_grep_args.live_grep_args, { desc = 'Live grep with args' })
+                    vim.keymap.set('v', '<leader>fg', lga_shortcuts.grep_visual_selection, { desc = 'Live grep visual selection' })
                     vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Lists previously open files' })
                     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Lists previously open buffers' })
           	'';
