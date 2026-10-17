@@ -21,7 +21,6 @@ in
         devices = {
           "ChernoAlpha" = syncthing.devices.ChernoAlpha;
           "CrimsonPhoenix" = syncthing.devices.CrimsonPhoenix;
-          "CrimsonTyphoon" = syncthing.devices.CrimsonTyphoon;
           "GipsyAvenger" = syncthing.devices.GipsyAvenger;
           "GipsyDanger" = syncthing.devices.GipsyDanger;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
@@ -31,31 +30,7 @@ in
           "[Documents] Share" = {
             enable = true;
             path = "/home/fabiano/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
-          };
-
-          "[Games] Retroarch Saves" = {
-            enable = true;
-            path = "/home/fabiano/Games/Retroarch/Saves";
-            devices = [ "Syncthing Server" ];
-            versioning = {
-              type = "simple";
-              params = {
-                keep = "10";
-              };
-            };
-          };
-
-          "[Games] Retroarch States" = {
-            enable = true;
-            path = "/home/fabiano/Games/Retroarch/States";
-            devices = [ "Syncthing Server" ];
-            versioning = {
-              type = "simple";
-              params = {
-                keep = "10";
-              };
-            };
+            devices = [ "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
           "[Games] Retroarch Runtime Logs" = {

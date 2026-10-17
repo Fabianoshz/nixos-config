@@ -1,0 +1,197 @@
+diff --git a/src/pip.tsx b/src/pip.tsx
+index 1209a52..2b91f6f 100644
+--- a/src/pip.tsx
++++ b/src/pip.tsx
+@@ -9,7 +9,14 @@ import { useEffect, useState } from "react";
+ import { useGlobalState } from "./globalState";
+ import { intersectRectangles } from "./geometry";
+ import { UIComposition, useUIComposition } from "./useUIComposition";
+-import { PICTURE_HEIGHT, PICTURE_WIDTH, Position, SCREEN_HEIGHT, SCREEN_WIDTH, ViewMode } from "./util";
++import {
++    getPictureSize,
++    getScreenSize,
++    getVirtualKeyboardHeight,
++    isVirtualKeyboardVisible,
++    Position,
++    ViewMode,
++} from "./util";
+
+ interface BrowserProps {
+     url: string
+@@ -65,6 +72,7 @@ const getBounds = (document: any) => {
+ }
+
+ const getDeckComponentBounds = () => {
++    const screen = getScreenSize();
+     const trees = getGamepadNavigationTrees();
+
+     const nav = trees.find((tree: any) => tree?.id === 'MainNavMenuContainer')?.m_Root?.m_element?.ownerDocument.defaultView ?? null
+@@ -79,19 +87,20 @@ const getDeckComponentBounds = () => {
+         ? null
+         : getBounds(qam?.document);
+
+-    const virtualKeyboard = trees.find((tree: any) => tree?.id === 'virtual keyboard')?.m_Root?.m_element?.ownerDocument.defaultView ?? null
+-    const virtualKeyboardHidden = !virtualKeyboard;
+-    // this is a guess, gotta figure out how to inspect to keyboard DOM
++    const virtualKeyboardHidden = !isVirtualKeyboardVisible();
++    // the height is still a guess, gotta figure out how to inspect the keyboard DOM
++    const virtualKeyboardHeight = getVirtualKeyboardHeight(screen);
+     const virtualKeyboardBounds = virtualKeyboardHidden
+         ? null
+         : {
+             x: 0,
+-            y: SCREEN_HEIGHT - 240,
+-            width: SCREEN_WIDTH,
+-            height: 240
++            y: screen.height - virtualKeyboardHeight,
++            width: screen.width,
++            height: virtualKeyboardHeight
+         };
+
+     return {
++        screen,
+         nav: navBounds,
+         qam: qamBounds,
+         virtualKeyboard: virtualKeyboardBounds,
+@@ -118,34 +127,42 @@ const useDeckComponentBounds = () => {
+ }
+
+ export const Pip = () => {
+-    const { nav, qam, virtualKeyboard } = useDeckComponentBounds();
++    const { screen, nav, qam, virtualKeyboard } = useDeckComponentBounds();
+     const [{ viewMode, position, size, url, visible, ...settings }] = useGlobalState();
+
+-    const pictureWidth = PICTURE_WIDTH * size;
+-    const pictureHeight = PICTURE_HEIGHT * size;
++    const picture = getPictureSize(screen);
++    const pictureWidth = picture.width * size;
++    const pictureHeight = picture.height * size;
+
+     const availableBounds = [{
+         x: 0,
+         y: 0,
+-        width: SCREEN_WIDTH,
+-        height: SCREEN_HEIGHT
++        width: screen.width,
++        height: screen.height
+     }];
+
+     if (nav) {
++        // the area to the right of the nav menu's right edge
++        const navRight = Math.min(nav.x + nav.width, screen.width);
++
+         availableBounds.push({
+-            x: nav.width,
++            x: navRight,
+             y: 0,
+-            width: SCREEN_WIDTH - nav.width,
+-            height: SCREEN_HEIGHT
++            width: screen.width - navRight,
++            height: screen.height
+         });
+     }
+
+     if (qam) {
++        // the area to the left of the QAM's left edge. Its window is often wider
++        // than the slice of screen it covers, so anchor on x rather than width.
++        const qamLeft = Math.max(0, Math.min(qam.x, screen.width));
++
+         availableBounds.push({
+             x: 0,
+             y: 0,
+-            width: SCREEN_WIDTH - qam.width,
+-            height: SCREEN_HEIGHT
++            width: qamLeft,
++            height: screen.height
+         });
+     }
+
+@@ -153,16 +170,16 @@ export const Pip = () => {
+         availableBounds.push({
+             x: 0,
+             y: 0,
+-            width: SCREEN_WIDTH,
+-            height: SCREEN_HEIGHT - virtualKeyboard.height
++            width: screen.width,
++            height: screen.height - virtualKeyboard.height
+         });
+     }
+
+     const bounds = intersectRectangles(availableBounds) ?? {
+         x: 0,
+         y: 0,
+-        width: SCREEN_WIDTH,
+-        height: SCREEN_HEIGHT
++        width: screen.width,
++        height: screen.height
+     };
+
+     const margin = viewMode == ViewMode.Expand
+diff --git a/src/util.tsx b/src/util.tsx
+index dcc0c02..d8367ed 100644
+--- a/src/util.tsx
++++ b/src/util.tsx
+@@ -1,8 +1,52 @@
+-export const SCREEN_WIDTH = 854;
+-export const SCREEN_HEIGHT = 534;
++// The Steam Deck's own UI space, used only as a fallback when the live size of
++// the Steam window can't be read.
++export const DEFAULT_SCREEN_WIDTH = 854;
++export const DEFAULT_SCREEN_HEIGHT = 534;
++
+ export const MARGIN = 20;
+-export const PICTURE_WIDTH = SCREEN_WIDTH * 0.4;
+-export const PICTURE_HEIGHT = PICTURE_WIDTH * (1.0 / 1.85);
++
++const PICTURE_WIDTH_RATIO = 0.4;
++const PICTURE_ASPECT_RATIO = 1.85;
++
++// Height the virtual keyboard covers on a Deck, kept as a ratio so it scales to
++// whatever the screen actually is.
++const VIRTUAL_KEYBOARD_HEIGHT_RATIO = 240 / DEFAULT_SCREEN_HEIGHT;
++
++export interface Size {
++    width: number
++    height: number
++}
++
++const getMainWindowInstance = (): any =>
++    (window as any).SteamUIStore?.WindowStore?.GamepadUIMainWindowInstance;
++
++// Steam's UI space is 854x534 on Deck hardware, but on anything else (a Steam
++// Machine on a TV, an external monitor, Big Picture on a desktop) it is
++// whatever the display dictates, so read it live rather than assuming.
++export const getScreenSize = (): Size => {
++    const browserWindow = getMainWindowInstance()?.m_BrowserWindow;
++    const width = browserWindow?.innerWidth;
++    const height = browserWindow?.innerHeight;
++
++    return width > 0 && height > 0
++        ? { width, height }
++        : { width: DEFAULT_SCREEN_WIDTH, height: DEFAULT_SCREEN_HEIGHT };
++}
++
++export const getPictureSize = (screen: Size): Size => {
++    const width = screen.width * PICTURE_WIDTH_RATIO;
++
++    return { width, height: width / PICTURE_ASPECT_RATIO };
++}
++
++export const getVirtualKeyboardHeight = (screen: Size) =>
++    screen.height * VIRTUAL_KEYBOARD_HEIGHT_RATIO;
++
++// 'virtual keyboard' navigation trees are left behind on the main window after
++// the keyboard closes, so their presence says nothing about whether it is up.
++export const isVirtualKeyboardVisible = () =>
++    getMainWindowInstance()?.m_VirtualKeyboardManager
++        ?.IsShowingVirtualKeyboard?.m_currentValue === true;
+
+ export enum ViewMode {
+     Expand = 1,
+@@ -19,4 +63,4 @@ export enum Position {
+     BottomLeft,
+     Left,
+     TopLeft
+-}
+\ No newline at end of file
++}

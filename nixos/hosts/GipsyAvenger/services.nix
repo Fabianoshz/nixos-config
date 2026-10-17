@@ -2,6 +2,8 @@
   services = {
     inputplumber.enable = true;
 
+    journald.settings.Journal.SystemMaxUse = "1G";
+
     openssh.enable = true;
     desktopManager.plasma6.enable = true;
 

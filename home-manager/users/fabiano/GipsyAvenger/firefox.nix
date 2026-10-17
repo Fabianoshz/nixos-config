@@ -6,6 +6,7 @@ in
 {
   programs.firefox = {
     enable = true;
+    configPath = ".config/mozilla/firefox";
     nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
     profiles.main = {
       id = 0;

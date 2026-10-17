@@ -26,6 +26,12 @@ in
 
   programs.home-manager.enable = true;
 
+  services.home-manager.autoExpire = {
+    enable = true;
+    timestamp = "-30 days";
+    frequency = "weekly";
+  };
+
   programs.plasma = {
     configFile = {
       "kwinrc"."Xwayland"."Scale" = 1.75;

@@ -1,22 +1,9 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 let
-  # tender.zip ships a duplicate README.md entry, which fetchzip's unzip (run
-  # without -o) can't unpack in the sandbox (it hits an overwrite prompt and
-  # aborts). Fetch the raw zip and unpack with forced overwrite instead,
-  # stripping the top-level romm-tender/ dir.
-  tenderSrc = pkgs.runCommand "tender-0.31.0"
-    {
-      src = pkgs.fetchurl {
-        url = "https://github.com/danielcopper/romm-tender/releases/download/tender-v0.31.0/tender.zip";
-        hash = "sha256-dLov4HdeOUldsYC7cwM5Dr9xI8zR3gi1XBE4bHXoR/I=";
-      };
-      nativeBuildInputs = [ pkgs.unzip ];
-    } ''
-    mkdir unpacked
-    unzip -o -q $src -d unpacked
-    cp -r unpacked/romm-tender $out
-  '';
+  retroarchWithCores = import ../../../home-manager/users/fabiano/GipsyAvenger/retroarch.nix { inherit pkgs; };
+  romm-tender = pkgs.callPackage ../../../pkgs/romm-tender { retroarch = retroarchWithCores; };
+  decky-pip = pkgs.callPackage ../../../pkgs/decky-pip { };
 in
 {
   jovian = {
@@ -44,10 +31,9 @@ in
 
       extraPackages = [
         pkgs.curl
-        pkgs.dbus # For MusicControl plugin
+        pkgs.ffmpeg # For GameThemeMusic plugin
         pkgs.p7zip # For framegen plugin
         pkgs.python3
-        pkgs.util-linux # Has 'rev' for MusicControl plugin
       ];
       extraPythonPackages = pythonPackages: [
         pythonPackages.hid
@@ -55,14 +41,6 @@ in
 
       # Got from: https://plugins.deckbrew.xyz/plugins
       plugins = {
-        "controller-tools" = {
-          src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/9450e54cbf28082d4513838d0dcd42bf04ffc08ae5a6472d0c1f88677782e3ef.zip";
-            sha256 = "sha256-+cmM3dJMj/wGAD7VwdZW03vpXQyL2aI2tB0zLYU0Jyk";
-            extension = "zip";
-            stripRoot = true;
-          };
-        };
         "decky-framegen" = {
           src = pkgs.fetchzip {
             url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/14015d5a652c78b2041fd9668685573840530c306e414aabc0d3cebf95be0642.zip";
@@ -71,10 +49,13 @@ in
             stripRoot = true;
           };
         };
+        "decky-pip" = {
+          src = decky-pip;
+        };
         "protondb-decky" = {
           src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/54fadb8faec26bb8667a6fd7c61167bc4e5584414f142ae455c74a381ee23891.zip";
-            sha256 = "sha256-qy2Pt1MQCZ7CxJBj/POigOUC28iCbb1PPjpN1GKYRX8=";
+            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/90a3453ac02709cad64096e7539fd8141fa56f99ae3441fc24a4990dc9684358.zip";
+            sha256 = "sha256-+eNQRS2bW5dseLKsbP+pwZC/9QhaCjQDKLz9CWjzh+U=";
             extension = "zip";
             stripRoot = true;
           };
@@ -89,41 +70,44 @@ in
         };
         "SteamGridDB" = {
           src = pkgs.fetchzip {
-            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/6d6eca184677dc9ff7736439ee7a575ca8ab386c5ffb1627d446bc43dbd1ecf3.zip";
-            sha256 = "sha256-hYPsrC5QA0eX/fYkEnzIDB0p77Feo4IkKrJ6IKfjtFw=";
+            url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/e84f5b1f111af8862b06218479491fbf61036e1bfd9f16f93f9901e9b9ebc5e0.zip";
+            sha256 = "sha256-J/2vQhCAeBpWakz3jI3uihkrGNFCozYOLejTP4HVInU=";
             extension = "zip";
             stripRoot = true;
           };
         };
         "tab-master" = {
           src = pkgs.fetchzip {
-            url = "https://github.com/Tormak9970/TabMaster/releases/download/v2.15.1/TabMaster_v2.15.1.zip";
-            sha256 = "sha256-ni2KJtvNCNt5OGMW788H0D7z8XgcCrnkisU0gCRAEt0=";
+            url = "https://github.com/Tormak9970/TabMaster/releases/download/v2.16.2/TabMaster_v2.16.2.zip";
+            sha256 = "sha256-kUfEJ3X8Bwv8FIIfOvTUeMvmwmFpZdRr9apmC6cfOzM=";
             extension = "zip";
             stripRoot = true;
           };
         };
         "Tender" = {
-          src = tenderSrc;
+          src = romm-tender;
         };
-
-        # "SDH-GameThemeMusic" = {
-        #   src = pkgs.fetchzip {
-        #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/9ce293ab4db212c03c6b96dfbc5e4d92e874d33387463f53223773921f75a80e.zip";
-        #     sha256 = "sha256-2J5kDcw5Pwih2j12BH5Pvx4vA11wtFlMaB0NzMeFM1k=";
-        #     extension = "zip";
-        #     stripRoot = true;
-        #   };
-        # };
-        # "Emuchievements" = {
-        #   src = pkgs.fetchzip {
-        #     url = "https://cdn.tzatzikiweeb.moe/file/steam-deck-homebrew/versions/98dcb443e81b9f9011cfe77c69eb659869c8e2df2df8b0a443df66cbfc2f5a89.zip";
-        #     sha256 = "sha256-HSeDCEC+qu4HPULjf5SbnsnS7H9OHDXTknLf/3IeXDA=";
-        #     extension = "zip";
-        #     stripRoot = true;
-        #   };
-        # };
+        "SDH-GameThemeMusic" = {
+          src = pkgs.runCommand "SDH-GameThemeMusic-1.8.2"
+            {
+              src = pkgs.fetchzip {
+                url = "https://github.com/MegalonVII/SDH-GameThemeMusic/releases/download/1.8.2/SDH-GameThemeMusic.zip";
+                sha256 = "sha256-/61RAI67Kwft8YoqGXaxYStWlWPfNHmrjTZVP8jeqao=";
+                stripRoot = true;
+              };
+            } ''
+            cp -r $src $out
+            chmod -R u+w $out
+            substituteInPlace $out/main.py \
+              --replace-fail 'os.path.join(decky.DECKY_PLUGIN_DIR, "bin", binary)' '"${lib.getExe pkgs.yt-dlp}"' \
+              --replace-fail 'f"{decky.DECKY_PLUGIN_DIR}/bin/yt-dlp",' '"${lib.getExe pkgs.yt-dlp}",' \
+              --replace-fail 'os.chmod(ytdlp_path, 0o755)' 'pass'
+          '';
+        };
       };
     };
   };
+
+  systemd.services.decky-loader.restartTriggers =
+    lib.mapAttrsToList (_: plugin: plugin.src) config.jovian.decky-loader.plugins;
 }

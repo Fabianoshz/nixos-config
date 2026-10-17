@@ -29,10 +29,8 @@ in
         devices = {
           "ChernoAlpha" = syncthing.devices.ChernoAlpha;
           "CrimsonPhoenix" = syncthing.devices.CrimsonPhoenix;
-          "CrimsonTyphoon" = syncthing.devices.CrimsonTyphoon;
           "GipsyAvenger" = syncthing.devices.GipsyAvenger;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
-          "Thor" = syncthing.devices.Thor; # Linux
           "AYN Thor" = syncthing.devices.AYNThor; # Android
         };
 
@@ -40,7 +38,7 @@ in
           "[Documents] General" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/General";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
+            devices = [ "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
             versioning = {
               type = "simple";
               params.keep = "10";
@@ -49,12 +47,12 @@ in
           "[Documents] Passwords" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Passwords";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
+            devices = [ "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
           };
           "[Documents] Share" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Share";
-            devices = [ "CrimsonTyphoon" "ChernoAlpha" "AYN Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
+            devices = [ "ChernoAlpha" "AYN Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
             enable = true;

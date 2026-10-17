@@ -1,14 +1,6 @@
 { pkgs, lib, inputs, config, ... }:
 let
-  retroarchWithCores = pkgs.retroarch.withCores (cores: with cores; [
-    beetle-psx-hw
-    dolphin
-    fbneo
-    genesis-plus-gx
-    mupen64plus
-    pcsx2
-    snes9x
-  ]);
+  retroarchWithCores = import ./retroarch.nix { inherit pkgs; };
 in
 {
   home.stateVersion = "25.11";
@@ -27,6 +19,12 @@ in
   ];
 
   programs.home-manager.enable = true;
+
+  services.home-manager.autoExpire = {
+    enable = true;
+    timestamp = "-30 days";
+    frequency = "weekly";
+  };
 
   programs.plasma = {
     configFile = {
@@ -52,35 +50,6 @@ in
       text = "";
       executable = false;
     };
-
-    # Add cores to ES-DE appimage
-    "${config.home.homeDirectory}/ES-DE/custom_systems/es_find_rules.xml" = {
-      text = ''
-        <?xml version="1.0"?>
-        <!-- This is the ES-DE find rules configuration file for Linux -->
-        <ruleList>
-            <core name="RETROARCH">
-                <rule type="corepath">
-                    <!-- Nixos retroarch cores path -->
-                    <entry>${retroarchWithCores}/lib/retroarch/cores</entry>
-                </rule>
-            </core>
-            <emulator name="PROTON">
-                <!-- umu-launcher for running Proton games -->
-                <rule type="staticpath">
-                    <entry>${pkgs.umu-launcher}/bin/umu-run</entry>
-                </rule>
-            </emulator>
-            <emulator name="XENIA-WINDOWS">
-                <!-- Xenia Canary Windows version -->
-                <rule type="staticpath">
-                    <entry>/home/fabiano/Applications/Xenia_canary/xenia_canary.exe</entry>
-                </rule>
-            </emulator>
-        </ruleList>
-      '';
-      executable = false;
-    };
   };
 
   home.packages = [
@@ -93,12 +62,8 @@ in
     pkgs.itch
     pkgs.prismlauncher
     pkgs.steam-rom-manager
-    pkgs.umu-launcher
     pkgs.unzip
     pkgs.usbutils
-    pkgs.wine
-    pkgs.wowup-cf
-    pkgs.xenia-canary
 
     # Rice stuff
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt5
@@ -110,8 +75,6 @@ in
     pkgs.kdePackages.filelight
     pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
-    pkgs.kdePackages.krdc
-    pkgs.kdePackages.krfb
     pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
 

@@ -16,6 +16,12 @@
   ];
 
   programs.home-manager.enable = true;
+
+  services.home-manager.autoExpire = {
+    enable = true;
+    timestamp = "-30 days";
+    frequency = "weekly";
+  };
   programs.gpg.homedir = "${config.xdg.dataHome}/gnupg";
 
   xdg.autostart = {
@@ -142,11 +148,5 @@
     pkgs.kdePackages.okular
     pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
-
-    # PIM (Akonadi backend for the Plasma calendar events widget)
-    pkgs.kdePackages.akonadi
-    pkgs.kdePackages.akonadi-calendar
-    pkgs.kdePackages.kdepim-addons
-    pkgs.kdePackages.kdepim-runtime
   ];
 }

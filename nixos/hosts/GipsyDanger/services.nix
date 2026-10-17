@@ -7,6 +7,8 @@
     displayManager.sddm.wayland.enable = true;
     displayManager.defaultSession = "plasma";
 
+    journald.extraConfig = "SystemMaxUse=1G";
+
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     xserver.enable = true;

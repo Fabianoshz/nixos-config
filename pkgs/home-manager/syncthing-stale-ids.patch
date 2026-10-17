@@ -1,0 +1,18 @@
+--- a/modules/services/syncthing.nix
++++ b/modules/services/syncthing.nix
+@@ -296,11 +296,12 @@
+                 stale_${conf_type}_ids="$(curl -X GET ${s.baseAddress} | ${jq} \
+                   --argjson new_ids ${lib.escapeShellArg (builtins.toJSON s.new_conf_IDs)} \
+                   --raw-output \
+-                  '[.[].${s.GET_IdAttrName}] - $new_ids | .[]'
++                  '[.[].${s.GET_IdAttrName}] - $new_ids | .[] | @uri'
+                 )"
+-                for id in ''${stale_${conf_type}_ids}; do
++                while IFS= read -r id; do
++                  [ -n "$id" ] || continue
+                   curl -X DELETE ${s.baseAddress}/$id
+-                done
++                done <<< "''${stale_${conf_type}_ids}"
+               ''
+             ))
+             builtins.attrValues

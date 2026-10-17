@@ -18,6 +18,7 @@ in
   systemd.settings.Manager.RebootWatchdogSec = "0";
 
   systemd.services."drkonqi-coredump-processor@".enable = false;
+  systemd.user.sockets.drkonqi-coredump-launcher.enable = false;
 
   time.timeZone = "America/Sao_Paulo";
 
@@ -169,29 +170,28 @@ in
         "steam-unwrapped"
         "steamdeck-hw-theme"
         "symphony-recomp"
-        "wowup-cf"
-      ];
-
-      permittedInsecurePackages = [
-        # TEMP For decky-loader
-        "pnpm-9.15.9"
       ];
     };
 
     overlays = [
       (final: prev: {
-        retroarch-bare = prev.retroarch-bare.overrideAttrs (oldAttrs: {
-          version = "1.22.2";
-          src = prev.fetchFromGitHub {
-            owner = "libretro";
-            repo = "RetroArch";
-            rev = "v1.22.2";
-            hash = "sha256-+3jgoh6OVbPzW5/nCvpB1CRgkMTBxLkYMm6UV16/cfU=";
+        libretro = prev.libretro // {
+          pcsx2 = prev.libretro.pcsx2.overrideAttrs {
+            version = "0-unstable-2026-10-09";
+            src = prev.fetchFromGitHub {
+              owner = "libretro";
+              repo = "ps2";
+              rev = "5335635718de126120466ca811bac309cdc06f53";
+              hash = "sha256-IoOOX5zU9PfE9z1wu/WYlwC+g2p2FxgE2lMCPAKpJcM=";
+              fetchSubmodules = true;
+            };
           };
-          configureFlags = (oldAttrs.configureFlags or [ ]) ++ [
-            "--enable-builtinflac"
-          ];
-        });
+        };
+      })
+      (final: prev: {
+        gamescope-session = prev.gamescope-session.override {
+          steam = config.programs.steam.package;
+        };
       })
     ];
   };

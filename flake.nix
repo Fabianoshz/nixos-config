@@ -67,6 +67,8 @@
     let
       system = "x86_64-linux";
       system-mac = "aarch64-darwin";
+
+      patchHomeManager = hm: hostSystem: nixpkgs.legacyPackages.${hostSystem}.callPackage ./pkgs/home-manager { src = hm; };
     in
     {
       nixosConfigurations = {
@@ -88,7 +90,7 @@
               ];
             }
 
-            home-manager.nixosModules.home-manager
+            "${patchHomeManager home-manager system}/nixos"
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -106,7 +108,7 @@
             ./nixos/hosts/GipsyAvenger/configuration.nix
 
             jovian-nixos.nixosModules.default
-            home-manager-master.nixosModules.home-manager
+            "${patchHomeManager home-manager-master system}/nixos"
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -124,7 +126,7 @@
             ./nixos/hosts/Thor/configuration.nix
 
             inputs.nix-on-thor.nixosModules.thor
-            home-manager.nixosModules.home-manager
+            "${patchHomeManager home-manager "aarch64-linux"}/nixos"
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -152,7 +154,7 @@
               ];
             }
 
-            home-manager.darwinModules.home-manager
+            "${patchHomeManager home-manager system-mac}/nix-darwin"
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -190,7 +192,7 @@
               ];
             }
 
-            home-manager.darwinModules.home-manager
+            "${patchHomeManager home-manager system-mac}/nix-darwin"
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
