@@ -24,6 +24,7 @@ let
     "claude"
     "cursor"
     "granola"
+    "iterm2"
     # macOS .app bundles in the nix store get immutable flags that block nix-daemon GC (NixOS/nix#6765)
     "google-chrome"
   ];

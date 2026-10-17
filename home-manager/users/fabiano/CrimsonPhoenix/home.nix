@@ -5,10 +5,10 @@
   imports = [
     ./firefox.nix
     ./homebrew.nix
-    ./iterm2.nix
     ./syncthing.nix
 
     ../../../optional/git/default.nix
+    ../../../optional/iterm2/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/opencode/default.nix
     ../../../optional/zsh/default.nix

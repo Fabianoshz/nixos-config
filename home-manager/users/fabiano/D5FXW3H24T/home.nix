@@ -5,10 +5,10 @@
   imports = [
     ./git.nix
     ./homebrew.nix
-    ./iterm2.nix
     ./ssh.nix
 
     ../../../optional/cursor/default.nix
+    ../../../optional/iterm2/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/opencode/default.nix
     ../../../optional/zsh/default.nix
@@ -40,7 +40,6 @@
     pkgs.grpcurl
     pkgs.htop
     pkgs.insomnia
-    pkgs.iterm2
     pkgs.kubeconform
     pkgs.kubectl
     pkgs.kubectx
