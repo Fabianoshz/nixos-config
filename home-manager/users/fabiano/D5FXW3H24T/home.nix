@@ -21,6 +21,11 @@
     EDITOR = "nvim";
   };
 
+  xdg.configFile."opencode" = {
+    source = ./opencode;
+    recursive = true;
+  };
+
   home.packages = [
     pkgs.aws-iam-authenticator
     pkgs.awscli2
