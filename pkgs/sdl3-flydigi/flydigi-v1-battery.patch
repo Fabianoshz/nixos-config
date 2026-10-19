@@ -1,0 +1,52 @@
+--- a/src/joystick/hidapi/SDL_hidapi_flydigi.c
++++ b/src/joystick/hidapi/SDL_hidapi_flydigi.c
+@@ -870,8 +870,36 @@
+     SDL_memcpy(ctx->last_state, data, SDL_min(size, sizeof(ctx->last_state)));
+ }
+
++static void HIDAPI_DriverFlydigi_HandleInfoResponseV1(SDL_Joystick *joystick, SDL_DriverFlydigi_Context *ctx, Uint8 *data, int size)
++{
++    // Battery is reported in bars (0-5), and reads high while charging
++    Uint8 level = data[11];
++
++    if (ctx->firmware_version < 0x6400) {
++        return;
++    }
++
++    switch (data[13]) {
++    case 0:
++        SDL_SendJoystickPowerInfo(joystick, SDL_POWERSTATE_ON_BATTERY, SDL_min(level, 5) * 20);
++        break;
++    case 1:
++        SDL_SendJoystickPowerInfo(joystick, SDL_POWERSTATE_CHARGING, -1);
++        break;
++    default:
++        break;
++    }
++}
++
+ static void HIDAPI_DriverFlydigi_HandlePacketV1(SDL_Joystick *joystick, SDL_DriverFlydigi_Context *ctx, Uint8 *data, int size)
+ {
++    if (size == 32 && data[0] == 0x04 && data[1] == 0xFF && data[15] == FLYDIGI_V1_GET_INFO_COMMAND) {
++        if (joystick) {
++            HIDAPI_DriverFlydigi_HandleInfoResponseV1(joystick, ctx, data, size);
++        }
++        return;
++    }
++
+     if (data[0] != 0x04 || data[1] != 0xFE) {
+         // We don't know how to handle this report, ignore it
+         return;
+@@ -1079,6 +1107,12 @@
+             SDL_HIDAPI_Flydigi_SendInfoRequest(device);
+             ctx->next_heartbeat = now + FLYDIGI_ACQUIRE_CONTROLLER_HEARTBEAT_TIME;
+         }
++    } else if (device->vendor_id == USB_VENDOR_FLYDIGI_V1 && joystick) {
++        if (!ctx->next_heartbeat || now >= ctx->next_heartbeat) {
++            const Uint8 request[] = { FLYDIGI_V1_CMD_REPORT_ID, FLYDIGI_V1_GET_INFO_COMMAND, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
++            (void)HIDAPI_DriverFlydigi_WritePacket(device, request, sizeof(request));
++            ctx->next_heartbeat = now + FLYDIGI_ACQUIRE_CONTROLLER_HEARTBEAT_TIME;
++        }
+     }
+
+     while ((size = SDL_hid_read_timeout(device->dev, data, sizeof(data), 0)) > 0) {

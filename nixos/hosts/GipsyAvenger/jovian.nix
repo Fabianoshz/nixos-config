@@ -4,6 +4,7 @@ let
   retroarchWithCores = import ../../../home-manager/users/fabiano/GipsyAvenger/retroarch.nix { inherit pkgs; };
   romm-tender = pkgs.callPackage ../../../pkgs/romm-tender { retroarch = retroarchWithCores; };
   decky-pip = pkgs.callPackage ../../../pkgs/decky-pip { };
+  sdl3-flydigi = pkgs.pkgsi686Linux.callPackage ../../../pkgs/sdl3-flydigi { };
 in
 {
   jovian = {
@@ -107,6 +108,18 @@ in
       };
     };
   };
+
+  # Swap in the patched SDL only over the exact Steam build it was made for.
+  systemd.user.services.steam-launcher.enableDefaultPath = false;
+  systemd.user.services.steam-launcher.serviceConfig.ExecStartPre = [
+    "${pkgs.writeShellScript "steam-sdl3-flydigi" ''
+      f="$HOME/.local/share/Steam/ubuntu12_32/libSDL3.so.0"
+      [ -f "$f" ] || exit 0
+      if [ "$(${pkgs.coreutils}/bin/sha256sum "$f" | ${pkgs.coreutils}/bin/cut -d' ' -f1)" = "${sdl3-flydigi.valve.sha256}" ]; then
+        ${pkgs.coreutils}/bin/install -m 755 ${sdl3-flydigi.lib}/lib/libSDL3.so.0 "$f"
+      fi
+    ''}"
+  ];
 
   systemd.services.decky-loader.restartTriggers =
     lib.mapAttrsToList (_: plugin: plugin.src) config.jovian.decky-loader.plugins;

@@ -11,6 +11,7 @@ in
 
       extensions = {
         packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
+          consent-o-matic
           keepassxc-browser
           new-tab-override
           sponsorblock
