@@ -19,7 +19,12 @@
   home.sessionVariables = {
     SYSTEMD_EDITOR = "nvim";
     EDITOR = "nvim";
+    # cs self-updates to a generic build that defaults to sandboxes.cloud; pin Brex's server.
+    CRAFTING_SANDBOX_SERVER_URL = "https://brex.sandboxes.site";
   };
+
+  # Crafting CLI (cs) self-installs and self-updates here; not managed by nix.
+  home.sessionPath = [ "$HOME/.crafting/sandbox/cli/current/bin" ];
 
   xdg.configFile."opencode" = {
     source = ./opencode;
