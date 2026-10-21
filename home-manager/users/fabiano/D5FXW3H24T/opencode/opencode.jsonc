@@ -42,7 +42,10 @@
         "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
         "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
         "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
-        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1"
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1",
+        // Separate HOME so the gateway keeps an independent OAuth store
+        // (~/.onyx/mcp-gateway/oauth is keyed only by server URL).
+        "HOME": "/Users/fabiano/.mcp-homes/datadog-production"
       },
       "type": "local"
     },
@@ -62,7 +65,10 @@
         "MCP_GATEWAY_ACCESS_CONTROL_URL": "https://0gpr7rskhb.ai-guard.onyx.security/access-control/authorize",
         "MCP_GATEWAY_MIRROR_URL": "https://0gpr7rskhb.ingest.onyx.security/mcp-gateway",
         "MCP_GATEWAY_OAUTH_PROVIDERS_URL": "https://0gpr7rskhb.api.onyx.security/api/internal/extension/oauth-providers",
-        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1"
+        "MCP_GATEWAY_SCANNER_URL": "https://0gpr7rskhb.ai-guard.onyx.security/guard/evaluate/v1",
+        // Separate HOME so the gateway keeps an independent OAuth store
+        // (~/.onyx/mcp-gateway/oauth is keyed only by server URL).
+        "HOME": "/Users/fabiano/.mcp-homes/datadog-staging"
       },
       "type": "local"
     },
