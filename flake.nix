@@ -51,11 +51,6 @@
       url = "github:Fabianoshz/nix-on-thor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    gamescope-thor = {
-      url = "git+https://github.com/project-barry/gamescope?ref=dual-screen&submodules=1";
-      flake = false;
-    };
   };
 
   outputs =
@@ -130,7 +125,7 @@
             { nixpkgs.hostPlatform = "aarch64-linux"; }
             ./nixos/hosts/Thor/configuration.nix
 
-            # inputs.nix-on-thor.nixosModules.thor
+            inputs.nix-on-thor.nixosModules.thor
             "${patchHomeManager home-manager "aarch64-linux"}/nixos"
             {
               home-manager.useGlobalPkgs = true;

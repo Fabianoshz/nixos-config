@@ -19,7 +19,7 @@ in
         };
 
         devices = {
-          "AYN Thor" = syncthing.devices.AYNThor; # Android
+          "Thor" = syncthing.devices.Thor;
           "ChernoAlpha" = syncthing.devices.ChernoAlpha;
           "CrimsonPhoenix" = syncthing.devices.CrimsonPhoenix;
           "GipsyDanger" = syncthing.devices.GipsyDanger;
@@ -30,13 +30,13 @@ in
           "[Documents] Share" = {
             enable = true;
             path = "/home/fabiano/Documents/Share";
-            devices = [ "ChernoAlpha" "AYN Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
+            devices = [ "ChernoAlpha" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
           };
 
           "[Games] Retroarch Runtime Logs" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/Runtime logs";
-            devices = [ "AYN Thor" "Syncthing Server" ];
+            devices = [ "Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {
@@ -48,7 +48,7 @@ in
           "[Games] Retroarch System" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/System";
-            devices = [ "AYN Thor" "Syncthing Server" ];
+            devices = [ "Thor" "Syncthing Server" ];
             versioning = {
               type = "simple";
               params = {

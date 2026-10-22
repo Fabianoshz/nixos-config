@@ -55,6 +55,7 @@ in
   home.packages = [
     pkgs.bash
     pkgs.dig
+    pkgs.discord
     pkgs.git
     pkgs.go-task
     pkgs.grayjay

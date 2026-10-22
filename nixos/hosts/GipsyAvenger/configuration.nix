@@ -20,6 +20,8 @@ in
   systemd.services."drkonqi-coredump-processor@".enable = false;
   systemd.user.sockets.drkonqi-coredump-launcher.enable = false;
 
+  home-manager.startAsUserService = true;
+
   time.timeZone = "America/Sao_Paulo";
 
   security.rtkit.enable = true;
@@ -156,6 +158,8 @@ in
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "discord"
+        "discord-unwrapped"
         "grayjay"
         "grayjay-frontend"
         "grayjay-libcurlshim"
@@ -176,7 +180,7 @@ in
     overlays = [
       (final: prev: {
         libretro = prev.libretro // {
-          pcsx2 = prev.libretro.pcsx2.overrideAttrs {
+          pcsx2 = prev.libretro.pcsx2.overrideAttrs (old: {
             version = "0-unstable-2026-10-09";
             src = prev.fetchFromGitHub {
               owner = "libretro";
@@ -185,13 +189,23 @@ in
               hash = "sha256-IoOOX5zU9PfE9z1wu/WYlwC+g2p2FxgE2lMCPAKpJcM=";
               fetchSubmodules = true;
             };
-          };
+            postPatch = (old.postPatch or "") + ''
+              substituteInPlace pcsx2/Pcsx2Config.cpp \
+                --replace-fail 'LoadTextureReplacements = false;' 'LoadTextureReplacements = true;'
+            '';
+          });
         };
       })
       (final: prev: {
         gamescope-session = prev.gamescope-session.override {
           steam = config.programs.steam.package;
         };
+        # Jovian's session uses its own scope's copy.
+        jovianPackages = prev.jovianPackages.overrideScope (_: p: {
+          gamescope-session = p.gamescope-session.override {
+            steam = config.programs.steam.package;
+          };
+        });
       })
     ];
   };

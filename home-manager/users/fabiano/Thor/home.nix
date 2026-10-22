@@ -1,20 +1,13 @@
 { pkgs, lib, inputs, config, ... }:
-let
-  retroarchWithCores = pkgs.retroarch.withCores (cores: with cores; [
-    # Build this from source
-    # azahar
-    melonds
-    gambatte
-    mgba
-    ppsspp
-  ]);
-in
 {
   home.stateVersion = "26.05";
 
   imports = [
     ./syncthing.nix
     ./firefox.nix
+    ./melonds.nix
+    ./azahar.nix
+    ./retroarch.nix
 
     ../../../optional/kde/default.nix
     # ../../../optional/zsh/default.nix
@@ -52,27 +45,23 @@ in
 
   home.file = {
     # Enable CEF for decky-loader
-    "${config.home.homeDirectory}/.steam/steam/.cef-enable-remote-debugging" = {
+    "${config.home.homeDirectory}/.local/share/Steam/.cef-enable-remote-debugging" = {
       text = "";
       executable = false;
     };
   };
 
   home.packages = [
+    (pkgs.callPackage ../../../../pkgs/vita3k { })
     pkgs.bash
-    pkgs.boilr
     pkgs.dig
+    pkgs.feishin
     pkgs.git
     pkgs.go-task
     pkgs.htop
     pkgs.unzip
     pkgs.usbutils
-
-    pkgs.azahar
-    pkgs.melonds
-
-    # No aarch64? :(
-    # pkgs.steam-rom-manager
+    pkgs.vlc
 
     # KDE
     pkgs.kdePackages.elisa
@@ -83,7 +72,5 @@ in
     pkgs.kdePackages.krfb
     pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
-
-    retroarchWithCores
   ];
 }

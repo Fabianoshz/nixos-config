@@ -27,6 +27,9 @@
       # regardless of which port/hub the dongle lands on (it moves around due
       # to the RJ45 USB extenders) and from a fresh boot. bDeviceClass 09 = hub.
       ACTION=="add", SUBSYSTEM=="usb", ATTR{bDeviceClass}=="09", ATTR{power/wakeup}="enabled"
+
+      # Chipset xHCI dies on runtime resume.
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x1022", ATTR{device}=="0x43f7", ATTR{power/control}="on"
     '';
   };
 }

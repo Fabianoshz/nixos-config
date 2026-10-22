@@ -27,7 +27,7 @@ in
         };
 
         devices = {
-          "AYN Thor" = syncthing.devices.AYNThor; # Android
+          "Thor" = syncthing.devices.Thor;
           "ChernoAlpha" = syncthing.devices.ChernoAlpha;
           "GipsyAvenger" = syncthing.devices.GipsyAvenger;
           "GipsyDanger" = syncthing.devices.GipsyDanger;
@@ -52,7 +52,7 @@ in
           "[Documents] Share" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Share";
-            devices = [ "ChernoAlpha" "Syncthing Server" "GipsyDanger" "GipsyAvenger" ];
+            devices = [ "Thor" "ChernoAlpha" "Syncthing Server" "GipsyDanger" "GipsyAvenger" ];
           };
           "[Documents] Workspaces" = {
             enable = true;

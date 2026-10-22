@@ -136,25 +136,6 @@
         "type": "indirect"
       }
     },
-    "gamescope-thor": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1792181832,
-        "narHash": "sha256-pL4HWkJTvRwO8Yo21lHLfMpqAkmpoAUUQNwlmeJRjEg=",
-        "ref": "dual-screen",
-        "rev": "d509c434a16317dfc4b731b4653be1356d613855",
-        "revCount": 2840,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/project-barry/gamescope"
-      },
-      "original": {
-        "ref": "dual-screen",
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/project-barry/gamescope"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -226,11 +207,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792246474,
-        "narHash": "sha256-shhbyLk37rKblAiXkHhoFG902+mHrGw2hb4fucYdxTc=",
+        "lastModified": 1792444431,
+        "narHash": "sha256-7Q/K0nA9y8U5TYJbS/aOYiekrkN+tReM0rZWN4AdXS0=",
         "owner": "Jovian-Experiments",
         "repo": "Jovian-NixOS",
-        "rev": "946ac7bdd1e0cc9d94c09dd4fc474d73ede882cb",
+        "rev": "6ba37ebb7c68b1b6711027a67122aa41060d216e",
         "type": "github"
       },
       "original": {
@@ -327,16 +308,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1729697500,
-        "narHash": "sha256-VFTWrbzDlZyFHHb1AlKRiD/qqCJIripXKiCSFS8fAOY=",
-        "owner": "zhaofengli",
+        "lastModified": 1737420293,
+        "narHash": "sha256-F1G5ifvqTpJq7fdkT34e/Jy9VCyzd5XfJ9TO8fHhJWE=",
+        "owner": "nix-community",
         "repo": "nix-github-actions",
-        "rev": "e418aeb728b6aa5ca8c5c71974e7159c2df1d8cf",
+        "rev": "f4158fa080ef4503c8f4c820967d946c2af31ec9",
         "type": "github"
       },
       "original": {
-        "owner": "zhaofengli",
-        "ref": "matrix-name",
+        "owner": "nix-community",
         "repo": "nix-github-actions",
         "type": "github"
       }
@@ -548,7 +528,6 @@
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
-        "gamescope-thor": "gamescope-thor",
         "home-manager": "home-manager",
         "home-manager-master": "home-manager-master",
         "jovian-nixos": "jovian-nixos",
