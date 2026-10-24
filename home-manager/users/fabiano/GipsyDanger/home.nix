@@ -5,12 +5,12 @@
   imports = [
     ./firefox.nix
     ./syncthing.nix
-    ./thunderbird.nix
 
     ../../../optional/git/default.nix
     ../../../optional/kde/default.nix
     ../../../optional/neovim/default.nix
     ../../../optional/opencode/default.nix
+    ../../../optional/thunderbird/default.nix
     ../../../optional/zsh/default.nix
 
     inputs.xdg-autostart.homeManagerModules.xdg-autostart

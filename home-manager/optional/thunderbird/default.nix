@@ -1,7 +1,7 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 with lib;
 let
-  general = builtins.fromJSON (builtins.readFile ../../../../sensitive/general.json);
+  general = builtins.fromJSON (builtins.readFile ../../../sensitive/general.json);
 
   radicale = id: "https://radicale.${general.domain}/fabiano/${id}/";
 in

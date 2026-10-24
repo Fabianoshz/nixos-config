@@ -3,6 +3,7 @@
   home.stateVersion = "25.05";
 
   imports = [
+    inputs.mac-app-util.homeManagerModules.default
     ./git.nix
     ./homebrew.nix
     ./ssh.nix
