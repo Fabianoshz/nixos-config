@@ -15,6 +15,8 @@ let
       gbc = gambatte;
       gba = mgba;
       psp = ppsspp;
+      psvita = pkgs.callPackage ../../../pkgs/libretro-vita3k { };
+      pico = pkgs.callPackage ../../../pkgs/libretro-fake08 { };
     };
     standaloneSaves = {
       nds = {

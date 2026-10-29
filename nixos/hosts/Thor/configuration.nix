@@ -55,10 +55,23 @@ in
   # nix-on-thor's legacy shell hook is incompatible with systemd initrd.
   boot.initrd.postDeviceCommands = lib.mkForce "";
 
+  boot.kernelParams = [ "msm.enable_preemption=1" ];
+
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+  };
+  boot.kernel.sysctl."vm.swappiness" = 180;
+
+  powerManagement.cpuFreqGovernor = "schedutil";
+
   environment.systemPackages = with pkgs; [
     vim
     htop
     gamescope
+
+    (callPackage ../../../pkgs/RetroLauncher { })
   ];
 
   nixpkgs.overlays = [

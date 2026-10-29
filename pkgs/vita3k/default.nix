@@ -5,7 +5,13 @@
 , autoPatchelfHook
 , makeWrapper
 , qt6
-, xorg
+, libx11
+, libxext
+, libsm
+, libice
+, libxcursor
+, libxrandr
+, libxscrnsaver
 , wayland
 , libGL
 , libglvnd
@@ -40,13 +46,13 @@ stdenv.mkDerivation rec {
     qt6.qtbase
     qt6.qtsvg
     qt6.qtmultimedia
-    xorg.libX11
-    xorg.libXext
-    xorg.libSM
-    xorg.libICE
-    xorg.libXcursor
-    xorg.libXrandr
-    xorg.libXScrnSaver
+    libx11
+    libxext
+    libsm
+    libice
+    libxcursor
+    libxrandr
+    libxscrnsaver
     alsa-lib
     pipewire
     libjack2

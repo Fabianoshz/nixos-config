@@ -125,6 +125,17 @@
             { nixpkgs.hostPlatform = "aarch64-linux"; }
             ./nixos/hosts/Thor/configuration.nix
 
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  unstable = import nixpkgs-unstable {
+                    system = prev.stdenv.hostPlatform.system;
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
+            }
+
             inputs.nix-on-thor.nixosModules.thor
             "${patchHomeManager home-manager "aarch64-linux"}/nixos"
             {

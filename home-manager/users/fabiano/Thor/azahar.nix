@@ -7,6 +7,21 @@ let
   trigger = axis: sdl "axis:${toString axis},direction:+,threshold:0.5";
   stick = x: y: sdl "axis_x:${toString x},axis_y:${toString y},deadzone:0.100000";
 
+  # RetroArch's hotkeys: Space, Keypad +, Keypad -.
+  shortcuts = {
+    "Toggle%20Turbo%20Mode" = "Space";
+    "Audio%20Volume%20Up" = "Num++";
+    "Audio%20Volume%20Down" = "Num+-";
+    # Turbo replaces it; Ctrl+Z does nothing once Turbo has a key anyway.
+    "Toggle%20Per-Application%20Speed" = "";
+  };
+  shortcutLines = lib.concatStrings (lib.mapAttrsToList
+    (name: seq: ''
+      Shortcuts\Main%20Window\${name}\KeySeq=${seq}
+      Shortcuts\Main%20Window\${name}\KeySeq\default=false
+    '')
+    shortcuts);
+
   config = pkgs.writeText "qt-config.ini" ''
     [Layout]
     layout_option=4
@@ -31,7 +46,9 @@ let
     profiles\1\circle_pad=${stick 0 1}
     profiles\1\c_stick=${stick 3 4}
     profiles\size=1
-  '';
+
+    [UI]
+    ${shortcutLines}'';
 in
 {
   home.packages = [ pkgs.azahar ];
@@ -40,5 +57,8 @@ in
     dir="$HOME/.config/azahar-emu"
     run mkdir -p "$dir"
     [ -e "$dir/qt-config.ini" ] || run install -m 644 ${config} "$dir/qt-config.ini"
-  '';
+    ${lib.concatStrings (lib.mapAttrsToList (name: seq: ''
+      run ${pkgs.crudini}/bin/crudini --set "$dir/qt-config.ini" UI 'Shortcuts\Main%20Window\${name}\KeySeq' '${seq}'
+      run ${pkgs.crudini}/bin/crudini --set "$dir/qt-config.ini" UI 'Shortcuts\Main%20Window\${name}\KeySeq\default' false
+    '') shortcuts)}'';
 }

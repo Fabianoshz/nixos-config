@@ -92,6 +92,32 @@ in
     wantedBy = [ "thor-gamescope-session.target" ];
   };
 
+  # steamos-manager turns every InputPlumber device into a Deck pad (no DMI on
+  # ARM to match a device config); put the Thor's Xbox Elite target back after it.
+  systemd.services.thor-controller-target = {
+    description = "Restore the Thor controller's InputPlumber target";
+    after = [ "inputplumber.service" "steamos-manager.service" ];
+    partOf = [ "inputplumber.service" "steamos-manager.service" ];
+    wantedBy = [ "inputplumber.service" "steamos-manager.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    path = [ pkgs.systemd pkgs.gnugrep pkgs.coreutils ];
+    script = ''
+      ip=org.shadowblip.InputPlumber
+      dev=/org/shadowblip/InputPlumber/CompositeDevice0
+      type() {
+        t=$(busctl --system get-property $ip $dev org.shadowblip.Input.CompositeDevice TargetDevices 2>/dev/null \
+          | grep -oE '/org/shadowblip/InputPlumber/devices/target/gamepad[0-9]+' | head -n1)
+        [ -n "$t" ] && busctl --system get-property $ip "$t" org.shadowblip.Input.Target DeviceType
+      }
+      # Wait for the device, then give steamos-manager its turn first.
+      for _ in $(seq 60); do type | grep -q '"deck-uhid"' && break; sleep 0.5; done
+      busctl --system call $ip $dev org.shadowblip.Input.CompositeDevice SetTargetDevices as 1 xbox-elite
+    '';
+  };
+
   # Valve's rule matches sd* too, which is the internal UFS here; SD slot only.
   # setpriv runs `test` from PATH, which systemd-run leaves without coreutils.
   services.udev.extraRules =

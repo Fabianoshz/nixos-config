@@ -52,7 +52,10 @@ let
   nixCores = writeText "nix_cores.json" (builtins.toJSON (lib.mapAttrs
     (_: c: {
       so = coreSo c;
-      info = "${libretro-core-info}/share/retroarch/cores/${lib.replaceStrings [ "-" ] [ "_" ] c.core}_libretro.info";
+      info = [
+        "${c}${c.libretroCore}/${lib.replaceStrings [ "-" ] [ "_" ] c.core}_libretro.info"
+        "${libretro-core-info}/share/retroarch/cores/${lib.replaceStrings [ "-" ] [ "_" ] c.core}_libretro.info"
+      ];
       corename = saveDirOverride.${c.core} or null;
     })
     coreFor));
@@ -70,12 +73,14 @@ let
 
 
       def _info_corename(entry):
-          try:
-              with open(entry["info"]) as f:
-                  m = re.search(r'^corename\s*=\s*"([^"]*)"', f.read(), re.M)
-              return m.group(1) if m else None
-          except OSError:
-              return None
+          for path in entry["info"]:
+              try:
+                  with open(path) as f:
+                      m = re.search(r'^corename\s*=\s*"([^"]*)"', f.read(), re.M)
+                  return m.group(1) if m else None
+              except OSError:
+                  continue
+          return None
 
 
       def _corename(entry):

@@ -116,7 +116,14 @@ in
     };
   };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+  };
+
   boot = {
+    kernel.sysctl."vm.swappiness" = 180;
     # kernelPackages = pkgs.linuxPackages_jovian;
     kernelPackages = pkgs.linuxPackages_latest;
     plymouth.enable = true;
@@ -196,17 +203,25 @@ in
           });
         };
       })
-      (final: prev: {
-        gamescope-session = prev.gamescope-session.override {
-          steam = config.programs.steam.package;
-        };
-        # Jovian's session uses its own scope's copy.
-        jovianPackages = prev.jovianPackages.overrideScope (_: p: {
-          gamescope-session = p.gamescope-session.override {
+      (final: prev:
+        let
+          patchSession = pkg: (pkg.override {
             steam = config.programs.steam.package;
-          };
-        });
-      })
+          }).overrideAttrs (old: {
+            # Single scanout plane so Sunshine's KMS capture sees the whole frame.
+            postPatch = old.postPatch + ''
+              substituteInPlace gamescope-session \
+                --replace-fail '--generate-drm-mode fixed' '--disable-layers --generate-drm-mode fixed'
+            '';
+          });
+        in
+        {
+          gamescope-session = patchSession prev.gamescope-session;
+          # Jovian's session uses its own scope's copy.
+          jovianPackages = prev.jovianPackages.overrideScope (_: p: {
+            gamescope-session = patchSession p.gamescope-session;
+          });
+        })
     ];
   };
 

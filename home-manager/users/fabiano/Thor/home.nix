@@ -8,6 +8,7 @@
     ./melonds.nix
     ./azahar.nix
     ./retroarch.nix
+    ./pico8.nix
 
     ../../../optional/kde/default.nix
     # ../../../optional/zsh/default.nix
@@ -52,6 +53,7 @@
   };
 
   home.packages = [
+    (pkgs.callPackage ../../../../pkgs/gen1recomp { })
     (pkgs.callPackage ../../../../pkgs/vita3k { })
     pkgs.bash
     pkgs.dig
@@ -62,6 +64,16 @@
     pkgs.unzip
     pkgs.usbutils
     pkgs.vlc
+
+    (pkgs.unstable.grayjay.overrideAttrs (old: {
+      preBuild = old.preBuild + ''
+        mkdir -p JustCef/obj/justcef/net8.0/1/linux-arm64
+        cp ${pkgs.fetchurl {
+          url = "https://static.grayjay.app/justcef/1/JustCefNative-linux-arm64.zip";
+          hash = "sha256-YmAvNmBLF2HaILdQeFC6PXei45rQscNjvmJa6R2Jlus=";
+        }} JustCef/obj/justcef/net8.0/1/linux-arm64/JustCefNative-linux-arm64.zip
+      '';
+    }))
 
     # KDE
     pkgs.kdePackages.elisa
