@@ -1,13 +1,13 @@
 { lib, stdenv, fetchFromGitHub, cmake, pkg-config, python3 }:
 stdenv.mkDerivation {
   pname = "libretro-azahar";
-  version = "0-unstable-2026-05-27";
+  version = "0-unstable-2026-10-28";
 
   src = fetchFromGitHub {
-    owner = "Fabianoshz";
+    owner = "Davey-Hughes";
     repo = "azahar";
-    rev = "e215bcbbe03ceab03796db5597dc2a90bf2c1cfe";
-    hash = "sha256-Gga2fFsju5J3Zg3OdLDKVxqxARFjoChG1SWeQAlqkAs=";
+    rev = "231e7f8bc38faf715f44cc7af009ad5a535fa05a";
+    hash = "sha256-qItdOdqw3cb4Eu8wcTD4a99mlMbjv4avTWELtpERBIk=";
     fetchSubmodules = true;
   };
 
@@ -33,7 +33,7 @@ stdenv.mkDerivation {
 
   meta = {
     description = "Nintendo 3DS emulator";
-    homepage = "https://github.com/Fabianoshz/azahar";
+    homepage = "https://github.com/azahar-emu/azahar/pull/2718";
     license = lib.licenses.gpl2Plus;
     platforms = lib.platforms.linux;
   };

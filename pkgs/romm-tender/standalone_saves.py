@@ -1,13 +1,8 @@
 """Saves that Tender's resolver (atlas) cannot see, configured per system in
-standalone_saves.json:
-
-* {dir, ext, serverExt?} -- one <rom stem><ext> in dir (standalone melonDS).
-  serverExt is the name used on RomM, so a RetroArch core of the same system
-  shares it (melonDS DS writes .srm).
-* {dir, stage, layout} -- a folder per game (PPSSPP SAVEDATA, Azahar title
-  data). Tender syncs it as <rom stem>.zip in stage; the zip is rebuilt from
-  the emulator's folder before every sync and unpacked into it after a
-  download.
+standalone_saves.json as {dir, stage, layout}: a folder per game (PPSSPP
+SAVEDATA, Azahar title data). Tender syncs it as <rom stem>.zip in stage; the
+zip is rebuilt from the emulator's folder before every sync and unpacked into
+it after a download.
 """
 
 import json
@@ -31,10 +26,6 @@ def _stem(path):
     return os.path.splitext(os.path.basename(path))[0]
 
 
-def _is_folder(entry):
-    return "layout" in entry
-
-
 # --- Hooks called from Tender -------------------------------------------------
 
 
@@ -42,8 +33,6 @@ def saves_dir(system, file_path):
     entry = _TABLE.get(system)
     if entry is None:
         return None
-    if not _is_folder(entry):
-        return entry["dir"]
     try:
         _pack(entry, file_path)
     except Exception:
@@ -57,15 +46,14 @@ def save_answer(system, content_path, installed):
         return None
     from domain.save_answer import build_save_answer
 
-    folder = _is_folder(entry)
     return build_save_answer(
         emulator=entry["emulator"],
-        directory=entry["stage"] if folder else entry["dir"],
+        directory=entry["stage"],
         backing_directory=None,
         granularity="per-game-file",
         needs=(),
         file_set_state="declared",
-        files=(_stem(content_path) + (".zip" if folder else entry["ext"]),),
+        files=(_stem(content_path) + ".zip",),
         groups=(),
         caveats=(),
         content_installed=installed,
@@ -77,25 +65,9 @@ def emulator_tag(system):
     return entry["emulator"] if entry else None
 
 
-def server_to_local_name(known_names, computed):
-    stem, ext = os.path.splitext(computed)
-    for entry in _TABLE.values():
-        if entry.get("serverExt") == ext and stem + entry["ext"] in known_names:
-            return stem + entry["ext"]
-    return computed
-
-
-def upload_name(file_path):
-    name = os.path.basename(file_path)
-    for entry in _TABLE.values():
-        if entry.get("serverExt") and os.path.dirname(file_path) == entry["dir"] and name.endswith(entry["ext"]):
-            return name[: -len(entry["ext"])] + entry["serverExt"]
-    return name
-
-
 def after_download(local_path):
     for entry in _TABLE.values():
-        if _is_folder(entry) and os.path.dirname(local_path) == entry["stage"] and local_path.endswith(".zip"):
+        if os.path.dirname(local_path) == entry["stage"] and local_path.endswith(".zip"):
             try:
                 _unpack(entry, local_path)
             except Exception:

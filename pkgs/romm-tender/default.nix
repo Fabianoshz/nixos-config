@@ -30,11 +30,9 @@
     arcade = fbneo;
     fbneo = fbneo;
   }
-  # Tender system folder -> standalone emulator command, called with the ROM path.
-, standalone ? { }
-  # Tender system folder -> saves its resolver cannot see; see standalone_saves.py.
-  #   { emulator; dir; ext; serverExt ? null; }  one <rom stem><ext> file in dir
-  #   { emulator; dir; stage; layout; }          a folder per game, synced as a zip
+  # Tender system folder -> folder saves its resolver cannot see, synced as a
+  # zip per game; see standalone_saves.py.
+  #   { emulator; dir; stage; layout; }
 , standaloneSaves ? { }
 }:
 
@@ -131,14 +129,7 @@ let
       exit 1
     fi
     system="''${rel%%/*}"
-    ${lib.optionalString (standalone != { }) ''
 
-    case "$system" in
-    ${lib.concatStrings (lib.mapAttrsToList (sys: cmd: ''
-      ${lib.escapeShellArg sys}) exec ${cmd} "$rom" ;;
-    '') standalone)}
-    esac
-    ''}
     case "$system" in
     ${lib.concatStrings (lib.mapAttrsToList (sys: c: ''
       ${lib.escapeShellArg sys}) core=${lib.escapeShellArg (coreSo c)} ;;
@@ -220,17 +211,11 @@ let
                        'saves_dir = __import__("standalone_saves").saves_dir(system, file_path) or resolve_save_dir(' \
         --replace-fail 'return self._save_locations.resolve_save_answer(' \
                        'return __import__("standalone_saves").save_answer(system, content_path, installed) or self._save_locations.resolve_save_answer('
-      substituteInPlace $out/py_modules/services/saves/_helpers.py \
-        --replace-fail 'return pick_download_name(known_names, result.filename)' \
-                       'return pick_download_name(known_names, __import__("standalone_saves").server_to_local_name(known_names, result.filename))'
       substituteInPlace $out/py_modules/services/saves/sync_engine/matrix.py \
         --replace-fail 'emulator = build_emulator_tag(core_so)' \
                        'emulator = __import__("standalone_saves").emulator_tag(system) or build_emulator_tag(core_so)' \
         --replace-fail 'self._save_file_store.rename(tmp_path, local_path)' \
                        'self._save_file_store.rename(tmp_path, local_path); __import__("standalone_saves").after_download(local_path)'
-      substituteInPlace $out/py_modules/adapters/romm/http.py \
-        --replace-fail 'filename = os.path.basename(file_path)' \
-                       'filename = __import__("standalone_saves").upload_name(file_path)'
     ''}
       substituteInPlace $out/py_modules/services/migration/save_sort.py \
         --replace-fail 'emulator_label=emulator.label if emulator is not None else None,' \

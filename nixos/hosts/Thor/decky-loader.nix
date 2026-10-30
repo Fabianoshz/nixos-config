@@ -2,10 +2,6 @@
 let
   retroarchWithCores = pkgs.callPackage ../../../pkgs/retroarch-thor { };
 
-  melonds-dual = pkgs.writeShellScript "melonds-dual" ''
-    exec ${pkgs.melonds}/bin/melonDS -f -stylesheet "$HOME/.config/melonDS/hide-menubar.qss" "$@"
-  '';
-
   home = config.users.users.fabiano.home;
 
   romm-tender = pkgs.callPackage ../../../pkgs/romm-tender {
@@ -15,16 +11,12 @@ let
       gbc = gambatte;
       gba = mgba;
       psp = ppsspp;
+      nds = pkgs.callPackage ../../../pkgs/libretro-melonds-ds { };
+      n3ds = pkgs.callPackage ../../../pkgs/libretro-azahar { };
       psvita = pkgs.callPackage ../../../pkgs/libretro-vita3k { };
       pico = pkgs.callPackage ../../../pkgs/libretro-fake08 { };
     };
     standaloneSaves = {
-      nds = {
-        emulator = "melonDS";
-        dir = "${home}/.local/share/melonDS/saves";
-        ext = ".sav";
-        serverExt = ".srm";
-      };
       psp = {
         emulator = "PPSSPP";
         dir = "${home}/Games/Retroarch/Saves/PPSSPP/PSP/SAVEDATA";
@@ -33,14 +25,10 @@ let
       };
       n3ds = {
         emulator = "Azahar";
-        dir = "${home}/.local/share/azahar-emu/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title";
+        dir = "${home}/Games/Retroarch/Saves/Azahar/Azahar/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title";
         stage = "${home}/.local/share/romm-tender/folder-saves/n3ds";
         layout = "3ds-title";
       };
-    };
-    standalone = {
-      nds = melonds-dual;
-      n3ds = "${pkgs.azahar}/bin/azahar -f";
     };
   };
 in

@@ -5,8 +5,6 @@
   imports = [
     ./syncthing.nix
     ./firefox.nix
-    ./melonds.nix
-    ./azahar.nix
     ./retroarch.nix
     ./pico8.nix
 

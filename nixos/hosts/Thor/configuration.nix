@@ -57,6 +57,9 @@ in
 
   boot.kernelParams = [ "msm.enable_preemption=1" ];
 
+  systemd.user.services.thor-gamescope.environment.GAMESCOPE_BOTTOM_SCREEN_TITLES =
+    "^RetroArch Screen [2-9]$";
+
   zramSwap = {
     enable = true;
     algorithm = "zstd";
