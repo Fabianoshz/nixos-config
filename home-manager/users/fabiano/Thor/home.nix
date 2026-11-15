@@ -52,7 +52,6 @@
 
   home.packages = [
     (pkgs.callPackage ../../../../pkgs/gen1recomp { })
-    (pkgs.callPackage ../../../../pkgs/vita3k { })
     pkgs.bash
     pkgs.dig
     pkgs.feishin

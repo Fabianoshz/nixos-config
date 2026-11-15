@@ -1,15 +1,13 @@
 { lib, retroarch-bare, fetchFromGitHub, makeBinaryWrapper }:
 retroarch-bare.overrideAttrs (old: {
-  version = "1.22.2-unstable-2026-10-29";
+  version = "1.22.2-unstable-2026-11-11";
 
   src = fetchFromGitHub {
-    owner = "libretro";
+    owner = "Davey-Hughes";
     repo = "RetroArch";
-    rev = "e9a553a660e238cd88a4db66076f0ee2328ea844";
-    hash = "sha256-lHt75xnmxNgKlqidOlFgpMGSyxVIOVwofyE5LVpnkEg=";
+    rev = "527897acee4836c0dbd81bff05aa0711f05101fe";
+    hash = "sha256-hNujzhyAu0+94ZQlzM/JaLrggmIuPWOwlWMHa2TUZOw=";
   };
-
-  patches = (old.patches or [ ]) ++ [ ./x11-screen-windows.patch ];
 
   nativeBuildInputs = old.nativeBuildInputs ++ [ makeBinaryWrapper ];
 

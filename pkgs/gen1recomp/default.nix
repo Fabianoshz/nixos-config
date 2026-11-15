@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "gen1recomp";
-  version = "0.3.96";
+  version = "0.4.4";
 
   src = fetchurl {
     url = "https://github.com/bryanthaboi/gen1recomp/releases/download/v${version}/gen1recomp-${version}.love";
-    hash = "sha256-x5tRsbL7U7yKBmMHr5Qj6Np286cuav+0cIG3739XFxs=";
+    hash = "sha256-DzqVxu8LNUreDuGJH6a1FxhW+QEWjnZarhPrYwb/338=";
   };
 
   nativeBuildInputs = [ makeWrapper ];

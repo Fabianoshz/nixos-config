@@ -69,7 +69,6 @@ in
     # Rice stuff
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt6
-    pkgs.papirus-icon-theme
 
     # KDE
     pkgs.kdePackages.elisa

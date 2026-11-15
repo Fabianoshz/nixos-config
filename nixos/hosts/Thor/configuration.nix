@@ -6,11 +6,11 @@ in
 {
   imports = [
     ./decky-loader.nix
+    ./inputplumber
     ./steam-storage.nix
   ];
 
   thor.user = "fabiano";
-  thor.kernel.crossFrom = "x86_64-linux";
   thor.storage = "internal";
 
   home-manager.startAsUserService = true;
@@ -55,10 +55,14 @@ in
   # nix-on-thor's legacy shell hook is incompatible with systemd initrd.
   boot.initrd.postDeviceCommands = lib.mkForce "";
 
-  boot.kernelParams = [ "msm.enable_preemption=1" ];
-
   systemd.user.services.thor-gamescope.environment.GAMESCOPE_BOTTOM_SCREEN_TITLES =
-    "^RetroArch Screen [2-9]$";
+    "^RetroArch - Screen [2-9]$";
+
+  services.udev.extraHwdb = ''
+    evdev:input:b0003v2020p3001*
+     EVDEV_ABS_02=240:1552
+     EVDEV_ABS_05=240:1552
+  '';
 
   zramSwap = {
     enable = true;
@@ -66,8 +70,6 @@ in
     memoryPercent = 50;
   };
   boot.kernel.sysctl."vm.swappiness" = 180;
-
-  powerManagement.cpuFreqGovernor = "schedutil";
 
   environment.systemPackages = with pkgs; [
     vim

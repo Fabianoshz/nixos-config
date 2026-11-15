@@ -121,7 +121,15 @@
     pkgs.rpi-imager
     pkgs.ssm-session-manager-plugin
     pkgs.steamtinkerlaunch
-    pkgs.streamcontroller
+    (pkgs.streamcontroller.overrideAttrs (old: {
+      postPatch = (old.postPatch or "") + ''
+        substituteInPlace src/backend/Store/StoreBackend.py \
+          --replace-fail '        branch = plugin.get("branch")' \
+          '        if url == "https://github.com/gensyn/HomeAssistantPlugin":
+                    commit = "54355d6dba197db011961b8dfc68b290e52f2452"
+                branch = plugin.get("branch")'
+      '';
+    }))
     pkgs.sweethome3d.application
     pkgs.unzip
     pkgs.usbutils
@@ -133,7 +141,6 @@
     # Rice stuff
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt5
     inputs.lightly.packages.${pkgs.stdenv.hostPlatform.system}.darkly-qt6
-    pkgs.papirus-icon-theme
     pkgs.plasma-panel-colorizer
 
     # KDE

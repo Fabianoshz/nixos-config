@@ -34,5 +34,6 @@ import (path + "/pkgs/by-name/re/retroarch-bare/wrapper.nix") {
     builtin_imageviewer_enable = "false";
     libretro_info_path = "${coreInfo}/share/retroarch/cores";
     video_windows_enable = "true";
+    input_analog_outer_deadzone = "0.200000";
   };
 }

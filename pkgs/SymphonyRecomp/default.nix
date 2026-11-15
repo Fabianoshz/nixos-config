@@ -51,11 +51,11 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "symphony-recomp";
-  version = "0.5.1b";
+  version = "1.1.2p";
 
   src = fetchurl {
     url = "https://github.com/BlackLabelHQ/SymphonyRecomp/releases/download/v${finalAttrs.version}/SymphonyRecomp-v${finalAttrs.version}-linux-x64.tar.gz";
-    hash = "sha256-Ncq+6ON4rQwTYV7IvbtPudZR+SpCo6TAQ129/mS+VtU=";
+    hash = "sha256-itoEzLGsf9/VtLk8b0T8qcUv7/fyNA9k4qIWqSmvsqo=";
   };
 
   # The tarball has no top level directory.

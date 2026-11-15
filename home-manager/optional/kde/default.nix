@@ -4,6 +4,8 @@
     inputs.plasma-manager.homeModules.plasma-manager
   ];
 
+  home.packages = [ pkgs.papirus-icon-theme ];
+
   programs.plasma = {
     enable = true;
 

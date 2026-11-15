@@ -1,0 +1,41 @@
+# steamos-manager device config for the AYN Thor: identity as Armada's
+# sm8550.toml, profiles from Armada's SM8550 underclocks (power-profiles.conf).
+[[device]]
+dt.compatible = "ayn,thor"
+device = "ayn_thor"
+variant = "Thor"
+friendly_name = "AYN Thor"
+
+[gpu_performance]
+limits.powersave = { max = 550 }
+
+[gpu_performance.driver.devfreq]
+sysfs_path = "/sys/devices/platform/soc@0/3d00000.gpu/devfreq/3d00000.gpu"
+
+[performance_profile]
+suggested_default = "Performance"
+
+# Full clocks, as without profiles.
+[performance_profile.driver.custom.profiles.Performance]
+cpufreq = [
+  { policy = 0, max = 2016000 },
+  { policy = 3, max = 2803200 },
+  { policy = 7, max = 2956800 },
+]
+
+# Armada "medium".
+[performance_profile.driver.custom.profiles.Balanced]
+cpufreq = [
+  { policy = 0, max = 1555200 },
+  { policy = 3, max = 2054400 },
+  { policy = 7, max = 2092800 },
+]
+
+# Armada "large", GPU at ~80%.
+[performance_profile.driver.custom.profiles.Powersave]
+cpufreq = [
+  { policy = 0, max = 1459200 },
+  { policy = 3, max = 1785600 },
+  { policy = 7, max = 1843200 },
+]
+gpu_performance_level = "powersave"
