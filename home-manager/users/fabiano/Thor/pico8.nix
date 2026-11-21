@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
   pico8 = pkgs.callPackage ../../../../pkgs/pico8 { };
 in

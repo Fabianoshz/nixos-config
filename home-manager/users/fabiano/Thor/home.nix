@@ -10,7 +10,7 @@
 
     ../../../optional/kde/default.nix
     # ../../../optional/zsh/default.nix
-    # ../../../optional/neovim/default.nix
+    ../../../optional/neovim/default.nix
     ../../../optional/flatpak/default.nix
 
     inputs.xdg-autostart.homeManagerModules.xdg-autostart
@@ -29,9 +29,6 @@
       "kwinrc"."Xwayland"."Scale" = 1.75;
     };
   };
-
-  # TODO: This is not working because of sunshine
-  # xdg.configFile."autostart/steam.desktop".source = "${pkgs.steam}/share/applications/steam.desktop";
 
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
@@ -52,15 +49,22 @@
 
   home.packages = [
     (pkgs.callPackage ../../../../pkgs/gen1recomp { })
-    pkgs.bash
     pkgs.dig
     pkgs.feishin
     pkgs.git
     pkgs.go-task
-    pkgs.htop
     pkgs.unzip
     pkgs.usbutils
     pkgs.vlc
+    ((pkgs.unstable.amethyst-mod-manager.override {
+      me3 = pkgs.emptyDirectory;
+      umu-launcher = pkgs.emptyDirectory;
+    }).overrideAttrs (old: {
+      amethyst_filegraph = old.amethyst_filegraph.overrideAttrs (o: {
+        nativeBuildInputs = (o.nativeBuildInputs or [ ]) ++ [ pkgs.unstable.pkg-config ];
+        buildInputs = (o.buildInputs or [ ]) ++ [ pkgs.unstable.sqlite ];
+      });
+    }))
 
     (pkgs.unstable.grayjay.overrideAttrs (old: {
       preBuild = old.preBuild + ''
@@ -75,11 +79,9 @@
     # KDE
     pkgs.kdePackages.elisa
     pkgs.kdePackages.filelight
-    pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
     pkgs.kdePackages.krdc
     pkgs.kdePackages.krfb
-    pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
   ];
 }

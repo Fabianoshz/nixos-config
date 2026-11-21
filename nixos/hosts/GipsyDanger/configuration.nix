@@ -1,5 +1,4 @@
 { pkgs, lib, inputs, ... }:
-with lib;
 let
   general = builtins.fromJSON (builtins.readFile ../../../sensitive/general.json);
 in
@@ -48,9 +47,6 @@ in
         "soft" # Use soft mounts to prevent indefinite hangs
         "timeo=30" # 3 second timeout (30 deciseconds)
         "retrans=2" # Retry 2 times before giving up
-        "intr" # Allow interruption of NFS calls
-        "rsize=32768" # Read buffer size
-        "wsize=32768" # Write buffer size
         "nordirplus" # Disable READDIRPLUS for better compatibility
       ];
     };
@@ -67,9 +63,6 @@ in
         "soft" # Use soft mounts to prevent indefinite hangs
         "timeo=30" # 3 second timeout (30 deciseconds)
         "retrans=2" # Retry 2 times before giving up
-        "intr" # Allow interruption of NFS calls
-        "rsize=32768" # Read buffer size
-        "wsize=32768" # Write buffer size
         "nordirplus" # Disable READDIRPLUS for better compatibility
       ];
     };
@@ -85,7 +78,6 @@ in
       extraGroups = [
         "wheel"
         "libvirtd"
-        "docker"
       ];
       openssh.authorizedKeys.keys = [
         general.ssh.general
@@ -96,7 +88,8 @@ in
 
   fonts.packages = [
     pkgs.meslo-lgs-nf
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    pkgs.nerd-fonts.jetbrains-mono
+  ];
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -110,7 +103,7 @@ in
       LC_TELEPHONE = "pt_BR.UTF-8";
       LC_MEASUREMENT = "pt_BR.UTF-8";
       LC_IDENTIFICATION = "pt_BR.UTF-8";
-      LC_TYPE = "pt_BR.UTF-8";
+      LC_CTYPE = "pt_BR.UTF-8";
     };
   };
 
@@ -124,35 +117,34 @@ in
     firewall = {
       enable = true;
       allowedTCPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
         { from = 12315; to = 12315; } # Grayjay
-        { from = 21027; to = 21027; } # Syncthing
         { from = 22000; to = 22000; } # Syncthing
       ];
       allowedUDPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
         { from = 21027; to = 21027; } # Syncthing
         { from = 22000; to = 22000; } # Syncthing
       ];
     };
+  };
 
-    hosts = {
-      "127.0.0.1" = [ "localhost" "GipsyDanger" ];
-    };
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
   };
 
   boot = {
+    kernel.sysctl."vm.swappiness" = 180;
     plymouth.enable = true;
-    loader.grub.timeoutStyle = false;
     loader.systemd-boot.enable = true;
     loader.systemd-boot.editor = false;
+    loader.systemd-boot.configurationLimit = 10;
     loader.efi.canTouchEfiVariables = true;
     loader.timeout = 0;
     kernelParams = [ "quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
     consoleLogLevel = 0;
     initrd.verbose = false;
     initrd.systemd.enable = true;
-    supportedFilesystems = [ "nfs" ];
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
@@ -197,11 +189,6 @@ in
     graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = with pkgs; [
-        vulkan-loader
-        vulkan-validation-layers
-        vulkan-extension-layer
-      ];
     };
   };
 }

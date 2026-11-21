@@ -1,6 +1,7 @@
 {
   programs = {
     zsh.enable = true;
+    kdeconnect.enable = true;
 
     dconf.enable = true;
 

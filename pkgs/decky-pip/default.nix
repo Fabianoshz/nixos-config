@@ -25,7 +25,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     inherit (finalAttrs) pname version src;
     inherit pnpm;
     fetcherVersion = 4;
-    hash = "sha256-oIdgg2p8jqrDldf+GrlTPcI5BJGKBLq3CKwYv4BnW+E=";
+    hash = "sha256-LLDWY12LbqKghzGJrHPSmvcxakj54i0nDoT3FmFdTR0=";
   };
 
   nativeBuildInputs = [ nodejs pnpm pnpmConfigHook ];

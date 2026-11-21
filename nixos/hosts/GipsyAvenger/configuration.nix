@@ -1,5 +1,4 @@
 { config, pkgs, lib, inputs, ... }:
-with lib;
 let
   general = builtins.fromJSON (builtins.readFile ../../../sensitive/general.json);
 in
@@ -21,6 +20,24 @@ in
   systemd.user.sockets.drkonqi-coredump-launcher.enable = false;
 
   home-manager.startAsUserService = true;
+
+  systemd.services.wait-for-dns = {
+    description = "Wait for DNS resolution to be available";
+    after = [ "NetworkManager.service" "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      if ${pkgs.dnsutils}/bin/dig +time=1 +tries=5 . NS >/dev/null 2>&1; then
+        echo "DNS resolution successful"
+      else
+        echo "DNS resolution failed, continuing anyway"
+      fi
+    '';
+  };
 
   time.timeZone = "America/Sao_Paulo";
 
@@ -52,9 +69,6 @@ in
         "soft" # Use soft mounts to prevent indefinite hangs
         "timeo=30" # 3 second timeout (30 deciseconds)
         "retrans=2" # Retry 2 times before giving up
-        "intr" # Allow interruption of NFS calls
-        "rsize=32768" # Read buffer size
-        "wsize=32768" # Write buffer size
         "nordirplus" # Disable READDIRPLUS for better compatibility
       ];
     };
@@ -72,7 +86,7 @@ in
       LC_TELEPHONE = "pt_BR.UTF-8";
       LC_MEASUREMENT = "pt_BR.UTF-8";
       LC_IDENTIFICATION = "pt_BR.UTF-8";
-      LC_TYPE = "pt_BR.UTF-8";
+      LC_CTYPE = "pt_BR.UTF-8";
     };
   };
 
@@ -91,7 +105,8 @@ in
 
   fonts.packages = [
     pkgs.meslo-lgs-nf
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    pkgs.nerd-fonts.jetbrains-mono
+  ];
 
   networking = {
     hostName = "GipsyAvenger";
@@ -102,14 +117,11 @@ in
     firewall = {
       enable = true;
       allowedTCPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
         { from = 3389; to = 3389; } # RDP
         { from = 8384; to = 8384; } # Syncthing web
-        { from = 21027; to = 21027; } # Syncthing
         { from = 22000; to = 22000; } # Syncthing
       ];
       allowedUDPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
         { from = 21027; to = 21027; } # Syncthing
         { from = 22000; to = 22000; } # Syncthing
       ];
@@ -128,23 +140,18 @@ in
     kernelPackages = pkgs.linuxPackages_latest;
     plymouth.enable = true;
 
-    loader.grub.timeoutStyle = false;
     loader.systemd-boot.enable = true;
     loader.systemd-boot.editor = true;
     loader.systemd-boot.configurationLimit = 10;
     loader.efi.canTouchEfiVariables = true;
     loader.timeout = 0;
     consoleLogLevel = 0;
-    initrd.verbose = false;
-    initrd.systemd.enable = true;
 
     kernelParams = [
       "quiet"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
-      "hid_nintendo"
-      "hid_playstation"
 
       # The root NVMe wedges after resume from S3 (kernel flags it "simple
       # suspend", invalid SUBNQN); anything touching disk then blocks forever.
@@ -185,6 +192,13 @@ in
     };
 
     overlays = [
+      (final: prev: {
+        amethyst-mod-manager = prev.amethyst-mod-manager.overrideAttrs (old: {
+          amethyst_filegraph = old.amethyst_filegraph.overrideAttrs (o: {
+            buildInputs = (o.buildInputs or [ ]) ++ [ final.sqlite ];
+          });
+        });
+      })
       (final: prev: {
         libretro = prev.libretro // {
           pcsx2 = prev.libretro.pcsx2.overrideAttrs (old: {

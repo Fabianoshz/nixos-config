@@ -8,6 +8,7 @@ in
     ./decky-loader.nix
     ./inputplumber
     ./steam-storage.nix
+    ./sunshine.nix
   ];
 
   thor.user = "fabiano";
@@ -32,17 +33,26 @@ in
     firewall = {
       enable = true;
       allowedTCPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
         { from = 3389; to = 3389; } # RDP
         { from = 8384; to = 8384; } # Syncthing web
-        { from = 21027; to = 21027; } # Syncthing
         { from = 22000; to = 22000; } # Syncthing
       ];
       allowedUDPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
         { from = 21027; to = 21027; } # Syncthing
         { from = 22000; to = 22000; } # Syncthing
       ];
+    };
+  };
+
+  programs.kdeconnect.enable = true;
+
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    optimise.automatic = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
     };
   };
 

@@ -28,19 +28,7 @@
   xdg.autostart = {
     enable = true;
     entries = [
-      "${pkgs.makeDesktopItem {
-        name = "org.kde.yakuake.desktop";
-        genericName = "Drop-down Terminal";
-        dbusActivatable = true;
-        exec = "yakuake";
-        desktopName = "Yakuake";
-        icon = "yakuake";
-        type = "Application";
-        categories = [ "Qt" "KDE" "System" "TerminalEmulator" ];
-        startupNotify = false;
-        terminal = false;
-        comment = "A drop-down terminal emulator based on KDE Konsole technology.";
-      }}/share/applications/org.kde.yakuake.desktop.desktop"
+      "${pkgs.kdePackages.yakuake}/share/applications/org.kde.yakuake.desktop"
     ];
   };
 
@@ -65,7 +53,6 @@
     CARGO_HOME = "${config.xdg.dataHome}/cargo";
     CHECKPOINT_DISABLE = "1";
     CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
-    DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     EDITOR = "nvim";
     ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
@@ -87,7 +74,6 @@
     TF_PLUGIN_CACHE_DIR = "${config.xdg.cacheHome}/terraform/plugins";
     WGETRC = "${config.xdg.configHome}/wgetrc";
     WINEPREFIX = "${config.xdg.dataHome}/wine";
-    XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
     ZPLUG_HOME = "${config.xdg.dataHome}/zplug";
   };
 
@@ -101,12 +87,10 @@
 
   home.packages = [
     pkgs.awscli2
-    pkgs.bash
     pkgs.dbeaver-bin
     pkgs.dig
     pkgs.discord
     pkgs.feishin
-    pkgs.git
     pkgs.godot
     pkgs.htop
     pkgs.iotop
@@ -150,11 +134,9 @@
     pkgs.kdePackages.gwenview
     pkgs.kdePackages.kate
     pkgs.kdePackages.kcalc
-    pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
     pkgs.kdePackages.kwalletmanager
     pkgs.kdePackages.okular
-    pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
   ];
 }

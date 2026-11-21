@@ -1,5 +1,4 @@
 { lib, pkgs, ... }:
-with lib;
 let
   syncthing = builtins.fromJSON (builtins.readFile ../../../../sensitive/syncthing.json);
 in
@@ -30,13 +29,13 @@ in
           "[Documents] Share" = {
             enable = true;
             path = "/home/fabiano/Documents/Share";
-            devices = [ "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
+            devices = [ "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" "GipsyAvenger" ];
           };
 
           "[Games] Retroarch Runtime Logs" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/Runtime logs";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyAvenger" ];
             versioning = {
               type = "simple";
               params = {
@@ -48,7 +47,7 @@ in
           "[Games] Retroarch System" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/System";
-            devices = [ "Syncthing Server" ];
+            devices = [ "Syncthing Server" "GipsyAvenger" ];
             versioning = {
               type = "simple";
               params = {

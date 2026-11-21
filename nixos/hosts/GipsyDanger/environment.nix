@@ -1,9 +1,8 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   environment = {
     systemPackages = with pkgs; [
       git
-      libusb1
       vim
     ];
 

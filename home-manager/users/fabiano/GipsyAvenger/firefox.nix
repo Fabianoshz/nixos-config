@@ -1,5 +1,4 @@
 { lib, inputs, pkgs, ... }:
-with lib;
 let
   general = builtins.fromJSON (builtins.readFile ../../../../sensitive/general.json);
 in
@@ -26,9 +25,9 @@ in
         "browser.startup.page" = 3;
         "browser.toolbars.bookmarks.visibility" = "never";
         "widget.use-xdg-desktop-portal.file-picker" = 1;
-        "extensions.activethemeid" = "firefox-compact-dark@mozilla.org";
-        "extensions.autodisablescopes" = 0;
-        "identity.fxaccounts.account.device.name" = "gipsydanger";
+        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        "extensions.autoDisableScopes" = 0;
+        "identity.fxaccounts.account.device.name" = "GipsyAvenger";
         "media.videocontrols.picture-in-picture.enabled" = false;
       };
     };

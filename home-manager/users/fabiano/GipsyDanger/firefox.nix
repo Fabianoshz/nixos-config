@@ -1,5 +1,4 @@
 { lib, inputs, pkgs, ... }:
-with lib;
 let
   general = builtins.fromJSON (builtins.readFile ../../../../sensitive/general.json);
 in

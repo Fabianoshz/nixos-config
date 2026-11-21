@@ -1,5 +1,4 @@
 { lib, pkgs, ... }:
-with lib;
 let
   syncthing = builtins.fromJSON (builtins.readFile ../../../../sensitive/syncthing.json);
 in

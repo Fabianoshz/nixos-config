@@ -32,9 +32,6 @@ in
     };
   };
 
-  # TODO: This is not working because of sunshine
-  # xdg.configFile."autostart/steam.desktop".source = "${pkgs.steam}/share/applications/steam.desktop";
-
   home.username = "fabiano";
   home.homeDirectory = "/home/fabiano";
   home.sessionVariables = {
@@ -53,6 +50,7 @@ in
   };
 
   home.packages = [
+    pkgs.amethyst-mod-manager
     pkgs.bash
     pkgs.dig
     pkgs.discord
@@ -73,9 +71,7 @@ in
     # KDE
     pkgs.kdePackages.elisa
     pkgs.kdePackages.filelight
-    pkgs.kdePackages.kdeconnect-kde
     pkgs.kdePackages.konsole
-    pkgs.kdePackages.qtbase
     pkgs.kdePackages.yakuake
 
     retroarchWithCores
