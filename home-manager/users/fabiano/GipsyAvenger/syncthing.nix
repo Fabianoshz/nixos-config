@@ -23,19 +23,21 @@ in
           "CrimsonPhoenix" = syncthing.devices.CrimsonPhoenix;
           "GipsyDanger" = syncthing.devices.GipsyDanger;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
+          "Shield Sala" = syncthing.devices.ShieldSala;
+          "Shield Suíte" = syncthing.devices.ShieldSuite;
         };
 
         folders = {
           "[Documents] Share" = {
             enable = true;
             path = "/home/fabiano/Documents/Share";
-            devices = [ "ChernoAlpha" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" ];
+            devices = [ "ChernoAlpha" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyDanger" "Shield Sala" "Shield Suíte" ];
           };
 
           "[Games] Retroarch Runtime Logs" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/Runtime logs";
-            devices = [ "Thor" "Syncthing Server" ];
+            devices = [ "Thor" "Syncthing Server" "Shield Sala" "Shield Suíte" ];
             versioning = {
               type = "simple";
               params = {
@@ -47,7 +49,7 @@ in
           "[Games] Retroarch System" = {
             enable = true;
             path = "/home/fabiano/Games/Retroarch/System";
-            devices = [ "Thor" "Syncthing Server" ];
+            devices = [ "Thor" "Syncthing Server" "Shield Sala" "Shield Suíte" ];
             versioning = {
               type = "simple";
               params = {

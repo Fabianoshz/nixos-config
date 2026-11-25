@@ -31,6 +31,8 @@ in
           "CrimsonPhoenix" = syncthing.devices.CrimsonPhoenix;
           "GipsyAvenger" = syncthing.devices.GipsyAvenger;
           "Syncthing Server" = syncthing.devices.SyncthingServer;
+          "Shield Sala" = syncthing.devices.ShieldSala;
+          "Shield Suíte" = syncthing.devices.ShieldSuite;
         };
 
         folders = {
@@ -43,16 +45,19 @@ in
               params.keep = "10";
             };
           };
+
           "[Documents] Passwords" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Passwords";
             devices = [ "ChernoAlpha" "Syncthing Server" "CrimsonPhoenix" ];
           };
+
           "[Documents] Share" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Share";
-            devices = [ "ChernoAlpha" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" ];
+            devices = [ "ChernoAlpha" "Thor" "Syncthing Server" "CrimsonPhoenix" "GipsyAvenger" "Shield Sala" "Shield Suíte" ];
           };
+
           "[Documents] Workspaces" = {
             enable = true;
             path = "${config.home.homeDirectory}/Documents/Workspaces";

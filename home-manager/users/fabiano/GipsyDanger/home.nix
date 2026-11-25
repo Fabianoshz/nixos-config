@@ -32,12 +32,36 @@
     ];
   };
 
-  xdg.desktopEntries.actual = {
-    name = "Actual Budget";
-    exec = "appimage-run /home/fabiano/Applications/Actual-linux-x86_64.AppImage";
-    terminal = false;
-    type = "Application";
-  };
+  xdg.desktopEntries =
+    let
+      shield = id: name: host: {
+        ${id} = {
+          inherit name;
+          exec = "${pkgs.writeShellApplication {
+            name = id;
+            runtimeInputs = [ pkgs.android-tools pkgs.scrcpy ];
+            text = ''
+              device=${host}.in.gambiarra.net:5555
+              adb connect "$device"
+              exec scrcpy -s "$device" --no-audio --keyboard=uhid --mouse=uhid --max-size=1280 --no-clipboard-autosync --window-title="${name}"
+            '';
+          }}/bin/${id}";
+          icon = "video-television";
+          terminal = false;
+          type = "Application";
+        };
+      };
+    in
+    {
+      actual = {
+        name = "Actual Budget";
+        exec = "appimage-run /home/fabiano/Applications/Actual-linux-x86_64.AppImage";
+        terminal = false;
+        type = "Application";
+      };
+    }
+    // shield "shield-sala" "Shield Sala - scrcpy" "nvidia-shield-6b09ad"
+    // shield "shield-suite" "Shield Suíte - scrcpy" "nvidia-shield-6b0812";
 
   services.ssh-agent = {
     enable = true;
@@ -105,19 +129,11 @@
     pkgs.rpi-imager
     pkgs.ssm-session-manager-plugin
     pkgs.steamtinkerlaunch
-    (pkgs.streamcontroller.overrideAttrs (old: {
-      postPatch = (old.postPatch or "") + ''
-        substituteInPlace src/backend/Store/StoreBackend.py \
-          --replace-fail '        branch = plugin.get("branch")' \
-          '        if url == "https://github.com/gensyn/HomeAssistantPlugin":
-                    commit = "54355d6dba197db011961b8dfc68b290e52f2452"
-                branch = plugin.get("branch")'
-      '';
-    }))
     pkgs.sweethome3d.application
     pkgs.unzip
     pkgs.usbutils
     pkgs.virt-manager
+    pkgs.vlc
 
     pkgs.unstable.claude-code
     pkgs.unstable.grayjay
@@ -138,5 +154,15 @@
     pkgs.kdePackages.kwalletmanager
     pkgs.kdePackages.okular
     pkgs.kdePackages.yakuake
+
+    (pkgs.streamcontroller.overrideAttrs (old: {
+      postPatch = (old.postPatch or "") + ''
+        substituteInPlace src/backend/Store/StoreBackend.py \
+          --replace-fail '        branch = plugin.get("branch")' \
+          '        if url == "https://github.com/gensyn/HomeAssistantPlugin":
+                    commit = "54355d6dba197db011961b8dfc68b290e52f2452"
+                branch = plugin.get("branch")'
+      '';
+    }))
   ];
 }
