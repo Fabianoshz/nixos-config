@@ -2,10 +2,10 @@
 let
   tasksOrg = pkgs.stdenvNoCC.mkDerivation {
     pname = "tasks-org";
-    version = "15.13.0";
+    version = "15.14.1";
     src = pkgs.fetchzip {
-      url = "https://update.tasks.org/tasks-org-15.13.0-mac-aarch64.zip";
-      hash = "sha256-vboMoOalElmxQYKzfmbXntt1fuBLxXnUhEJbpp7dNhw=";
+      url = "https://update.tasks.org/tasks-org-15.14.1-mac-aarch64.zip";
+      hash = "sha256-39L22/eNprlx2fpXPCDI/liULRIqCEr25XXOCH+YFoc=";
     };
     installPhase = ''
       runHook preInstall
